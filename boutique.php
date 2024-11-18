@@ -58,38 +58,36 @@ echo "<div class='titre'>";
 echo "<h2>Nouvelles arrivées</h2>";
 echo "</div>";
 
+echo "<div class='article-container'>";
 
 // Affichage des produits (maintenant en premier)
 while ($product = $launch->fetch(PDO::FETCH_ASSOC)) {
-    echo "<h3 class='titre-article'>" . htmlspecialchars($product['nomProd']) . "</h3>";
-    echo "<div class='article-container'>";
-     echo "<div class='article'>";
-        echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "'style='width: 360px; height: 485px; background-image: url('./images/vector.png');' />";
-     echo "</div>";
-    echo "</div>";
-    echo "<div class='info' onclick='redirectToProduct()'>";
-        echo "<div>";
-            echo "<p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>";
-            echo "<p class='quantite'>Quantité disponible : " . htmlspecialchars($product['qtProd']) . "</p>";
-            echo "<p class='voir-maintenant'>Voir maintenant</p>";
-        echo "</div>";
-    echo "<div class='div-prix'>";
-        echo "<p class='prix'>" . htmlspecialchars($product['prixProd']) . " €</p>";
-    echo "</div>";
-        echo "<div class='div-arrow'>";
-            echo "<span class='material-symbols-outlined'>east</span>";
+    echo "<div class='article'>";
+        echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
+        echo "<div class='info' onclick='redirectToProduct()'>";
+            echo "<div>";
+                echo "<p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>";
+                echo "<p class='quantite'>Quantité disponible : " . htmlspecialchars($product['qtProd']) . "</p>";
+                echo "<p class='voir-maintenant'>Voir maintenant</p>";
+            echo "</div>";
+            echo "<div class='div-prix'>";
+                echo "<p class='prix'>" . htmlspecialchars($product['prixProd']) . " €</p>";
+            echo "</div>";
+            echo "<div class='div-arrow'>";
+                echo "<span class='material-symbols-outlined'>east</span>";
+            echo "</div>";
         echo "</div>";
     echo "</div>";
 }
 
+
+echo "</div>"; // Fermez la div article-container ici
 
 echo "<br>";
 
 echo "<div class='titre'>";
 echo "<h2>Nos Vêtements</h2>";
 echo "</div>";
-
-echo "<div class='item-container'>";
 
 // Affichage des vêtements
 if ($launch_clothe) {

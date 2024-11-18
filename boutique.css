@@ -91,8 +91,10 @@ a.boutique:visited {
   flex-wrap: wrap; /* Permet de gérer l'affichage sur plusieurs lignes si nécessaire */
   justify-content: flex-start;
   justify-content: flex-start; /* Distribue l'espace entre les articles */
-  gap: 20px; /* Espace entre les articles */
+  gap: 300px; /* Espace entre les articles */
   width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
   }
   
   .article {
@@ -146,17 +148,16 @@ a.boutique:visited {
   .info{
     cursor: pointer;
     display: flex;
-    margin-left: 470px;
     color: white;
   }
   
   .info .description {
-    font-size: 25px;
+    font-size: 20px;
     color: #cccccc;
   }
 
   .info .quantite {
-    font-size: 25px;
+    font-size: 20px;
     color: #cccccc;
   }
 
@@ -166,7 +167,7 @@ a.boutique:visited {
   }
 
   .info .couleur {
-    font-size: 25px;
+    font-size: 20px;
     color: #cccccc;
   }
 
@@ -187,13 +188,16 @@ a.boutique:visited {
   }
 
   .div-prix{
-    margin-left: 35px;
+    margin-top: 20px;
+    font-size: 20px;
+    width: 100px;
+    text-align: right;
   }
   p{
     align-items: center;
     justify-content: center;
     font-family: k2d, sans-serif;
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .div-arrow{
