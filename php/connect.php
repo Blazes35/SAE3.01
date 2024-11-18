@@ -10,7 +10,7 @@
         include 'functions.php';
         $connection = connectToDatabase();
         
-        $sql = "SELECT * FROM USERS";
+        $sql = "SELECT * FROM utilisateur";
         $init = $connection -> prepare($sql);
         $init -> execute();
     ?>
