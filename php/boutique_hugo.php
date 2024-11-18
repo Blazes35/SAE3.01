@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Boutique PHP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="boutique_hugo.css" />
 </head>
+<div class="menu">
+    <div class="logo-theme">
+        <img class="logo" src="../images/logo-sans-fond.png" />
+        <div class="theme-claire">THEME CLAIRE</div>
+    </div>
+<div class="compte">
+    <span class="material-symbols-outlined">account_circle</span>
+    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
+</div>
+<div class="overlap-group">
+            <div class="titre-de-page">
+                <div class="overlap-group-3">
+                    <a href="tableau.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
+                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
+                    <a href="profils.html" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
+                    <a href="tresorie.html" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
+                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
+                    <a href="editer.html" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
+                </div>
+        </div>
+</div>
+</div>
 <body>
     <form method="post" action="boutique_hugo.php" enctype="multipart/form-data">
         <label for="choice">Choisir le type d'article : </label>
@@ -111,4 +136,5 @@
     }
     ?>
 </body>
+</div>
 </html>
