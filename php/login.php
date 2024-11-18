@@ -3,17 +3,11 @@
 include 'functions.php';
 $connection = connectToDatabase();
 
-  
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
 
-    if (login($connection, $username, $password)){
-        echo "Login successful";
-    } else {
-        echo "Login failed";
-    };
+    echo login($connection, $username, $password);
 }
 ?>
 
