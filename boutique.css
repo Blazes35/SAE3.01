@@ -95,7 +95,6 @@ a.boutique:visited {
     margin-left: 470px;
     margin-right: 10px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     
@@ -150,9 +149,19 @@ a.boutique:visited {
     color: #cccccc;
   }
 
+  .info .quantite {
+    font-size: 25px;
+    color: #cccccc;
+  }
+
   .info .voir-maintenant {
     font-size: 20px;
     color: #757575;
+  }
+
+  .info .couleur {
+    font-size: 25px;
+    color: #cccccc;
   }
 
   .info button {

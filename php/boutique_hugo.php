@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
         function addProduct($connection, $title, $type, $desc, $price, $qt, $file, $color = null) {
-            $uploadDir = 'uploads/';
+            $uploadDir = '../uploads/';
             $fileName = basename($file['name']);
             $targetFilePath = $uploadDir . $fileName;
         
