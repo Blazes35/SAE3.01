@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <label for="desc">Description</label>
         <input type="text" name="desc" id="desc">
         <label for="picture">Image</label>
-        <input type="file" name="picture" id="picture">
+        <input type="file" name="picture" id="picture" accept="image/*">
         <label for="price">Prix</label>
         <input type="text" name="price" id="price">
         <label for="promo">Code promotionnel</label>
@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         echo "Erreur : " . $e->getMessage();
     }
     ?>
+<script src="script.js"></script>
 </body>
 </div>
 </html>
