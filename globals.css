@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+.overlap-group-3 {
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 1000px;
+    width: 45%;
+    justify-content: space-between;
+  }
+
+  a.calendrier {
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
+}
+
+a.calendrier:visited {
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+  .box {
+    height: 1500px;
+    background-image: url('../bde.jpg');
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  }
+  
+  .box .rectangle {
+    position: relative;
+    height: 1000px; /* Augmentation de la hauteur */
+    width: 100%;
+    top: 0;
+    left: 0;
+  
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 10%,  /* Début du dégradé plus prononcé */
+      rgba(0, 0, 0, 0.8) 90%,   /* Ajustement de l'opacité au milieu */
+      rgba(0, 0, 0, 1) 100%      /* Fin plus prononcée */
+    );
+  }
+
+.overlap-group-4 {
+    font-family: k2d, sans-serif;
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 300px;
+    width: 100%;
+    justify-content: center;
+}
+
+.overlap-group-4 .ligne {
+    position: relative;
+    width: 147px;
+    height: 8px;
+    top: 35px;
+    left: 15px;
+    background-color: #ffffff;
+    border-radius: 19px;
+  }
+
+  .overlap-group-4 .qui-sommes-nous-title {
+    font-family: k2d, sans-serif;
+    font-size: 30px;
+    margin-left: 30px;
+    margin-top: 55px;
+    color: rgb(255, 255, 255);
+
+  }
+
+  .overlap-group-5 {
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+
+.box-2{
+    margin-left: 250px;
+    width: 1200px;
+    margin-top: 100px;
+    height: 500px;
+    color: white;
+    display: flex;
+  }
+
+  .box-2 .texte-01{
+    font-size: 300px;
+    color: #8E51D0;
+  }
+  
+  .box-2 .ligne-2 {
+    position: absolute;
+    width: 128px;
+    height: 10px;
+    top: 1340px;
+    left: 375px;
+    background-color: #ffffff;
+    border-radius: 19px;
+}
+
+.box-2 .presentation{
+    font-family: k2d, sans-serif;
+    font-size: 40px;
+    margin-left: 5px;
+    margin-top: 150px;
+}
+
+.box-2 .p1{
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+
+
+.box-3{
+    margin-left: 250px;
+    width: 1200px;
+    margin-top: 100px;
+    height: 500px;
+    color: white;
+    display: flex;
+  }
+
+  .box-3 .texte-02{
+    font-size: 300px;
+    color: #8E51D0;
+  }
+  
+  .box-3 .ligne-3 {
+    position: absolute;
+    width: 128px;
+    height: 10px;
+    top: 1945px;
+    left: 1128px;
+    background-color: #ffffff;
+    border-radius: 19px;
+}
+
+.box-3 .presentation-2{
+    font-family: k2d, sans-serif;
+    font-size: 40px;
+    margin-left: 530px;
+    margin-top: 150px;
+}
+
+.box-3 .p2{
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+
+
+.box-4{
+    margin-left: 250px;
+    width: 1200px;
+    margin-top: 100px;
+    height: 500px;
+    color: white;
+    display: flex;
+  }
+
+  .box-4 .texte-03{
+    font-size: 300px;
+    color: #8E51D0;
+  }
+  
+  .box-4 .ligne-4 {
+    position: absolute;
+    width: 128px;
+    height: 10px;
+    top: 2538px;
+    left: 375px;
+    background-color: #ffffff;
+    border-radius: 19px;
+}
+
+.box-4 .presentation-3{
+    font-family: k2d, sans-serif;
+    font-size: 40px;
+    margin-left: 5px;
+    margin-top: 150px;
+}
+
+.box-4 .p3{
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.box-5{
+
+    font-family: k2d, sans-serif;
+    justify-content: center;
+    padding-top: 50px;
+    width: 100%;
+    margin-top: 100px;
+    height: 300px;
+    background-color: white;
+    align-items: center;
+  }
+
+  .box-5 .rejoins-nous{
+    text-align: center;
+    font-size: 100px;
+    color: #000000;
+  }
+  
+
+  .box-5 .button-inscription {
+    margin-top: 20px;
+    margin-left: 790px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 20px 80px;
+    font-size: 25px;
+    font-family: 'K2D', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-5 .button-inscription:hover {
+    background-color: #333;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.box-5 .button-inscription:active {
+    background-color: #555;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer .bandeau1{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 550px;
+}
+
+.img .logoF{
+    height: 150px;
+    width: 150px;
+}
+
+footer .bandeau1 .Contact{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+  margin-top: 150px;
+}
+
+footer .bandeau1 .Mention-legal{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+
+  margin-top: 150px;
+}
+
+footer .bandeau1 .FAQ{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+  margin-top: 150px;
+}
+
+
+footer .icons-resaux{
+  justify-content: space-between;
+  display: flex;
+  margin-right: 1500px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+footer .icons-resaux img{
+    height: 50px;
+    width: 50px;
+}
+
+footer .bandeau2{
+  display: flex;
+  justify-content: space-between;
+  font-family: k2d, sans-serif;
+  font-size: 17px;
+  color: white;
+  margin-top: 20px;
+  margin-right: 400px;
+  margin-left: 400px;
+}
