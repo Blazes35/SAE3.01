@@ -6,15 +6,33 @@
     <title>Test Boutique PHP</title>
 </head>
 <body>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const articleSelect = document.getElementById("article-select");
+    const colorField = document.getElementById("color-field");
+
+    articleSelect.addEventListener("change", function () {
+        if (this.value === "vetement") {
+            colorField.style.display = "block";
+        } else {
+            colorField.style.display = "none";
+        }
+    });
+});
+</script>
     <form method="post" action="boutique_hugo.php" enctype="multipart/form-data">
         <label for="choice">Choisir le type d'article : </label>
         <select name="article" id="article-select">
             <option value="">--Choisir un type d'article--</option>
             <option value="produit">Produit</option>
             <option value="galerie">Galerie</option>
-            <option value="evenement">Evenement</option> 
-            
+            <option value="evenement">Evenement</option>
+            <option value="vetement">Vetement</option>
         </select>
+        <div id="color-field" style="display: none;">
+        <label for="color">Couleur</label>
+        <input type="text" name="color" id="color">
+    </div>
         <label for="title">Titre</label>
         <input type="text" name="title" id="title" required>
         <label for="desc">Description</label>
@@ -36,7 +54,7 @@
     try {
         $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
-        function addProduct($connection, $title, $type, $desc, $price, $qt, $file) {
+        function addProduct($connection, $title, $type, $desc, $price, $qt, $file, $color = null) {
             $uploadDir = 'uploads/';
             $fileName = basename($file['name']);
             $targetFilePath = $uploadDir . $fileName;
@@ -46,6 +64,7 @@
         
             if (in_array($fileType, $validTypes)) {
                 if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+                    // Insertion dans la table PRODUIT
                     $query_add = "INSERT INTO PRODUIT (nomProd, typeProd, descProd, prixProd, qtProd, imgProd) 
                                   VALUES (:title, :type, :desc, :price, :qt, :img)";
                     $stmt = $connection->prepare($query_add);
@@ -57,6 +76,17 @@
                         ':qt'    => $qt,
                         ':img'   => $fileName
                     ]);
+        
+                    if ($type === "vetement" && $color) {
+                        $idProd = $connection->lastInsertId(); // Récupère l'ID du produit inséré
+                        $query_add_vetement = "INSERT INTO VETEMENT (idProd, couleurVetement) 
+                                               VALUES (:idProd, :color)";
+                        $stmt = $connection->prepare($query_add_vetement);
+                        $stmt->execute([
+                            ':idProd' => $idProd,
+                            ':color'  => $color
+                        ]);
+                    }
                 } else {
                     echo "Erreur : Impossible de télécharger l'image.";
                 }
@@ -64,6 +94,7 @@
                 echo "Erreur : Format de fichier non valide.";
             }
         }
+        
 
         function deleteProduct($connection, $title) {
             $query_delete = "DELETE FROM PRODUIT WHERE nomProd = :title";
@@ -97,7 +128,8 @@
                     $_POST['desc'], 
                     $_POST['price'], 
                     $_POST['qt'], 
-                    $_FILES['picture']
+                    $_FILES['picture'], 
+                    $_POST['color'] ?? null
                 );
             } elseif ($action === 'delete') {
                 deleteProduct($connection, $_POST['title']);
