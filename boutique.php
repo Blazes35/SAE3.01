@@ -12,11 +12,92 @@
     <link rel="stylesheet" href="header.css" />
 </head>
 <body>
+    <header>
+        <div class="overlap-group">
+            <img class="logo" src="images/logo.png" />
+            <div class="theme-claire">THEME CLAIRE</div>
+            
+        </div>
+        <div class="overlap-group-2">
+            <span class="material-symbols-outlined">account_circle</span>
+            <div class="mon-compte">MON COMPTE</div>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </header>
+    <div class="box">
+        <div class="rectangle">
+            <div class="titre-de-page">
+                <div class="overlap-group-3">
+                    <a href="presentation.html" class="presentation" style="cursor: pointer;">QUI SOMMES NOUS</a>
+                    <a href="evenement.html" class="evenement" style="cursor: pointer;">ÉVENEMENTS</a>
+                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
+                    <a href="galerie.html" class="galerie" style="cursor: pointer;">GALERIE</a>
+                    <a href="boutique.html" class="boutique" style="cursor: pointer;">BOUTIQUE</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php 
-    try{
-        $connection = new PDO('mysql:host=localhost;dbname=inf2')
+
+$connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+
+// Requête pour récupérer les produits
+$catch_product = "SELECT * FROM PRODUIT WHERE typeProd = 'Produit'";
+$launch = $connect->prepare($catch_product);
+$launch->execute();
+
+// Requête pour récupérer les vêtements
+$catch_cloth = "SELECT * FROM PRODUIT 
+                INNER JOIN VETEMENT 
+                ON PRODUIT.idProd = VETEMENT.idProd 
+                WHERE typeProd = 'Vetement'";
+$launch_clothe = $connect->prepare($catch_cloth);
+$launch_clothe->execute();
+
+echo "<div class='titre'>";
+echo "<h2>Nouvelles arrivées</h2>";
+echo "</div>";
+
+echo "<div class='item-container'>";
+
+// Affichage des produits (maintenant en premier)
+while ($product = $launch->fetch(PDO::FETCH_ASSOC)) {
+    echo "<div class='item'>";
+    echo "<h3>" . htmlspecialchars($product['nomProd']) . "</h3>";
+    echo "<p>Description : " . htmlspecialchars($product['descProd']) . "</p>";
+    echo "<p>Prix : " . htmlspecialchars($product['prixProd']) . " €</p>";
+    echo "<p>Quantité disponible : " . htmlspecialchars($product['qtProd']) . "</p>";
+    echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 150px; height: 200px; object-fit: cover;' />";
+    echo "</div>";
+}
+echo "</div>";
+
+echo "<br>";
+
+echo "<div class='titre'>";
+echo "<h2>Nos Vêtements</h2>";
+echo "</div>";
+
+echo "<div class='item-container'>";
+
+// Affichage des vêtements
+if ($launch_clothe) {
+    while ($clothe = $launch_clothe->fetch(PDO::FETCH_ASSOC)) {
+        echo "<div class='item'>";
+        echo "<h3>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
+        echo "<p>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>";
+        echo "<img src='uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 150px; height: 200px; object-fit: cover;' />";
+        echo "</div>";
     }
-    ?>
+} else {
+    echo "<p>Aucun vêtement disponible actuellement.</p>";
+}
+
+echo "</div>";
+?>
+
+
+
     <footer>
         <div class="bandeau1">
             <img class="logoF" src="images/logo.png" />
