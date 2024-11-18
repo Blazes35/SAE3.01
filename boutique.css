@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+.overlap-group-3 {
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 1000px;
+    width: 45%;
+    justify-content: space-between;
+  }
+
+
+a.presentation {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.presentation:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.evenement {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.evenement.visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.calendrier {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.calendrier:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.galerie {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.galerie:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.boutique {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.boutique:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+.titre {
+  font-family: k2d, sans-serif;
+  font-size: 40px;
+  color: white;
+  margin-top: 100px;
+  margin-left: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.titre::before {
+    content: "";
+    background-image: url('./images/vector-titre.png'); /* Chemin vers votre image */
+    background-size: contain; /* Ajuste la taille de l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    position: absolute;
+    width: 200px; 
+    height: 50px; 
+    right: 1330px; 
+    top: 35px; 
+    z-index: -1;
+}
