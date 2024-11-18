@@ -7,7 +7,8 @@
 </head>
 <body>
     <?php 
-        $connection = new PDO('mysql:host=https://la-projets.univ-lemans.fr/pj-pma;dbname=inf2pj_02', 'root', '');
+        include 'functions.php';
+        $connection = connectToDatabase();
         
         $sql = "SELECT * FROM USERS";
         $init = $connection -> prepare($sql);
