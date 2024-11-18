@@ -77,3 +77,172 @@ a.boutique:visited {
     top: 35px; 
     z-index: -1;
 }
+
+.titre-article{
+    font-family: k2d, sans-serif;
+    font-size: 50px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.article-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .article {
+    margin-left: 470px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .article img {
+    background-image: url('./images/vector.png');
+    width: 360px;
+    height: 485px;
+  }
+  
+  
+  .prix-promo {
+    top: 10px;
+    right: 10px;
+    background-color: #8E51D0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .article-avant .prix-promo {
+    background-color: #8E51D0; /* Couleur promo différente */
+  }
+
+  .article-2 {
+    margin-left: 200px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .article-2 img {
+    background-image: url('./images/vector.png');
+    width: 360px;
+    height: 485px;
+  }
+
+  .info{
+    cursor: pointer;
+    display: flex;
+    margin-left: 470px;
+    color: white;
+  }
+  
+  .info .description {
+    font-size: 25px;
+    color: #cccccc;
+  }
+
+  .info .voir-maintenant {
+    font-size: 20px;
+    color: #757575;
+  }
+
+  .info button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .info button:hover {
+    background-color: #8E51D0;
+  }
+
+  .div-prix{
+    margin-left: 35px;
+  }
+  p{
+    align-items: center;
+    justify-content: center;
+    font-family: k2d, sans-serif;
+    font-size: 40px;
+  }
+
+  .div-arrow{
+    margin-top: 50px;
+  }
+  
+  footer .bandeau1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-right: 550px;
+  }
+  
+  .img .logoF{
+      height: 150px;
+      width: 150px;
+  }
+  
+  footer .bandeau1 .Contact{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-top: 150px;
+  }
+  
+  footer .bandeau1 .Mention-legal{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+  
+    margin-top: 150px;
+  }
+  
+  footer .bandeau1 .FAQ{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-top: 150px;
+  }
+  
+  
+  footer .icons-resaux{
+    justify-content: space-between;
+    display: flex;
+    margin-right: 1500px;
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  
+  footer .icons-resaux img{
+      height: 50px;
+      width: 50px;
+  }
+  
+  footer .bandeau2{
+    display: flex;
+    justify-content: space-between;
+    font-family: k2d, sans-serif;
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-right: 400px;
+    margin-left: 400px;
+  }
+
+  footer .bandeau2 .p-footer{
+    font-size: 17px;
+  }
