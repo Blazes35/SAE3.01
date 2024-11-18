@@ -12,7 +12,8 @@
             <option value="">--Choisir un type d'article--</option>
             <option value="produit">Produit</option>
             <option value="galerie">Galerie</option>
-            <option value="evenement">Evenement</option>
+            <option value="evenement">Evenement</option> 
+            
         </select>
         <label for="title">Titre</label>
         <input type="text" name="title" id="title" required>
