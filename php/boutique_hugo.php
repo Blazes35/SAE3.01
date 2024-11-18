@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Boutique PHP</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-<link rel="stylesheet" href="boutique_hugo.css" />
-
+    <link rel="stylesheet" href="boutique_hugo.css" />
 </head>
 <div class="menu">
     <div class="logo-theme">
