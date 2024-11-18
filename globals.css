@@ -12,18 +12,53 @@
     justify-content: space-between;
   }
 
-  a.calendrier {
-    color: inherit; /* Utilise la couleur héritée */
-    text-decoration: none; /* Supprime le soulignement */
+
+a.presentation {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.presentation:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.evenement {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.evenement.visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.calendrier {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
 }
 
 a.calendrier:visited {
-    color: inherit; /* Utilise la couleur héritée pour les liens visités */
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.galerie {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.galerie:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.boutique {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.boutique:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
   .box {
     height: 1500px;
-    background-image: url('../bde.jpg');
+    background-image: url('./images/bde.jpg');
     height: 100%;
     width: 100%;
     background-size: cover;
