@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+.overlap-group-3 {
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 1000px;
+    width: 45%;
+    justify-content: space-between;
+  }
+
+
+a.presentation {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.presentation:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.evenement {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.evenement.visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.calendrier {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.calendrier:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.galerie {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.galerie:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.boutique {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.boutique:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+.titre {
+  font-family: k2d, sans-serif;
+  font-size: 40px;
+  color: white;
+  margin-top: 100px;
+  margin-left: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.titre::before {
+    content: "";
+    background-image: url('./images/vector-titre.png'); /* Chemin vers votre image */
+    background-size: contain; /* Ajuste la taille de l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    position: absolute;
+    width: 200px; 
+    height: 50px; 
+    right: 1330px; 
+    top: 35px; 
+    z-index: -1;
+}
+
+.titre-article{
+    font-family: k2d, sans-serif;
+    font-size: 50px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap; /* Permet de gérer l'affichage sur plusieurs lignes si nécessaire */
+  justify-content: flex-start;
+  justify-content: flex-start; /* Distribue l'espace entre les articles */
+  gap: 20px; /* Espace entre les articles */
+  width: 100%;
+  }
+  
+  .article {
+    margin: 10px; /* Vous pouvez ajuster l'espacement entre les articles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 360px;
+    
+  }
+  
+  .article img {
+    background-image: url('./images/vector.png');
+    width: 100%;
+    height: 485px;
+    object-fit: cover; /* S'assurer que l'image couvre l'espace sans être déformée */
+  }
+  
+  
+  .prix-promo {
+    top: 10px;
+    right: 10px;
+    background-color: #8E51D0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .article-avant .prix-promo {
+    background-color: #8E51D0; /* Couleur promo différente */
+  }
+
+  .article-2 {
+    margin-left: 200px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .article-2 img {
+    background-image: url('./images/vector.png');
+    width: 360px;
+    height: 485px;
+  }
+
+  .info{
+    cursor: pointer;
+    display: flex;
+    margin-left: 470px;
+    color: white;
+  }
+  
+  .info .description {
+    font-size: 25px;
+    color: #cccccc;
+  }
+
+  .info .quantite {
+    font-size: 25px;
+    color: #cccccc;
+  }
+
+  .info .voir-maintenant {
+    font-size: 20px;
+    color: #757575;
+  }
+
+  .info .couleur {
+    font-size: 25px;
+    color: #cccccc;
+  }
+
+  .info button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .info button:hover {
+    background-color: #8E51D0;
+  }
+
+  .div-prix{
+    margin-left: 35px;
+  }
+  p{
+    align-items: center;
+    justify-content: center;
+    font-family: k2d, sans-serif;
+    font-size: 40px;
+  }
+
+  .div-arrow{
+    margin-top: 50px;
+  }
+  
+  footer .bandeau1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-right: 550px;
+  }
+  
+  .img .logoF{
+      height: 150px;
+      width: 150px;
+  }
+  
+  footer .bandeau1 .Contact{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-top: 150px;
+  }
+  
+  footer .bandeau1 .Mention-legal{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+  
+    margin-top: 150px;
+  }
+  
+  footer .bandeau1 .FAQ{
+    font-family: k2d, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-top: 150px;
+  }
+  
+  
+  footer .icons-resaux{
+    justify-content: space-between;
+    display: flex;
+    margin-right: 1500px;
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  
+  footer .icons-resaux img{
+      height: 50px;
+      width: 50px;
+  }
+  
+  footer .bandeau2{
+    display: flex;
+    justify-content: space-between;
+    font-family: k2d, sans-serif;
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-right: 400px;
+    margin-left: 400px;
+  }
+
+  footer .bandeau2 .p-footer{
+    font-size: 17px;
+  }
