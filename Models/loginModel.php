@@ -1,24 +1,23 @@
-<? 
-require_once 'model/connection.php';
+<?php
+require 'connectionModel.php';
 
-class loginModel extends Connection{
+class LoginModel extends ConnectionModel {
 
-    public function __construct()
-    {
-        $this->model = new Connection(); // Create an instance of the model class
+    public function __construct(){
+        parent::__construct();
     }
 
     public function login($username, $password) {
-        $sql = "call login(\"$username\")";
-        $init = $db -> prepare($sql);
-        $init -> execute();
+        $sql = "call login(:username)";
+        $init = $this->db->prepare($sql);
+        $init->bindParam(':username', $username);
+        $init->execute();
         $result = $init->fetch()[0];
-        if ($result==-1){
+        if ($result == -1) {
             $return = "Erreur email ou mot de passe incorrect";
         } else {
             $return = password_verify($password, $result) ? "Connexion réussie" : "Erreur email ou mot de passe incorrect";
-        };
+        }
         return $return;
     }
-
 }
