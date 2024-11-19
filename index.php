@@ -6,7 +6,7 @@
 session_start();
 
 
-function renderLayout($viewFile, $data = []){
+function renderLayout($viewFile, $title, $data = []){
     ob_start();
     extract($data);
     include $viewFile;
@@ -15,31 +15,25 @@ function renderLayout($viewFile, $data = []){
     include './Views/Layout.php';
 }
 
-$page = $_GET['page'] ?? 'Main';
-echo $page;
+$page = $_POST['page'] ?? $_GET['page'] ?? 'Main';
 
 // routage
 
 switch ($page) {
     case 'Main':
-        echo"Main";
-        renderLayout('./Views/Main.php');
+        renderLayout('./Views/Main.php', 'Main');
         break;
     case 'Login':
-        echo"Login";
-        renderLayout('./Views/Login.php');
+        renderLayout('./Views/Login.php', 'Login');
         break;
     case 'createUser':
-        echo"createUser";
-        renderLayout('./Views/createUser.php');
+        renderLayout('./Views/createUser.php', 'createUser');
         break;
     case 'changePwd':
-        echo"changePwd";
-        renderLayout('./Views/changePwd.php');
+        renderLayout('./Views/changePwd.php', 'changePwd');
         break;
     default:
-        echo"error404";
-        renderLayout('./Views/error404.php');
+        renderLayout('./Views/error404.php', 'error404');
         break;
 }
 ?>

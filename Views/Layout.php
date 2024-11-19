@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo $title ?></title>
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
     <header>
@@ -23,17 +23,29 @@
     </header>
 
     <div class="box">
-
         <div class="rectangle">
             <div class="titre-de-page">
                 <div class="overlap-group-3">
-                    <a href="presentation.html" class="calendrier" style="cursor: pointer;">QUI SOMMES NOUS</a>
-                    <a href="evenement.html" class="calendrier" style="cursor: pointer;">ÉVENEMENTS</a>
-                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="galerie.html" class="calendrier" style="cursor: pointer;">GALERIE</a>
-                    <a href="boutique.html" class="calendrier" style="cursor: pointer;">BOUTIQUE</a>
-
-
+                    <form method="GET" action="index.php">
+                        <input type="hidden" name="page" value="presentation">
+                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">QUI SOMMES NOUS</button>
+                    </form>
+                    <form method="GET" action="index.php">
+                        <input type="hidden" name="page" value="evenement">
+                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
+                    </form>
+                    <form method="GET" action="index.php">
+                        <input type="hidden" name="page" value="calendrier">
+                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
+                    </form>
+                    <form method="GET" action="index.php">
+                        <input type="hidden" name="page" value="galerie">
+                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">GALERIE</button>
+                    </form>
+                    <form method="GET" action="index.php">
+                        <input type="hidden" name="page" value="boutique">
+                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">BOUTIQUE</button>
+                    </form>
                 </div>
             </div>
         </div>
