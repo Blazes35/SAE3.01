@@ -91,7 +91,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    font-size: 25px;
+    font-size: 20px;
     color: #000;
 }
 
@@ -101,7 +101,7 @@
     outline: none;
     flex: 1;
     color: #000;
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
     border-radius: 15px;
     cursor: pointer;
@@ -126,20 +126,23 @@
 
 /* Bouton de connexion */
 button {
+    margin-top: 15px;
     width: 100%; /* Bouton adapté au conteneur */
     max-width: 350px; /* Garde le bouton dans le cadre */
     background: white;
     color: black;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 20px; /* Coins arrondis */
     padding: 15px;
     font-size: 20px; /* Taille ajustée */
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 button:hover {
-    background: #eee; /* Couleur de hover */
+    background: #8E51D0; 
+    color: #fff;
+    border-color: #fff;
 }
 
 .inscription .material-symbols-outlined {
