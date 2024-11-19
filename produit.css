@@ -99,6 +99,7 @@ a.boutique:visited {
     margin-left: 50px;
     width: 360px;
     height: 485px;
+    height: auto;
 }
 
 /* Détails du produit */
