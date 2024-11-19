@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
 
-body {
-    font-family: 'K2D', sans-serif;
-    background-color: #000;
-    color: #fff;
-}
 
 .overlap-group-3 {
     font-family: k2d, sans-serif;
@@ -62,155 +57,110 @@ a.boutique:visited {
   color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
-
-
-.product-container {
-    margin: 200px 420px ;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 30px;
-    padding: 20px;
-}
-
-/* Galerie d'images */
-.image-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.first-img img {
-    width: 150px;
-    height: auto;
-    border: 2px solid #8E51D0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.first-img img:hover {
-    transform: scale(1.1);
-}
-
-/* Image principale */
-.main-image img {
-    background-image: url('./images/vector.png'); /* Image principale */
-    margin-left: 50px;
-    width: 360px;
-    height: 485px;
-    height: auto;
-}
-
-/* Détails du produit */
-.product-details {
+.texte-1{
     margin-left: 150px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 300px;
-}
-
-.product-title {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.description {
-    font-size: 18px;
-    margin: 0;
-}
-
-.price {
-    font-size: 24px;
+    font-family: k2d, sans-serif;
+    font-size: 200px;
     color: #8E51D0;
-    margin: 0;
 }
 
-.size-title {
-    font-size: 18px;
-    margin: 0;
-}
-
-.sizes {
-    display: flex;
-    gap: 10px;
-}
-
-.size {
-    background-color: transparent;
-    border: 1px solid #fff;
-    color: #fff;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.size:hover {
-    background-color: #8E51D0;
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.add-to-cart, .promo-code {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.add-to-cart:hover {
-    background-color: #8E51D0;
-    color: #fff;
-}
-
-.promo-code {
-    background-color: #777;
-}
-
-.favorites-settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.add-to-favorites, .settings {
-    background-color: #8E51D0;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.settings {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.settings span {
-    font-size: 20px;
-    margin-left: 0;
-}
-
-.add-element {
-    font-size: 16px;
-    text-align: center;
+.texte-2{
+    margin-left: 850px;
+    font-family: k2d, sans-serif;
+    font-size: 200px;
     color: #8E51D0;
-    cursor: pointer;
+
 }
+
+.slider{
+    width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: block;
+}
+
+.slides{
+    width: calc(600px *3);
+    display: flex;
+    animation: glisser1 10s infinite;
+}
+.slide{
+    width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
+    flex-shrink: 0; /* Empêche les slides de rétrécir */
+    
+}
+
+@keyframes glisser1{
+    0%{
+        transform: translateX(0);
+    }
+    10%{
+        transform: translateX(0);
+    }
+    33%{
+        transform: translateX(-600px);
+    }
+    43%{
+        transform: translateX(-600px);
+    }
+    66%{
+        transform: translateX(-1200px);
+    }
+    76%{
+        transform: translateX(-1200px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+
+    
+}
+
+.slider2 {
+    width: 600px;
+    margin: 0 auto;/* Centrer le slider */
+    overflow: hidden; /* Masquer les parties débordantes */
+}
+
+.slides2 {
+    width: calc(600px * 3);
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    animation: glisser2 10s infinite;
+    transform: translateX(-1200px); /* Position initiale à droite */
+}
+
+.slide2 {
+    width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
+    flex-shrink: 0; /* Empêche les slides de rétrécir */
+}
+@keyframes glisser2 {
+    0% {
+        transform: translateX(-1200px); /* Position initiale à droite */
+    }
+    10% {
+        transform: translateX(-1200px);
+    }
+    33% {
+        transform: translateX(-600px);
+    }
+    43% {
+        transform: translateX(-600px);
+    }
+    66% {
+        transform: translateX(0);
+    }
+    76% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-1200px); /* Retour à la position initiale */
+    }
+}
+
+
+
+
+
 
 
 footer .bandeau1{

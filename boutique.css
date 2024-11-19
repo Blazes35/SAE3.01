@@ -218,6 +218,10 @@ a.boutique:visited {
   .div-arrow{
     margin-top: 20px;
   }
+
+  .div-arrow :hover {
+    transform: scale(1.1);
+}
   
   footer .bandeau1{
     display: flex;
