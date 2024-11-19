@@ -89,35 +89,35 @@ echo "<div class='titre'>";
 echo "<h2>Nos Vêtements</h2>";
 echo "</div>";
 
+echo "<div class='article-container'>";
+
 // Affichage des vêtements
 if ($launch_clothe) {
     while ($clothe = $launch_clothe->fetch(PDO::FETCH_ASSOC)) {
-        echo "<h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
-        echo "<div class='article-container'>";
-            echo "<div class='article'>";
-                echo "<img src='uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "'style='width: 360px; height: 485px; background-image: url('./images/vector.png');' />";
-            echo "</div>";
-        echo "</div>";
-        echo "<div class='info' onclick='redirectToProduct()'>";
-            echo "<div>";
-                echo "<p class='couleur'>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>";
-                echo "<p class='description'>Description : " . htmlspecialchars($clothe['descProd']) . "</p>";
-                echo "<p class='quantite'>Quantité disponible : " . htmlspecialchars($clothe['qtProd']) . "</p>";
-                echo "<p class='voir-maintenant'>Voir maintenant</p>";
-            echo "</div>";
-            echo "<div class='div-prix'>";
-                echo "<p class='prix'>" . htmlspecialchars($clothe['prixProd']) . " €</p>";
-        echo "</div>";
-            echo "<div class='div-arrow'>";
-                echo "<span class='material-symbols-outlined'>east</span>";
+        echo "<div class='article'>";
+            echo "<h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
+            echo "<img src='uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
+            echo "<div class='info' onclick='redirectToProduct()'>";
+                echo "<div>";
+                    echo "<p class='couleur'>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>";
+                    echo "<p class='description'>Description : " . htmlspecialchars($clothe['descProd']) . "</p>";
+                    echo "<p class='quantite'>Quantité disponible : " . htmlspecialchars($clothe['qtProd']) . "</p>";
+                    echo "<p class='voir-maintenant'>Voir maintenant</p>";
+                echo "</div>";
+                echo "<div class='div-prix'>";
+                    echo "<p class='prix'>" . htmlspecialchars($clothe['prixProd']) . " €</p>";
+                echo "</div>";
+                echo "<div class='div-arrow'>";
+                    echo "<span class='material-symbols-outlined'>east</span>";
+                echo "</div>";
             echo "</div>";
         echo "</div>";
     }
 } else {
     echo "<p>Aucun vêtement disponible actuellement.</p>";
 }
-
-echo "</div>";
+echo "</div>"; // Fermez la div article-container ici
+?>
 ?>
 
 
