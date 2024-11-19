@@ -71,7 +71,7 @@
 /* Style focus */
 .input-group input:focus {
     border: none;
-    outline: 2px solid #7a00ff; /* Bordure violette visible */
+    outline: 2px solid #8E51D0; /* Bordure violette visible */
 }
 
 /* Lien mot de passe oublié */
@@ -84,7 +84,7 @@
 }
 
 .mdpoubli:hover {
-    color: #7a00ff; /* Couleur violette au survol */
+    color: #8E51D0; /* Couleur violette au survol */
 }
 
 /* Bouton de connexion */
@@ -115,7 +115,7 @@ button:hover {
 }
 
 .inscription {
-    color: #7a00ff; /* Lien violet */
+    color: #8E51D0; /* Lien violet */
     font-weight: bold;
     text-decoration: none;
     font-size: 18px;
