@@ -1,6 +1,16 @@
 <?php 
 require 'Controllers/loginController.php';
 $controller = new loginController();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    echo "<script>console.log(\"debug\",\"$username\", \"$password\");</script>";
+    if (!$controller->login($username, $password)) {
+        header('Location: login.php?page=noLogin');
+        exit();
+    }
+}
 ?>
 
 <!-- Link to the CSS file -->
@@ -14,7 +24,7 @@ $controller = new loginController();
     <div class="connexion">
         <div class="titreconnexion">CONNEXION</div>
         <div class="formulaire">
-            <form action="login.php" method="post">
+            <form action="" method="post" onsubmit="this.action='?page=Login&username=' + encodeURIComponent(this.username.value) + '&password=' + encodeURIComponent(this.password.value);">
                 <div class="input-group">
                     <label for="username">
                         <span class="material-symbols-outlined">person</span>

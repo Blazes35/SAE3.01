@@ -14,8 +14,6 @@ class loginController
     {
         ob_start();
 
-        echo "<div><p>test</p></div>";
-
         return ob_get_clean();
     }
 
