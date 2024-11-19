@@ -1,3 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- Lien pour importer les Material Icons -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+      </head>
+    <link rel="stylesheet" href="../boutique.css" />
+    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+    <link rel="stylesheet" href="../header.css" />
+</head>
+<body>
+    <header>
+        <div class="overlap-group">
+            <img class="logo" src="../images/logo.png" />
+            <div class="theme-claire">THEME CLAIRE</div>
+            
+        </div>
+        <div class="overlap-group-2">
+            <span class="material-symbols-outlined">account_circle</span>
+            <div class="mon-compte">MON COMPTE</div>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </header>
+    <div class="box">
+        <div class="rectangle">
+            <div class="titre-de-page">
+                <div class="overlap-group-3">
+                    <a href="presentation.html" class="presentation" style="cursor: pointer;">QUI SOMMES NOUS</a>
+                    <a href="evenement.html" class="evenement" style="cursor: pointer;">ÉVENEMENTS</a>
+                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
+                    <a href="galerie.html" class="galerie" style="cursor: pointer;">GALERIE</a>
+                    <a href="boutique.html" class="boutique" style="cursor: pointer;">BOUTIQUE</a>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php 
     $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
@@ -18,7 +57,7 @@
     while ($product = $launch->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='article'>";
         echo "<a href='detailArticle.php?id=" . urlencode($product['idProd']) . "'>";
-        echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
+        echo "<img src='../uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
         echo "</a>";
         echo "<a href='detailArticle.php?id=" . urlencode($product['idProd']) . "' class='info'>";
         echo "<p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>";
@@ -39,7 +78,7 @@
             
             echo "<a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "'>";
             echo "<h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
-            echo "<img src='uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
+            echo "<img src='../uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
             echo "</a>";
             
             echo "<a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>";

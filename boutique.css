@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .overlap-group-3 {
     font-family: k2d, sans-serif;
     font-size: 20px;
@@ -79,6 +85,7 @@ a.boutique:visited {
 }
 
 .titre-article{
+  margin-bottom: 15px;
     font-family: k2d, sans-serif;
     font-size: 50px;
     color: white;
@@ -95,6 +102,7 @@ a.boutique:visited {
   width: 100%;
   margin-left: 50px;
   margin-right: 50px;
+  margin-top: 50px;
   }
   
   .article {
@@ -103,7 +111,7 @@ a.boutique:visited {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 360px;
+    width: 400px;
     
   }
   
@@ -146,29 +154,35 @@ a.boutique:visited {
   }
 
   .info{
+    margin-top: 20px;
     cursor: pointer;
     display: flex;
     color: white;
+    text-decoration: none;
   }
   
   .info .description {
     font-size: 20px;
     color: #cccccc;
+    text-decoration: none;
   }
 
   .info .quantite {
     font-size: 20px;
     color: #cccccc;
+    text-decoration: none;
   }
 
   .info .voir-maintenant {
     font-size: 20px;
     color: #757575;
+    text-decoration: none;
   }
 
   .info .couleur {
     font-size: 20px;
     color: #cccccc;
+    text-decoration: none;
   }
 
   .info button {
@@ -188,6 +202,7 @@ a.boutique:visited {
   }
 
   .div-prix{
+    margin-left: 20px;
     margin-top: 20px;
     font-size: 20px;
     width: 100px;
@@ -201,7 +216,7 @@ a.boutique:visited {
   }
 
   .div-arrow{
-    margin-top: 50px;
+    margin-top: 20px;
   }
   
   footer .bandeau1{
