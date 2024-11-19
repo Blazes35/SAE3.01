@@ -6,8 +6,7 @@
     <title>Document</title>
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="globals.css" />
-    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     <header>
@@ -36,8 +35,11 @@
 
 
                 </div>
+            </div>
+        </div>
+    </div>
 
-<?php echo $content; ?>
+    <?php echo isset($content) ? $content : ''; ?>
 
 <footer>
         <div class="bandeau1">

@@ -1,19 +1,21 @@
 <?php
-require_once 'Models/model.php';
+require_once 'Models/mainModel.php';
 
-class Controller
+class MainController
 {
     private $model;
 
     public function __construct()
     {
-        $this->model = new Model(); // Create an instance of the model class
+        $this->model = new MainModel(); // Create an instance of the model class
     }
 
     public function renderLayout()
     {
         ob_start();
-        include 'view/layout.php';
+
+        echo "<div><p>test</p></div>";
+
         return ob_get_clean();
     }
 
