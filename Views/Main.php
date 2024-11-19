@@ -5,7 +5,7 @@ $controller = new MainController();
 ?>
 
 <!-- Link to the CSS file -->
-<link rel="stylesheet" href="globals.css"/>
+<link rel="stylesheet" href="css/globals.css"/>
 
 <?php echo $controller->renderLayout(); ?> <!-- Display the layout -->
 
