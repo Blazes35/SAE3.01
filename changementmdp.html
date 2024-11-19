@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changement de mot de passe</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="header.css"/>
+    <link rel="stylesheet" href="changementmdp.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="changement">
+        <div class="titrechangement">CHANGER VOTRE MOT DE PASSE</div>
+        <div class="formulaire">
+            <form action="login.php" method="post">
+                <div class="input-group">
+                    <label for="username">
+                        <span class="material-symbols-outlined">person</span>
+                    </label>
+                    <input type="email" id="username" name="username" placeholder="EMAIL" required>
+                </div>
+                <div class="input-group">
+                    <label for="newpassword">
+                        <span class="material-symbols-outlined">lock</span>
+                    </label>
+                    <input type="password" id="newpassword" name="newpassword" placeholder="NOUVEAU MOT DE PASSE" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmpassword">
+                        <span class="material-symbols-outlined">lock</span>
+                    </label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" placeholder="CONFIRMER MOT DE PASSE" required>
+                </div>
+                
+                <div class="envoyer">
+                    <button type="submit">CONFIRMER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <img class="imagefooter" src="images/ellipse4.png">
+    </div>
+</body>
+</html>
