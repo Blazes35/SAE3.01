@@ -13,11 +13,6 @@ class LoginModel extends ConnectionModel {
         $init->bindParam(':username', $username);
         $init->execute();
         $result = $init->fetch()[0];
-        if ($result == -1) {
-            $return = "Erreur email ou mot de passe incorrect";
-        } else {
-            $return = password_verify($password, $result) ? "Connexion réussie" : "Erreur email ou mot de passe incorrect";
-        }
-        return $return;
+        return $return = password_verify($password, $result) ? True : False;
     }
 }
