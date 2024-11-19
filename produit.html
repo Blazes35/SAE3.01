@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Produit</title>
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="boutique.css" />
-    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+      </head>
     <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="produit.css" />
+    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+    
 </head>
 <body>
     <header>
         <div class="overlap-group">
             <img class="logo" src="images/logo.png" />
-            <div class="theme-claire">THEME CLAIRE</div>
-            
+            <div class="theme-claire">THEME CLAIRE</div>   
         </div>
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
@@ -24,7 +25,6 @@
         </div>
     </header>
     <div class="box">
-
         <div class="rectangle">
             <div class="titre-de-page">
                 <div class="overlap-group-3">
@@ -37,35 +37,50 @@
             </div>
         </div>
     </div>
-    <div class="titre">
-        <h2>Nouvelles arrivées</h2>
-    </div>
-    <h3 class="titre-article">T-shirt</h3>
-    <div class="article-container">
-        <div class="article">
-          <img src="./images/maillot-avant.png" alt="Article 1">
-        </div>
-          <div class="article-2">
-          <img src="./images/maillot-dos.png" alt="Article 2">
+
+    <div class="product-container">
+        <!-- Section gauche avec les images -->
+        <div class="image-gallery">
+            <div class="first-img">
+                <img src="./images/maillot-avant.png" alt="T-shirt avant">
+            </div>
+            <div class="first-img">
+                <img src="./images/maillot-dos.png" alt="T-shirt arrière">
+            </div>
         </div>
 
-      </div>
-      <div class="info" onclick="redirectToProduct()">
-        <div>
-            <p class="description">T-shirt ADIIL</p>
-            <p class="voir-maintenant">Voir maintenant</p>
+        <!-- Image principale -->
+        <div class="main-image">
+            <img id="main-image" src="./images/maillot-dos.png" alt="Image principale">
         </div>
-        <div class="div-prix">
-            <p class="prix">20€</p>
-        </div>
-        <div class="div-arrow">
-            <span class="material-symbols-outlined">
-                east
-            </span>
+
+        <!-- Section droite avec les détails -->
+        <div class="product-details">
+            <h1 class="product-title">T-shirts</h1>
+            <p class="description">description</p>
+            <p class="price">15 €</p>
+            <p class="size-title">Sélectionner la taille</p>
+            <div class="sizes">
+                <button class="size">XS</button>
+                <button class="size">M</button>
+                <button class="size">L</button>
+                <button class="size">XL</button>
+            </div>
+            <div class="buttons">
+                <button class="add-to-cart">Ajouter au panier</button>
+                <button class="promo-code">% Code promotionnel</button>
+            </div>
+            <div class="favorites-settings">
+                <button class="add-to-favorites">Ajouter au favoris ♡</button>
+                <button class="settings">
+                    <span class="material-symbols-outlined">settings</span>Paramétrer
+                </button>
+            </div>
+            <p class="add-element">+ Ajouter un élément</p>
         </div>
     </div>
 
-  
+
     <footer>
         <div class="bandeau1">
             <img class="logoF" src="images/logo.png" />
