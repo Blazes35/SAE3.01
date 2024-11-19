@@ -39,20 +39,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="titreconnexion">CONNEXION</div>
         <div class="formulaire">
             <form action="login.php" method="post">
-                <div class="identifiant"></div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+                <div class="input-group">
+                    <label for="username">
+                        <span class="material-symbols-outlined">person</span>
+                    </label>
+                    <input type="text" id="username" name="username" placeholder="IDENTIFIANT" required>
                 </div>
-                <div class="mdp">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                <div class="input-group">
+                    <label for="password">
+                        <span class="material-symbols-outlined">lock</span>
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="MOT DE PASSE" required>
                 </div>
                 <a class="mdpoubli" href="motpassoublie.html">Mot de passe oublié ?</a>
                 <div class="envoyer">
-                    <button type="submit">Login</button>
+                    <button type="submit">SE CONNECTER</button>
                 </div>
             </form>
-            <div class="inscri
+            <div class="inscri">
+                VOUS ETES NOUVEAU ?
+                <a class="inscription" href="inscription.html">INSCRIVEZ-VOUS !</a>
+            </div>
         </div>
     </div>
     <footer>
