@@ -13,7 +13,6 @@ class LoginModel extends ConnectionModel {
         $init->bindParam(':username', $username);
         $init->execute();
         $result = $init->fetch()[0];
-        
-        return $result == -1 ? false : true;
+        return $return = password_verify($password, $result) ? True : False;
     }
 }

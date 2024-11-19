@@ -2,13 +2,13 @@
 require 'Controllers/loginController.php';
 $controller = new loginController();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     echo "<script>console.log(\"debug\",\"$username\", \"$password\");</script>";
+    echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
     if (!$controller->login($username, $password)) {
-        header('Location: login.php?page=noLogin');
-        exit();
+        echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
     }
 }
 ?>
@@ -39,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <a class="mdpoubli" href="motpassoublie.html">Mot de passe oublié ?</a>
                 <div class="envoyer">
-                    <button type="submit">SE CONNECTER</button>
+                    <button type="submit" name="connect">SE CONNECTER</button>
                 </div>
             </form>
+            
             <div class="inscri">
                 VOUS ETES NOUVEAU ?
                 <a class="inscription" href="inscription.html">INSCRIVEZ-VOUS !</a>
