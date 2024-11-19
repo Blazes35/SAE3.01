@@ -21,7 +21,7 @@
                 <div class="overlap-group-3">
                     <a href="tableau.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
                     <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="profils.html" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
+                    <a href="../GestionProfilAdmin.html" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
                     <a href="tresorie.html" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
                     <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
                     <a href="editer.html" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
