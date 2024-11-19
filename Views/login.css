@@ -127,7 +127,7 @@ button:hover {
 }
 
 /* Icônes Material Symbols */
-.material-symbols-outlined {
+.connexion .material-symbols-outlined {
     font-size: 25px; /* Taille des icônes ajustée */
     color: black;
 }
@@ -135,3 +135,5 @@ button:hover {
     width: 100%;
     height: auto;
 }
+
+
