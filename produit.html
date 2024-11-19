@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit</title>
+        <!-- Lien pour importer les Material Icons -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+      </head>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="produit.css" />
+    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+    
+</head>
+<body>
+    <header>
+        <div class="overlap-group">
+            <img class="logo" src="images/logo.png" />
+            <div class="theme-claire">THEME CLAIRE</div>   
+        </div>
+        <div class="overlap-group-2">
+            <span class="material-symbols-outlined">account_circle</span>
+            <div class="mon-compte">MON COMPTE</div>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </header>
+    <div class="box">
+        <div class="rectangle">
+            <div class="titre-de-page">
+                <div class="overlap-group-3">
+                    <a href="presentation.html" class="presentation" style="cursor: pointer;">QUI SOMMES NOUS</a>
+                    <a href="evenement.html" class="evenement" style="cursor: pointer;">ÉVENEMENTS</a>
+                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
+                    <a href="galerie.html" class="galerie" style="cursor: pointer;">GALERIE</a>
+                    <a href="boutique.html" class="boutique" style="cursor: pointer;">BOUTIQUE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-container">
+        <!-- Section gauche avec les images -->
+        <div class="image-gallery">
+            <div class="first-img">
+                <img src="./images/maillot-avant.png" alt="T-shirt avant">
+            </div>
+            <div class="first-img">
+                <img src="./images/maillot-dos.png" alt="T-shirt arrière">
+            </div>
+        </div>
+
+        <!-- Image principale -->
+        <div class="main-image">
+            <img id="main-image" src="./images/maillot-dos.png" alt="Image principale">
+        </div>
+
+        <!-- Section droite avec les détails -->
+        <div class="product-details">
+            <h1 class="product-title">T-shirts</h1>
+            <p class="description">description</p>
+            <p class="price">15 €</p>
+            <p class="size-title">Sélectionner la taille</p>
+            <div class="sizes">
+                <button class="size">XS</button>
+                <button class="size">M</button>
+                <button class="size">L</button>
+                <button class="size">XL</button>
+            </div>
+            <div class="buttons">
+                <button class="add-to-cart">Ajouter au panier</button>
+                <button class="promo-code">% Code promotionnel</button>
+            </div>
+            <div class="favorites-settings">
+                <button class="add-to-favorites">Ajouter au favoris ♡</button>
+                <button class="settings">
+                    <span class="material-symbols-outlined">settings</span>Paramétrer
+                </button>
+            </div>
+            <p class="add-element">+ Ajouter un élément</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="bandeau1">
+            <img class="logoF" src="images/logo.png" />
+            <div>
+                <p class="Contact">CONTACT</p>
+            </div>
+            <div>
+                <p class="Mention-legal">MENTION LEGAL</p>
+            </div>
+            <div>
+                <p class="FAQ">FAQ</p>
+            </div>
+        </div>
+        <div class="icons-resaux">
+            <img src="images/instagram.png" alt="">
+            <img src="images/discord.png" alt="">
+            <img src="images/email.png" alt="">
+            <img src="images/tiktok.png" alt="">
+        </div>
+        <div class="bandeau2">
+            <p class="p-footer">Copyright © 2024• ADIIl - All rights reserved</p>
+            <p class="p-footer">Site web réaliser par coco dev</p>
+        </div>
+    </footer>
+    <script src="script.js"></script> <!-- Inclure le fichier JavaScript -->
+</body>
+</html>
