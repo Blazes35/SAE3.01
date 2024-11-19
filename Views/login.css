@@ -131,3 +131,7 @@ button:hover {
     font-size: 25px; /* Taille des icônes ajustée */
     color: black;
 }
+.imagefooter{
+    width: 100%;
+    height: auto;
+}

@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <footer>
-        <!--<img class="imagefooter" src="../images/ellipse4.png">-->
+        <img class="imagefooter" src="../images/ellipse4.png">
     </footer>
 </body>
 </html>
