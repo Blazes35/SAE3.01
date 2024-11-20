@@ -72,7 +72,7 @@ if(file_exists($fichier_csv)){
 
         </ul>
     </div>
-    <div class="Feuille de calcul">
+    <div class="Feuillecalcul">
     <table border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
