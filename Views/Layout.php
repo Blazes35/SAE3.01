@@ -18,7 +18,7 @@
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="mon-compte">MON COMPTE</div>
-            <span class="material-symbols-outlined">shopping_cart</span>
+            <span id="test" class="material-symbols-outlined">shopping_cart</span>
         </div>
     </header>
 
@@ -53,7 +53,7 @@
 
 <footer>
         <div class="bandeau1">
-            <img class="logoF" src="images/logo.png" />
+            <img id="logoF" src="images/logo.png" />
             <div>
                 <p class="Contact">CONTACT</p>
             </div>

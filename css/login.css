@@ -88,7 +88,7 @@
 }
 
 /* Bouton de connexion */
-button {
+.formulaire button {
     width: 100%; /* Bouton adapté au conteneur */
     max-width: 350px; /* Garde le bouton dans le cadre */
     background: white;
@@ -101,7 +101,7 @@ button {
     transition: background 0.3s;
 }
 
-button:hover {
+.formulaire button:hover {
     background: #eee; /* Couleur de hover */
 }
 

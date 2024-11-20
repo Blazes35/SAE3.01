@@ -14,11 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
 ?>
 
 <!-- Link to the CSS file -->
-<link rel="stylesheet" href="login.css"> 
-
-<?php echo $controller->renderLayout(); ?> <!-- Display the layout -->
+<link rel="stylesheet" href="css/login.css"> 
+<!-- Display the layout -->
+<?php echo $controller->renderLayout(); ?>
 <!-- The following code is the layout of the website -->
-
+            </div>
+        </div>
+    </div>
     <link rel="stylesheet" href="../css/login.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <div class="connexion">
@@ -42,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
                     <button type="submit" name="connect">SE CONNECTER</button>
                 </div>
             </form>
-            
             <div class="inscri">
                 VOUS ETES NOUVEAU ?
                 <a class="inscription" href="inscription.html">INSCRIVEZ-VOUS !</a>
