@@ -2,15 +2,7 @@
 require 'Controllers/loginController.php';
 $controller = new loginController();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['password']);
-    echo "<script>console.log(\"debug\",\"$username\", \"$password\");</script>";
-    echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
-    if (!$controller->login($username, $password)) {
-        echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
-    }
-}
+
 ?>
 
 <!-- Link to the CSS file -->
@@ -53,3 +45,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     <div>
         <img class="imagefooter" src="../images/ellipse4.png">
     </div>
+
+
+    
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+
+    if ($controller->login($username, $password)) {
+        header("Location: ?page=Presentation");
+        exit();
+    }else{
+        echo "<script>alert(\"Identifiants incorrects\")</script>";
+        // header("Location: ?page=Login");
+        // exit();
+}
+?>

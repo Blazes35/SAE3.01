@@ -23,10 +23,10 @@
 .inscription .formulaire {
     background-color: #1c1c1c; /* Fond sombre */
     border-radius: 15px; /* Coins légèrement arrondis */
-    padding: 30px; /* Espace intérieur ajusté */
-    width: 400px; /* Largeur maximale contrôlée */
+    padding: 3.75vh; /* Espace intérieur ajusté */
+    width: 62.5vh; /* Largeur maximale contrôlée */
     text-align: center;
-    margin-top: 50px;
+    margin-top: 6.25vh;
     overflow: hidden; /* Empêche tout débordement */
 }
 
@@ -36,18 +36,18 @@
     align-items: center;
     background-color: #fff; /* Fond des champs */
     border-radius: 20px; /* Coins arrondis */
-    padding: 10px; /* Espace intérieur ajusté */
-    margin-bottom: 20px; /* Moins de marge pour plus de contrôle */
+    padding: 1.25vh; /* Espace intérieur ajusté */
+    margin-bottom: 2.5vh; /* Moins de marge pour plus de contrôle */
     width: 100%; /* Champs ajustés à la largeur du conteneur */
-    max-width: 350px; /* Empêche les champs de dépasser */
+    max-width: 60vh; /* Empêche les champs de dépasser */
 }
 
 .input-group label {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
-    font-size: 25px; /* Taille des icônes */
+    margin-right: 1.25vh;
+    font-size: 20px; /* Taille des icônes */
     color: black;
 }
 
@@ -59,7 +59,7 @@
     flex: 1; /* S'étend pour occuper tout l'espace */
     color: #000;
     font-size: 25px; /* Taille ajustée */
-    padding: 10px;
+    padding: 1.25vh;
     border-radius: 15px;
     min-width: 0; /* Empêche les champs de casser la mise en page */
 }
@@ -80,17 +80,17 @@
     align-items: center;
     background-color: #fff;
     border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 1.25vh;
+    margin-bottom: 2.5vh;
     width: 100%;
-    max-width: 350px;
+    max-width: 60vh;
 }
 
 .select-group label{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-right: 2.5vh;
     font-size: 20px;
     color: #000;
 }
@@ -102,7 +102,7 @@
     flex: 1;
     color: #000;
     font-size: 20px;
-    padding: 10px;
+    padding: 1.80vh;
     border-radius: 15px;
     cursor: pointer;
     appearance: none;
@@ -126,14 +126,14 @@
 
 /* Bouton de connexion */
 button {
-    margin-top: 15px;
+    margin-top: 1.875vh;
     width: 100%; /* Bouton adapté au conteneur */
-    max-width: 350px; /* Garde le bouton dans le cadre */
+    max-width: 29.17vh; /* Garde le bouton dans le cadre */
     background: white;
     color: black;
     border: 2px solid transparent;
     border-radius: 20px; /* Coins arrondis */
-    padding: 15px;
+    padding: 1.875vh;
     font-size: 20px; /* Taille ajustée */
     cursor: pointer;
     transition: background 0.3s, border-color 0.3s;
