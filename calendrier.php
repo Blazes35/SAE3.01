@@ -27,7 +27,7 @@
                     <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
                     <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
                     <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="/php/boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
+                    <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
                 </div>
         </div>
 </div>
