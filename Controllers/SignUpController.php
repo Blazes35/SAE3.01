@@ -9,7 +9,7 @@ class SignUpController{
     }
 
     public function signUp($nom, $prenom, $classe, $mail, $password) {
-        return $this->model->createUser($nom, $prenom, $mail, $password, $classe);
+        return $this->model->createUser($nom, $prenom, $classe, $mail, $password);
     }
 
     public function renderLayout()

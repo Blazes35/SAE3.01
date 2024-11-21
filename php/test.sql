@@ -40,16 +40,16 @@ DROP PROCEDURE IF EXISTS createUser$$
 CREATE PROCEDURE createUser (
     IN p_nomUser VARCHAR(255),
     IN p_prenomUser VARCHAR(255),
+    IN p_idTPAgenda VARCHAR(3),
     IN p_adrMailUser VARCHAR(255),
-    IN p_ppUser VARCHAR(255),
-    IN p_mdpUser VARCHAR(255),
-    IN p_idTPAgenda VARCHAR(3))
+    IN p_mdpUser VARCHAR(255))
 BEGIN
+
     IF EXISTS (SELECT idUser FROM utilisateur WHERE adrMailUser=p_adrMailUser) THEN
-        INSERT INTO utilisateur (nomUser, prenomUser, adrMailUser, ppUser, mdpUser, idTPAgenda, idGrade) VALUES (p_nomUser, p_prenomUser, p_adrMailUser, p_ppUser, p_mdpUser, p_idTPAgenda, NULL);
+        INSERT INTO utilisateur (nomUser, prenomUser, adrMailUser, ppUser, mdpUser, idTPAgenda, idGrade) VALUES (p_nomUser, p_prenomUser, p_adrMailUser, 'default.jpg', p_mdpUser, p_idTPAgenda, NULL);
         SELECT 1 AS insert_successfull;
     ELSE
-        SELECT "Utilisateur déjà existant" AS insert_successfull;
+        SELECT 0 AS insert_successfull;
     END IF;
 END$$
 DELIMITER ;  

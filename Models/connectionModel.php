@@ -26,14 +26,11 @@ class ConnectionModel extends DBModel {
 
     function createUser($nom, $prenom, $classe, $mail, $password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "CALL createUser(\"$nom\", \"$prenom\", \"$mail\", \"$hashedPassword\", \"$classe\")";
+        $sql = "CALL createUser(\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$hashedPassword\")";
         $init = $this->db->prepare($sql);
         $init->execute();
         $result= $init->fetch()[0];
-        if ($result == 1) {
-            return "Utilisateur créee avec succès";
-        } else {
-            return $result;
-        }
+        echo "<script>console.log(\"debug\", \"$result\");</script>";
+        return $result == 1 ? True : False;
     }
 }

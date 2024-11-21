@@ -68,7 +68,7 @@ $controller = new SignUpController();
                     <label for="confirm password">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
-                    <input type="password" id="password2" name="password2" placeholder="MOT DE PASSE" required>
+                    <input type="password" id="password2" name="password2" placeholder="CONFIRMATION MOT DE PASSE" required>
                 </div>
 
                 <div class="envoyer">
@@ -89,7 +89,7 @@ $controller = new SignUpController();
         $password2 = htmlspecialchars($_POST['password2']);
         echo "<script>console.log(\"debug\",\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$password\", \"$password2\");</script>";
         if ($password === $password2) {
-            if (!$controller->signUp($nom, $prenom, $classe, $mail, $password)) {
+            if ($controller->signUp($nom, $prenom, $classe, $mail, $password)) {
                 echo "<script>alert(\"Utilisateur créé avec succès\");</script>";
             } else {
                 echo "<script>alert(\"Erreur lors de la création de l'utilisateur\");</script>";
