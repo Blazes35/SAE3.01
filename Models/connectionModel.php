@@ -1,22 +1,39 @@
 <?php
-class ConnectionModel {
+require 'DBModel.php';
 
-    protected $db;
+class ConnectionModel extends DBModel {
 
-    public function __construct()
-    {
-        if ($this->db == null) {
-            $this->connect();
-        }
+    public function __construct(){
+        parent::__construct();
     }
 
-    public function connect() {
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->db = $db;
-        } catch (PDOException $e) {
-            $this->db = null;
+    public function login($username, $password) {
+        $sql = "call login(:username)";
+        $init = $this->db->prepare($sql);
+        $init->bindParam(':username', $username);
+        $init->execute();
+        $result = $init->fetch()[0];
+        return $return = password_verify($password, $result) ? True : False;
+    }
+
+    function changePwd($username, $password, $newPassword) {
+        $sql = "call changePwd(\"$username\", \"$password\", \"$newPassword\")";
+        $init = $this->db-> prepare($sql);
+        $init -> execute();
+        $result = $init->fetch()[0];
+        return $result;
+    }
+
+    function createUser($nom, $prenom, $classe, $mail, $password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "CALL createUser(\"$nom\", \"$prenom\", \"$mail\", \"$hashedPassword\", \"$classe\")";
+        $init = $this->db->prepare($sql);
+        $init->execute();
+        $result= $init->fetch()[0];
+        if ($result == 1) {
+            return "Utilisateur créee avec succès";
+        } else {
+            return $result;
         }
     }
 }

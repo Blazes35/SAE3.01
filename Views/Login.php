@@ -3,8 +3,8 @@ require 'Controllers/loginController.php';
 $controller = new loginController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
     echo "<script>console.log(\"debug\",\"$username\", \"$password\");</script>";
     echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
     if (!$controller->login($username, $password)) {

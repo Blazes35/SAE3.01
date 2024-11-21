@@ -1,8 +1,7 @@
 <?php
 require_once 'Models/mainModel.php';
 
-class MainController
-{
+class MainController{
     private $model;
 
     public function __construct()
