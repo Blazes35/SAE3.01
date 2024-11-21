@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@3000;400;500;600;700&display=swap');
+
 /* Enlève les marges et paddings par défaut */
 body, html {
   font-family: k2d, sans-serif;
@@ -13,118 +15,66 @@ header {
   justify-content: space-between;
   padding: 10px 20px;
   position: relative;
-  width: 100%;
-}
-
-.overlap-group {
-  font-family: k2d, sans-serif;
-  display: flex;
-  align-items: center;
-  width: 85%;
+  width: 100dvw;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .overlap-group {
   font-family: k2d, sans-serif;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 80%;
+    margin-right: 20px;
 }
 
 .overlap-group-2 {
   font-family: k2d, sans-serif;
   display: flex;
   align-items: center;
-  margin-right: 20px;
   width: 20%;
 }
 
 .logo {
-  height: 50px;
+  height: 3rem;
   margin-right: 15px;
 }
 
 .theme-claire {
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   margin-left: 10px;
 }
 
-.material-symbols-outlined {
-  font-size: 40px;
+header span.material-symbols-outlined {
+  font-size: 2.5rem;
   color: white;
-  margin-left: 20px;
+  margin-left: auto;
+
 }
 
 .mon-compte {
-  font-size: 20px;
   color: white;
   margin-left: 5px;
 }
 
-
-
-
-
 .overlap-group-3 {
   font-family: k2d, sans-serif;
-  font-size: 20px;
+  /* font-size: 2rem; */
   color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
-  padding-top: 15px;
-  margin-left: 1000px;
-  width: 45%;
+  /* padding-top: 15px; */
+  margin-left: auto;
+  margin-right: 0.5rem;
+  width: 50%;
   justify-content: space-between;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
-
-
-
-
-a.presentation {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+.overlap-group-3 form button {
+  font-size: 1.25rem;
 }
 
-a.presentation:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.evenement {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.evenement.visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.calendrier {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.calendrier:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.galerie {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.galerie:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.boutique {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.boutique:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
 
 
 
@@ -134,9 +84,9 @@ footer .bandeau1{
   margin-right: 550px;
 }
 
-.img .logoF{
-    height: 150px;
-    width: 150px;
+#logoF{
+    height: 25dvh;
+    width: auto;
 }
 
 footer .bandeau1 .Contact{
@@ -172,6 +122,7 @@ footer .icons-resaux{
 footer .icons-resaux img{
     height: 50px;
     width: 50px;
+    margin-right: 1rem;
 }
 
 footer .bandeau2{
