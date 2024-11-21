@@ -13,7 +13,7 @@ END$$
 DELIMITER ;
 
 
-call login("jean.dupont@gmail.com",123456);
+/*call login("jean.dupont@gmail.com",123456);*/
 
 
 
@@ -33,7 +33,7 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-call changePwd("jean.dupont@gmail.com",123456);
+/*call changePwd("jean.dupont@gmail.com",123456);*/
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS createUser$$
@@ -53,4 +53,4 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;  
-call createUser("tesdgrdgdt", "tesdrgdrt", "21A", "test14532@gmail.com", "$2y$10$/WdjsQ3ufADAT5cQBFb.65Z55u");
+/*call createUser("tesdgrdgdt", "tesdrgdrt", "21A", "test14532@gmail.com", "$2y$10$/WdjsQ3ufADAT5cQBFb.65Z55u");*/

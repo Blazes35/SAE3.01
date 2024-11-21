@@ -29,8 +29,8 @@ switch ($page) {
     case 'SignUp':
         renderLayout('./Views/SignUp.php', 'SignUp');
         break;
-    case 'changePwd':
-        renderLayout('./Views/changePwd.php', 'changePwd');
+    case 'Updatepwd':
+        renderLayout('./Views/Updatepwd.php', 'Updatepwd');
         break;
     default:
         renderLayout('./Views/error404.php', 'error404');
