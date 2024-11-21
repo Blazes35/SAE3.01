@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
 
+/* Réinitialise les marges et paddings par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Enlève les marges et paddings par défaut */
 body, html {
     color: white;
@@ -7,69 +14,69 @@ body, html {
     margin: 0;
     padding: 0;
     background-color: #000000; /* Couleur d'arrière-plan */
+}
 
-  }
-
-.menu{
+.menu {
     float: left;
     background: linear-gradient(180deg, #8E51D0 60%, #050505 95%, #000000 100%);
     width: 20%;
     color: white;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-.logo-theme{
+.logo-theme {
     display: flex;
     flex-direction: row;
 }
 
-.compte{
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-left: 20px;
+.compte {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.compte a{
+.compte a {
     text-decoration: none;
 }
-  .overlap-group {
+
+.overlap-group {
     font-family: k2d, sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
-  }
-   
-  .logo {
+}
+
+.logo {
     height: 50px;
     margin-right: 15px;
-  }
-  
-  .theme-claire {
+}
+
+.theme-claire {
     font-size: 18px;
     color: white;
     margin-left: 10px;
     margin-right: 50px;
-  }
-  
-  .material-symbols-outlined {
+}
+
+.material-symbols-outlined {
     font-size: 40px;
     color: white;
     margin-right: 20px;
-  }
-  
-  .mon-compte {
+}
+
+.mon-compte {
     font-size: 20px;
     color: white;
     margin-right: 5px;
-  }
-  
-  
-  .overlap-group-3 {
+}
+
+.overlap-group-3 {
     font-family: k2d, sans-serif;
     font-size: 20px;
     color: rgb(255, 255, 255);
@@ -79,60 +86,180 @@ body, html {
     gap: 30px;
     padding-top: 15px;
     justify-content: space-between;
-  }
-
+}
 
 a.tableau {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 a.tableau:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
+
 a.calendrier {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 a.calendrier.visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
 a.profils {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 a.profils:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
 a.tresorie {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 a.tresorie:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
+
 a.parametres {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur héritée */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 a.parametres:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+    color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
 a.editer {
     color: inherit; /* Utilise la couleur héritée */
     text-decoration: none; /* Supprime le soulignement */
-  }
-  
-  a.editer:visited {
+}
+
+a.editer:visited {
     color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
+.container {
+    width: 80%; /* Prend toute la place restante à droite de la page */
+    max-width: 100%; /* Assure que le conteneur prend toute la largeur disponible */
+    text-align: center;
+    margin-left: auto; /* Centre le conteneur horizontalement */
+    padding: 20px; /* Ajoute du padding pour l'espacement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #6c38f7;
+    display: inline-block;
+    padding-bottom: 10px;
+}
 
+#calendar {
+    background-color: #222222;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 1100px; /* Augmente la largeur maximale */
+    height: 90vh; /* Augmente la hauteur */
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Assure que tout est bien aligné verticalement */
+    justify-content: center;
+}
+
+.fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.fc-button {
+    background: transparent;
+    border: none;
+    color: #b586f8;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.fc-button:hover {
+    background-color: #7b4bc9;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.fc-daygrid-day {
+    border: 1px solid #555;
+    font-size: 1rem;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.fc-daygrid-day:hover {
+    background-color: #444;
+}
+
+.fc-daygrid-day-frame {
+    width: 100%; /* Laisse la largeur des cellules s'adapter */
+    padding: 10px; /* Augmente l'espace interne pour plus de confort visuel */
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: #7b4bc9;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.fc-scrollgrid {
+    border: none;
+}
+
+.fc-col-header-cell {
+    font-size: 1rem;
+    color: #ccc;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.fc-daygrid-day-number {
+    font-size: 1rem;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.fc-day-past,
+.fc-day-future {
+    color: #bbb;
+}
+
+.fc-daygrid-event {
+    background-color: #7b4bc9;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    transition: transform 0.2s;
+}
+
+.fc-daygrid-event:hover {
+    transform: scale(1.05);
+    background-color: #b586f8;
+}
