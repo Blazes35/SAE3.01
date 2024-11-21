@@ -60,5 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
         echo "<script>alert(\"Identifiants incorrects\")</script>";
         // header("Location: ?page=Login");
         // exit();
+    }
 }
 ?>
