@@ -57,106 +57,64 @@ a.boutique:visited {
   color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
-.texte-1{
-    margin-left: 150px;
-    font-family: k2d, sans-serif;
-    font-size: 200px;
-    color: #8E51D0;
+.slider {
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
 }
 
-.texte-2{
-    margin-left: 850px;
-    font-family: k2d, sans-serif;
-    font-size: 200px;
-    color: #8E51D0;
-
+.slides {
+  display: flex;
+  animation: glisser1 10s infinite linear;
 }
 
-.slider{
-    width: 600px;
-    overflow: hidden;
-    margin: 0 auto;
-    display: block;
+.slide {
+  width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
+  flex-shrink: 0; /* Empêche les slides de rétrécir */
 }
 
-.slides{
-    width: calc(600px *3);
-    display: flex;
-    animation: glisser1 10s infinite;
-}
-.slide{
-    width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
-    flex-shrink: 0; /* Empêche les slides de rétrécir */
-    
-}
-
-@keyframes glisser1{
-    0%{
-        transform: translateX(0);
-    }
-    10%{
-        transform: translateX(0);
-    }
-    33%{
-        transform: translateX(-600px);
-    }
-    43%{
-        transform: translateX(-600px);
-    }
-    66%{
-        transform: translateX(-1200px);
-    }
-    76%{
-        transform: translateX(-1200px);
-    }
-    100%{
-        transform: translateX(0);
-    }
-
-    
+.slide img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
 }
 
 .slider2 {
-    width: 600px;
-    margin: 0 auto;/* Centrer le slider */
-    overflow: hidden; /* Masquer les parties débordantes */
+  width: 600px;
+  height: 400px;
+  margin: 0 auto; /* Centrer le slider */
+  overflow: hidden; /* Masquer les parties débordantes */
 }
 
 .slides2 {
-    width: calc(600px * 3);
-    display: flex; /* Utiliser flexbox pour aligner les éléments */
-    animation: glisser2 10s infinite;
-    transform: translateX(-1200px); /* Position initiale à droite */
+  display: flex; /* Utiliser flexbox pour aligner les éléments */
+  animation: glisser2 10s infinite linear;
 }
 
 .slide2 {
-    width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
-    flex-shrink: 0; /* Empêche les slides de rétrécir */
-}
-@keyframes glisser2 {
-    0% {
-        transform: translateX(-1200px); /* Position initiale à droite */
-    }
-    10% {
-        transform: translateX(-1200px);
-    }
-    33% {
-        transform: translateX(-600px);
-    }
-    43% {
-        transform: translateX(-600px);
-    }
-    66% {
-        transform: translateX(0);
-    }
-    76% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-1200px); /* Retour à la position initiale */
-    }
+  width: 600px; /* Assurez-vous que chaque slide a la bonne largeur */
+  flex-shrink: 0; /* Empêche les slides de rétrécir */
 }
 
+.slide2 img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
+}
+
+footer .bandeau1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-right: 550px;
+}
+
+.img .logoF {
+  height: 150px;
+  width: 150px;
+}
 
 
 

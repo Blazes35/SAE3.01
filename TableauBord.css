@@ -142,44 +142,44 @@ a.editer:visited {
     color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
-.container {
-    display: grid;
-    flex-direction: center;
-    gap: 30px;
-    padding-top: 15px;
-    justify-content: space-between;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
+.main-content {
+    text-align: center; /* Centre le contenu horizontalement */
     padding: 20px;
 }
 
 .title {
-    width: 12vw;
     font-size: 24px;
     font-weight: bold;
-    margin: 0 auto 20px auto; /* Centre horizontalement et ajoute une marge en bas */
+    margin-bottom: 20px;
     border-bottom: 2px solid #6c38f7;
-    align-items: center;
+    display: inline-block;
     padding-bottom: 10px;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Définit trois colonnes */
+    gap: 20px;
+    justify-items: center; /* Centre les éléments horizontalement */
+    padding: 20px;
+}
 
 .card {
     background-color: #6c38f7;
     color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    width: 200px;
+    width: 300px; /* Augmente la largeur des cartes */
+    height: 300px; /* Augmente la hauteur des cartes */
     text-align: center;
     transition: transform 0.3s;
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 .card:hover {
     transform: scale(1.05);
+    border: white 2px solid;
 }
 
 .card-link {
@@ -189,4 +189,15 @@ a.editer:visited {
 
 .card-content {
     padding: 20px;
+}
+
+.card-content span{
+    font-size: 200px;
+    display: block;
+    margin-right: 0;
+}
+
+.material-symbols-outlined {
+    font-size: 48px; /* Taille des icônes */
+    margin-top: 10px; /* Espace au-dessus des icônes */
 }
