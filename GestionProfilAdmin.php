@@ -21,6 +21,12 @@ $roles = [
     5 => 'Administrateur - Niveau 3'
 ];
 
+$sql_filtre_visiteur = "SELECT UTILISATEUR.idUser, UTILISATEUR.nomUser, POSSEDER.idRole FROM UTILISATEUR 
+                        INNER JOIN POSSEDER ON UTILISATEUR.idUser = POSSEDER.idUser WHERE idRole = 1";
+$launch_filtre_visiteur = $connect->prepare($sql_filtre_visiteur);
+$launch_filtre_visiteur->execute();
+$visiteurs = $launch_filtre_visiteur->fetchAll(PDO::FETCH_ASSOC);
+
 // Traitement du formulaire de mise à jour du rôle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idUser = $_POST['idUser'];
@@ -93,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p class="role" id="role-<?php echo $user['idUser']; ?>">
                             <span class="status-dot"></span> 
                             <?php echo $roles[$user['idRole']]; ?>
-                        </p> <!-- Affichage du rôle actuel -->
+                        </p> 
                     </div>
                 </div>
                 <div class="profile-actions">
