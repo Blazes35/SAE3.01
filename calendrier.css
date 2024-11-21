@@ -7,17 +7,16 @@ body, html {
     margin: 0;
     padding: 0;
     background-color: #000000; /* Couleur d'arrière-plan */
-    display: flex;
+
   }
 
 .menu{
+    float: left;
     background: linear-gradient(180deg, #8E51D0 60%, #050505 95%, #000000 100%);
-    width: 35%;
+    width: 20%;
     color: white;
     display: flex;
     flex-direction: column;
-    padding: 40px;
-    height: 80vh;
 }
 
 .logo-theme{
@@ -135,149 +134,5 @@ a.editer {
     color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
-body, html {
-    color: white;
-    font-family: 'K2D', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #000000; /* Couleur d'arrière-plan */
-    display: flex;
-    height: 100vh; /* Assure que le corps prend toute la hauteur de la page */
-}
 
-.menu {
-    background: linear-gradient(180deg, #8E51D0 60%, #050505 95%, #000000 100%);
-    width: 35%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-    height: 100vh; /* Prend toute la hauteur de la page */
-}
 
-.container {
-    width: 65%; /* Prend toute la place restante à droite de la page */
-    max-width: 100%; /* Assure que le conteneur prend toute la largeur disponible */
-    text-align: center;
-    margin-left: auto; /* Centre le conteneur horizontalement */
-    padding: 20px; /* Ajoute du padding pour l'espacement */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.fc-view-harness .fc-view-harness-active{
-    width: 100%;
-}
-
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #6c38f7;
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-#calendar {
-    background-color: #222222;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 1100px; /* Augmente la largeur maximale */
-    height: 90vh; /* Augmente la hauteur */
-    color: #fff;
-    display: flex;
-    flex-direction: column; /* Assure que tout est bien aligné verticalement */
-    justify-content: center;
-}
-
-.fc-toolbar-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.fc-button {
-    background: transparent;
-    border: none;
-    color: #b586f8;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-.fc-button:hover {
-    background-color: #7b4bc9;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.fc-daygrid-day {
-    border: 1px solid #555;
-    font-size: 1rem;
-    color: #fff;
-    transition: all 0.2s ease;
-}
-
-.fc-daygrid-day:hover {
-    background-color: #444;
-}
-
-.fc-daygrid-day-frame {
-    background-color: red;
-    width: 100%; /* Laisse la largeur des cellules s'adapter */
-    padding: 10px; /* Augmente l'espace interne pour plus de confort visuel */
-}
-
-.fc-daygrid-day.fc-day-today {
-    background-color: #7b4bc9;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 50%;
-    text-align: center;
-}
-
-.fc-scrollgrid {
-    border: none;
-}
-
-.fc-col-header-cell {
-    font-size: 1rem;
-    color: #ccc;
-    padding: 10px 0;
-    text-transform: uppercase;
-}
-
-.fc-daygrid-day-number {
-    font-size: 1rem;
-    padding: 10px;
-    color: #fff;
-    font-weight: bold;
-}
-
-.fc-day-past,
-.fc-day-future {
-    color: #bbb;
-}
-
-.fc-daygrid-event {
-    background-color: #7b4bc9;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    margin-top: 5px;
-    transition: transform 0.2s;
-}
-
-.fc-daygrid-event:hover {
-    transform: scale(1.05);
-    background-color: #b586f8;
-}
