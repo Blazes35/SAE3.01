@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@3000;400;500;600;700&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Enlève les marges et paddings par défaut */
 body, html {
   font-family: k2d, sans-serif;
