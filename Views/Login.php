@@ -5,10 +5,11 @@ $controller = new loginController();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
-    echo "<script>console.log(\"debug\",\"$username\", \"$password\");</script>";
-    echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
-    if (!$controller->login($username, $password)) {
-        echo "<script>console.log(\"debug\", \"{$controller->login($username, $password)}\");</script>";
+
+    if ($controller->login($username, $password)) {
+        header("Location: ?page=Presentation");
+        echo "<script>console.log(\"Tu es co\", \"{$controller->login($username, $password)}\");</script>";
+        exit();
     }
 }
 ?>

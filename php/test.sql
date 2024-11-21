@@ -45,7 +45,7 @@ CREATE PROCEDURE createUser (
     IN p_mdpUser VARCHAR(255))
 BEGIN
 
-    IF EXISTS (SELECT idUser FROM utilisateur WHERE adrMailUser=p_adrMailUser) THEN
+    IF NOT EXISTS (SELECT idUser FROM utilisateur WHERE adrMailUser=p_adrMailUser) THEN
         INSERT INTO utilisateur (nomUser, prenomUser, adrMailUser, ppUser, mdpUser, idTPAgenda, idGrade) VALUES (p_nomUser, p_prenomUser, p_adrMailUser, 'default.jpg', p_mdpUser, p_idTPAgenda, NULL);
         SELECT 1 AS insert_successfull;
     ELSE
@@ -53,4 +53,4 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;  
-call createUser("tesdgrdgdt", "tesdrgdrt", "test14532@gmail.com", "default_pp.jpg", "$2y$10$/WdjsQ3ufADAT5cQBFb.65Z55u", "21A");
+call createUser("tesdgrdgdt", "tesdrgdrt", "21A", "test14532@gmail.com", "$2y$10$/WdjsQ3ufADAT5cQBFb.65Z55u");
