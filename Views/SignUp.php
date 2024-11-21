@@ -89,13 +89,14 @@ $controller = new SignUpController();
         $password2 = htmlspecialchars($_POST['password2']);
         echo "<script>console.log(\"debug\",\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$password\", \"$password2\");</script>";
         if ($password === $password2) {
-            if ($controller->signUp($nom, $prenom, $classe, $mail, $password)) {
-                echo "<script>alert(\"Utilisateur créé avec succès\");</script>";
-            } else {
-                echo "<script>alert(\"Erreur lors de la création de l'utilisateur\");</script>";
-            }
+            $controller->signUp($nom, $prenom, $classe, $mail, $password);
+            // echo "<script>alert(\"Utilisateur créé avec succès\");</script>";
+            header("Location: ?page=Login");
+            exit();
         }else {
+            // header("Location: ?page=SignUp");
             echo "<script>alert(\"Les mots de passe ne correspondent pas\");</script>";
+            // exit();
         }
     }
 ?>
