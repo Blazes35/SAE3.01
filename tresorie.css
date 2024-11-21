@@ -1,6 +1,6 @@
 .tresorie{
     
-    padding :30px;
+    margin: 15px;
     max-width:calc(100%-314px);
     font-family: 'K2D', sans-serif ;
     color: #fff;
@@ -61,10 +61,9 @@
 .Feuillecalcul {
     width: 100%;
     max-width: 1200px;
-    background-color: #fff; /* Fond blanc pour le tableau */
+    background-color: #fff; 
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 8px;
     margin-top: 20px;
 }
 
@@ -76,7 +75,7 @@
 .Feuillecalcul th, 
 .Feuillecalcul td {
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
 }
 
 .Feuillecalcul th {
@@ -85,10 +84,10 @@
 }
 
 .Feuillecalcul td {
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #545454;
+    color: #fff ;
 }
 
 .Feuillecalcul tr:hover td {
-    background-color: #f1f1f1;
+    background-color: #545454;
 }

@@ -15,19 +15,19 @@ function renderLayout($viewFile, $title, $data = []){
     include './Views/Layout.php';
 }
 
-$page = $_POST['page'] ?? $_GET['page'] ?? 'presentation';
+$page = $_POST['page'] ?? $_GET['page'] ?? 'Presentation';
 
 // routage
 
 switch ($page) {
-    case 'presentation':
-        renderLayout('./Views/Main.php', 'presentation');
+    case 'Presentation':
+        renderLayout('./Views/Main.php', 'Presentation');
         break;
     case 'Login':
         renderLayout('./Views/Login.php', 'Login');
         break;
-    case 'createUser':
-        renderLayout('./Views/createUser.php', 'createUser');
+    case 'SignUp':
+        renderLayout('./Views/SignUp.php', 'SignUp');
         break;
     case 'changePwd':
         renderLayout('./Views/changePwd.php', 'changePwd');
