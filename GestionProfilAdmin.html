@@ -44,39 +44,18 @@
         </div>
         <div class="profile-actions">
             <div class="action">
-                <label for="droit">DROIT :</label>
-                <select id="droit" class="dropdown">
-                    <option value="niveau1">NIVEAU 1</option>
-                    <option value="niveau2">NIVEAU 2</option>
-                    <option value="niveau3">NIVEAU 3</option>
-                </select>
-            </div>
-            <div class="action">
                 <label for="role">ROLE :</label>
-                <button class="add-button" id="add-role-btn">+ AJOUTER</button>
+                <select id="role" class="dropdown">
+                    <option value="visiteur">Visiteur</option>
+                    <option value="membre">Membre</option>
+                    <option value="administrateur">Administrateur</option>
+                </select>
             </div>
         </div>
     </div>
 </div>
 
-   <!-- Popup -->
-   <div id="popup" class="hidden">
-    <div class="popup-content">
-        <h2>Attribuer un rôle</h2>
-        <p>Veuillez choisir un rôle parmi les options suivantes :</p>
-        <form id="role-form">
-            <select id="role-select">
-                <option value="visiteur">Visiteur</option>
-                <option value="membre">Membre</option>
-                <option value="administrateur">Administrateur</option>
-            </select>
-            <div class="popup-actions">
-                <button type="button" id="cancel-popup">Annuler</button>
-                <button type="submit" id="validate-role">Valider</button>
-            </div>
-        </form>
-    </div>
-</div>
+
 
 <script src="script.js"></script>
 </body>
