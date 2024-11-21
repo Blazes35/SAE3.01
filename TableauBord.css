@@ -142,98 +142,51 @@ a.editer:visited {
     color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
-  form {
-    width: 50%;
-    margin-left: 25vw;
-    background-color: #000000;
+.container {
+    display: grid;
+    flex-direction: center;
+    gap: 30px;
+    padding-top: 15px;
+    justify-content: space-between;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    color: white;
-    font-family: 'K2D', sans-serif;
 }
 
-form label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #a9a9a9;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #333333;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    outline: none;
-}
-
-form input::placeholder {
-    color: #888;
-}
-
-form select {
-    background-color: #444444;
-    cursor: pointer;
-}
-
-form button {
-    display: inline-block;
-    width: calc(33.3% - 10px);
-    margin: 10px 5px 0 0;
-    padding: 10px;
-    background-color: #8E51D0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
+.title {
+    width: 12vw;
+    font-size: 24px;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
+    margin: 0 auto 20px auto; /* Centre horizontalement et ajoute une marge en bas */
+    border-bottom: 2px solid #6c38f7;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
-form button:hover {
-    background-color: #a166e0;
-}
 
-form #color-field {
-    display: none; /* Ce champ sera affiché uniquement si nécessaire */
-}
-
-form #color-field label,
-form #color-field input {
-    display: block;
-}
-
-form input[type="file"] {
-    background-color: transparent;
+.card {
+    background-color: #6c38f7;
     color: white;
-    border: 1px dashed #8E51D0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    width: 200px;
     text-align: center;
-    cursor: pointer;
+    transition: transform 0.3s;
 }
 
-form button:last-child {
-    margin-right: 0;
+.card:hover {
+    transform: scale(1.05);
 }
 
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
 
-/* Pour un comportement responsive */
-@media screen and (max-width: 768px) {
-    form {
-        width: 95%;
-    }
-
-    form button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+.card-content {
+    padding: 20px;
 }
