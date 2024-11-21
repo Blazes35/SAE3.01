@@ -4,36 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Boutique PHP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="boutique_hugo.css" />
 </head>
-<div class="menu">
-    <div class="logo-theme">
-        <img class="logo" src="../images/logo-sans-fond.png" />
-        <div class="theme-claire">THEME CLAIRE</div>
-    </div>
-<div class="compte">
-    <span class="material-symbols-outlined">account_circle</span>
-    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-</div>
-<div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                    <a href="tableau.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="../GestionProfilAdmin.html" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.html" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="editer.html" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-        </div>
-</div>
-</div>
-
 <body>
     <form method="post" action="boutique_hugo.php" enctype="multipart/form-data">
         <label for="choice">Choisir le type d'article : </label>
-        <select name="article" id="article-select" onchange="handleArticleTypeChange()">
+        <select name="article" id="article-select" onchange="toggleFields()">
             <option value="">--Choisir un type d'article--</option>
             <option value="produit">Produit</option>
             <option value="galerie">Galerie</option>
@@ -65,14 +40,34 @@
             <input type="text" name="promo" id="promo">
         </div>
 
-        <div id="capacity-field" hidden>
-        <label for="capa">Capacité :</label>
-            <input type="text" id="capacity" name="capacity">
-        </div>
-
         <div id="qt-field">
             <label for="qt">Quantité</label>
             <input type="text" name="qt" id="qt">
+        </div>
+
+        <div id="capacite-field">
+            <label for="capacite">Capacité</label>
+            <input type="number" name="capacite" id="capacite">
+        </div>
+
+        <div id="minRole-field">
+            <label for="minRole">Role minimal pour participer à l'événement</label>
+            <input type="text" name="minRole" id="minRole">
+        </div>
+
+        <div id="minGrade-field">
+            <label for="minGrade">Grade minimal pour participer à l'événement</label>
+            <input type="text" name="minGrade" id="minGrade">
+        </div>
+
+        <div id="lieu-field">
+            <label for="lieu">Lieu de l'événement</label>
+            <input type="text" name="lieu" id="lieu">
+        </div>
+
+        <div id="date-field">
+            <label for="date">Date de l'événement</label>
+            <input type="date" name="date" id="date">
         </div>
 
         <button type="submit" name="action" value="add">Ajouter produit</button>
@@ -84,128 +79,155 @@
     
     <?php
 try {
-    $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+    $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '', [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
 
-    function addProduct($connection, $title, $type, $desc, $price, $qt, $file, $color = null, $capacity = null) {
-        $uploadDir = '../uploads/';
+    function uploadImage($file) {
+        $uploadDir = 'uploads/';
         $fileName = basename($file['name']);
         $targetFilePath = $uploadDir . $fileName;
-    
-        $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
-    
-        if (in_array($fileType, $validTypes)) {
+
+        if (in_array(strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION)), $validTypes)) {
             if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-                // Insertion dans la table PRODUIT
-                $query_add = "INSERT INTO PRODUIT (nomProd, typeProd, descProd, prixProd, qtProd, imgProd) 
-                              VALUES (:title, :type, :desc, :price, :qt, :img)";
-                $stmt = $connection->prepare($query_add);
-                $stmt->execute([
-                    ':title' => $title,
-                    ':type'  => $type,
-                    ':desc'  => $desc,
-                    ':price' => $price,
-                    ':qt'    => $type === 'evenement' ? $capacity : $qt, // Utilise la capacité pour les événements
-                    ':img'   => $fileName
-                ]);
-    
-                if ($type === "vetement" && $color) {
-                    $idProd = $connection->lastInsertId(); // Récupère l'ID du produit inséré
-                    $query_add_vetement = "INSERT INTO VETEMENT (idProd, couleurVetement) 
-                                           VALUES (:idProd, :color)";
-                    $stmt = $connection->prepare($query_add_vetement);
-                    $stmt->execute([
-                        ':idProd' => $idProd,
-                        ':color'  => $color
-                    ]);
-                }
-            } else {
-                echo "Erreur : Impossible de télécharger l'image.";
+                return $fileName;
             }
-        } else {
-            echo "Erreur : Format de fichier non valide.";
+        }
+        return null;
+    }
+
+    function addArticle($connection, $data, $file) {
+        $imageName = uploadImage($file);
+
+        if ($data['article'] === 'produit') {
+            $query = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd) 
+                      VALUES (:title, :desc, :price, :qt, :img)";
+            $stmt = $connection->prepare($query);
+            $stmt->execute([
+                ':title' => $data['title'],
+                ':desc'  => $data['desc'],
+                ':price' => $data['price'],
+                ':qt'    => $data['qt'],
+                ':img'   => $imageName,
+            ]);
+        } elseif ($data['article'] === 'evenement') {
+            $query = "INSERT INTO EVENEMENT (titreEvent, descEvent, capaEvent, prixEvent, lieuEvent, imgEvent, dateEvent, minRoleEvent, minGradeEvent) 
+                      VALUES (:title, :desc, :capacite, :price, :lieu, :img, :date, :minRole, :minGrade)";
+            $stmt = $connection->prepare($query);
+            $stmt->execute([
+                ':title'    => $data['title'],
+                ':desc'     => $data['desc'],
+                ':capacite' => $data['capacite'],
+                ':price'    => $data['price'],
+                ':lieu'     => $data['lieu'],
+                ':img'      => $imageName,
+                ':date'     => $data['date'],
+                ':minRole'  => $data['minRole'],
+                ':minGrade' => $data['minGrade'],
+            ]);
+        } elseif ($data['article'] === 'vetement') {
+            $queryProd = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd) 
+                          VALUES (:title, :desc, :price, :qt, :img)";
+            $stmtProd = $connection->prepare($queryProd);
+            $stmtProd->execute([
+                ':title' => $data['title'],
+                ':desc'  => $data['desc'],
+                ':price' => $data['price'],
+                ':qt'    => $data['qt'],
+                ':img'   => $imageName,
+            ]);
+
+            $idProd = $connection->lastInsertId();
+            $queryVet = "INSERT INTO VETEMENT (idProd, couleurVetement) VALUES (:idProd, :color)";
+            $stmtVet = $connection->prepare($queryVet);
+            $stmtVet->execute([
+                ':idProd' => $idProd,
+                ':color'  => $data['color'],
+            ]);
         }
     }
-    
 
-    function deleteProduct($connection, $title) {
-        $query_delete = "DELETE FROM PRODUIT WHERE nomProd = :title";
-        $stmt = $connection->prepare($query_delete);
+    function deleteArticle($connection, $title) {
+        $query = "DELETE FROM PRODUIT WHERE nomProd = :title";
+        $stmt = $connection->prepare($query);
         $stmt->execute([':title' => $title]);
     }
 
-    function seeProducts(){
-        $select = "SELECT * FROM PRODUIT";
-        $query = $connection->prepare($select);
-        $query->execute();
-
+    function seeArticles($connection) {
+        $query = "SELECT * FROM PRODUIT";
+        $stmt = $connection->query($query);
         echo "<table border='1'>";
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $stmt->fetch()) {
             echo "<tr>";
             foreach ($row as $value) {
                 echo "<td>" . htmlspecialchars($value) . "</td>";
             }
             echo "</tr>";
         }
-        echo "</table>";    
+        echo "</table>";
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'] ?? '';
         if ($action === 'add') {
-            addProduct(
-                $connection, 
-                $_POST['title'], 
-                $_POST['article'], 
-                $_POST['desc'], 
-                $_POST['price'], 
-                $_POST['qt'], 
-                $_FILES['picture'], 
-                $_POST['color'] ?? null,
-                $_POST['capa'] ?? null // Ajoutez la capacité pour les événements
-            );
+            addArticle($connection, $_POST, $_FILES['picture']);
         } elseif ($action === 'delete') {
-            deleteProduct($connection, $_POST['title']);
+            deleteArticle($connection, $_POST['title']);
         } elseif ($action === 'see') {
-            seeProducts();
+            seeArticles($connection);
         }
     }
-
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 ?>
 
-<script>
-    function handleArticleTypeChange() {
-        const articleType = document.getElementById('article-type').value;
-        const priceField = document.getElementById('price-field');
-        const promoField = document.getElementById('promo-field');
-        const qtField = document.getElementById('qt-field');
-        const capacityField = document.getElementById('capacity-field');
-        const colorField = document.getElementById('color-field');
 
-        // Masquer tous les champs au départ
-        priceField.hidden = false;
-        promoField.hidden = false;
-        qtField.hidden = false;
-        capacityField.hidden = false;
-        colorField.hidden = false;
+    <script>
+        function toggleFields() {
+            const articleType = document.getElementById('article-select').value;
+            const priceField = document.getElementById('price-field');
+            const promoField = document.getElementById('promo-field');
+            const qtField = document.getElementById('qt-field');
+            const colorField = document.getElementById('color-field');
+            const capaciteField = document.getElementById('capacite-field');
+            const minRoleField = document.getElementById('minRole-field');
+            const minGradeField = document.getElementById('minGrade-field');
+            const lieuField = document.getElementById('lieu-field');
+            const dateFieldField = document.getElementById('date-field');
 
-        if (articleType === 'galerie') {
-            priceField.hidden = true;
-            promoField.hidden = true;
-            qtField.hidden = true;
-        } else if (articleType === 'vetement') {
-            colorField.hidden = false;
-        } else if (articleType === 'evenement') {
-            qtField.hidden = true;
-            capacityField.hidden = false;
-        }elseif (articleType === 'produit') {
+
             colorField.hidden = true;
-            capacityField.hidden = true;
+            capaciteField.hidden = true;
+            minRoleField.hidden = true;
+            minGradeField.hidden = true;
+            lieuField.hidden = true;
+            dateFieldField.hidden = true;
+
+            priceField.hidden = false;
+            promoField.hidden = false;
+            qtField.hidden = false;
+
+
+            
+
+            if (articleType === 'galerie') {
+                priceField.hidden = true;
+                promoField.hidden = true;
+                qtField.hidden = true;
+            } else if (articleType === 'vetement') {
+                colorField.hidden = false;
+            }else if(articleType === 'evenement'){
+                capaciteField.hidden = false;
+                minRoleField.hidden = false;
+                minGradeField.hidden = false;
+                lieuField.hidden = false;
+                dateFieldField.hidden = false;
+                qtField.hidden = true;
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
