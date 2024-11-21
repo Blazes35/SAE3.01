@@ -29,10 +29,11 @@
         </div>
 </div>
 </div>
+
 <body>
     <form method="post" action="boutique_hugo.php" enctype="multipart/form-data">
         <label for="choice">Choisir le type d'article : </label>
-        <select name="article" id="article-select" onchange="toggleFields()">
+        <select name="article" id="article-select" onchange="handleArticleTypeChange()">
             <option value="">--Choisir un type d'article--</option>
             <option value="produit">Produit</option>
             <option value="galerie">Galerie</option>
@@ -64,6 +65,11 @@
             <input type="text" name="promo" id="promo">
         </div>
 
+        <div id="capacity-field" hidden>
+        <label for="capa">Capacité :</label>
+            <input type="text" id="capacity" name="capacity">
+        </div>
+
         <div id="qt-field">
             <label for="qt">Quantité</label>
             <input type="text" name="qt" id="qt">
@@ -76,123 +82,130 @@
 
 
     
-    <?php 
-    try {
-        $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+    <?php
+try {
+    $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
-        function addProduct($connection, $title, $type, $desc, $price, $qt, $file, $color = null) {
-            $uploadDir = '../uploads/';
-            $fileName = basename($file['name']);
-            $targetFilePath = $uploadDir . $fileName;
-        
-            $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-            $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
-        
-            if (in_array($fileType, $validTypes)) {
-                if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-                    // Insertion dans la table PRODUIT
-                    $query_add = "INSERT INTO PRODUIT (nomProd, typeProd, descProd, prixProd, qtProd, imgProd) 
-                                  VALUES (:title, :type, :desc, :price, :qt, :img)";
-                    $stmt = $connection->prepare($query_add);
+    function addProduct($connection, $title, $type, $desc, $price, $qt, $file, $color = null, $capacity = null) {
+        $uploadDir = '../uploads/';
+        $fileName = basename($file['name']);
+        $targetFilePath = $uploadDir . $fileName;
+    
+        $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+        $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
+    
+        if (in_array($fileType, $validTypes)) {
+            if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+                // Insertion dans la table PRODUIT
+                $query_add = "INSERT INTO PRODUIT (nomProd, typeProd, descProd, prixProd, qtProd, imgProd) 
+                              VALUES (:title, :type, :desc, :price, :qt, :img)";
+                $stmt = $connection->prepare($query_add);
+                $stmt->execute([
+                    ':title' => $title,
+                    ':type'  => $type,
+                    ':desc'  => $desc,
+                    ':price' => $price,
+                    ':qt'    => $type === 'evenement' ? $capacity : $qt, // Utilise la capacité pour les événements
+                    ':img'   => $fileName
+                ]);
+    
+                if ($type === "vetement" && $color) {
+                    $idProd = $connection->lastInsertId(); // Récupère l'ID du produit inséré
+                    $query_add_vetement = "INSERT INTO VETEMENT (idProd, couleurVetement) 
+                                           VALUES (:idProd, :color)";
+                    $stmt = $connection->prepare($query_add_vetement);
                     $stmt->execute([
-                        ':title' => $title,
-                        ':type'  => $type,
-                        ':desc'  => $desc,
-                        ':price' => $price,
-                        ':qt'    => $qt,
-                        ':img'   => $fileName
+                        ':idProd' => $idProd,
+                        ':color'  => $color
                     ]);
-        
-                    if ($type === "vetement" && $color) {
-                        $idProd = $connection->lastInsertId(); // Récupère l'ID du produit inséré
-                        $query_add_vetement = "INSERT INTO VETEMENT (idProd, couleurVetement) 
-                                               VALUES (:idProd, :color)";
-                        $stmt = $connection->prepare($query_add_vetement);
-                        $stmt->execute([
-                            ':idProd' => $idProd,
-                            ':color'  => $color
-                        ]);
-                    }
-                } else {
-                    echo "Erreur : Impossible de télécharger l'image.";
                 }
             } else {
-                echo "Erreur : Format de fichier non valide.";
+                echo "Erreur : Impossible de télécharger l'image.";
             }
+        } else {
+            echo "Erreur : Format de fichier non valide.";
         }
-        
+    }
+    
 
-        function deleteProduct($connection, $title) {
-            $query_delete = "DELETE FROM PRODUIT WHERE nomProd = :title";
-            $stmt = $connection->prepare($query_delete);
-            $stmt->execute([':title' => $title]);
-        }
-
-        function seeProducts(){
-            $select = "SELECT * FROM PRODUIT";
-            $query = $connection->prepare($select);
-            $query->execute();
-
-            echo "<table border='1'>";
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>";
-                foreach ($row as $value) {
-                    echo "<td>" . htmlspecialchars($value) . "</td>";
-                }
-                echo "</tr>";
-            }
-            echo "</table>";    
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $action = $_POST['action'] ?? '';
-            if ($action === 'add') {
-                addProduct(
-                    $connection, 
-                    $_POST['title'], 
-                    $_POST['article'], 
-                    $_POST['desc'], 
-                    $_POST['price'], 
-                    $_POST['qt'], 
-                    $_FILES['picture'], 
-                    $_POST['color'] ?? null
-                );
-            } elseif ($action === 'delete') {
-                deleteProduct($connection, $_POST['title']);
-            } elseif ($action === 'see') {
-                seeProducts();
-            }
-        }
-
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
+    function deleteProduct($connection, $title) {
+        $query_delete = "DELETE FROM PRODUIT WHERE nomProd = :title";
+        $stmt = $connection->prepare($query_delete);
+        $stmt->execute([':title' => $title]);
     }
 
-    ?>
+    function seeProducts(){
+        $select = "SELECT * FROM PRODUIT";
+        $query = $connection->prepare($select);
+        $query->execute();
 
-    <script>
-        function toggleFields() {
-            const articleType = document.getElementById('article-select').value;
-
-            const priceField = document.getElementById('price-field');
-            const promoField = document.getElementById('promo-field');
-            const qtField = document.getElementById('qt-field');
-            const colorField = document.getElementById('color-field');
-
-            // Masquer tous les champs au départ
-            priceField.hidden = false;
-            promoField.hidden = false;
-            qtField.hidden = false;
-            colorField.hidden = true;
-
-            if (articleType === 'galerie') {
-                priceField.hidden = true;
-                promoField.hidden = true;
-                qtField.hidden = true;
-            } else if (articleType === 'vetement') {
-                colorField.hidden = false;
+        echo "<table border='1'>";
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            foreach ($row as $value) {
+                echo "<td>" . htmlspecialchars($value) . "</td>";
             }
+            echo "</tr>";
         }
-    </script>
+        echo "</table>";    
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $action = $_POST['action'] ?? '';
+        if ($action === 'add') {
+            addProduct(
+                $connection, 
+                $_POST['title'], 
+                $_POST['article'], 
+                $_POST['desc'], 
+                $_POST['price'], 
+                $_POST['qt'], 
+                $_FILES['picture'], 
+                $_POST['color'] ?? null,
+                $_POST['capa'] ?? null // Ajoutez la capacité pour les événements
+            );
+        } elseif ($action === 'delete') {
+            deleteProduct($connection, $_POST['title']);
+        } elseif ($action === 'see') {
+            seeProducts();
+        }
+    }
+
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
+?>
+
+<script>
+    function handleArticleTypeChange() {
+        const articleType = document.getElementById('article-type').value;
+        const priceField = document.getElementById('price-field');
+        const promoField = document.getElementById('promo-field');
+        const qtField = document.getElementById('qt-field');
+        const capacityField = document.getElementById('capacity-field');
+        const colorField = document.getElementById('color-field');
+
+        // Masquer tous les champs au départ
+        priceField.hidden = false;
+        promoField.hidden = false;
+        qtField.hidden = false;
+        capacityField.hidden = false;
+        colorField.hidden = false;
+
+        if (articleType === 'galerie') {
+            priceField.hidden = true;
+            promoField.hidden = true;
+            qtField.hidden = true;
+        } else if (articleType === 'vetement') {
+            colorField.hidden = false;
+        } else if (articleType === 'evenement') {
+            qtField.hidden = true;
+            capacityField.hidden = false;
+        }elseif (articleType === 'produit') {
+            colorField.hidden = true;
+            capacityField.hidden = true;
+        }
+    }
+</script>
 </body>
 </html>
