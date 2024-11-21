@@ -8,12 +8,28 @@ class ConnectionModel extends DBModel {
     }
 
     public function login($username, $password) {
-        $sql = "call login(:username)";
+        $hashedPassword = hash('sha256', $password);
+        $sql = "call login(:username, :password)";
         $init = $this->db->prepare($sql);
         $init->bindParam(':username', $username);
+        $init->bindParam(':password', $hashedPassword);
+
         $init->execute();
-        $result = $init->fetch()[0];
-        return $return = password_verify($password, $result) ? True : False;
+        $result = $init->fetch(PDO::FETCH_ASSOC);
+
+        $_SESSION['result'] = json_encode($result);
+
+        if ($result["Failed"] == 1) {
+            return False;
+        } else {
+            $_SESSION['nom'] = $result['nomUser'];
+            $_SESSION['email'] = $result['adrMailUser'];
+            $_SESSION['TP'] = $result['idTPAgenda'];
+            $_SESSION['pp'] = $result['ppUser'];
+            $_SESSION['role'] = $result['idGrade'];
+            $_SESSION['grade'] = $result['idRole'];
+            return True;
+        }
     }
 
     function changePwd($username, $password, $newPassword) {
@@ -25,12 +41,11 @@ class ConnectionModel extends DBModel {
     }
 
     function createUser($nom, $prenom, $classe, $mail, $password) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = hash('sha256', $password);
         $sql = "CALL createUser(\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$hashedPassword\")";
         $init = $this->db->prepare($sql);
         $init->execute();
         $result= $init->fetch()[0];
-        echo "<script>console.log(\"debug\", \"$result\");</script>";
         return $result == 1 ? True : False;
     }
 }
