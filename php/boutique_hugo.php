@@ -100,17 +100,18 @@ try {
 
     function addArticle($connection, $data, $file) {
         $imageName = uploadImage($file);
-
+    
         if ($data['article'] === 'produit') {
-            $query = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd) 
-                      VALUES (:title, :desc, :price, :qt, :img)";
+            $query = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd, typeProd) 
+                      VALUES (:title, :desc, :price, :qt, :img, :typeProd)";
             $stmt = $connection->prepare($query);
             $stmt->execute([
-                ':title' => $data['title'],
-                ':desc'  => $data['desc'],
-                ':price' => $data['price'],
-                ':qt'    => $data['qt'],
-                ':img'   => $imageName,
+                ':title'    => $data['title'],
+                ':desc'     => $data['desc'],
+                ':price'    => $data['price'],
+                ':qt'       => $data['qt'],
+                ':img'      => $imageName,
+                ':typeProd' => $data['article'], // Récupération du type d'article
             ]);
         } elseif ($data['article'] === 'evenement') {
             $query = "INSERT INTO EVENEMENT (titreEvent, descEvent, capaEvent, prixEvent, lieuEvent, imgEvent, dateEvent, minRoleEvent, minGradeEvent) 
@@ -128,17 +129,18 @@ try {
                 ':minGrade' => $data['minGrade'],
             ]);
         } elseif ($data['article'] === 'vetement') {
-            $queryProd = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd) 
-                          VALUES (:title, :desc, :price, :qt, :img)";
+            $queryProd = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd, typeProd) 
+                          VALUES (:title, :desc, :price, :qt, :img, :typeProd)";
             $stmtProd = $connection->prepare($queryProd);
             $stmtProd->execute([
-                ':title' => $data['title'],
-                ':desc'  => $data['desc'],
-                ':price' => $data['price'],
-                ':qt'    => $data['qt'],
-                ':img'   => $imageName,
+                ':title'    => $data['title'],
+                ':desc'     => $data['desc'],
+                ':price'    => $data['price'],
+                ':qt'       => $data['qt'],
+                ':img'      => $imageName,
+                ':typeProd' => $data['article'], // Ajout de typeProd
             ]);
-
+    
             $idProd = $connection->lastInsertId();
             $queryVet = "INSERT INTO VETEMENT (idProd, couleurVetement) VALUES (:idProd, :color)";
             $stmtVet = $connection->prepare($queryVet);
@@ -148,7 +150,6 @@ try {
             ]);
         }
     }
-
     function deleteArticle($connection, $title) {
         $query = "DELETE FROM PRODUIT WHERE nomProd = :title";
         $stmt = $connection->prepare($query);
