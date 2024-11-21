@@ -34,7 +34,7 @@ body, html {
 .compte {
     margin-top: 60px;
     margin-bottom: 60px;
-    margin-left: 80px;
+    margin-left: 4vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -164,6 +164,7 @@ a.editer:visited {
 }
 
 #calendar {
+    padding: 15px;
     background-color: #222222;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -208,6 +209,7 @@ a.editer:visited {
     transition: all 0.2s ease;
 }
 
+
 .fc-daygrid-day:hover {
     background-color: #444;
 }
@@ -218,10 +220,9 @@ a.editer:visited {
 }
 
 .fc-daygrid-day.fc-day-today {
-    background-color: #7b4bc9;
-    color: #fff;
+    background-color: #443b53 !important;
+    color: #ffffff;
     font-weight: bold;
-    border-radius: 50%;
     text-align: center;
 }
 

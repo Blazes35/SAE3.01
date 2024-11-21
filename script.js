@@ -16,8 +16,9 @@ function redirectToProduct() {
 document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById('popup');
 
-    // Assurez que la popup est masquée au chargement
+    // Assurez-vous que la popup est masquée au chargement
     popup.classList.add('hidden');
+    console.log("Popup should be hidden on load:", popup.classList.contains('hidden'));
 
     const addRoleBtn = document.getElementById('add-role-btn');
     const roleForm = document.getElementById('role-form');
