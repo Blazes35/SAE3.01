@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités</title>
-    <!-- Lien pour importer les Material Icons -->
+    <title>Modifier un produit</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="actu.css" />
+    <link rel="stylesheet" href="event.css" />
     <link rel="stylesheet" href="header.css" />
-</head>
+    </head>
 <body>
     <header>
         <div class="overlap-group">
@@ -34,39 +33,5 @@
             </div>
         </div>
     </div>
-    <?php
-    $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-    $queryActu = "SELECT titreActualite, descActualite, dateActualite, urlPhotoActualite FROM ACTUALITE"; 
-    $launch = $connect->prepare($queryActu);
-    $launch->execute();
-    $actus = $launch->fetchAll(PDO::FETCH_ASSOC);
-
-    echo "<div class='titre'><h2>Actualité</h2></div>";
-
-    ?>
-
-    <?php 
-    foreach($actus as $actu):
-    ?>
-    <div class="container">
-        <div class="actu-card">
-            <div class="actu-card-in">
-                <!-- Image de l'actualité -->
-                <div class="actu-img">
-                    <img src="uploads/actualites/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
-                         alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" />
-                </div>
-
-                <!-- Détails de l'actualité -->
-                <div class="detail">
-                    <p class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></p>
-                    <p class="contenu"><?php echo htmlspecialchars($actu['descActualite']); ?></p>
-                    <p class="date"><?php echo htmlspecialchars($actu['dateActualite']); ?></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <?php endforeach; ?>
-</body>
-</html>
+<body>
+    

@@ -1,7 +1,7 @@
 <?php
 require_once 'Models/mainModel.php';
 
-class Treasury{
+class Dashboard{
 
     public function renderLayoutAdmin()
     {

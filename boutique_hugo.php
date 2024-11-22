@@ -238,11 +238,57 @@
             }
         }
         
+        function deleteArticle($connection, $type, $title) {
+            try {
+                // Déterminer la table en fonction du type d'article
+                switch ($type) {
+                    case 'produit':
+                    case 'vetement': // Les vêtements sont aussi dans la table PRODUIT
+                        $query = "DELETE FROM PRODUIT WHERE nomProd = :title";
+                        break;
+        
+                    case 'galerie':
+                        $query = "DELETE FROM GALERIE WHERE titreGalerie = :title";
+                        break;
+        
+                    case 'evenement':
+                        $query = "DELETE FROM EVENEMENT WHERE titreEvent = :title";
+                        break;
+        
+                    case 'actu':
+                        $query = "DELETE FROM ACTUALITE WHERE titreActualite = :title";
+                        break;
+        
+                    default:
+                        throw new Exception("Type d'article non reconnu.");
+                }
+        
+                // Préparer et exécuter la requête
+                $stmt = $connection->prepare($query);
+                $stmt->execute([':title' => $title]);
+        
+                echo "L'article de type '$type' avec le titre '$title' a été supprimé avec succès.";
+            } catch (PDOException $e) {
+                echo "Erreur lors de la suppression : " . $e->getMessage();
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+            }
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'];
-            if ($action === 'add') addArticle($connection, $_POST, $_FILES['picture']);
-            elseif ($action === 'delete') deleteArticle($connection, $_POST['title']);
+            $type = $_POST['article'] ?? '';
+            $title = $_POST['title'] ?? '';
+        
+            if ($action === 'add') {
+                addArticle($connection, $_POST, $_FILES['picture']);
+            } elseif ($action === 'delete') {
+                if (!empty($type) && !empty($title)) {
+                    deleteArticle($connection, $type, $title);
+                } else {
+                    echo "Veuillez sélectionner un type d'article et fournir un titre.";
+                }
+            }
         }
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();

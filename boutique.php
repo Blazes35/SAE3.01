@@ -57,7 +57,7 @@
     while ($product = $launch->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='article'>";            
         echo "<h3 class='titre-article'>" . htmlspecialchars($product['nomProd']) . "</h3>";
-        echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
+        echo "<img src='uploads/produits/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
         echo "<a href='detailArticle.php?id=" . urlencode($product['idProd']) . "' class='info'>";
         echo "<div>";
         echo "<p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>";
@@ -81,7 +81,7 @@
         while ($clothe = $launch_clothe->fetch(PDO::FETCH_ASSOC)) {
             echo "<div class='article'>";            
             echo "<h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
-            echo "<img src='../uploads/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";         
+            echo "<img src='uploads/vetements/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";         
             echo "<a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>";
             echo "<div>";
             echo "<p class='couleur'>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>";

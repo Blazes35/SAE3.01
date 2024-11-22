@@ -20,10 +20,10 @@
 <div class="overlap-group">
             <div class="titre-de-page">
                 <div class="overlap-group-3">
-                <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
+                    <a href="?page=Dashboard" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
                     <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
                     <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
+                    <a href="?page=Treasury" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
                     <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
                     <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
                 </div>
