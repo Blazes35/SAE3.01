@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="calendrier.css" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js'></script>
-    <script type="module" src="ical.js/dist/ical.js"></script>
-</head>
-<div class="menu">
-    <div class="logo-theme">
-        <img class="logo" src="./images/logo-sans-fond.png" />
-        <div class="theme-claire">THEME CLAIRE</div>
-    </div>
-<div class="compte">
-    <span class="material-symbols-outlined">account_circle</span>
-    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-</div>
-<div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-        </div>
-</div>
-</div>
-<?php
+<?php 
 
 $urls = [
     '11A' => 'http://planning.univ-lemans.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=282&projectId=7&calType=ical&nbWeeks=4',
@@ -49,12 +15,12 @@ $urls = [
     '32D' => 'http://planning.univ-lemans.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6241&projectId=7&calType=ical&nbWeeks=4'
 ];
 
-$userIdTPAgenda = '21B'; 
+$userIdTPAgenda = '21B';
 
 function fetchEventsFromUrl($url) {
     $ical = file_get_contents($url); 
     preg_match_all('/(BEGIN:VEVENT.*?END:VEVENT)/si', $ical, $result, PREG_PATTERN_ORDER);
-    
+
     $icalarray = [];
     foreach ($result[0] as $eventData) {
         $tmpbyline = explode("\r\n", $eventData);
@@ -74,43 +40,79 @@ function fetchEventsFromUrl($url) {
             $icalarray[] = $event;
         }
     }
-    
+
     return $icalarray;
 }
 
+// Récupérer les cours depuis iCal
+$events = [];
 if (isset($urls[$userIdTPAgenda])) {
     $events = fetchEventsFromUrl($urls[$userIdTPAgenda]);
-    
-    usort($events, function ($a, $b) {
-        return strtotime($a["DTSTART"]) - strtotime($b["DTSTART"]);
-    });
 }
+
+// Ajouter les événements depuis la base de données
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $pdo->query("SELECT titreEvent, descEvent, dateEvent, lieuEvent FROM EVENEMENT");
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $events[] = [
+            'SUMMARY' => $row['titreEvent'],
+            'DESCRIPTION' => $row['descEvent'] . ' - Lieu : ' . $row['lieuEvent'],
+            'DTSTART' => $row['dateEvent'] . 'T00:00:00',
+        ];
+    }
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
+
+// Trier les événements par date
+usort($events, function ($a, $b) {
+    return strtotime($a["DTSTART"]) - strtotime($b["DTSTART"]);
+});
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js'></script>
 
-<div class="container">
-    <h1 class="title">AGENDA</h1>
+    <style>
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
     <div id="calendar"></div>
-</div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
-            
+
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridWeek', 
+                initialView: 'dayGridWeek',
                 events: [
                     <?php
                         foreach ($events as $event) {
-                            $eventdate = date('Y-m-d', strtotime($event['DTSTART'])); 
-                            $eventTime = date('H:i', strtotime($event['DTSTART'])); 
-                            $eventTitle = addslashes($event['SUMMARY']); 
-                            $eventDescription = addslashes($event['DESCRIPTION']); 
+                            $eventdate = date('Y-m-d', strtotime($event['DTSTART']));
+                            $eventTime = date('H:i', strtotime($event['DTSTART']));
+                            $eventTitle = addslashes($event['SUMMARY']);
+                            $eventDescription = addslashes($event['DESCRIPTION']);
 
                             echo "{ 
                                 title: '$eventTitle', 
                                 start: '$eventdate $eventTime', 
                                 description: '$eventDescription' 
-                            },"; 
+                            },";
                         }
                     ?>
                 ]
@@ -119,6 +121,5 @@ if (isset($urls[$userIdTPAgenda])) {
             calendar.render();
         });
     </script>
-    
 </body>
 </html>
