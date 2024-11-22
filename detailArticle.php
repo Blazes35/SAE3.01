@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </head>
     <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="produit.css" />
+    <link rel="stylesheet" href="detailArticle.css" />
     <!-- <link rel="stylesheet" href="styleguide.css" /> -->
     
 </head>
@@ -49,12 +49,12 @@
             if ($product = $init->fetch(PDO::FETCH_ASSOC)) {
                 echo "<div class='image-gallery'>";
                 echo "<div class='first-img'>";
-                echo "<img src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
+                echo "<img src='uploads/produits/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
                 echo "</div>";
                 echo "</div>";
 
                 echo "<div class='main-image'>";
-                echo "<img id='main-image' src='uploads/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
+                echo "<img id='main-image' src='uploads/produits/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
                 echo "</div>";
 
                 echo "<div class='product-details'>";
@@ -74,7 +74,7 @@
                 echo "</div>";
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter au favoris ♡</button>";
-                echo "<a href='updProd.php?id=" . urlencode($product['idProd']) . "'><button class='settings'><span class='material-symbols-outlined'>settings</span>Paramétrer</button></a>";
+                echo "<a href='updateProduit.php?id=" . urlencode($product['idProd']) . "' class='settings'><span class='material-symbols-outlined'>settings</span> Paramétrer</a>";
                 echo "</div>";
                 echo "<p class='add-element'>+ Ajouter un élément</p>";
                 echo "</div>";
