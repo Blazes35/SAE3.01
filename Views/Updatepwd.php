@@ -5,14 +5,13 @@ $controller = new Updatepwd();
 
 <link rel="stylesheet" href="/css/updatepwd.css"/>
 
-</div>
-</div>
-</div>
-
-<div class="changement">
+            </div>
+        </div>
+    </div>
+    <div class="changement">
         <div class="titrechangement">CHANGER VOTRE MOT DE PASSE</div>
         <div class="formulaire">
-            <form action="" method="post" onsubmit = "this.action='?page=Updatepwd&oldpassword=' + encodeURIComponent(this.oldpassword.value) + '&newpassword=' + encodeURIComponent(this.newpassword.value) +'&confirmpassword='+encodeURIComponent(this.confirmpassword.value)'">
+            <form action="?page=Updatepwd" method="post">
                 <div class="input-group">
                     <label for="oldPassword ">
                         <span class="material-symbols-outlined">lock</span>
@@ -43,7 +42,7 @@ $controller = new Updatepwd();
         <img class="imagefooter" src="images/ellipse4.png">
     </div>
 
-    <?php
+<?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updatePwd'])) {
         $email= htmlspecialchars($_SESSION['email']);    
         $oldpassword = htmlspecialchars($_POST['oldPassword']);
@@ -51,18 +50,15 @@ $controller = new Updatepwd();
         $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
 
         if($newPassword === $confirmPassword){
-            
             if($controller->changePwd($email, hash('sha256', $oldpassword), hash('sha256', $newPassword))){
                 header("Location: ?page=Presentation");
-                exit();            }
-            else{
+                exit();            
+            }else{
                 echo "<script>alert(\"Ancien mot de passe incorrect\")</script>";
             }
         }
         else{
         echo "<script>alert(\"Nouveau mot de passe ne correspond pas à confirmation mot de passe\")</script>";
-        // header("Location: ?page=Login");
-        // exit();
         }
     }
-    ?>
+?>

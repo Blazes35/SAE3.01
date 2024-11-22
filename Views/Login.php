@@ -1,15 +1,10 @@
 <?php 
 require 'Controllers/loginController.php';
 $controller = new loginController();
-
-
 ?>
 
-<!-- Link to the CSS file -->
 <link rel="stylesheet" href="css/login.css"> 
-<!-- Display the layout -->
 <?php echo $controller->renderLayout(); ?>
-<!-- The following code is the layout of the website -->
             </div>
         </div>
     </div>
@@ -18,12 +13,12 @@ $controller = new loginController();
     <div class="connexion">
         <div class="titreconnexion">CONNEXION</div>
         <div class="formulaire">
-            <form action="" method="post" onsubmit="this.action='?page=Login&username=' + encodeURIComponent(this.username.value) + '&password=' + encodeURIComponent(this.password.value);">
+            <form action="?page=Login" method="post">
                 <div class="input-group">
-                    <label for="username">
+                    <label for="email">
                         <span class="material-symbols-outlined">person</span>
                     </label>
-                    <input type="email" id="username" name="username" placeholder="EMAIL" required>
+                    <input type="email" id="email" name="email" placeholder="EMAIL" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
                 </div>
                 <div class="input-group">
                     <label for="password">
@@ -50,16 +45,15 @@ $controller = new loginController();
     
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
-    $username = htmlspecialchars($_POST['username']);
+
+    $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
-    if ($controller->login($username, $password)) {
+    if ($controller->login($email, $password)) {
         header("Location: ?page=Presentation");
         exit();
     }else{
         echo "<script>alert(\"Identifiants incorrects\")</script>";
-        // header("Location: ?page=Login");
-        // exit();
     }
 }
 ?>
