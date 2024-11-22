@@ -8,8 +8,8 @@ class Updatepwd{
         $this->model = new ConnectionModel();
     }
 
-    public function changePwd($mail, $password) {
-        return $this->model->changePwd($mail, $password);
+    public function changePwd($mail, $oldPassword, $newPassword) {
+        return $this->model->changePwd($mail, $oldPassword, $newPassword);
     }
 
     public function renderLayout()

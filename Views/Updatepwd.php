@@ -14,27 +14,27 @@ $controller = new Updatepwd();
         <div class="formulaire">
             <form action="" method="post" onsubmit = "this.action='?page=Updatepwd&oldpassword=' + encodeURIComponent(this.oldpassword.value) + '&newpassword=' + encodeURIComponent(this.newpassword.value) +'&confirmpassword='+encodeURIComponent(this.confirmpassword.value)'">
                 <div class="input-group">
-                    <label for="username">
+                    <label for="oldPassword ">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
-                    <input type="password" id="oldpassword" name="oldpassword" placeholder="ANCIEN MOT DE PASSE" required>
+                    <input type="password" id="oldPassword" name="oldPassword" placeholder="ANCIEN MOT DE PASSE" required>
                 </div>
                 <div class="input-group">
-                    <label for="newpassword">
+                    <label for="newPassword">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
-                    <input type="password" id="newpassword" name="newpassword" placeholder="NOUVEAU MOT DE PASSE" required>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="NOUVEAU MOT DE PASSE" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="confirmpassword">
+                    <label for="confirmPassword">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
-                    <input type="password" id="confirmpassword" name="confirmpassword" placeholder="CONFIRMER MOT DE PASSE" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="CONFIRMER MOT DE PASSE" required>
                 </div>
                 
                 <div class="envoyer">
-                    <button type="submit" name='updayePwd'>CONFIRMER</button>
+                    <button type="submit" name='updatePwd'>CONFIRMER</button>
                 </div>
             </form>
         </div>
@@ -45,14 +45,19 @@ $controller = new Updatepwd();
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updatePwd'])) {
-    $username = htmlspecialchars($_POST['oldpassword']);
-    $password = htmlspecialchars($_POST['newpassword']);
-    $passwordconfirm = htmlspecialchars($_POST['confirmpassword']);
+        $email= htmlspecialchars($_SESSION['email']);    
+        $oldpassword = htmlspecialchars($_POST['oldPassword']);
+        $newPassword = htmlspecialchars($_POST['newPassword']);
+        $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
 
-        if(password === $passwordconfirm){
-            $controller->changePwd($username, $password);
-            header("Location: ?page=Presentation");
-            exit();
+        if($newPassword === $confirmPassword){
+            
+            if($controller->changePwd($email, hash('sha256', $oldpassword), hash('sha256', $newPassword))){
+                header("Location: ?page=Presentation");
+                exit();            }
+            else{
+                echo "<script>alert(\"Ancien mot de passe incorrect\")</script>";
+            }
         }
         else{
         echo "<script>alert(\"Nouveau mot de passe ne correspond pas à confirmation mot de passe\")</script>";

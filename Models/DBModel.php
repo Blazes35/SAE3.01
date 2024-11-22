@@ -1,11 +1,11 @@
 <?php
 class DBModel {
 
-    protected $db;
+    protected static $db;
 
     public function __construct()
     {
-        if ($this->db == null) {
+        if (self::$db == null) {
             $this->connect();
         }
     }
@@ -14,9 +14,9 @@ class DBModel {
         try {
             $db = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->db = $db;
+            self::$db = $db;
         } catch (PDOException $e) {
-            $this->db = null;
+            self::$db = null;
         }
     }
 }
