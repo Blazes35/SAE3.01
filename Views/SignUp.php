@@ -9,19 +9,26 @@ $controller = new SignUpController();
 <div class="inscription">
         <div class="titreinscription">INSCRIPTION</div>
         <div class="formulaire">
-            <form action="" method="post" onsubmit="this.action='?page=SignUp&nom='+ encodeURIComponent(this.nom.value)+'&prenom='+ encodeURIComponent(this.prenom.value)+'&classe='+ encodeURIComponent(this.classe.value)+'&mail='+ encodeURIComponent(this.mail.value)+'&password='+ encodeURIComponent(this.password.value)+'&password2='+ encodeURIComponent(this.password2.value);">
+            <form action="?page=SignUp" method="post">
                 <div class="input-group">
                     <label for="nom">
                         <span class="material-symbols-outlined">person</span>
                     </label>
-                    <input type="text" id="nom" name="nom" placeholder="NOM" required>
+                    <input type="text" id="nom" name="nom" placeholder="NOM" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required>
                 </div>
 
                 <div class="input-group">
                     <label for="prenom">
                         <span class="material-symbols-outlined">person</span>
                     </label>
-                    <input type="text" id="prenom" name="prenom" placeholder="PRÉNOM" required>
+                    <input type="text" id="prenom" name="prenom" placeholder="PRÉNOM" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="mail">
+                        <span class="material-symbols-outlined">mail</span>
+                    </label>
+                    <input type="email" id="mail" name="mail" placeholder="EMAIL" value="<?php echo isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : ''; ?>" required>
                 </div>
 
                 <div class="select-group">
@@ -51,13 +58,6 @@ $controller = new SignUpController();
                 </div> -->
 
                 <div class="input-group">
-                    <label for="mail">
-                        <span class="material-symbols-outlined">mail</span>
-                    </label>
-                    <input type="email" id="mail" name="mail" placeholder="EMAIL" required>
-                </div>
-
-                <div class="input-group">
                     <label for="password">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
@@ -75,7 +75,6 @@ $controller = new SignUpController();
                     <button type="submit" name="SignUp" name>S'INSCRIRE</button>
                 </div>
             </form>
-            
         </div>
         <img class="imagefooter" src="images/ellipse4.png">
     </div>
@@ -90,13 +89,10 @@ $controller = new SignUpController();
         echo "<script>console.log(\"debug\",\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$password\", \"$password2\");</script>";
         if ($password === $password2) {
             $controller->signUp($nom, $prenom, $classe, $mail, $password);
-            // echo "<script>alert(\"Utilisateur créé avec succès\");</script>";
             header("Location: ?page=Login");
             exit();
         }else {
-            // header("Location: ?page=SignUp");
             echo "<script>alert(\"Les mots de passe ne correspondent pas\");</script>";
-            // exit();
         }
     }
 ?>
