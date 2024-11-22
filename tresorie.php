@@ -1,6 +1,30 @@
 <?php
 $chemin_dossier = "feuille_calcul/";
 
+//Ajouter un fichier
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fichier_csv'])){
+    $uploaded_file  = $_FILES['fichier_csv'];
+    $uploaded_path = $chemin_dossier . basename($uploaded_file['name']);
+
+    if(pathinfo($uploaded_path, PATHINFO_EXTENSION)==='csv'){
+        move_uploaded_file($uploaded_file['tmp_name'], $uploaded_path);
+    }
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
+
+//Supprimer un fichier
+if(isset($_GET['supprimer'])){
+    $fichier_a_suprimer = $chemin_dossier . $_GET['supprimer'];
+    if(file_exists($fichier_a_suprimer)){
+        unlink($fichier_a_suprimer);
+    }
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
+//Lecture des fichiers existant
 $files = scandir($chemin_dossier);
 $annees=[];
 foreach($files as $file){
@@ -30,7 +54,7 @@ if(file_exists($fichier_csv)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tresorie</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="gestionProfilAdmin.css" />
+    <link rel="stylesheet" href="calendrier.css"/>
     <link rel="stylesheet" href="tresorie.css"/>
 </head>
 <body>
@@ -58,46 +82,36 @@ if(file_exists($fichier_csv)){
 </div>
 </div>
 
-<div class="tresorie">
+<div class="tresoriecalcul">
     <div class="titretresorie">TRESORIE</div>
     <div class="dossier">
         <ul>
         <?php
         // Pour chaque année trouvée, créez un lien
         foreach ($annees as $annee) {
+            $file_name = "vente".$annee.".csv";
             $url = $chemin_dossier . "\\vente" . $annee . ".csv";
-            echo "<li><span class='material-symbols-outlined'>file_save</span><a href=\"$url\" target=\"_blank\">Vente de $annee</a></li>";
+            echo "<li>
+            <span class='material-symbols-outlined'>file_save</span>
+            <a href=\"$url\" target=\"_blank\">Vente de $annee</a>
+            <a href=\"?supprimer=$file_name\" class=\"supprimer\">Supprimer</a>
+            </li>";
         }
         ?>
-
         </ul>
+        <form method="post" enctype="multipart/form-data">
+            <div class="import">
+                <label for="fichier_csv"> Sélectionner csv</label>
+                <input type="file" id="fichier_csv" name = "fichier_csv" accept=".csv" required/>
+            </div>
+            <div class="confirm">
+                <button type="submit">Ajouter</button>
+            </div>
+        </form>
     </div>
-    <div class="Feuillecalcul">
-    <table border="1" cellspacing="0" cellpadding="5">
-    <thead>
-        <tr>
-            <?php
-            if (!empty($data)) {
-                foreach ($data[0] as $header) {
-                    echo "<th>" . htmlspecialchars($header) . "</th>";
-                }
-            }
-            ?>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        // Afficher les lignes suivantes comme contenu du tableau
-        for ($i = 1; $i < count($data); $i++) {
-            echo "<tr>";
-            foreach ($data[$i] as $cell) {
-                echo "<td>" . htmlspecialchars($cell) . "</td>";
-            }
-            echo "</tr>";
-        }
-        ?>
-    </tbody>
-</table>
+    <div class="Feuillecalcul"> 
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRA4kGY_qUwJL95Ewt9b2XWpHdRl43_qPnTifZ0gyMRSfRQHLX1LhBjGRZ-Fi9QANd3vYEBJA3lsRP/pubhtml?gid=1565703647&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        <a href="https://docs.google.com/spreadsheets/d/1FngDpYU9gaINMVpy378ttvsUlhEGoRikUBvL3_8XPLI/edit?usp=sharing">Modifier</a>
     </div>
 </div>
     
