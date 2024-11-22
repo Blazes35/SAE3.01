@@ -32,7 +32,7 @@ ob_start();
         </form>
         <div class="inscri">
             VOUS ETES NOUVEAU ?
-                <a class="inscription" href="/?page=SignUp">INSCRIVEZ-VOUS !</a>
+            <a class="inscription" href="inscription.html">INSCRIVEZ-VOUS !</a>
         </div>
     </div>
 </div>

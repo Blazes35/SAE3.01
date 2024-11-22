@@ -1,5 +1,4 @@
 <?php
-// session_destroy();
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
@@ -19,7 +18,7 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
     include $viewFile;
     $content = ob_get_clean();
 
-include './Views/LayoutAdmin.php';
+    include './Views/LayoutAdmin.php';
 }
 
 $page = $_POST['page'] ?? $_GET['page'] ?? 'Presentation';
@@ -31,7 +30,7 @@ switch ($page) {
         renderLayout('./Views/Main.php', 'Presentation');
         break;
     case 'Login':
-        renderLayout('./Views/Login.php', 'Login');
+        include './Controllers/LoginController.php';
         break;
     case 'SignUp':
         renderLayout('./Views/SignUp.php', 'SignUp');

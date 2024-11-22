@@ -50,7 +50,7 @@
                 </div>
             
 
-    <?php echo isset($content) ? $content : ''; ?>
+    <?php echo $content ?>
 
 <footer>
         <div class="bandeau1">
