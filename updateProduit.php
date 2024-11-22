@@ -111,6 +111,7 @@
         if ($product) {
 ?>
 
+<div class="container">
 <h1>Modifier ou supprimer un produit</h1>
 <p><?php echo $message; ?></p>
 
@@ -149,6 +150,7 @@
     <br>
     <button type="submit">Mettre à jour</button>
 </form>
+
 <br>
 
 <!-- Formulaire de suppression -->
@@ -157,7 +159,7 @@
     <input type="hidden" name="action" value="delete" />
     <button type="submit" style="background-color: red; color: white;">Supprimer le produit</button>
 </form>
-
+</div>
 <?php
         } else {
             echo "<p>Produit introuvable.</p>";

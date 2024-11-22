@@ -74,6 +74,7 @@ body, html {
 
 /* Conteneur principal */
 .container {
+    font-family: 'K2D', sans-serif;
     margin-top: 20px;
     width: 100%;
     max-width: 60vw;
@@ -129,6 +130,7 @@ form select {
 }
 
 form button {
+    font-family: 'K2D', sans-serif;
     padding: 10px 20px;
     background-color: #6c38f7;
     color: #fff;
@@ -144,7 +146,7 @@ form button:hover {
 }
 
 /* Bouton de suppression */
-.delete-button {
+.form .delete-button {
     padding: 10px 20px;
     background-color: #ff4d4d;
     color: #fff;
@@ -155,8 +157,9 @@ form button:hover {
     transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
-    background-color: #ff1a1a;
+form .delete-button:hover {
+    background-color: #ffffff;
+    color: red;
 }
 
 /* Image actuelle */
