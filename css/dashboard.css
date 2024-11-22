@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+/* Réinitialise les marges et paddings par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.main-content {
+    text-align: center; /* Centre le contenu horizontalement */
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #6c38f7;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Définit trois colonnes */
+    gap: 20px;
+    justify-items: center; /* Centre les éléments horizontalement */
+    padding: 20px;
+}
+
+.card {
+    background-color: #6c38f7;
+    color: white;
+    border-radius: 10px;
+    width: 300px; /* Augmente la largeur des cartes */
+    height: 300px; /* Augmente la hauteur des cartes */
+    text-align: center;
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    border: white 2px solid;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content span{
+    font-size: 200px;
+    display: block;
+    margin-right: 0;
+}
+
+.material-symbols-outlined {
+    font-size: 48px; /* Taille des icônes */
+    margin-top: 10px; /* Espace au-dessus des icônes */
+}

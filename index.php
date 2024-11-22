@@ -42,6 +42,10 @@
         case 'Treasury':
             renderLayoutAdmin('./Views/Treasury.php', 'Treasury');
             break;
+        case 'Dashboard':
+            renderLayoutAdmin('./Views/Dashboard.php', 'Dashboard');
+            break;
+        
         default:
             renderLayout('./Views/error404.php', 'error404');
             break;
