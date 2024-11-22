@@ -1,4 +1,7 @@
-<?php
+<?php 
+    require 'Controllers/TreasuryController.php';
+    $controller = new Treasury();
+
 $chemin_dossier = "feuille_calcul/";
 
 //Ajouter un fichier
@@ -47,40 +50,9 @@ if(file_exists($fichier_csv)){
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tresorie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="calendrier.css"/>
-    <link rel="stylesheet" href="tresorie.css"/>
-</head>
-<body>
 
-    <div class="menu">
-    <div class="logo-theme">
-        <img class="logo" src="./images/logo-sans-fond.png" />
-        <div class="theme-claire">THEME CLAIRE</div>
-    </div>
-<div class="compte">
-    <span class="material-symbols-outlined">account_circle</span>
-    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-</div>
-<div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-        </div>
-</div>
-</div>
+ <link rel="stylesheet" href="css/treasury.css"/>
+
 
 <div class="tresoriecalcul">
     <div class="titretresorie">TRESORIE</div>
@@ -114,6 +86,3 @@ if(file_exists($fichier_csv)){
         <a href="https://docs.google.com/spreadsheets/d/1FngDpYU9gaINMVpy378ttvsUlhEGoRikUBvL3_8XPLI/edit?usp=sharing">Modifier</a>
     </div>
 </div>
-    
-</body>
-</html>
