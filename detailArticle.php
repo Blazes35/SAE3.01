@@ -96,9 +96,12 @@
                 // Favoris et paramètres
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
-                echo " <a href='updProd.php?id=" . urlencode($product['idProd']) . "'><button class='settings'>";
-                echo " <span class='material-symbols-outlined'>settings</span> Paramétrer";
-                echo " </button></a>";
+                echo "<button class='settings'>";
+                echo " <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>";
+                echo " <span class='material-symbols-outlined'>settings</span>"; 
+                echo "<p id='probleme'>Parametrer</p>";
+                echo " </a>";
+                echo " </button>";
                 echo "</div>";
 
                 echo "<p class='add-element'>+ Ajouter un élément</p>";
