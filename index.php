@@ -1,8 +1,7 @@
 <?php
-//include controller
-
-
-
+// session_destroy();
+session_name('BDE');
+session_set_cookie_params(86400 * 30, "/");
 session_start();
 
 

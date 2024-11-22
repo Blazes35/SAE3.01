@@ -110,7 +110,7 @@ try {
     ]);
 
     function uploadImage($file) {
-        $uploadDir = 'uploads/';
+        $uploadDir = 'uploads/galerie/';
         $fileName = basename($file['name']);
         $targetFilePath = $uploadDir . $fileName;
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
