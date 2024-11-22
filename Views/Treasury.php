@@ -12,7 +12,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fichier_csv'])){
     if(pathinfo($uploaded_path, PATHINFO_EXTENSION)==='csv'){
         move_uploaded_file($uploaded_file['tmp_name'], $uploaded_path);
     }
-    header("Location: " . $_SERVER['PHP_SELF']);
+    header("Location: ?page=Treasury");
+    
     exit();
 }
 
@@ -23,7 +24,7 @@ if(isset($_GET['supprimer'])){
     if(file_exists($fichier_a_suprimer)){
         unlink($fichier_a_suprimer);
     }
-    header("Location: " . $_SERVER['PHP_SELF']);
+    header("Location: ?page=Treasury");
     exit();
 }
 
@@ -66,7 +67,7 @@ if(file_exists($fichier_csv)){
             echo "<li>
             <span class='material-symbols-outlined'>file_save</span>
             <a href=\"$url\" target=\"_blank\">Vente de $annee</a>
-            <a href=\"?supprimer=$file_name\" class=\"supprimer\">Supprimer</a>
+            <a href=\"?page=Treasury&supprimer=$file_name\" class=\"supprimer\">Supprimer</a>
             </li>";
         }
         ?>

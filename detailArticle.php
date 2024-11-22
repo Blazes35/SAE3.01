@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="produit.css" />
+    <link rel="stylesheet" href="detailArticle.css" />
+    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
+    
 </head>
 <body>
     <header>

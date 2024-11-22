@@ -1,40 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Boutique PHP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="TableauBord.css" />
-</head>
-<div class="menu">
-    <div class="logo-theme">
-        <img class="logo" src="../images/logo-sans-fond.png" />
-        <div class="theme-claire">THEME CLAIRE</div>
-    </div>
-<div class="compte">
-    <span class="material-symbols-outlined">account_circle</span>
-    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-</div>
-<div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                    <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="?page=Treasury" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="/php/boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-        </div>
-</div>
-</div>
+<?php 
+    require 'Controllers/DashboardController.php';
+    $controller = new Dashboard();
+?>
+
+<link rel="stylesheet" href="css/dashboard.css"/>
 
 <div class="main-content">
     <h1 class="title">TABLEAU DE BORD</h1>
     <div class="container">
         <div class="card">
-            <a href="TableauBord.html" class="card-link">
+            <a href="?page=Dashboard" class="card-link">
                 <div class="card-content">
                     <h2>Tableau de Bord</h2>
                     <span class="material-symbols-outlined">dashboard</span>
@@ -83,5 +58,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>

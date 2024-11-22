@@ -185,6 +185,7 @@ a.boutique:visited {
 }
 
 .add-to-favorites, .settings {
+    text-decoration: none;
     background-color: #8E51D0;
     color: #fff;
     border: none;
@@ -195,12 +196,15 @@ a.boutique:visited {
 }
 
 .settings {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none; /* Supprime le soulignement */
 }
 
+
 .settings span {
+  text-decoration: none;
     font-size: 20px;
     margin-left: 0;
 }
