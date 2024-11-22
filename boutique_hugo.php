@@ -3,33 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion Profils</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="boutique_hugo.css" />
+    <title>Test Boutique PHP</title>
 </head>
-<body>
-    <div class="menu">
-        <div class="logo-theme">
-            <img class="logo" src="./images/logo-sans-fond.png" />
-            <div class="theme-claire">THEME CLAIRE</div>
-        </div>
-        <div class="compte">
-            <span class="material-symbols-outlined">account_circle</span>
-            <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-        </div>
-        <div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="/php/boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-            </div>
-        </div>
-    </div>
 <body>
     <form method="post" action="boutique_hugo.php" enctype="multipart/form-data">
         <label for="choice">Choisir le type d'article : </label>
@@ -39,6 +14,7 @@
             <option value="galerie">Galerie</option>
             <option value="evenement">Evenement</option>
             <option value="vetement">Vetement</option>
+            <option value="actu">Actualité</option>
         </select>
 
         <div id="color-field" hidden>
@@ -95,6 +71,11 @@
             <input type="date" name="date" id="date">
         </div>
 
+        <div id="contenuActu-field">
+            <label for="contenuActu">Contenu de l'actualité</label>
+            <input type="text" name="contenuActu" id="contenuActu">
+        </div>
+
         <button type="submit" name="action" value="add">Ajouter produit</button>
         <button type="submit" name="action" value="delete">Retirer produit</button>
         <button name="action" value="see">Voir produits</button>
@@ -110,7 +91,7 @@ try {
     ]);
 
     function uploadImage($file) {
-        $uploadDir = 'uploads/galerie/';
+        $uploadDir = 'uploads/';
         $fileName = basename($file['name']);
         $targetFilePath = $uploadDir . $fileName;
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
@@ -125,7 +106,7 @@ try {
 
     function addArticle($connection, $data, $file) {
         $imageName = uploadImage($file);
-    
+
         if ($data['article'] === 'produit') {
             $query = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd, typeProd) 
                       VALUES (:title, :desc, :price, :qt, :img, :typeProd)";
@@ -136,7 +117,7 @@ try {
                 ':price'    => $data['price'],
                 ':qt'       => $data['qt'],
                 ':img'      => $imageName,
-                ':typeProd' => $data['article'], // Récupération du type d'article
+                ':typeProd' => $data['article'],
             ]);
         } elseif ($data['article'] === 'evenement') {
             $query = "INSERT INTO EVENEMENT (titreEvent, descEvent, capaEvent, prixEvent, lieuEvent, imgEvent, dateEvent, minRoleEvent, minGradeEvent) 
@@ -163,9 +144,9 @@ try {
                 ':price'    => $data['price'],
                 ':qt'       => $data['qt'],
                 ':img'      => $imageName,
-                ':typeProd' => $data['article'], // Ajout de typeProd
+                ':typeProd' => $data['article'],
             ]);
-    
+
             $idProd = $connection->lastInsertId();
             $queryVet = "INSERT INTO VETEMENT (idProd, couleurVetement) VALUES (:idProd, :color)";
             $stmtVet = $connection->prepare($queryVet);
@@ -173,8 +154,19 @@ try {
                 ':idProd' => $idProd,
                 ':color'  => $data['color'],
             ]);
+        } elseif ($data['article'] === 'actu') {
+            $query = "INSERT INTO ACTUALITE (titreActualite, descActualite, urlPhotoActualite, dateActualite, idUser) 
+                      VALUES (:title, :contenuActu, :img, :date, 1)";
+            $stmt = $connection->prepare($query);
+            $stmt->execute([
+                ':title'      => $data['title'],
+                ':contenuActu' => $data['contenuActu'],
+                ':img'        => $imageName,
+                ':date'       => $data['date'],
+            ]);
         }
     }
+
     function deleteArticle($connection, $title) {
         $query = "DELETE FROM PRODUIT WHERE nomProd = :title";
         $stmt = $connection->prepare($query);
@@ -222,15 +214,17 @@ try {
             const minRoleField = document.getElementById('minRole-field');
             const minGradeField = document.getElementById('minGrade-field');
             const lieuField = document.getElementById('lieu-field');
-            const dateFieldField = document.getElementById('date-field');
-
+            const dateField= document.getElementById('date-field');
+            const contenuArticleField = document.getElementById('contenuActu-field');
+            const descField = document.getElementById('desc');
 
             colorField.hidden = true;
             capaciteField.hidden = true;
             minRoleField.hidden = true;
             minGradeField.hidden = true;
             lieuField.hidden = true;
-            dateFieldField.hidden = true;
+            dateField.hidden = true;
+            contenuArticleField.hidden = true;
 
             priceField.hidden = false;
             promoField.hidden = false;
@@ -244,14 +238,23 @@ try {
                 promoField.hidden = true;
                 qtField.hidden = true;
             } else if (articleType === 'vetement') {
+                contenuArticleField.hidden = true;
+                dateField.hidden = true;
                 colorField.hidden = false;
             }else if(articleType === 'evenement'){
                 capaciteField.hidden = false;
                 minRoleField.hidden = false;
                 minGradeField.hidden = false;
                 lieuField.hidden = false;
-                dateFieldField.hidden = false;
+                dateField.hidden = false;
                 qtField.hidden = true;
+            }else if(articleType === 'actu'){
+                priceField.hidden = true;
+                promoField.hidden = true;
+                qtField.hidden = true;
+                descField.hidden = true;
+                contenuArticleField.hidden = false;
+                dateField.hidden = false;
             }
         }
     </script>
