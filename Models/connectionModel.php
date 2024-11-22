@@ -10,14 +10,14 @@ class ConnectionModel extends DBModel {
     public function login($username, $password) {
         $hashedPassword = hash('sha256', $password);
         $sql = "call login(:username, :password)";
-        $init = $this->db->prepare($sql);
+        $init = self::$db->prepare($sql);
         $init->bindParam(':username', $username);
         $init->bindParam(':password', $hashedPassword);
 
         $init->execute();
         $result = $init->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION['result'] = json_encode($result);
+        // $_SESSION['result'] = json_encode($result);
 
         if ($result["Failed"] == 1) {
             return False;
@@ -32,18 +32,17 @@ class ConnectionModel extends DBModel {
         }
     }
 
-    function changePwd($username, $password, $newPassword) {
-        $sql = "call changePwd(\"$username\", \"$password\", \"$newPassword\")";
-        $init = $this->db-> prepare($sql);
+    function changePwd($email, $oldPassword, $newPassword) {
+        $sql = "call changePwd(\"$email\", \"$oldPassword\", \"$newPassword\")";
+        $init = self::$db-> prepare($sql);
         $init -> execute();
-        $result = $init->fetch()[0];
-        return $result;
+        return $init->fetch()[0] == 1 ? True : False;
     }
 
     function createUser($nom, $prenom, $classe, $mail, $password) {
         $hashedPassword = hash('sha256', $password);
         $sql = "CALL createUser(\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$hashedPassword\")";
-        $init = $this->db->prepare($sql);
+        $init = self::$db->prepare($sql);
         $init->execute();
         $result= $init->fetch()[0];
         return $result == 1 ? True : False;
