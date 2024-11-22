@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie</title>
+    <title>Actualités</title>
     <!-- Lien pour importer les Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="actu.css" />
@@ -48,19 +48,25 @@
     <?php 
     foreach($actus as $actu):
     ?>
-    <div class="actu-card">
-        <div class="actu-img">
-           <!-- <img src="/uploads" alt=""> -->
-            <div class="detail">
-                <h2 class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></h2>
-                <p class="contenu"><?php echo htmlspecialchars($actu['descActualite']); ?></p>
-                <p class="date"><?php echo htmlspecialchars($actu['dateActualite']);?></p>
-                <img src="uploads/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
-                alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" 
-                style="width: 360px; height: 485px; background-image: url('./images/vector.png');" />
+    <div class="container">
+        <div class="actu-card">
+            <div class="actu-card-in">
+                <!-- Image de l'actualité -->
+                <div class="actu-img">
+                    <img src="uploads/actualites/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
+                         alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" />
+                </div>
+
+                <!-- Détails de l'actualité -->
+                <div class="detail">
+                    <p class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></p>
+                    <p class="contenu"><?php echo htmlspecialchars($actu['descActualite']); ?></p>
+                    <p class="date"><?php echo htmlspecialchars($actu['dateActualite']); ?></p>
+                </div>
             </div>
         </div>
     </div>
+
     <?php endforeach; ?>
 </body>
 </html>

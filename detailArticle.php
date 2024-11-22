@@ -74,7 +74,7 @@
                 echo "</div>";
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter au favoris ♡</button>";
-                echo "<button class='settings'><span class='material-symbols-outlined'>settings</span>Paramétrer</button>";
+                echo "<a href='updProd.php?id=" . urlencode($product['idProd']) . "'><button class='settings'><span class='material-symbols-outlined'>settings</span>Paramétrer</button></a>";
                 echo "</div>";
                 echo "<p class='add-element'>+ Ajouter un élément</p>";
                 echo "</div>";
