@@ -1,0 +1,161 @@
+
+
+
+
+.tresoriecalcul{
+    
+    margin-left: 25%;
+    max-width:calc(80% - 314px);
+    font-family: 'K2D', sans-serif ;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.tresoriecalcul .titretresorie{
+    font-size: 63px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.tresoriecalcul .dossier{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    background-color: #545454;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow:0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tresoriecalcul .dossier ul{
+    list-style-type:none ;
+    padding: 0;
+    margin: 0;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.tresoriecalcul .dossier ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.tresoriecalcul .dossier ul li :hover{
+    background-color: #777;
+    transform: scale(1.05);
+}
+
+.tresoriecalcul .dossier ul li a{
+    font-family: 'K2D', sans-serif ;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+form {
+    font-family: 'K2D', sans-serif ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; 
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    padding: 20px;
+    color: #fff;
+    background-color: black; 
+    border-radius: 10px; 
+}
+
+.import{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.import label{
+    font-size: 18px;
+    color: #fff;
+}
+
+.import input[type="file"] {
+    padding: 10px;
+    border: 1px solid #8E51D0; 
+    border-radius: 5px; 
+    font-size: 16px;
+    cursor: pointer; 
+}
+
+/* Style pour la div contenant le bouton */
+.confirm {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+}
+
+/* Style pour le bouton */
+.confirm button {
+    font-family: 'K2D', sans-serif ;
+    padding: 12px 24px; 
+    font-size: 18px;
+    background-color: #8E51D0; 
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Changer la couleur de fond du bouton au survol */
+.confirm button:hover {
+    background-color: #fff;
+    color: #8E51D0;
+}
+
+.Feuillecalcul{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+
+
+.Feuillecalcul iframe{
+    width: 70vh;
+    height: 50vh;
+    border: none;
+    border-radius: 10px;
+}
+
+.Feuillecalcul a{
+    text-decoration: none;
+    padding:15px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #8E51D0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: inline;
+}
+.Feuillecalcul a:hover {
+    background-color: #fff;
+    color: #8E51D0;
+}

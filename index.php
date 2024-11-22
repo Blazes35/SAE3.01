@@ -13,6 +13,14 @@ function renderLayout($viewFile, $title, $data = []){
 
     include './Views/Layout.php';
 }
+function renderLayoutAdmin($viewFile, $title, $data = []){
+    ob_start();
+    extract($data);
+    include $viewFile;
+    $content = ob_get_clean();
+
+include './Views/LayoutAdmin.php';
+}
 
 $page = $_POST['page'] ?? $_GET['page'] ?? 'Presentation';
 
@@ -30,6 +38,9 @@ switch ($page) {
         break;
     case 'Updatepwd':
         renderLayout('./Views/Updatepwd.php', 'Updatepwd');
+        break;
+    case 'Treasury':
+        renderLayoutAdmin('./Views/Treasury.php', 'Treasury');
         break;
     default:
         renderLayout('./Views/error404.php', 'error404');
