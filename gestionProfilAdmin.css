@@ -142,11 +142,13 @@ a.editer:visited {
     color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
+/* Styles pour le conteneur principal */
 .container {
     width: 80%;
     max-width: 900px;
     text-align: center;
     margin-left: 25vw;
+    padding: 20px;
 }
 
 .title {
@@ -225,7 +227,6 @@ a.editer:visited {
     flex-direction: column;
     align-items: flex-start;
 }
-
 .action {
     margin-bottom: 10px;
 }
@@ -256,81 +257,18 @@ label {
     background-color: #5433c9;
 }
 
-/* Styles de base pour cacher la popup */
-.hidden {
-  display: none;
-}
-
-/* Styles pour le conteneur de la popup */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* Contenu de la popup */
-.popup-content {
-  background: #2b2b2b;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: #fff;
-  width: 300px;
-}
-
-/* Titre de la popup */
-.popup-content h2 {
-  margin-bottom: 20px;
-}
-
-/* Texte explicatif */
-.popup-content p {
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-/* Champ select */
-#role-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #888;
-    border-radius: 5px;
-    background: #fff;
-    color: #000;
-    font-size: 14px;
-}
-
-/* Boutons dans la popup */
-.popup-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.popup-actions button {
-    flex: 1;
-    padding: 10px;
+/* Styles pour le bouton Mettre à jour */
+.button_update button {
+    padding: 10px 20px;
+    background-color: #6c38f7;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-#cancel-popup {
-    background: #555;
-    color: #fff;
-}
-
-#validate-role {
-    background: #6c5ce7;
-    color: #fff;
+.button_update button:hover {
+    background-color: #5433c9;
 }
