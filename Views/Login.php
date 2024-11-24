@@ -1,5 +1,5 @@
 <?php
-$title = 'Profil';
+$title = 'Connection';
 ob_start();
 ?>
 

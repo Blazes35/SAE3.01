@@ -1,13 +1,17 @@
-<?php 
-require 'Controllers/SignUpController.php';
-$controller = new SignUpController();
+<?php
+$title = 'Profil';
+ob_start();
 ?>
 
 <link rel="stylesheet" href="/css/inscription.css"/>
 
+        </div>
+    </div>
+</div>
+
 
 <div class="inscription">
-        <div class="titreinscription">INSCRIPTION</div>
+    <div class="titreinscription">INSCRIPTION</div>
         <div class="formulaire">
             <form action="?page=SignUp" method="post">
                 <div class="input-group">
@@ -78,21 +82,8 @@ $controller = new SignUpController();
         </div>
         <img class="imagefooter" src="images/ellipse4.png">
     </div>
-<?php 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['SignUp'])) {
-        $nom = htmlspecialchars($_POST['nom']);
-        $prenom = htmlspecialchars($_POST['prenom']);
-        $classe = htmlspecialchars($_POST['classe']);
-        $mail = htmlspecialchars($_POST['mail']);
-        $password = htmlspecialchars($_POST['password']);
-        $password2 = htmlspecialchars($_POST['password2']);
-        echo "<script>console.log(\"debug\",\"$nom\", \"$prenom\", \"$classe\", \"$mail\", \"$password\", \"$password2\");</script>";
-        if ($password === $password2) {
-            $controller->signUp($nom, $prenom, $classe, $mail, $password);
-            header("Location: ?page=Login");
-            exit();
-        }else {
-            echo "<script>alert(\"Les mots de passe ne correspondent pas\");</script>";
-        }
-    }
+</div>
+<?php
+$content = ob_get_clean();
+include 'Layout.php';
 ?>

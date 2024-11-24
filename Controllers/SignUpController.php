@@ -1,20 +1,21 @@
 <?php
-require_once 'Models/ConnectionModel.php';
-
-class SignUpController{
-    private $model;
-
-    public function __construct() {
-        $this->model = new ConnectionModel();
+    require_once 'Models/ConnectionModel.php';
+    $model = new ConnectionModel();    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['SignUp'])) {
+        $nom = htmlspecialchars($_POST['nom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $classe = htmlspecialchars($_POST['classe']);
+        $mail = htmlspecialchars($_POST['mail']);
+        $password = htmlspecialchars($_POST['password']);
+        $password2 = htmlspecialchars($_POST['password2']);
+        if ($password === $password2) {
+            $model->createUser($nom, $prenom, $classe, $mail, $password);
+            header("Location: ?page=Login");
+            exit();
+        }else {
+            echo "<script>alert(\"Les mots de passe ne correspondent pas\");</script>";
+        }
     }
 
-    public function signUp($nom, $prenom, $classe, $mail, $password) {
-        return $this->model->createUser($nom, $prenom, $classe, $mail, $password);
-    }
-
-    public function renderLayout()
-    {
-        ob_start();
-        return ob_get_clean();
-    }
-}
+    require 'Views/SignUp.php';
+?>

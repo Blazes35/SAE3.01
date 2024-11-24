@@ -3,14 +3,6 @@ session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
 
-function renderLayout($viewFile, $title, $data = []){
-        ob_start();
-        extract($data);
-        include $viewFile;
-        $content = ob_get_clean();
-
-        include './Views/Layout.php';
-}
 
 function renderLayoutAdmin($viewFile, $title, $data = []){
         ob_start();
@@ -27,16 +19,16 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
     // routage
 switch ($page) {
     case 'Presentation':
-        renderLayout('./Views/Main.php', 'Presentation');
+        include './Controllers/PresentationController.php';
         break;
     case 'Login':
         include './Controllers/LoginController.php';
         break;
     case 'SignUp':
-        renderLayout('./Views/SignUp.php', 'SignUp');
+        include './Controllers/SignUpController.php';
         break;
-    case 'Updatepwd':
-        renderLayout('./Views/Updatepwd.php', 'Updatepwd');
+    case 'UpdatePwd':
+        include './Controllers/UpdatePwdController.php';
         break;
     case 'Treasury':
         renderLayoutAdmin('./Views/Treasury.php', 'Treasury');
