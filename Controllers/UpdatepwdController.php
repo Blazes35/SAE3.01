@@ -1,20 +1,22 @@
 <?php
-require_once 'Models/ConnectionModel.php';
-
-class Updatepwd{
-    private $model;
-
-    public function __construct() {
-        $this->model = new ConnectionModel();
+    require_once 'Models/ConnectionModel.php';
+    $model = new ConnectionModel();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updatePwd'])) {
+        $email= htmlspecialchars($_SESSION['email']);    
+        $oldpassword = htmlspecialchars($_POST['oldPassword']);
+        $newPassword = htmlspecialchars($_POST['newPassword']);
+        $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
+        if($newPassword === $confirmPassword){
+            if($model->changePwd($email, hash('sha256', $oldpassword), hash('sha256', $newPassword))){
+                header("Location: ?page=Presentation");
+                exit();            
+            }else{
+                echo "<script>alert(\"Ancien mot de passe incorrect\")</script>";
+            }
+        }
+        else{
+        echo "<script>alert(\"Nouveau mot de passe ne correspond pas à confirmation mot de passe\")</script>";
+        }
     }
-
-    public function changePwd($mail, $oldPassword, $newPassword) {
-        return $this->model->changePwd($mail, $oldPassword, $newPassword);
-    }
-
-    public function renderLayout()
-    {
-        ob_start();
-        return ob_get_clean();
-    }
-}
+    require 'Views/UpdatePwd.php'
+?>

@@ -1,64 +1,49 @@
-<?php 
-require 'Controllers/UpdatepwdController.php';
-$controller = new Updatepwd();
+<?php
+$title = 'Changement Mot De Passe';
+ob_start();
 ?>
 
 <link rel="stylesheet" href="/css/updatepwd.css"/>
 
+        </div>
+    </div>
+</div>
+<div class="changement">
+    <div class="titrechangement">CHANGER VOTRE MOT DE PASSE</div>
+    <div class="formulaire">
+        <form action="?page=Updatewd" method="post">
+            <div class="input-group">
+                <label for="oldPassword ">
+                    <span class="material-symbols-outlined">lock</span>
+                </label>
+                <input type="password" id="oldPassword" name="oldPassword" placeholder="ANCIEN MOT DE PASSE" required>
             </div>
-        </div>
-    </div>
-    <div class="changement">
-        <div class="titrechangement">CHANGER VOTRE MOT DE PASSE</div>
-        <div class="formulaire">
-            <form action="?page=Updatepwd" method="post">
-                <div class="input-group">
-                    <label for="oldPassword ">
-                        <span class="material-symbols-outlined">lock</span>
-                    </label>
-                    <input type="password" id="oldPassword" name="oldPassword" placeholder="ANCIEN MOT DE PASSE" required>
-                </div>
-                <div class="input-group">
-                    <label for="newPassword">
-                        <span class="material-symbols-outlined">lock</span>
-                    </label>
-                    <input type="password" id="newPassword" name="newPassword" placeholder="NOUVEAU MOT DE PASSE" required>
-                </div>
+            <div class="input-group">
+                <label for="newPassword">
+                    <span class="material-symbols-outlined">lock</span>
+                </label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="NOUVEAU MOT DE PASSE" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="confirmPassword">
-                        <span class="material-symbols-outlined">lock</span>
-                    </label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="CONFIRMER MOT DE PASSE" required>
-                </div>
-                
-                <div class="envoyer">
-                    <button type="submit" name='updatePwd'>CONFIRMER</button>
-                </div>
-            </form>
-        </div>
+            <div class="input-group">
+                <label for="confirmPassword">
+                    <span class="material-symbols-outlined">lock</span>
+                </label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="CONFIRMER MOT DE PASSE" required>
+            </div>
+            
+            <div class="envoyer">
+                <button type="submit" name='updatePwd'>CONFIRMER</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <img class="imagefooter" src="images/ellipse4.png">
-    </div>
+</div>
+<div>
+    <img class="imagefooter" src="images/ellipse4.png">
+</div>
+
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updatePwd'])) {
-        $email= htmlspecialchars($_SESSION['email']);    
-        $oldpassword = htmlspecialchars($_POST['oldPassword']);
-        $newPassword = htmlspecialchars($_POST['newPassword']);
-        $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
-
-        if($newPassword === $confirmPassword){
-            if($controller->changePwd($email, hash('sha256', $oldpassword), hash('sha256', $newPassword))){
-                header("Location: ?page=Presentation");
-                exit();            
-            }else{
-                echo "<script>alert(\"Ancien mot de passe incorrect\")</script>";
-            }
-        }
-        else{
-        echo "<script>alert(\"Nouveau mot de passe ne correspond pas à confirmation mot de passe\")</script>";
-        }
-    }
+$content = ob_get_clean();
+include 'Layout.php';
 ?>
