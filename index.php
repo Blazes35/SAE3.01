@@ -14,10 +14,13 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
 }
 
 
-    $page = $_POST['page'] ?? $_GET['page'] ?? 'Presentation';
+    $page = $_POST['page'] ?? $_GET['page'] ?? 'Accueil';
 
     // routage
 switch ($page) {
+    case 'Accueil':
+        include './Controllers/AccueilController.php';
+        break;
     case 'Presentation':
         include './Controllers/PresentationController.php';
         break;

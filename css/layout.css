@@ -83,6 +83,17 @@ header span.material-symbols-outlined {
 
 
 
+.overlap-group-5 {
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  width: 100%;
+  justify-content: center;
+}
+
 
 footer .bandeau1{
   display: flex;

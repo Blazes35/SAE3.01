@@ -3,7 +3,7 @@ $title = 'Presentation';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="css/globals.css"/>
+<link rel="stylesheet" href="css/presentation.css"/>
 
 <div class="overlap-group-4">
                 <div>ADIIL</div>
