@@ -1,0 +1,45 @@
+/*A supprimer*/
+body{
+    background-color: black;
+    color: white;
+    font-family: k2d, sans-serif;
+}
+
+.commandes{
+    font-family: k2d, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.commandes .commande{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #545454;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid white;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.commandes .commande:hover{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);;
+}
+
+.commandes .commande .image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+    justify-content: center;
+}
+
+.commandes .commande .image img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
