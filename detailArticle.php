@@ -42,7 +42,7 @@
         session_set_cookie_params(86400 * 30, "/");
         session_start();
 
-        echo var_dump($_SESSION);
+       
         $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
         $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; // Exemple d'autres données de session
 
