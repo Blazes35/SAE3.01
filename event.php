@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier un produit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="event.css" />
-    <link rel="stylesheet" href="header.css" />
-    </head>
+    <title>Evenement</title>
+</head>
 <body>
-    <header>
-        <div class="overlap-group">
-            <a href="accueil.html">
-            <img class="logo" src="../images/logo.png" />
-            </a>
-            <div class="theme-claire">THEME CLAIRE</div>
-        </div>
-        <div class="overlap-group-2">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="mon-compte">MON COMPTE</div>
-            <span class="material-symbols-outlined">shopping_cart</span>
-        </div>
-    </header>
-    <div class="box">
-        <div class="rectangle">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                    <a href="presentation.html" class="presentation" style="cursor: pointer;">QUI SOMMES NOUS</a>
-                    <a href="evenement.html" class="evenement" style="cursor: pointer;">ÉVENEMENTS</a>
-                    <a href="calendrier.html" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="galerie.html" class="galerie" style="cursor: pointer;">GALERIE</a>
-                    <a href="boutique.html" class="boutique" style="cursor: pointer;">BOUTIQUE</a>
-                </div>
+    <?php 
+        $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+        $sql = "SELECT * FROM EVENEMENT";
+        $recup_event = $connect->prepare($sql);
+        $recup_event->execute();
+        $events = $recup_event->fetchAll(PDO::FETCH_ASSOC); 
+        echo "<h1>Les événements</h1>";
+        ?>
+        <?php 
+        foreach($events as $event):
+        ?>
+        <div class="event-card">
+        <div class="event-img">
+           <!-- <img src="/uploads" alt=""> -->
+            <div class="detail">
+                <h2 class="titre"><?php echo htmlspecialchars($event['titreEvent']); ?></h2>
+                <p class="description"><?php echo htmlspecialchars($event['descEvent']); ?></p>
+                <p class="capacite"><?php echo htmlspecialchars($event['capaEvent']);?></p>
+                <p class="lieu"><?php echo htmlspecialchars($event['lieuEvent']);?></p>
+                <p class="date"><?php echo htmlspecialchars($event['dateEvent']);?></p>
+                <img src="uploads/evenements/<?php echo htmlspecialchars($event['imgEvent']); ?>" 
+                alt="<?php echo htmlspecialchars($event['titreEvent']); ?>" 
+                style="width: 360px; height: 485px; background-image: url('./images/vector.png');" />
+                <a href="detailEvent.php?id=<?php echo urlencode($event['idEvent']); ?>">
+                <p class="voi-maintenant">Voir Maintenant</p>
+                </a>            
             </div>
         </div>
     </div>
-<body>
-    
+    <?php endforeach; ?>
+</body>
+</html>
