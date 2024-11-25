@@ -8,31 +8,21 @@ ob_start();
     </div>
 </div>
 
-    <h1>Profil</h1>
-        <!-- <form action="?page=Login" method="post"> -->
-            <div class="input-row">
-                <section>
-                    <p>Prénom</p>
-                    <div class="input-group">
-                        <input type="text" name="Prenom" value="Prénom" required>
-                    </div>
-                </section>
-                <section>
-                    <p>Nom</p>
-                    <div class="input-group">
-                        <input type="text" name="Nom" value="Nom" required>
-                    </div>
-                </section>
-            </div>
-            <div class="connexion">
-
-            <hr>
-
-            <hr>
-
-            <div class="envoyer">
-                <button type="submit" name="connect">Changer mot de passe</button>
-            </div>
+<div class="Profile">
+    <div class="titreProfil">
+        <p>Page Personnelle</p>
+    </div>
+    <div class="info">
+        <!--<img src=""-->
+        <div class="pn">
+            <p><?php
+            $sql = "SELECT nomUser, prenomUser FROM UTILISATEUR WHERE adrMailUser=:email";
+            $stmt = $c->prepare($sql);
+            $stmt->bindParam(':id', $_SESSION['email'], PDO::PARAM_STR);
+            $stmt->execute();
+            ?></p>
+            
+        </div>
     </div>
 </div>
 
