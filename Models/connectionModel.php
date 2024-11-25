@@ -26,8 +26,8 @@ class ConnectionModel extends DBModel {
             $_SESSION['email'] = $result['adrMailUser'];
             $_SESSION['TP'] = $result['idTPAgenda'];
             $_SESSION['pp'] = $result['ppUser'];
-            $_SESSION['role'] = $result['idGrade'];
-            $_SESSION['grade'] = $result['idRole'];
+            $_SESSION['role'] = $result['iRole'];
+            $_SESSION['grade'] = $result['idGrade'];
             return True;
         }
     }

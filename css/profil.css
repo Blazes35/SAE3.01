@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container for Prenom and Nom inputs */
+.input-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    /*max-width: 700px; /* Adjust as needed*/
+}
+
+.input-row .input-group {
+    flex: 1;
+    margin-right: 10px; /* Space between inputs */
+}
+
+.input-row .input-group:last-child {
+    margin-right: 0; /* Remove margin for the last input */
+}
+
+/* Responsive design: stack inputs vertically on smaller screens */
+@media (max-width: 600px) {
+    .input-row .input-group {
+        margin-right: 0;
+        margin-bottom: 20px; /* Space between rows */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.connexion {
+    margin-top: 75px;
+    font-family: k2d, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.connexion .titreconnexion {
+    font-size: 63px;
+}
+
+/* Conteneur formulaire */
+.connexion .formulaire {
+    background-color: #1c1c1c; /* Fond sombre */
+    border-radius: 15px; /* Coins légèrement arrondis */
+    padding: 30px; /* Espace intérieur ajusté */
+    width: 400px; /* Largeur maximale contrôlée */
+    text-align: center;
+    margin-top: 50px;
+    overflow: hidden; /* Empêche tout débordement */
+}
+
+/* Groupes de champs avec icônes */
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Fond des champs */
+    border-radius: 20px; /* Coins arrondis */
+    padding: 10px; /* Espace intérieur ajusté */
+    margin-bottom: 20px; /* Moins de marge pour plus de contrôle */
+    width: 100%; /* Champs ajustés à la largeur du conteneur */
+    /*max-width: 350px; /* Empêche les champs de dépasser */
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 25px; /* Taille des icônes */
+    color: black;
+}
+
+/* Champs de saisie */
+.input-group input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex: 1; /* S'étend pour occuper tout l'espace */
+    color: #000;
+    font-size: 25px; /* Taille ajustée */
+    padding: 10px;
+    border-radius: 15px;
+    min-width: 0; /* Empêche les champs de casser la mise en page */
+}
+
+/* Style focus */
+.input-group input:focus {
+    border: none;
+    outline: 2px solid #8E51D0; /* Bordure violette visible */
+}
+
+
+/* Bouton de connexion */
+.envoyer button {
+    width: 100%; /* Bouton adapté au conteneur */
+    max-width: 350px; /* Garde le bouton dans le cadre */
+    background: #8E51D0;
+    color: black;
+    border: none;
+    border-radius: 20px; /* Coins arrondis */
+    padding: 15px;
+    font-size: 20px; /* Taille ajustée */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.envoyer button:hover {
+    background: #eee; /* Couleur de hover */
+}
+
+/* Icônes Material Symbols */
+.connexion .material-symbols-outlined {
+    font-size: 25px; /* Taille des icônes ajustée */
+    color: black;
+}
