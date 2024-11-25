@@ -12,7 +12,9 @@
 <body>
     <header>
         <div class="overlap-group">
-            <img class="logo" src="images/logo.png" />
+            <a href="">
+            <img class="logo" src="../images/logo.png" />
+            </a>
             <div class="theme-claire">THEME CLAIRE</div>
             
         </div>
