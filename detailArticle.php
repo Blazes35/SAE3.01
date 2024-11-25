@@ -91,7 +91,7 @@
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
-                if ($userRole === 3) {
+                if ($userRole === "3") {
                     echo "<button class='settings'>";
                     echo " <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>";
                     echo " <span class='material-symbols-outlined'>settings</span>"; 
