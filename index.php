@@ -9,7 +9,6 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
         extract($data);
         include $viewFile;
         $content = ob_get_clean();
-
     include './Views/LayoutAdmin.php';
 }
 
@@ -23,6 +22,9 @@ switch ($page) {
         break;
     case 'Presentation':
         include './Controllers/PresentationController.php';
+        break;
+    case 'Profil':
+        include './Controllers/ProfilController.php';
         break;
     case 'Login':
         include './Controllers/LoginController.php';
@@ -39,7 +41,10 @@ switch ($page) {
     case 'Dashboard':
         include './Controllers/DashboardController.php';
             break;
+    case 'Shop' :
+        include './boutique.php';
+            break;
     default:
-        renderLayout('./Views/error404.php', 'error404');
+        include './Views/Error404.php';
         break;
 }
