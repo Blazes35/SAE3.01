@@ -1,5 +1,6 @@
 <?php
 // Connexion à la base de données
+
 $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
 // Récupérer les utilisateurs et leurs informations avec leurs rôles
