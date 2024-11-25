@@ -36,7 +36,17 @@
     </div>
     <?php
     $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-    $queryActu = "SELECT titreActualite, descActualite, dateActualite, urlPhotoActualite FROM ACTUALITE"; 
+    
+    session_name('BDE');
+    session_set_cookie_params(86400 * 30, "/");
+    session_start();
+
+       
+    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
+
+    
+    $queryActu = "SELECT idActualite, titreActualite, descActualite, dateActualite, urlPhotoActualite FROM ACTUALITE"; 
     $launch = $connect->prepare($queryActu);
     $launch->execute();
     $actus = $launch->fetchAll(PDO::FETCH_ASSOC);
@@ -59,11 +69,41 @@
                     <p class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></p>
                     <p class="contenu"><?php echo htmlspecialchars($actu['descActualite']); ?></p>
                     <p class="date"><?php echo htmlspecialchars($actu['dateActualite']); ?></p>
+                    <?php
+                    echo "<button><a href='detailActualite.php?id=" . urlencode($actu['idActualite']) . "' class='info'>Voir plus</button>"
+                ?>
+                    <?php 
+
+ 
+                session_name('BDE'); 
+                session_start();
+
+                $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
+                $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
+
+                if ($userRole === 3) { 
+                    echo "<button class='settings'>";
+                    echo " <a href='updateActu.php?id=" . urlencode($actu['idActualite']) . "'>";
+                    echo " <span class='material-symbols-outlined'>settings</span>"; 
+                    echo "<p id='probleme'>Parametrer</p>";
+                    echo " </a>";
+                    echo " </button>";
+                }                
+                ?>
                 </div>
             </div>
         </div>
     </div>
 
     <?php endforeach; ?>
+    <script>
+    // Récupération des données de session envoyées depuis PHP
+    var userRole = <?php echo json_encode($userRole); ?>;
+    var userName = <?php echo json_encode($userName); ?>;
+
+    // Affichage des informations dans la console
+    console.log("Role de l'utilisateur : " + userRole);
+    console.log("Nom de l'utilisateur : " + userName);
+</script>
 </body>
 </html>

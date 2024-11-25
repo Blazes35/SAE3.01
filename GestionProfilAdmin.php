@@ -31,9 +31,8 @@ $users = $launch->fetchAll(PDO::FETCH_ASSOC);
 $roles = [
     1 => 'Visiteur',
     2 => 'Membre',
-    3 => 'Administrateur - Niveau 1',
-    4 => 'Administrateur - Niveau 2',
-    5 => 'Administrateur - Niveau 3'
+    3 => 'Administrateur - Niveau 1'
+    
 ];
 
 // Traitement de mise à jour du rôle (optionnel)
