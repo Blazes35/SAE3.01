@@ -11,9 +11,9 @@ $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
 $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
-// Redirige si l'utilisateur n'a pas le rôle approprié
-if ($userRole !== 3) { // Par exemple : accès réservé aux administrateurs (idRole = 3)
-    header("/Views/Error404.php"); // Page d'accès refusé
+
+if ($userRole !== 3) { 
+    header("/Views/Error404.php"); 
     exit();
 }
 

@@ -51,13 +51,10 @@
     <div class="container">
         <div class="actu-card">
             <div class="actu-card-in">
-                <!-- Image de l'actualité -->
                 <div class="actu-img">
                     <img src="uploads/actualites/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
                          alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" />
                 </div>
-
-                <!-- Détails de l'actualité -->
                 <div class="detail">
                     <p class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></p>
                     <p class="contenu"><?php echo htmlspecialchars($actu['descActualite']); ?></p>
