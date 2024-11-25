@@ -39,6 +39,9 @@ switch ($page) {
     case 'Dashboard':
         include './Controllers/DashboardController.php';
             break;
+    case 'Shop' :
+        include './boutique.php';
+            break;
     default:
         renderLayout('./Views/error404.php', 'error404');
         break;
