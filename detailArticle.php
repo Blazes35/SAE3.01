@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produit</title>
-    <!-- Lien pour importer les Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="produit.css" />
     <link rel="stylesheet" href="detailArticle.css" />
-    <!-- <link rel="stylesheet" href="styleguide.css" /> -->
-    
 </head>
 <body>
     <header>
@@ -39,44 +36,43 @@
     </div>
     <div class="product-container">
         <?php 
-        // Connexion à la base de données
         $sql = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
-        // Vérification du paramètre 'id' dans l'URL
+        session_name('BDE');
+        session_set_cookie_params(86400 * 30, "/");
+        session_start();
+
+       
+        $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; // Exemple d'autres données de session
+
         if (isset($_GET['id'])) {
             $idProd = intval($_GET['id']);
 
-            // Requête pour récupérer le produit
             $query = "SELECT * FROM PRODUIT WHERE idProd = :id";
             $stmt = $sql->prepare($query);
             $stmt->bindParam(':id', $idProd, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Récupération et affichage du produit
             if ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                // Déterminer le dossier des images
                 $uploadDir = 'uploads/';
                 $uploadDir .= ($product['typeProd'] === 'vetement') ? 'vetements/' : 'produits/';
 
-                // Section des images
                 echo "<div class='image-gallery'>";
                 echo "<div class='first-img'>";
                 echo "<img src='" . htmlspecialchars($uploadDir . $product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
                 echo "</div>";
                 echo "</div>";
 
-                // Image principale
                 echo "<div class='main-image'>";
                 echo "<img id='main-image' src='" . htmlspecialchars($uploadDir . $product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />";
                 echo "</div>";
 
-                // Détails du produit
                 echo "<div class='product-details'>";
                 echo "<h1 class='product-title'>" . htmlspecialchars($product['nomProd']) . "</h1>";
                 echo "<p class='description'>" . htmlspecialchars($product['descProd']) . "</p>";
                 echo "<p class='price'>" . htmlspecialchars($product['prixProd']) . " €</p>";
 
-                // Affichage conditionnel des tailles
                 if ($product['typeProd'] === 'vetement') {
                     echo "<p class='size-title'>Sélectionner la taille</p>";
                     echo "<div class='sizes'>";
@@ -87,34 +83,46 @@
                     echo "</div>";
                 }
 
-                // Boutons d'action
                 echo "<div class='buttons'>";
                 echo "<button class='add-to-cart'>Ajouter au panier</button>";
                 echo "<button class='promo-code'>% Code promotionnel</button>";
                 echo "</div>";
 
-                // Favoris et paramètres
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
-                echo "<button class='settings'>";
-                echo " <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>";
-                echo " <span class='material-symbols-outlined'>settings</span>"; 
-                echo "<p id='probleme'>Parametrer</p>";
-                echo " </a>";
-                echo " </button>";
+
+                if ($userRole === 3) {
+                    echo "<button class='settings'>";
+                    echo " <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>";
+                    echo " <span class='material-symbols-outlined'>settings</span>"; 
+                    echo "<p id='probleme'>Parametrer</p>";
+                    echo " </a>";
+                    echo " </button>";
+                }
+
                 echo "</div>";
 
                 echo "<p class='add-element'>+ Ajouter un élément</p>";
                 echo "</div>";
             } else {
-                // Produit introuvable
                 echo "<p>Produit introuvable.</p>";
             }
         } else {
-            // Paramètre 'id' invalide
             echo "<p>Paramètre invalide.</p>";
         }
         ?>
+
+        <script>
+            // Récupération des données de session envoyées depuis PHP
+            var userRole = <?php echo json_encode($userRole); ?>;
+            var userName = <?php echo json_encode($userName); ?>;
+
+            // Affichage des informations dans la console
+            console.log("Role de l'utilisateur : " + userRole);
+            console.log("Nom de l'utilisateur : " + userName);
+
+            // Tu peux également afficher d'autres informations sur la session si besoin
+        </script>
     </div>
 </body>
 </html>
