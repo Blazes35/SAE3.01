@@ -1,9 +1,23 @@
 <?php
-// Connexion à la base de données
+// Démarrage de la session et connexion à la base de données
+session_name('BDE');
+session_set_cookie_params(86400 * 30, "/");
+session_start();
 
+// Connexion PDO à la base de données
 $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
-// Récupérer les utilisateurs et leurs informations avec leurs rôles
+// Récupération des informations de session
+$userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
+$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
+
+// Redirige si l'utilisateur n'a pas le rôle approprié
+if ($userRole !== 3) { // Par exemple : accès réservé aux administrateurs (idRole = 3)
+    header("/Views/Error404.php"); // Page d'accès refusé
+    exit();
+}
+
+// Récupération des données utilisateurs
 $info_person = "
     SELECT UTILISATEUR.idUser, UTILISATEUR.nomUser, POSSEDER.idRole 
     FROM UTILISATEUR
@@ -13,7 +27,7 @@ $launch = $connect->prepare($info_person);
 $launch->execute();
 $users = $launch->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les rôles
+// Définir les rôles
 $roles = [
     1 => 'Visiteur',
     2 => 'Membre',
@@ -22,31 +36,20 @@ $roles = [
     5 => 'Administrateur - Niveau 3'
 ];
 
-$sql_filtre_visiteur = "SELECT UTILISATEUR.idUser, UTILISATEUR.nomUser, POSSEDER.idRole FROM UTILISATEUR 
-                        INNER JOIN POSSEDER ON UTILISATEUR.idUser = POSSEDER.idUser WHERE idRole = 1";
-$launch_filtre_visiteur = $connect->prepare($sql_filtre_visiteur);
-$launch_filtre_visiteur->execute();
-$visiteurs = $launch_filtre_visiteur->fetchAll(PDO::FETCH_ASSOC);
-
-// Traitement du formulaire de mise à jour du rôle
+// Traitement de mise à jour du rôle (optionnel)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idUser = $_POST['idUser'];
     $idRole = $_POST['idRole'];
 
-    // Vérification que l'idRole est bien un numéro valide
-    if (in_array($idRole, array_keys($roles))) {  // Vérifie si l'idRole fait partie des clés valides
-        // Mise à jour du rôle dans la table POSSEDER
+    if (in_array($idRole, array_keys($roles))) {
         $update_role = "UPDATE POSSEDER SET idRole = :idRole WHERE idUser = :idUser";
         $stmt = $connect->prepare($update_role);
         $stmt->bindParam(':idRole', $idRole, PDO::PARAM_INT);
         $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
         $stmt->execute();
-
-        // Rediriger vers la même page pour éviter le double envoi du formulaire
         header("Location: gestionProfilAdmin.php");
-        exit;  // Assurez-vous de sortir après la redirection
+        exit();
     } else {
-        // Si l'idRole n'est pas valide
         echo "Rôle invalide.";
     }
 }
@@ -58,30 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Profils</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="gestionProfilAdmin.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="gestionProfilAdmin.css">
 </head>
 <body>
     <div class="menu">
         <div class="logo-theme">
-            <img class="logo" src="./images/logo-sans-fond.png" />
+            <img class="logo" src="./images/logo-sans-fond.png">
             <div class="theme-claire">THEME CLAIRE</div>
         </div>
         <div class="compte">
             <span class="material-symbols-outlined">account_circle</span>
-            <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
-        </div>
-        <div class="overlap-group">
-            <div class="titre-de-page">
-                <div class="overlap-group-3">
-                <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
-                </div>
-            </div>
+            <a href="compte.html" class="mon-compte">MON COMPTE</a>
         </div>
     </div>
 
@@ -100,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p class="role" id="role-<?php echo $user['idUser']; ?>">
                             <span class="status-dot"></span> 
                             <?php echo $roles[$user['idRole']]; ?>
-                        </p> 
+                        </p>
                     </div>
                 </div>
                 <div class="profile-actions">
@@ -115,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <input type="hidden" name="idUser" value="<?php echo $user['idUser']; ?>"> <!-- L'ID de l'utilisateur -->
+                        <input type="hidden" name="idUser" value="<?php echo $user['idUser']; ?>">
                         <div class="button_update">
                             <button type="submit">Mettre à jour</button>
                         </div>
