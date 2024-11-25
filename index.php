@@ -44,6 +44,15 @@ switch ($page) {
     case 'Shop' :
         include './boutique.php';
             break;
+    case 'Event' :
+        include "./event.php";
+            break;
+    case 'News' : 
+        include "./actu.php";
+            break;
+    case 'Add' : 
+        include "./ajout.php";
+            break;
     default:
         include './Views/Error404.php';
         break;
