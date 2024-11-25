@@ -1,6 +1,6 @@
 <?php
-require_once 'Models/ConnectionModel.php';
-$model = new mainModel();
+require_once 'Models/BasketModel.php';
+$model = new BasketModel();
 
 $total = 0;
 
@@ -18,14 +18,14 @@ ON COMMANDE.idUser = utilisateur.idUser
 JOIN PRODUIT ON COMMANDE.idProd = PRODUIT.idPROD
 LEFT JOIN APPLIQUER ON PRODUIT.idProd = APPLIQUER.idProd
 LEFT JOIN CODEPROMO ON CODEPROMO.idCode = APPLIQUER.idCode
- WHERE adrMailUser= :email";
+WHERE adrMailUser= :email";
 
 $stmt = $connection->prepare($sql);
 
 $stmt->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
 
 $stmt->execute();
-
+$commandes = $model->getBasket();
 $commandes = $stmt->fetchAll();
 
 if (isset($_POST['supprimer'])){
@@ -49,13 +49,12 @@ if(isset($_POST['payer'])){
         $sqlUpdate = "UPDATE COMMANDE SET etatCommande=2 WHERE idUser =  (SELECT idUser FROM utilisateur WHERE adrMailUser = :email)";
         $smtUpdate = $connection->prepare($sqlUpdate);
         $smtDelete->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+        // $result = $smtUpdate->execute();
         if($smtUpdate->execute()){
             header("Location: ?page=Accueil");
             exit();
         }
     }
 }
-
-
 require 'Views/Basket.php';
 ?>
