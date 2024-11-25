@@ -11,7 +11,9 @@
 <body>
     <header>
         <div class="overlap-group">
+            <a href="accueil.html">
             <img class="logo" src="../images/logo.png" />
+            </a>
             <div class="theme-claire">THEME CLAIRE</div>
         </div>
         <div class="overlap-group-2">
