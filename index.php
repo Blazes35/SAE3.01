@@ -34,10 +34,10 @@ switch ($page) {
         include './Controllers/UpdatePwdController.php';
         break;
     case 'Treasury':
-        renderLayoutAdmin('./Views/Treasury.php', 'Treasury');
+        include './Controllers/TreasuryController.php';
         break;
     case 'Dashboard':
-            renderLayoutAdmin('./Views/Dashboard.php', 'Dashboard');
+        include './Controllers/DashboardController.php';
             break;
     default:
         renderLayout('./Views/error404.php', 'error404');
