@@ -44,7 +44,7 @@
 
        
         $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; // Exemple d'autres données de session
+        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
         if (isset($_GET['id'])) {
             $idProd = intval($_GET['id']);

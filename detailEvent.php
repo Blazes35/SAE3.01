@@ -38,6 +38,15 @@
     <?php 
     $sql = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
+
+    session_name('BDE');
+        session_set_cookie_params(86400 * 30, "/");
+        session_start();
+
+       
+        $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
+
     if (isset($_GET['id'])) {
         $idEvent = intval($_GET['id']);
         // Requête pour récupérer l'événement
@@ -67,7 +76,9 @@
                     echo "<p class='price'>" . htmlspecialchars($event['prixEvent']) . " €</p>";
                     echo "</div>";
                 echo "<div class='boutons'>";
-                echo "<a href='updateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
+                if($userRole === "3"){
+                    echo "<a href='updateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
+                }
                 echo "<a href='inscription.php?id=".urlencode($event['idEvent']) . "'><button class='inscrire'>S'inscrire</button></a>";
                 echo "</div>";
             } else {
