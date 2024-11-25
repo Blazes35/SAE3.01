@@ -56,6 +56,8 @@ a.boutique:visited {
   color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
 /* Réinitialise les marges et paddings par défaut */
 * {
     margin: 0;
@@ -108,7 +110,6 @@ form {
     width: 100%;
 }
 
-
 form label {
     font-size: 18px;
     margin-bottom: 10px;
@@ -146,7 +147,7 @@ form button:hover {
 }
 
 /* Bouton de suppression */
-.form .delete-button {
+.delete-button {
     padding: 10px 20px;
     background-color: #ff4d4d;
     color: #fff;
@@ -157,7 +158,7 @@ form button:hover {
     transition: background-color 0.3s ease;
 }
 
-form .delete-button:hover {
+.delete-button:hover {
     background-color: #ffffff;
     color: red;
 }
