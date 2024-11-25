@@ -57,9 +57,9 @@
                         </div>
                         <div class="detail">
                             <p class="description"><?php echo htmlspecialchars($event['descEvent']); ?></p>
-                            <p class="capacite"><?php echo htmlspecialchars($event['capaEvent']);?></p>
-                            <p class="lieu"><?php echo htmlspecialchars($event['lieuEvent']);?></p>
-                            <p class="date"><?php echo htmlspecialchars($event['dateEvent']);?></p>
+                            <p class="capacite">capacité : <?php echo htmlspecialchars($event['capaEvent']);?></p>
+                            <p class="lieu">Lieu : <?php echo htmlspecialchars($event['lieuEvent']);?></p>
+                            <p class="date">Date : <?php echo htmlspecialchars($event['dateEvent']);?></p>
                             <a href="detailEvent.php?id=<?php echo urlencode($event['idEvent']); ?>">
                                 <p class="voi-maintenant">Voir Maintenant</p>
                             </a>            
