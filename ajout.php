@@ -140,8 +140,8 @@
     </div>
 
     <div id="promo-field" hidden>
-        <label for="pourcentCode">Pourcentage de réduction</label>
-        <input type="number" step="0.01" name="pourcentCode" id="pourcentCode">
+        <label for="reduction">Pourcentage de réduction</label>
+        <input type="number" step="0.01" name="reduction" id="reduction">
     </div>
 
     <div id="qt-field" hidden>
@@ -287,7 +287,7 @@ function addArticle($connection, $data, $file) {
             ':dateDebut'    => $data['dateDebut'],
             ':dateFin'      => $data['dateFin'],
             ':pourcentCode'    => $data['pourcentCode'] ?? null,
-            ':conditionCode'=> $data['conditionCode'] ?? null // Peut être null si non obligatoire
+            ':co nditionCode'=> $data['conditionCode'] ?? null // Peut être null si non obligatoire
         ]);
     }
     
