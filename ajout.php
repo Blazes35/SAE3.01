@@ -140,8 +140,8 @@
     </div>
 
     <div id="promo-field" hidden>
-        <label for="reduction">Pourcentage de réduction</label>
-        <input type="number" step="0.01" name="reduction" id="reduction">
+        <label for="pourcentCode">Pourcentage de réduction</label>
+        <input type="number" step="0.01" name="pourcentCode" id="pourcentCode">
     </div>
 
     <div id="qt-field" hidden>
@@ -205,6 +205,28 @@
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
+        function uploadImage($file, $type) {
+            $uploadDir = match ($type) {
+                'produit' => 'uploads/produits/',
+                'galerie' => 'uploads/galerie/',
+                'evenement' => 'uploads/evenements/',
+                'actu' => 'uploads/actualites/',
+                'vetement' => 'uploads/vetements/',
+                default => throw new Exception('Type non valide'),
+            };
+
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+
+            $fileName = basename($file['name']);
+            $targetFilePath = $uploadDir . $fileName;
+            $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+            if (in_array(strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION)), $validTypes)) {
+                if (move_uploaded_file($file['tmp_name'], $targetFilePath)) return $fileName;
+                throw new Exception('Erreur : Téléchargement impossible.');
+            }
+            throw new Exception('Erreur : Format non valide.');
+        }
 
 function addArticle($connection, $data, $file) {
     $imageName = null; // Initialisez avec null
@@ -286,8 +308,8 @@ function addArticle($connection, $data, $file) {
             ':title'        => $data['title'],
             ':dateDebut'    => $data['dateDebut'],
             ':dateFin'      => $data['dateFin'],
-            ':pourcentCode'    => $data['pourcentCode'] ?? null,
-            ':co nditionCode'=> $data['conditionCode'] ?? null // Peut être null si non obligatoire
+            ':pourcentCode'    => $data['pourcentCode'],
+            ':conditionCode'=> $data['conditionCode'] ?? null // Peut être null si non obligatoire
         ]);
     }
     

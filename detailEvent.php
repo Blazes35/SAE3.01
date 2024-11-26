@@ -6,11 +6,9 @@
     <title>Évenement</title>
     <!-- Lien pour importer les Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/detailEvent.css" />
+    <link rel="stylesheet" href="detailEvent.css" />
     <link rel="stylesheet" href="header.css" />
-    <link rel="icon" href=".images/favicon.ico" type="image/x-icon" /> <!-- Ajoutez cette ligne -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AYKrl7Ba9EH0Y6g6vrEQgMziTW3mhT8K2bFHokW6IF-PopEIdcArlJ_Oh__hUWF5GjbNIqNLBDD_T-YT&currency=EUR"></script>
-    </head>
+</head>
 <body>
     <header>
         <div class="overlap-group">
@@ -36,6 +34,7 @@
             </div>
         </div>
     </div>
+<body>
     <?php 
     $sql = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
@@ -79,7 +78,6 @@
                     echo "<a href='updateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
                 }
                 echo "<a href='inscription.php?idEvent=" . urlencode($event['idEvent']) . "'><button class='inscrire'>S'inscrire</button></a>";
-                echo "<div id='paypal-button-container'></div>";
                 echo "</div>";
             } else {
             echo "<p>Événement introuvable.</p>";
@@ -98,25 +96,7 @@
             console.log("Role de l'utilisateur : " + userRole);
             console.log("Nom de l'utilisateur : " + userName);
 
-            paypal.Buttons({
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: '<?php echo $event['prixEvent']; ?>'
-                }
-            }]
-        });
-    },
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            alert('Transaction completed by ' + details.payer.name.given_name);
-            window.location.href = 'inscription.php?id=<?php echo urlencode($event['idEvent']); ?>';
-        });
-    }
-}).render('#paypal-button-container').catch(function(err) {
-    console.error("Erreur lors du rendu PayPal :", err);
-});
-</script>
+            // Tu peux également afficher d'autres informations sur la session si besoin
+        </script>
 </body>
 </html>
