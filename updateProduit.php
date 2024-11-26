@@ -92,7 +92,7 @@
             if ($stmt->execute()) {
                 $message = "Produit supprimé avec succès !";
                 echo "<p>$message</p>";
-                exit; // Arrêt pour éviter l'affichage du formulaire
+                exit;
             } else {
                 $message = "Erreur lors de la suppression du produit.";
             }
@@ -153,7 +153,6 @@
 
 <br>
 
-<!-- Formulaire de suppression -->
 <form method="POST" action="">
     <input type="hidden" name="idProd" value="<?php echo htmlspecialchars($product['idProd']); ?>" />
     <input type="hidden" name="action" value="delete" />

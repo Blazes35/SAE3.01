@@ -50,14 +50,12 @@
 
     if (isset($_GET['id'])) {
         $idEvent = intval($_GET['id']);
-        // Requête pour récupérer l'événement
         $query = "SELECT * FROM EVENEMENT WHERE idEvent = :id";
         $stmt = $sql->prepare($query);
         $stmt->bindParam(':id', $idEvent, PDO::PARAM_INT);
         $stmt->execute();
 
         if ($event = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Déterminer le dossier des images
             $uploadDir = 'uploads/evenements/';
 
             echo "<div class='container'>";
