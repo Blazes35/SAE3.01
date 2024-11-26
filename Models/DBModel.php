@@ -19,4 +19,8 @@ class DBModel {
             self::$db = null;
         }
     }
+
+    public function getDB(){
+        return self::$db;
+    }
 }

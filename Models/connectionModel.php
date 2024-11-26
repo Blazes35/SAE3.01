@@ -22,7 +22,9 @@ class ConnectionModel extends DBModel {
         if ($result["Failed"] == 1) {
             return False;
         } else {
+            $_SESSION['id'] = $result['idUser'];
             $_SESSION['nom'] = $result['nomUser'];
+            $_SESSION['prenom'] = $result['prenomUser'];
             $_SESSION['email'] = $result['adrMailUser'];
             $_SESSION['TP'] = $result['idTPAgenda'];
             $_SESSION['pp'] = $result['ppUser'];

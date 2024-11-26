@@ -35,7 +35,7 @@
         </div>
     </div>
 <body>
-
+<div class="container">
 <?php 
 // Connexion à la base de données
 try {
@@ -211,5 +211,6 @@ if (isset($_GET['id'])) {
     echo "<p>Aucun ID fourni.</p>";
 }
 ?>
+</div>
 </body>
 </html>
