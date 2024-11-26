@@ -84,9 +84,10 @@
                 }
 
                 echo "<div class='buttons'>";
+                echo "<a href='Views/basket.php?idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>";
                 echo "<button class='add-to-cart'>Ajouter au panier</button>";
+                echo "</a>";
                 echo "</div>";
-
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
