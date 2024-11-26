@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
 
-
 .overlap-group-3 {
     font-family: k2d, sans-serif;
     font-size: 20px;
@@ -57,6 +56,9 @@ a.boutique:visited {
   color: inherit; /* Utilise la couleur héritée pour les liens visités */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+/* Réinitialise les marges et paddings par défaut */
 * {
     margin: 0;
     padding: 0;
@@ -65,27 +67,26 @@ a.boutique:visited {
 
 /* Styles de base pour le corps et le HTML */
 body, html {
-    color: #2d2d2d; /* Texte sombre */
+    color: white;
     font-family: 'K2D', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f0e6; /* Couleur d'arrière-plan clair */
+    background-color: #000000; /* Couleur d'arrière-plan */
 }
 
 /* Conteneur principal */
 .container {
-    width: 100%; /* Utilise toute la largeur disponible */
-    margin: 0 auto; /* Centre le conteneur horizontalement */
+    font-family: 'K2D', sans-serif;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 60vw;
+    margin: 0 auto;
     padding: 20px;
-    display: flex; /* Utilise Flexbox */
-    justify-content: center; /* Centre les éléments horizontalement */
-    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
-    gap: 20px; /* Ajoute un espacement entre les cartes */
+    text-align: center;
 }
 
 /* Titre principal */
 .titre {
-    margin-top: 50px;
     font-size: 36px;
     font-weight: bold;
     color: #ffffff;
@@ -94,75 +95,79 @@ body, html {
     border-bottom: 4px solid #8E51D0;
     display: inline-block;
     padding-bottom: 10px;
-    width: 100%; /* Pour que le titre soit centré au-dessus des cartes */
 }
 
-/* Styles pour les cartes d'actualité */
-.actu-card {
-    background-color: #000000;
+/* Formulaire de mise à jour */
+form {
+    margin-top: 50px;
+    background-color: #444;
     border-radius: 15px;
     padding: 20px;
+    margin-bottom: 30px;
     display: flex;
-    flex-direction: column; /* Aligne les éléments en colonne */
+    flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%; /* Largeur fixe pour uniformiser les cartes */
-    max-width: 800px; /* Largeur maximale pour les cartes */
-    height: auto; /* Hauteur automatique pour s'adapter au contenu */
-}
-
-.actu-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px #8E51D0;
-}
-
-/* Styles pour les images */
-.actu-img {
     width: 100%;
-    height: 400px; /* Hauteur fixe pour les images */
+}
+
+form label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
     background-color: #333;
+    color: #fff;
+    font-size: 16px;
+}
+
+form button {
+    font-family: 'K2D', sans-serif;
+    padding: 10px 20px;
+    background-color: #6c38f7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #5433c9;
+}
+
+/* Bouton de suppression */
+.delete-button {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #ffffff;
+    color: red;
+}
+
+/* Image actuelle */
+img {
+    margin-top: 20px;
+    max-width: 200px;
+    height: auto;
     border-radius: 10px;
-    overflow: hidden;
     margin-bottom: 20px;
 }
-
-.actu-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
-}
-
-.detail {
-    text-align: left;
-    width: 100%;
-}
-
-.detail .titre {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.detail .contenu {
-    font-size: 16px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limite le texte à 3 lignes */
-    -webkit-box-orient: vertical;
-}
-
-.detail .date {
-    font-size: 14px;
-    color: #bbb;
-}
-
-/* Styles pour le lien */
-a {
-    color: inherit; /* Utilise la couleur héritée */
-    text-decoration: none; /* Supprime le soulignement */
-}
-
-

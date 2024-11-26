@@ -8,31 +8,88 @@ ob_start();
     </div>
 </div>
 
-    <h1>Profil</h1>
-        <!-- <form action="?page=Login" method="post"> -->
-            <div class="input-row">
-                <section>
-                    <p>Prénom</p>
-                    <div class="input-group">
-                        <input type="text" name="Prenom" value="Prénom" required>
-                    </div>
-                </section>
-                <section>
-                    <p>Nom</p>
-                    <div class="input-group">
-                        <input type="text" name="Nom" value="Nom" required>
-                    </div>
-                </section>
-            </div>
-            <div class="connexion">
+<div class="profile">
+    <div class="titreProfil">
+        <p>Page Personnelle</p>
+    </div>
+    <div class="haut">
+    <div class="info">
+        <div class= 'prengrade'>
+        <div class="prenomnom">
+            <?php if($user) { echo "<p>" . $user['prenomUser'] . " " . $user['nomUser'] . "</p>"; } ?>
+        </div>
+        <?php
+        if (isset ($_SESSION['grade'])){
+            echo '<div class="grade">';
+            switch ($_SESSION['grade']) {
+                case 1: echo '<img src="images/lingot_de_fer1.png"/>'; break;
+                case 2: echo '<img src="images/lingot_d_or1.png"/>'; break;
+                case 3: echo '<img src="images/diamant1.png"/>'; break;
+            }
+            echo '</div>';
+        }
+        
+        ?>
+        </div>
+        <div class="role">
+            
+        </div>
+    </div>
+    <div class="bouton">
+        <div class="changemdp">
+            <a href="?page=UpdatePwd">
+                <button type="button">Modifier votre mot de passe</button>
+            </a>
+        </div>
+        <div class="supprprofil">
+            <button type="button" name="suppr">Supprimer votre profil</button>
+        </div>
+    </div>
+</div>
+    <form action="?page=Profil" method="post">
+    <div class="input-group">
+        <label for="changeNom">
+            Nom
+        </label>
+        <input type="text" id="nom" name="nom" placeholder="<?php echo $_SESSION['nom'];?>">
+    </div>
 
-            <hr>
+    <div class="input-group">
+        <label for="chnagePrenom">
+            Prénom
+        </label>
+        <input type="text" id="prenom" name="prenom" placeholder="<?php echo $_SESSION['prenom'];?>">
+    </div>
 
-            <hr>
+    <div class="input-group">
+        <label for="changmail">
+            Email
+        </label>
+        <input type="email" id="mail" name="mail" placeholder="<?php echo $_SESSION['email']?>">
+    </div>
 
-            <div class="envoyer">
-                <button type="submit" name="connect">Changer mot de passe</button>
-            </div>
+    <div class="envoyer">
+        <button type="submit" name="validate">MODIFIER</button>
+    </div>
+    </form>
+    <div class =event>
+        <div class="titreEvent">
+            Evénement Réalisé
+        </div>
+        <div class="afficheevent">
+        <?php
+        foreach($events as $event){
+            echo '<div class"imgnom">';
+            echo '<div class="imgevent">';
+                echo '<img src="uploads/evenements/' . $event["imgEvent"] . '" />';
+            echo '</div>
+            <div class="nomEvent">';
+                 echo $event['titreEvent'];
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
+        </div>
     </div>
 </div>
 
