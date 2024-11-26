@@ -10,7 +10,7 @@
 <body>
 <div class="menu">
     <div class="logo-theme">
-        <img class="logo" src="./images/logo-sans-fond.png" />
+        <img class="logo" src="images/logo-sans-fond.png" />
         <div class="theme-claire">THEME CLAIRE</div>
     </div>
 <div class="compte">

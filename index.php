@@ -14,9 +14,7 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
 }
 
 
-    $page = $_POST['page'] ?? $_GET['page'] ?? 'Accueil';
-
-    echo '<script>console.log("'.$page.'")</script>';
+    $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
     // routage
 switch ($page) {
     case 'Accueil':
