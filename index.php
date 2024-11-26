@@ -41,6 +41,9 @@ switch ($page) {
     case 'Dashboard':
         include './Controllers/DashboardController.php';
             break;
+    case 'Galerie':
+        include './Controllers/GalerieController.php';
+            break;
     case 'Shop' :
         include './boutique.php';
             break;
