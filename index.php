@@ -41,7 +41,7 @@ switch ($page) {
         include './Controllers/GalerieController.php';
         break;
     case 'Actu':
-        include './Controllers/actuController.php';
+        include './Controllers/ActuController.php';
         break;
     case 'Shop' :
         include './boutique.php';
