@@ -51,6 +51,9 @@ switch ($page) {
     case 'Shop' :
         include './boutique.php';
             break;
+    case 'Basket' :
+        include './Controllers/BasketController.php';
+        break;
     case 'Event' :
         include "./event.php";
             break;
@@ -59,7 +62,7 @@ switch ($page) {
             break;
     case 'Add' : 
         include "./ajout.php";
-            break;
+        break;
     default:
         include './Views/Error404.php';
         break;
