@@ -17,13 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     }
 }
 
-$sql = "SELECT nomUser, prenomUser, idGrade, ROLE.idRole, nomRole FROM UTILISATEUR LEFT JOIN POSSEDER 
-ON UTILISATEUR.idUser =POSSEDER.idUser LEFT JOIN ROLE ON ROLE.idRole=POSSEDER.idRole WHERE adrMailUser=:email";
-$stmt = $connection->prepare($sql);
-$stmt->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-$stmt->execute();
 
- $user = $stmt->fetch();
 
  $sqlevent = "SELECT EVENEMENT.idEvent, titreEvent, imgEvent FROM EVENEMENT JOIN RESERVATION 
  ON EVENEMENT.idEvent = RESERVATION.idEvent JOIN UTILISATEUR ON 
@@ -33,6 +27,34 @@ $stmt->execute();
  $stmtEvent->execute();
 
  $events = $stmtEvent->fetchAll();
+
+ if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_POST['validate'])){
+        $nom = isset($_POST['nom']) ? $_POST['nom'] : $_SESSION['nom'];
+        $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : $_SESSION['prenom'];
+        $mail = isset($_POST['mail']) ? $_POST['mail'] : $_SESSION['email'];
+        $id_user = $_SESSION['id'];
+    
+        $sql = "UPDATE UTILISATEURS SET nom = ?, prenom = ?, email = ? WHERE id_user = ?";
+    
+
+        if ($stmt = $connection->prepare($sql)) {
+            $stmt->bindParam("sssi", $nom, $prenom, $mail, $id_user);
+    
+            
+            if ($stmt->execute()) {
+                
+                echo "Profil mis à jour avec succès !";
+            } else {
+                echo "Erreur lors de la mise à jour : " . $stmt->error;
+            }
+    
+            
+            $stmt->close();
+        }
+    
+    }
+}
 
 require 'Views/Profil.php';
 ?>

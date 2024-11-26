@@ -16,7 +16,7 @@ ob_start();
     <div class="info">
         <div class= 'prengrade'>
         <div class="prenomnom">
-            <?php if($user) { echo "<p>" . $user['prenomUser'] . " " . $user['nomUser'] . "</p>"; } ?>
+            <?php   echo "<p>" . $_SESSION['nom'] . " " . $_SESSION['nom'] . "</p>";  ?>
         </div>
         <?php
         if (isset ($_SESSION['grade'])){
@@ -55,7 +55,7 @@ ob_start();
     </div>
 
     <div class="input-group">
-        <label for="chnagePrenom">
+        <label for="changePrenom">
             Prénom
         </label>
         <input type="text" id="prenom" name="prenom" placeholder="<?php echo $_SESSION['prenom'];?>">
