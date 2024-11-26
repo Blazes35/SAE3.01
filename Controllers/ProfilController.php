@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
         $mail = isset($_POST['mail']) ? $_POST['mail'] : $_SESSION['email'];
         $id_user = $_SESSION['id'];
     
-        $sql = "UPDATE UTILISATEURS SET nom = ?, prenom = ?, email = ? WHERE id_user = ?";
+        $sql = "UPDATE UTILISATEUR SET nomUser = '$nom', prenomUser = '$prenom', adrMailUser = '$mail' WHERE idUser =$id_user;";
     
 
-        if ($stmt = $connection->prepare($sql)) {
-            $stmt->bindParam("sssi", $nom, $prenom, $mail, $id_user);
+        $stmt = $connection->prepare($sql);
+
     
             
             if ($stmt->execute()) {
@@ -49,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
                 echo "Erreur lors de la mise à jour : " . $stmt->error;
             }
     
-            
-            $stmt->close();
         }
-    
-    }
+        $_SESSION['nom'] = $nom;
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['email'] = $mail;
 }
+
 
 require 'Views/Profil.php';
 ?>

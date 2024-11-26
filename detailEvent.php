@@ -77,7 +77,7 @@
                 if($userRole === "3"){
                     echo "<a href='updateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
                 }
-                echo "<a href='inscription.php?idEvent=" . urlencode($event['idEvent']) . "'><button class='inscrire'>S'inscrire</button></a>";
+               // echo "<div id='paypal-button-container'></div>";
                 echo "</div>";
             } else {
             echo "<p>Événement introuvable.</p>";

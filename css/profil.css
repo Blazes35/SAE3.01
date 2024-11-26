@@ -217,3 +217,20 @@ form {
     text-align: center;
     margin-top: 5px;
 }
+
+.supprimer button{
+    background-color: #8E51D0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:  background-color 0.3s ease, transform 0.2s ease;
+    font-family: k2d, sans-serif;
+}
+.supprimer button:hover {
+    background-color: #8E51D8;
+    transform: scale(1.05); /* Légère mise en avant au survol */
+}
