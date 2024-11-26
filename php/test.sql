@@ -484,7 +484,7 @@ CREATE PROCEDURE login(
     IN mdp VARCHAR(257))
 BEGIN
     IF EXISTS (SELECT * FROM utilisateur WHERE adrMailUser = mail AND mdpUser = mdp) THEN
-        SELECT nomUser, adrMailUser, idTPAgenda, ppUser, idGrade, idRole FROM utilisateur NATURAL JOIN POSSEDER WHERE adrMailUser = mail;
+        SELECT nomUser, prenomUser, adrMailUser, idTPAgenda, ppUser, idGrade, idRole FROM utilisateur NATURAL JOIN POSSEDER WHERE adrMailUser = mail;
     ELSE
         SELECT True as Failed;
     END IF;

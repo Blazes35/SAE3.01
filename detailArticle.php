@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="produit.css" />
-    <link rel="stylesheet" href="detailArticle.css" />
+    <link rel="stylesheet" href="./css/detailArticle.css" />
 </head>
 <body>
     <header>
@@ -44,7 +44,7 @@
 
        
         $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; // Exemple d'autres données de session
+        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
         if (isset($_GET['id'])) {
             $idProd = intval($_GET['id']);
@@ -91,7 +91,7 @@
                 echo "<div class='favorites-settings'>";
                 echo "<button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
-                if ($userRole === 3) {
+                if ($userRole === "3") {
                     echo "<button class='settings'>";
                     echo " <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>";
                     echo " <span class='material-symbols-outlined'>settings</span>"; 

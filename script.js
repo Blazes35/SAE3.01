@@ -48,4 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector(".slides");
+    const slides = document.querySelectorAll(".slide");
+    const slideWidth = 600; // Largeur d'une slide
+    let index = 0;
+
+    function nextSlide() {
+        index++;
+        if (index >= slides.length) {
+            index = 0; // Revenir au début
+        }
+        slider.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    // Défilement automatique toutes les 5 secondes
+    setInterval(nextSlide, 5000);
+});
+
 

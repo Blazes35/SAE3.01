@@ -7,7 +7,7 @@
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </head>
-    <link rel="stylesheet" href="../boutique.css" />
+    <link rel="stylesheet" href="../css/boutique.css" />
     <!-- <link rel="stylesheet" href="styleguide.css" /> -->
     <link rel="stylesheet" href="../header.css" />
 </head>
