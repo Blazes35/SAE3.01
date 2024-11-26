@@ -62,6 +62,9 @@ switch ($page) {
             break;
     case 'Add' : 
         include "./ajout.php";
+            break;
+    case 'Calendar' :
+        include "./calendrier.php";
         break;
     default:
         include './Views/Error404.php';
