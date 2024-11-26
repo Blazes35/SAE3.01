@@ -30,8 +30,12 @@ ob_start();
     <div class="supprimer">
         Supprimer
     </div>
+    
 </div>
 <?php echo $commandeAff; ?>
+<div class="promo">
+    <?php echo $pourcentage; ?>
+</div>
 <div class="total">
     <?php echo 'Total: ' . number_format($total, 2) . ' €'; ?>
 </div>
