@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
 
  $events = $stmtEvent->fetchAll();
 
- if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_POST['validate'])){
         $nom = isset($_POST['nom']) ? $_POST['nom'] : $_SESSION['nom'];
         $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : $_SESSION['prenom'];
@@ -42,32 +42,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
 
     
             
-            if ($stmt->execute()) {
+        if ($stmt->execute()) {
                 
                 echo "Profil mis à jour avec succès !";
-            } else {
+        } else {
                 echo "Erreur lors de la mise à jour : " . $stmt->error;
-            }
+        }
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
             $_SESSION['email'] = $mail;
         }
-       
+    if (isset($_POST['supprimer'])){
+        if(isset($_POST['idEvent'])){
+            $idEvent = $_POST['idEvent'];
+            $sqlDelete = "DELETE FROM RESERVATION WHERE idEvent = :idEvent AND idUser = :id;";
+            $smtDelete = $connection->prepare($sqlDelete);
+            $smtDelete->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
+            $smtDelete->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
 
-        if (isset($_POST['supprimer'])){
-            if(isset($_POST['idEvent'])){
-                $idEvent = $_POST['idEvent'];
-                $sqlDelete = "DELETE FROM RESERVATION WHERE idEvent = :idEvent AND idUser = :id;";
-                $smtDelete = $connection->prepare($sqlDelete);
-                $smtDelete->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
-                $smtDelete->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
-    
-                if($smtDelete->execute()){
-                    header("Location: ?page=Profil");
-                    exit();
-                }
+            if($smtDelete->execute()){
+                header("Location: ?page=Profil");
+                exit();
             }
         }
+    }
 }
 
 

@@ -1,3 +1,3 @@
 <?php
-require 'Views/actu.php';
+require 'Views/Actu.php';
 ?>

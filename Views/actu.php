@@ -9,9 +9,6 @@ ob_start();
     <?php
     $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
     
-
-
-       
     $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
     $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 

@@ -3,5 +3,5 @@
     // Récupération des photos
 $directory = 'uploads/galerie/';
 $images = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-require 'Views/galerie.php';
+require 'Views/Galerie.php';
 ?>
