@@ -15,6 +15,7 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
 
     $page = $_POST['page'] ?? $_GET['page'] ?? 'Accueil';
 
+    echo '<script>console.log("'.$page.'")</script>';
     // routage
 switch ($page) {
     case 'Accueil':
@@ -41,11 +42,26 @@ switch ($page) {
     case 'Dashboard':
         include './Controllers/DashboardController.php';
             break;
+    case 'Galerie':
+        include './Controllers/GalerieController.php';
+            break;
+    case 'Actu':
+        include './Controllers/actuController.php';
+            break;
     case 'Shop' :
         include './boutique.php';
             break;
     case 'Basket' :
         include './Controllers/BasketController.php';
+        break;
+    case 'Event' :
+        include "./event.php";
+            break;
+    case 'News' : 
+        include "./actu.php";
+            break;
+    case 'Add' : 
+        include "./ajout.php";
         break;
     default:
         include './Views/Error404.php';

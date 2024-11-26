@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.overlap-group-3 {
+    font-family: k2d, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 1000px;
+    width: 45%;
+    justify-content: space-between;
+  }
+
+
+a.presentation {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.presentation:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.evenement {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.evenement.visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.calendrier {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.calendrier:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+a.galerie {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.galerie:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+a.boutique {
+  color: inherit; /* Utilise la couleur héritée */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a.boutique:visited {
+  color: inherit; /* Utilise la couleur héritée pour les liens visités */
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Augmente la taille minimale des colonnes */
+  grid-gap: 20px; /* Espacement entre les éléments */
+  padding: 20px;
+}
+
+.gallery-item {
+  margin-bottom: 10px;
+}
+
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+
+  
+footer .bandeau1{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-right: 550px;
+}
+
+.img .logoF{
+    height: 150px;
+    width: 150px;
+}
+
+footer .bandeau1 .Contact{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+  margin-top: 150px;
+}
+
+footer .bandeau1 .Mention-legal{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+
+  margin-top: 150px;
+}
+
+footer .bandeau1 .FAQ{
+  font-family: k2d, sans-serif;
+  font-size: 25px;
+  color: white;
+  margin-top: 150px;
+}
+
+
+footer .icons-resaux{
+  justify-content: space-between;
+  display: flex;
+  margin-right: 1500px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+footer .icons-resaux img{
+    height: 50px;
+    width: 50px;
+}
+
+footer .bandeau2{
+  display: flex;
+  justify-content: space-between;
+  font-family: k2d, sans-serif;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
+  margin-right: 400px;
+  margin-left: 400px;
+}
+
+footer .bandeau2 .p-footer{
+  font-size: 17px;
+}
