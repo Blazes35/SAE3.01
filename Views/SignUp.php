@@ -43,16 +43,16 @@ ob_start();
                         <option value="" disabled selected>Choisissez votre classe</option>
                         <option value="11A">11A</option>
                         <option value="11B">11B</option>
-                        <option value="11C">11C</option>
-                        <option value="11D">11D</option>
+                        <option value="12C">12C</option>
+                        <option value="12D">12D</option>
                         <option value="21A">21A</option>
                         <option value="21B">21B</option>
-                        <option value="21C">21C</option>
-                        <option value="21D">21D</option>
+                        <option value="22C">22C</option>
+                        <option value="22D">22D</option>
                         <option value="31A">31A</option>
                         <option value="31B">31B</option>
-                        <option value="31C">31C</option>
-                        <option value="31D">31D</option>
+                        <option value="32C">32C</option>
+                        <option value="32D">32D</option>
                     </select>
                 </div>
 
