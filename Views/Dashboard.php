@@ -61,7 +61,7 @@
             </a>
         </div>
         <div class="card">
-            <a href="/php/boutique_hugo.php" class="card-link">
+            <a href="/ajout.php" class="card-link">
                 <div class="card-content">
                     <h2>Editer Contenu</h2>
                     <span class="material-symbols-outlined">edit</span>
