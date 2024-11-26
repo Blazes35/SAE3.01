@@ -6,40 +6,107 @@ body{
 }
 
 .commandes{
-    font-family: k2d, sans-serif;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+.commandes .titrepanier{
+    font-size: 63px;
+    font-family:k2d, sans-serif ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+
 .commandes .commande{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns:  80px 1fr 2fr 1fr 1fr 150px;;
     align-items: center;
     background-color: #545454;
     padding: 15px;
     border-radius: 10px;
     border: 1px solid white;
-    transition: box-shadow 0.3s ease-in-out;
+    gap: 10px;
 }
 
-.commandes .commande:hover{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);;
+.commandes .commande:first-child {
+    font-weight: bold; /* Met en évidence les en-têtes */
+    background-color: transparent; /* Pas de couleur pour les en-têtes */
+    border: none; /* Supprime la bordure des en-têtes */
 }
 
-.commandes .commande .image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+.commandes .commande .image{
+    margin-right: 30px;
     text-align: center;
     justify-content: center;
 }
 
-.commandes .commande .image img{
-    width: 80px;
-    height: 80px;
+.commandes .commande .image img {
+    width: 100%; /* Remplit la colonne pour l'image */
+    height: auto;
     object-fit: cover;
     border-radius: 5px;
+    border: 1px solid #ddd;
 }
+
+
+.commandes .commande .supprimer button{
+    background-color: #8E51D0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15xp;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:  background-color 0.3s ease, transform 0.2s ease;
+    font-family: k2d, sans-serif;
+}
+.commandes .commande .supprimer button:hover {
+    background-color: #8E51D8;
+    transform: scale(1.05); /* Légère mise en avant au survol */
+}
+
+.commandes .total{
+    font-size: 25px;
+    background-color: #8E51D0;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    align-self: flex-end;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.commandes .payer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commandes .payer button{
+    background-color: #8E51D0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px   
+}
+
+.commandes .payer button:hover {
+    background-color: #8E51D8;
+    transform: scale(1.05); /* Légère mise en avant au survol */
+}
+

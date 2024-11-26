@@ -1,33 +1,13 @@
 <?php
+ob_start();
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
 
 $_SESSION['email'] = 'leo.lopez@gmail.com';
 
-$total = 0;
 
-$connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '', [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-]);
 
-$sql = "SELECT idCommande, quantiteCommande, etatCommande, PRODUIT.idProd, nomProd, typeProd, prixProd, imgProd,
-CODEPROMO.idCode, nomCode, dateFin, pourcentCode, condtitionCode
-FROM COMMANDE JOIN utilisateur
-ON COMMANDE.idUser = utilisateur.idUser
-JOIN PRODUIT ON COMMANDE.idProd = PRODUIT.idPROD
-LEFT JOIN APPLIQUER ON PRODUIT.idProd = APPLIQUER.idProd
-LEFT JOIN CODEPROMO ON CODEPROMO.idCode = APPLIQUER.idCode
- WHERE adrMailUser= :email";
-
-$stmt = $connection->prepare($sql);
-
-$stmt->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-
-$stmt->execute();
-
-$commandes = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +15,16 @@ $commandes = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier</title>
-    <link rel="stylesheet" href="panier.css" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
 </head>
 <body>
 <?php
 if($commandes){
     echo '<div class="commandes">';
+    echo '<div class=titrepanier>';
+    echo 'VOTRE PANIER';
+    echo '</div>';
     echo '<div class="commande">';
         echo '<div class="image">
             Images
@@ -56,6 +40,10 @@ if($commandes){
         </div>';
         echo '<div class="prixProduit">
             Prix Unitaire
+        </div>';
+
+        echo '<div class="supprimer">
+            Supprimer
         </div>';
 
     echo'</div>';
@@ -81,13 +69,30 @@ if($commandes){
                 echo'<p>'.$commande['prixProd'].'</p>';
             echo'</div>';
             $total = $total + $commande['quantiteCommande'] * $commande['prixProd'];
-        echo'</div>';
+        
+            echo '<div class="supprimer">';
+                echo '<form method="POST" action="panier.php">';
+                    echo '<input type="hidden" name="idCommande" value="' . $commande['idCommande'] . '">';
+                    echo '<button type="submit" name="supprimer">Supprimer</button>';
+                echo '</form>';
+            echo '</div>';
+            echo'</div>';
     }
     echo '<div class="total">';
         echo "Total: " . number_format($total, 2) . " €"; 
     echo '</div>';
+
+    echo '<div class="payer">';
+                echo '<form method="POST" action="panier.php">';
+                    echo '<button type="submit" name="payer" >Payer votre commande</button>';
+                echo '</form>';
+            echo '</div>';
     echo'</div>';
+
+
+    
 }
 ?> 
+
 </body>
 </html>

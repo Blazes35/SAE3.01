@@ -1,6 +1,18 @@
 <?php 
     $title = 'Dashboard';
     ob_start();
+
+    session_name('BDE'); 
+    session_start();
+
+    // Vérification du rôle utilisateur
+    $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
+    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
+
+    if ($userRole !== 3) { // Accès réservé aux administrateurs
+        header("Location: /Views/Error404.php"); // Redirection correcte vers la page 404
+        exit(); // Important pour arrêter l'exécution après redirection
+    }
 ?>
 
 <link rel="stylesheet" href="../css/dashboard.css"/>
@@ -58,6 +70,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Récupération des données de session envoyées depuis PHP
+    var userRole = <?php echo json_encode($userRole); ?>;
+    var userName = <?php echo json_encode($userName); ?>;
+
+    // Affichage des informations dans la console
+    console.log("Role de l'utilisateur : " + userRole);
+    console.log("Nom de l'utilisateur : " + userName);
+</script>
 
 <?php
 $content = ob_get_clean();
