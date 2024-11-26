@@ -16,7 +16,7 @@ ob_start();
     <div class="info">
         <div class= 'prengrade'>
         <div class="prenomnom">
-            <?php   echo "<p>" . $_SESSION['nom'] . " " . $_SESSION['nom'] . "</p>";  ?>
+            <?php   echo "<p>" . $_SESSION['nom'] . " " . $_SESSION['prenom'] . "</p>";  ?>
         </div>
         <?php
         if (isset ($_SESSION['grade'])){
@@ -51,21 +51,21 @@ ob_start();
         <label for="changeNom">
             Nom
         </label>
-        <input type="text" id="nom" name="nom" placeholder="<?php echo $_SESSION['nom'];?>">
+        <input type="text" id="nom" name="nom" value="<?php echo $_SESSION['nom'];?>">
     </div>
 
     <div class="input-group">
         <label for="changePrenom">
             Prénom
         </label>
-        <input type="text" id="prenom" name="prenom" placeholder="<?php echo $_SESSION['prenom'];?>">
+        <input type="text" id="prenom" name="prenom" value="<?php echo $_SESSION['prenom'];?>">
     </div>
 
     <div class="input-group">
         <label for="changmail">
             Email
         </label>
-        <input type="email" id="mail" name="mail" placeholder="<?php echo $_SESSION['email']?>">
+        <input type="email" id="mail" name="mail" value="<?php echo $_SESSION['email']?>">
     </div>
 
     <div class="envoyer">
@@ -79,13 +79,22 @@ ob_start();
         <div class="afficheevent">
         <?php
         foreach($events as $event){
-            echo '<div class"imgnom">';
-            echo '<div class="imgevent">';
-                echo '<img src="uploads/evenements/' . $event["imgEvent"] . '" />';
-            echo '</div>
-            <div class="nomEvent">';
-                 echo $event['titreEvent'];
-            echo '</div>';
+            echo '<div class="imgnom">';
+            echo '  <div class="imgevent">';
+            echo '      <img src="uploads/evenements/' . $event["imgEvent"] . '" />';
+            echo '  </div>'; // Fermeture de <div class="imgevent">
+
+            echo '  <div class="nomEvent">';
+            echo '      ' . $event['titreEvent'];
+            echo '  </div>'; // Fermeture de <div class="nomEvent">
+
+            echo '  <div class="supprimer">';
+            echo '      <form method="POST" action="?page=Basket">';
+            echo '          <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">';
+            echo '          <button type="submit" name="supprimer">Supprimer</button>';
+            echo '      </form>';
+            echo '  </div>'; // Fermeture de <div class="supprimer">
+
             echo '</div>';
         }
         ?>
