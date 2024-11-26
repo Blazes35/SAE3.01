@@ -48,11 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
             } else {
                 echo "Erreur lors de la mise à jour : " . $stmt->error;
             }
-    
+            $_SESSION['nom'] = $nom;
+            $_SESSION['prenom'] = $prenom;
+            $_SESSION['email'] = $mail;
         }
-        $_SESSION['nom'] = $nom;
-        $_SESSION['prenom'] = $prenom;
-        $_SESSION['email'] = $mail;
+       
+
+        if (isset($_POST['supprimer'])){
+            if(isset($_POST['idEvent'])){
+                $idEvent = $_POST['idEvent'];
+                $sqlDelete = "DELETE FROM RESERVATION WHERE idEvent = :idEvent AND idUser = :id;";
+                $smtDelete = $connection->prepare($sqlDelete);
+                $smtDelete->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
+                $smtDelete->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
+    
+                if($smtDelete->execute()){
+                    header("Location: ?page=Profil");
+                    exit();
+                }
+            }
+        }
 }
 
 
