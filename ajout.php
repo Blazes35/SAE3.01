@@ -205,6 +205,28 @@
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
+        function uploadImage($file, $type) {
+            $uploadDir = match ($type) {
+                'produit' => 'uploads/produits/',
+                'galerie' => 'uploads/galerie/',
+                'evenement' => 'uploads/evenements/',
+                'actu' => 'uploads/actualites/',
+                'vetement' => 'uploads/vetements/',
+                default => throw new Exception('Type non valide'),
+            };
+
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+
+            $fileName = basename($file['name']);
+            $targetFilePath = $uploadDir . $fileName;
+            $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+            if (in_array(strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION)), $validTypes)) {
+                if (move_uploaded_file($file['tmp_name'], $targetFilePath)) return $fileName;
+                throw new Exception('Erreur : Téléchargement impossible.');
+            }
+            throw new Exception('Erreur : Format non valide.');
+        }
 
 function addArticle($connection, $data, $file) {
     $imageName = null; // Initialisez avec null
