@@ -6,7 +6,7 @@
     <title>Évenement</title>
     <!-- Lien pour importer les Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="detailEvent.css" />
+    <link rel="stylesheet" href="./css/detailEvent.css" />
     <link rel="stylesheet" href="header.css" />
 </head>
 <body>
