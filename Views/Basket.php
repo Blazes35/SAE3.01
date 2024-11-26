@@ -31,8 +31,17 @@ ob_start();
         Supprimer
     </div>
 </div>
+<?php echo $commandeAff; ?>
+<div class="total">
+    <?php echo 'Total: ' . number_format($total, 2) . ' €'; ?>
+</div>
+    <div class="payer">
+        <form method="POST" action="?page=Basket">
+            <button type="submit" name="payer" >Payer votre commande</button>
+        </form>
+    </div>
+</div>
 <?php
-echo $commandeAff;
 $content = ob_get_clean();
 include 'Views/Layout.php';
 ?> 
