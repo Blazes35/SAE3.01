@@ -44,6 +44,9 @@ switch ($page) {
     case 'Shop' :
         include './boutique.php';
             break;
+    case 'Basket' :
+        include './Controllers/BasketController.php';
+        break;
     default:
         include './Views/Error404.php';
         break;
