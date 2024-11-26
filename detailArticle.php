@@ -85,7 +85,6 @@
 
                 echo "<div class='buttons'>";
                 echo "<button class='add-to-cart'>Ajouter au panier</button>";
-                echo "<button class='promo-code'>% Code promotionnel</button>";
                 echo "</div>";
 
                 echo "<div class='favorites-settings'>";
