@@ -140,8 +140,8 @@
     </div>
 
     <div id="promo-field" hidden>
-        <label for="reduction">Pourcentage de réduction</label>
-        <input type="number" step="0.01" name="reduction" id="reduction">
+        <label for="pourcentCode">Pourcentage de réduction</label>
+        <input type="number" step="0.01" name="pourcentCode" id="pourcentCode">
     </div>
 
     <div id="qt-field" hidden>
