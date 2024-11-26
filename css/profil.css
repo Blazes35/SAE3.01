@@ -4,140 +4,216 @@
     box-sizing: border-box;
 }
 
-/* Container for Prenom and Nom inputs */
-.input-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 100%;
-    /*max-width: 700px; /* Adjust as needed*/
-}
-
-.input-row .input-group {
-    flex: 1;
-    margin-right: 10px; /* Space between inputs */
-}
-
-.input-row .input-group:last-child {
-    margin-right: 0; /* Remove margin for the last input */
-}
-
-/* Responsive design: stack inputs vertically on smaller screens */
-@media (max-width: 600px) {
-    .input-row .input-group {
-        margin-right: 0;
-        margin-bottom: 20px; /* Space between rows */
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.connexion {
-    margin-top: 75px;
-    font-family: k2d, sans-serif;
+.profile{
+    font-family: k2d,sans-serif;
+    margin:50px auto;
+    padding: 30px;
+    background-color: #1c1c1c;
     color: white;
+    border-radius: 15px;
+    width: 80%;
+    box-shadoW: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.titreProfil p{
+    font-size: 36px;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.haut{
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.info{
+    flex: 1;
+    display:flex;
     flex-direction: column;
+    align-items: left;
+    gap: 10px;
+}
+
+.prengrade{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.prenomnom{
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap : 15px;
 }
 
-.connexion .titreconnexion {
-    font-size: 63px;
+
+
+.prenomnom p{
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
 }
 
-/* Conteneur formulaire */
-.connexion .formulaire {
-    background-color: #1c1c1c; /* Fond sombre */
-    border-radius: 15px; /* Coins légèrement arrondis */
-    padding: 30px; /* Espace intérieur ajusté */
-    width: 400px; /* Largeur maximale contrôlée */
-    text-align: center;
-    margin-top: 50px;
-    overflow: hidden; /* Empêche tout débordement */
+.grade{
+    
+    margin-right: 15px;
 }
 
-/* Groupes de champs avec icônes */
+.grade img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.role p{
+    font-size: 18px;
+    font-style: italic;
+    color: #aaa;
+}
+
+
+.bouton{
+    display:flex;
+    gap: 10px;
+}
+
+.changemdp button,
+.supprprofil button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: #8E51D0;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.changemdp button:hover,
+.supprprofil button:hover {
+    background: white;
+    color: #8E51D0;
+    transform: scale(1.05);
+    
+}
+
+/* Formulaire */
+form {
+    margin: 20px 0;
+}
+
 .input-group {
     display: flex;
-    align-items: center;
-    background-color: #fff; /* Fond des champs */
-    border-radius: 20px; /* Coins arrondis */
-    padding: 10px; /* Espace intérieur ajusté */
-    margin-bottom: 20px; /* Moins de marge pour plus de contrôle */
-    width: 100%; /* Champs ajustés à la largeur du conteneur */
-    /*max-width: 350px; /* Empêche les champs de dépasser */
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .input-group label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    font-size: 25px; /* Taille des icônes */
-    color: black;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 5px;
 }
 
-/* Champs de saisie */
 .input-group input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    flex: 1; /* S'étend pour occuper tout l'espace */
-    color: #000;
-    font-size: 25px; /* Taille ajustée */
     padding: 10px;
-    border-radius: 15px;
-    min-width: 0; /* Empêche les champs de casser la mise en page */
+    font-size: 16px;
+    border: 2px solid #8E51D0;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
 }
 
-/* Style focus */
+.input-group input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
 .input-group input:focus {
-    border: none;
-    outline: 2px solid #8E51D0; /* Bordure violette visible */
+    outline: none;
+    border-color: #fff;
 }
 
-
-/* Bouton de connexion */
+.envoyer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 .envoyer button {
-    width: 100%; /* Bouton adapté au conteneur */
-    max-width: 350px; /* Garde le bouton dans le cadre */
-    background: #8E51D0;
-    color: black;
+    width: auto;
+    padding: 8px 16px;
+    font-size: 18px;
+    align-items: center;
     border: none;
-    border-radius: 20px; /* Coins arrondis */
-    padding: 15px;
-    font-size: 20px; /* Taille ajustée */
+    background: #8E51D0;
+    color: white;
+    border-radius: 15px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .envoyer button:hover {
-    background: #eee; /* Couleur de hover */
+    background: white;
+    color: #8E51D0;
+    transform: scale(1.05);
 }
 
-/* Icônes Material Symbols */
-.connexion .material-symbols-outlined {
-    font-size: 25px; /* Taille des icônes ajustée */
-    color: black;
+/* Section des événements */
+.event {
+    margin-top: 30px;
+    padding: 20px;
+    background: #1c1c1c;
+    border-radius: 15px;
+}
+
+.titreEvent{
+   font-size: 28px;
+   font-weight: bold;
+   text-align:left;
+   color: white;
+   margin-bottom: 20px;
+   text-transform: uppercase;
+}
+
+.afficheevent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width:100%;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.imgnom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.imgevent {
+    text-align: center;
+    max-width: 300px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.imgevent img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.nomEvent {
+    font-size: 16px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 5px;
 }
