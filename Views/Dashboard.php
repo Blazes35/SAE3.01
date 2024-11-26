@@ -9,7 +9,7 @@
     $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
     $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
-    if ($userRole !== 3) { // Accès réservé aux administrateurs
+    if ($userRole > 3) { // Accès réservé aux administrateurs
         header("Location: /Views/Error404.php"); // Redirection correcte vers la page 404
         exit(); // Important pour arrêter l'exécution après redirection
     }
