@@ -66,6 +66,9 @@ switch ($page) {
     case 'Calendar' :
         include "./calendrier.php";
         break;
+    case 'Profile' :
+        include "./GestionProfilAdmin.php";
+        break;
     default:
         include './Views/Error404.php';
         break;
