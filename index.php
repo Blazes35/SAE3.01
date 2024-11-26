@@ -2,6 +2,7 @@
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
+$role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
 
 function renderLayoutAdmin($viewFile, $title, $data = []){
@@ -36,12 +37,7 @@ switch ($page) {
     case 'UpdatePwd':
         include './Controllers/UpdatePwdController.php';
         break;
-    case 'Treasury':
-        include './Controllers/TreasuryController.php';
-        break;
-    case 'Dashboard':
-        include './Controllers/DashboardController.php';
-            break;
+    
     case 'Galerie':
         include './Controllers/GalerieController.php';
             break;
@@ -60,11 +56,17 @@ switch ($page) {
     case 'News' : 
         include "./actu.php";
             break;
+    case 'Treasury':
+        $role < 4 ? include './Controllers/TreasuryController.php' : include './Views/Error404.php';
+        break;
+    case 'Dashboard':
+        $role < 4 ? include './Controllers/DashboardController.php' : include './Views/Error404.php';
+        break;
     case 'Add' : 
-        include "./ajout.php";
-            break;
+        $role < 4 ? include "./ajout.php" : include './Views/Error404.php';
+        break;
     case 'Calendar' :
-        include "./calendrier.php";
+        $role < 4 ? include "./calendrier.php" : include './Views/Error404.php';
         break;
     case 'Profile' :
         include "./GestionProfilAdmin.php";

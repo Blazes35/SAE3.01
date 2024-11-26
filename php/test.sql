@@ -458,16 +458,16 @@ INSERT INTO GRADE (nomGrade, prixGrade, descGrade) VALUES
 INSERT INTO AGENDA (idTPAgenda, urlAgenda) VALUES
 ('11A', 'https://agenda.univ.com/event1'),
 ('11B','https://agenda.univ.com/event2'),
-('11C','https://agenda.univ.com/event3'),
-('11D','https://agenda.univ.com/event4'),
-('12A','https://agenda.univ.com/event5'),
-('12B','https://agenda.univ.com/event6'),
-('12C','https://agenda.univ.com/event7'),
-('12D','https://agenda.univ.com/event8'),
-('21A','https://agenda.univ.com/event9'),
-('21B','https://agenda.univ.com/event10'),
-('21C','https://agenda.univ.com/event11'),
-('21D','https://agenda.univ.com/event12');
+('12C','https://agenda.univ.com/event3'),
+('12D','https://agenda.univ.com/event4'),
+('21A','https://agenda.univ.com/event5'),
+('21B','https://agenda.univ.com/event6'),
+('22C','https://agenda.univ.com/event7'),
+('22D','https://agenda.univ.com/event8'),
+('31A','https://agenda.univ.com/event9'),
+('31B','https://agenda.univ.com/event10'),
+('32C','https://agenda.univ.com/event11'),
+('32D','https://agenda.univ.com/event12');
 
 INSERT INTO ROLE (nomRole) VALUES
 ('Admin 1'),

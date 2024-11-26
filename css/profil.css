@@ -82,8 +82,7 @@
     gap: 10px;
 }
 
-.changemdp button,
-.supprprofil button {
+.changemdp button {
     padding: 10px 20px;
     font-size: 14px;
     border: 2px solid transparent;
@@ -94,8 +93,7 @@
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-.changemdp button:hover,
-.supprprofil button:hover {
+.changemdp button:hover {
     background: white;
     color: #8E51D0;
     transform: scale(1.05);

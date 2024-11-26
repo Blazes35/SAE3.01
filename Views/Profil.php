@@ -41,9 +41,6 @@ ob_start();
                 <button type="button">Modifier votre mot de passe</button>
             </a>
         </div>
-        <div class="supprprofil">
-            <button type="button" name="suppr">Supprimer votre profil</button>
-        </div>
     </div>
 </div>
     <form action="?page=Profil" method="post">
@@ -89,7 +86,7 @@ ob_start();
             echo '  </div>'; // Fermeture de <div class="nomEvent">
 
             echo '  <div class="supprimer">';
-            echo '      <form method="POST" action="?page=Basket">';
+            echo '      <form method="POST" action="?page=Profil">';
             echo '          <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">';
             echo '          <button type="submit" name="supprimer">Supprimer</button>';
             echo '      </form>';
