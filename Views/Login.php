@@ -3,11 +3,11 @@ $title = 'Connection';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="../css/login.css"/>
+<link rel="stylesheet" href="css/login.css"/>
         </div>
     </div>
 </div>
-<link rel="stylesheet" href="../css/login.css"/>
+<link rel="stylesheet" href="css/login.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 <div class="connexion">
     <div class="titreconnexion">CONNEXION</div>
@@ -37,7 +37,7 @@ ob_start();
     </div>
 </div>
 <div>
-    <img class="imagefooter" src="../images/ellipse4.png">
+    <img class="imagefooter" src="images/ellipse4.png">
 </div>
 
 <?php

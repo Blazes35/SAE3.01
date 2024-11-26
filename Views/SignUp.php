@@ -2,14 +2,10 @@
 $title = 'Profil';
 ob_start();
 ?>
-
-<link rel="stylesheet" href="/css/inscription.css"/>
-
+<link rel="stylesheet" href="css/inscription.css"/>
         </div>
     </div>
 </div>
-
-
 <div class="inscription">
     <div class="titreinscription">INSCRIPTION</div>
         <div class="formulaire">
@@ -55,19 +51,12 @@ ob_start();
                         <option value="32D">32D</option>
                     </select>
                 </div>
-
-                <!-- <div class="input-group">
-                    <label for="pp"><span class="material-symbols-outlined">image </span></label>
-                    <input type="file" name="pp" id="pp">
-                </div> -->
-
                 <div class="input-group">
                     <label for="password">
                         <span class="material-symbols-outlined">lock</span>
                     </label>
                     <input type="password" id="password" name="password" placeholder="MOT DE PASSE" required>
                 </div>
-
                 <div class="input-group">
                     <label for="confirm password">
                         <span class="material-symbols-outlined">lock</span>
