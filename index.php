@@ -37,25 +37,24 @@ switch ($page) {
     case 'UpdatePwd':
         include './Controllers/UpdatePwdController.php';
         break;
-    
     case 'Galerie':
         include './Controllers/GalerieController.php';
-            break;
+        break;
     case 'Actu':
         include './Controllers/actuController.php';
-            break;
+        break;
     case 'Shop' :
         include './boutique.php';
-            break;
+        break;
     case 'Basket' :
         include './Controllers/BasketController.php';
         break;
     case 'Event' :
         include "./event.php";
-            break;
+        break;
     case 'News' : 
         include "./actu.php";
-            break;
+        break;
     case 'Treasury':
         $role < 4 ? include './Controllers/TreasuryController.php' : include './Views/Error404.php';
         break;
