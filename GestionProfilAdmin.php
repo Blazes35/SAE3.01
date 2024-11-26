@@ -1,23 +1,4 @@
 <?php
-// Démarrage de la session et connexion à la base de données
-session_name('BDE');
-session_set_cookie_params(86400 * 30, "/");
-session_start();
-
-// Connexion PDO à la base de données
-$connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-
-// Récupération des informations de session
-$userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
-$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
-
-
-if ($userRole !== 3) { 
-    header("/Views/Error404.php"); 
-    exit();
-}
-
-// Récupération des données utilisateurs
 $info_person = "
     SELECT UTILISATEUR.idUser, UTILISATEUR.nomUser, POSSEDER.idRole 
     FROM UTILISATEUR
@@ -114,5 +95,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endforeach; ?>
     </div>
+    <script>
+            // Récupération des données de session envoyées depuis PHP
+            var userRole = <?php echo json_encode($userRole); ?>;
+            var userName = <?php echo json_encode($userName); ?>;
+
+            // Affichage des informations dans la console
+            console.log("Role de l'utilisateur : " + userRole);
+            console.log("Nom de l'utilisateur : " + userName);
+
+            // Tu peux également afficher d'autres informations sur la session si besoin
+        </script>
 </body>
 </html>

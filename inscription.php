@@ -26,13 +26,12 @@ if (!$idEvent) {
     die("Erreur : ID d'événement manquant ou invalide.");
 }
 
-if ($userRole === "2" || $userRole === "3") {
+if ($userRole === "2" || $userRole === "3" || $userRole === "5") {
     try {
         // Connexion à la base de données
         $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Récupérer l'ID de l'utilisateur à partir de son e-mail
         $queryUser = $pdo->prepare("SELECT idUser FROM UTILISATEUR WHERE adrMailUser = :email");
         $queryUser->execute(['email' => $userEmail]);
         $user = $queryUser->fetch(PDO::FETCH_ASSOC);
@@ -43,14 +42,12 @@ if ($userRole === "2" || $userRole === "3") {
 
         $userId = $user['idUser'];
 
-        // Vérifier si l'utilisateur a déjà réservé cet événement
         $query = $pdo->prepare("SELECT * FROM RESERVATION WHERE idEvent = :idEvent AND idUser = :idUser");
         $query->execute(['idEvent' => $idEvent, 'idUser' => $userId]);
 
         if ($query->rowCount() > 0) {
             echo "Vous avez déjà réservé cet événement.";
         } else {
-            // Ajouter une réservation
             $stmt = $pdo->prepare("INSERT INTO RESERVATION (idEvent, idUser) VALUES (:idEvent, :idUser)");
             $stmt->execute(['idEvent' => $idEvent, 'idUser' => $userId]);
 
