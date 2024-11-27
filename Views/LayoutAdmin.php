@@ -15,15 +15,13 @@
         
     </div>
     <div class="compte">
-    <?php if ($role < 4) { echo'                
-                <form id="myForm" method="POST" action="">
-                    <input type="hidden" name="adminPanel" value="0">
-                    <a class="Administrer" href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
-                        <span class="material-symbols-outlined">admin_panel_settings</span>
-                        <p>Administrer</p>
-                    </a>
-                </form>
-            ';} ?>
+        <form id="myForm" method="POST" action="/">
+            <input type="hidden" name="adminPanel" value="0">
+            <a class="Administrer" href="" onclick="document.getElementById('myForm').submit(); return false; ">
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                <p>Administrer</p>
+            </a>
+        </form>
     <a href="compte.html" class="mon-compte" style="cursor: pointer;">
         <span class="material-symbols-outlined">account_circle</span>
         <div class="text-container">

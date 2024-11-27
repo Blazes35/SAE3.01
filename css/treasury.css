@@ -61,7 +61,7 @@
     margin-right: 10px;
 }
 
-form {
+#upload {
     font-family: 'K2D', sans-serif ;
     display: flex;
     flex-direction: column;
