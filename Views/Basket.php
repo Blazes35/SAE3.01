@@ -74,5 +74,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include '../Views/Layout.php';
+include 'Layout.php';
 ?>
