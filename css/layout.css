@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@3000;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "K2D", sans-serif;
+  
 }
 
 /* Enlève les marges et paddings par défaut */
 body, html {
-  font-family: k2d, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: k2d, sans-serif; /* Choisissez une police adaptée */
   background-color: #000000;
 }
 
@@ -28,7 +27,6 @@ header {
 }
 
 .overlap-group {
-  font-family: k2d, sans-serif;
     display: flex;
     align-items: center;
     width: 80%;
@@ -36,7 +34,6 @@ header {
 }
 
 .overlap-group-2 {
-  font-family: k2d, sans-serif;
   display: flex;
   align-items: center;
   width: 20%;
@@ -66,7 +63,6 @@ header span.material-symbols-outlined {
 }
 
 .overlap-group-3 {
-  font-family: k2d, sans-serif;
   /* font-size: 2rem; */
   color: rgb(255, 255, 255);
   display: flex;
@@ -85,7 +81,6 @@ header span.material-symbols-outlined {
 
 
 .overlap-group-5 {
-  font-family: k2d, sans-serif;
   font-size: 25px;
   color: rgb(255, 255, 255);
   display: flex;
@@ -108,14 +103,12 @@ footer .bandeau1{
 }
 
 footer .bandeau1 .Contact{
-  font-family: k2d, sans-serif;
   font-size: 25px;
   color: white;
   margin-top: 150px;
 }
 
 footer .bandeau1 .Mention-legal{
-  font-family: k2d, sans-serif;
   font-size: 25px;
   color: white;
 
@@ -123,7 +116,6 @@ footer .bandeau1 .Mention-legal{
 }
 
 footer .bandeau1 .FAQ{
-  font-family: k2d, sans-serif;
   font-size: 25px;
   color: white;
   margin-top: 150px;
@@ -146,7 +138,6 @@ footer .icons-resaux img{
 footer .bandeau2{
   display: flex;
   justify-content: space-between;
-  font-family: k2d, sans-serif;
   font-size: 17px;
   color: white;
   margin-top: 20px;
