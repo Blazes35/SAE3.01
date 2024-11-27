@@ -20,6 +20,7 @@ class DBModel {
         }
     }
 
+
     public function getDB(){
         return self::$db;
     }

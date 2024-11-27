@@ -16,7 +16,7 @@ function renderLayoutAdmin($viewFile, $title, $data = []){
 
 
 // routage
-if ($_SESSION['adminPanel']){
+if (!$_SESSION['adminPanel']){
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
     switch ($page) {
         case 'Accueil':
@@ -79,6 +79,12 @@ if ($_SESSION['adminPanel']){
             break;
         case 'Inscription' :
             $role < 4 ? include "./inscription.php" : include './Views/Error404.php';
+            break;
+        case 'GestionProfilAdmin' :
+            include "./Controllers/GestionProfilAdminController.php";
+            break;
+        case 'Historique' :
+            include "./Controllers/HistoriqueController.php";
             break;
         default:
             include './Views/Error404.php';
