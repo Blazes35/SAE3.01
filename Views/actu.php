@@ -8,17 +8,12 @@ ob_start();
     </div>
     <?php
     $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-    
-    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
-
-    
     $queryActu = "SELECT idActualite, titreActualite, descActualite, dateActualite, urlPhotoActualite FROM ACTUALITE"; 
     $launch = $connect->prepare($queryActu);
     $launch->execute();
     $actus = $launch->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "<div class='titre'><h2>Actualité</h2></div>";
+    <div class='titre'><h2>Actualité</h2></div>";
 
     ?>
 

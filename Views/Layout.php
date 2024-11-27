@@ -16,7 +16,6 @@
             <img class="logo" src="images/logo.png" />
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
-            
         </div>
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
