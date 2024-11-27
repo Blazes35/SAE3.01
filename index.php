@@ -92,6 +92,9 @@ if (!$_SESSION['adminPanel']){
         case 'UpdateNews' :
             include "./updateActu.php";
             break;
+        case 'UpdateNews2' :
+            include "./Controllers/UpdateNewsController.php";
+            break;
         default:
             include './Views/Error404.php';
             break;
