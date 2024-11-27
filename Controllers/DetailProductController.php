@@ -5,6 +5,14 @@ $afficheProduit ='';
 $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
         $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
+if (isset($_POST['Basket'])) {
+    $idProd = intval($_POST['idProd']);
+    $name = htmlspecialchars($_POST['name']);
+    $price =  htmlspecialchars($_POST['price']);
+    $result = $model->addToBasket($idProd, $name, $price);
+    header('Location: /?page=Basket');
+}
+
 if (isset($_GET['id'])) {
     $idProd = intval($_GET['id']);
     $product = $model->getProduct($idProd);
@@ -38,14 +46,22 @@ if (isset($_GET['id'])) {
         }
 
         $afficheProduit.= "<div class='buttons'>
-        <a href='/?page=Basket&idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>
-        <button class='add-to-cart'>Ajouter au panier</button>
+        <form action='/?page=DetailProduct' method='POST'>
+            <!-- Champ caché pour l'ID du produit -->
+            <input type='hidden' name='idProd' value='" . htmlspecialchars($idProd) . "'>
+            <!-- Champ caché pour le nom du produit -->
+            <input type='hidden' name='name' value='" . htmlspecialchars($product['nomProd']) . "'>
+            <!-- Champ caché pour le prix du produit -->
+            <input type='hidden' name='price' value='" . htmlspecialchars($product['prixProd']) . "'>
+            <!-- Bouton pour soumettre le formulaire -->
+            <button name='Basket' type='submit' class='add-to-cart'>Ajouter au panier</button>
+        </form>        
         </a>
         </div>
         <div class='favorites-settings'>
         <button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
-        if ($userRole > "3") {
+        if ($userRole  < 4) {
             $afficheProduit.= "<button class='settings'>
             <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>
             <span class='material-symbols-outlined'>settings</span>

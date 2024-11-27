@@ -18,7 +18,7 @@ ob_start();
     <div class='article-container'>
 
     <?php echo $clotheAff;?>
-
+w
     </div>
 <?php
 $content = ob_get_clean();
