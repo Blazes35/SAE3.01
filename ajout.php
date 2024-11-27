@@ -1,3 +1,9 @@
+
+<?php
+session_name('BDE');
+session_set_cookie_params(86400 * 30, "/");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -294,7 +300,7 @@ function addArticle($connection, $data, $file) {
             ':dateActualite'  => $data['date'],
             ':img'            => $imageName,
             ':idUser'         => $idUser
-        ]);
+    ]);
     } elseif ($data['article'] === 'code') {
         $query = "INSERT INTO CODEPROMO (nomCode, dateDebut, dateFin, pourcentCode, conditionCode) 
                   VALUES (:title, :dateDebut, :dateFin, :pourcentCode, :conditionCode)";

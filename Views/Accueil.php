@@ -43,24 +43,27 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="titre">ACTUALITÉ</div>
     </a>
     <div class="group1">
-        <div class="bureauetu">Nouveau Bureau Des Étudiants !</div>
-        <!--Début du carrousel-->
-        <div class="wrapper">
-            <div class="conterner">
-                <?php foreach ($actualites as $index => $actu): ?>
-                    <input type="radio" name="slide" id="c<?= $index + 1 ?>" <?= $index === 0 ? 'checked' : '' ?> />
-                    <label for="c<?= $index + 1 ?>" class="card">
-                        <img class="image" src="<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
-                        <div class="row">
-                            <div class="icon"><?= $index + 1 ?></div>
-                            <div class="description">
-                                <h4><?= htmlspecialchars($actu['titreActualite']) ?></h4>
-                            </div>
+    <div class="bureauetu">Nouveau Bureau Des Étudiants !</div>
+    <!--Début du carrousel-->
+    <div class="wrapper">
+        <div class="conterner">
+            <?php 
+            $actualitesLimite = array_slice($actualites, 0, 4); // Limite à 4 éléments
+            foreach ($actualitesLimite as $index => $actu): ?>
+                <input type="radio" name="slide" id="c<?= $index + 1 ?>" <?= $index === 0 ? 'checked' : '' ?> />
+                <label for="c<?= $index + 1 ?>" class="card">
+                    <img class="image" src="uploads/actualites/<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
+                    <div class="row">
+                        <div class="icon"><?= $index + 1 ?></div>
+                        <div class="description">
+                            <h4><?= htmlspecialchars($actu['titreActualite']) ?></h4>
                         </div>
-                    </label>
-                <?php endforeach; ?>
-            </div>
+                    </div>
+                </label>
+            <?php endforeach; ?>
         </div>
+    </div>
+</div>
     </div>
 </div>
     

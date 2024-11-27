@@ -1,7 +1,9 @@
 <?php
-// Connexion à la base de données
-$connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$title = 'Connection';
+ob_start();
+?>
+<?php
+
 
 if (isset($_GET['idUser'])) {
     $idUser = intval($_GET['idUser']);
@@ -35,15 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historique de l'utilisateur</title>
-    <link rel="stylesheet" href="historique.css">
-</head>
-<body>
+
+    <link rel="stylesheet" href="../css/historique.css">
+
     <div class="container">
         <h1>Historique de l'utilisateur</h1>
 
@@ -104,5 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
             <p>Aucune commande trouvée.</p>
         <?php endif; ?>
     </div>
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+include 'LayoutAdmin.php';
+?>

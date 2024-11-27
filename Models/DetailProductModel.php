@@ -7,9 +7,8 @@ class DetailProductModel extends DBModel{
     }
 
     public function getProduct(int $idProd){
-        
         $query = "SELECT * FROM PRODUIT WHERE idProd = :id";
-        $stmt = $sql->prepare($query);
+        $stmt = self::$db->prepare($query);
         $stmt->bindParam(':id', $idProd, PDO::PARAM_INT);
         $stmt->execute();
         return ($product = $stmt->fetch(PDO::FETCH_ASSOC));
