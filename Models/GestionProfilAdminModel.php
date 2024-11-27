@@ -17,7 +17,9 @@ class GestionProfilAdminModel extends DBModel {
     public function updateRole($idUser, $idRole){
         $updateRole = "UPDATE POSSEDER SET idRole = :idRole WHERE idUser = :idUser";
         $stmt = self::$db->prepare($updateRole);
-        $stmt->execute([':idRole' => $idRole, ':idUser' => $idUser]);    
+        $stmt->bindParam(':idRole', $idRole, PDO::PARAM_INT);
+        $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+        $stmt->execute();    
     }
 }
 
