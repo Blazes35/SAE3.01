@@ -3,7 +3,7 @@ $title = 'DetailProduct';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="./css/detailArticle.css" />
+<link rel="stylesheet" href="css/detailArticle.css" />
         </div>
     </div>  
 </div>
