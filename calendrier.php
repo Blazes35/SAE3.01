@@ -84,13 +84,11 @@
         return $icalarray;
     }
 
-    // Récupérer les cours depuis iCal
     $events = [];
     if (isset($urls[$userIdTPAgenda])) {
         $events = fetchEventsFromUrl($urls[$userIdTPAgenda]);
     }
 
-    // Ajouter les événements depuis la base de données
     try {
         $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -108,7 +106,7 @@
         echo "Erreur : " . $e->getMessage();
     }
 
-    // Trier les événements par date
+    //on lance un tri afin de pouvoir trier les événements par date
     usort($events, function ($a, $b) {
         return strtotime($a["DTSTART"]) - strtotime($b["DTSTART"]);
     });
