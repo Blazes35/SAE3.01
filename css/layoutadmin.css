@@ -45,6 +45,7 @@ body, html {
 }
 
 .mon-compte {
+    font-size: 20px;
     color: white;
     margin-left: 5px;
     display: flex;
@@ -82,6 +83,25 @@ body, html {
     font-size: 40px;
     color: white;
     margin-right: 20px;
+}
+
+#myForm { /* Ajustez si nécessaire */
+    display: flex;
+    align-items: center; /* Aligne les éléments verticalement au centre */
+    justify-content: flex-start; /* Aligne les éléments sur la gauche */
+    gap: 15px; /* Ajoute de l'espacement entre le logo et le texte */
+}
+
+#myForm a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#myForm a h4{
+    font-weight: normal;
 }
 
 

@@ -19,7 +19,7 @@
             <input type="hidden" name="adminPanel" value="0">
             <a class="Administrer" href="" onclick="document.getElementById('myForm').submit(); return false; ">
                 <span class="material-symbols-outlined">admin_panel_settings</span>
-                <p>Administrer</p>
+                <h4>ADMINISTRER</h4>
             </a>
         </form>
     <a href="compte.html" class="mon-compte" style="cursor: pointer;">
