@@ -51,16 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="gestionProfilAdmin.css">
 </head>
 <body>
-    <div class="menu">
-        <div class="logo-theme">
-            <img class="logo" src="./images/logo-sans-fond.png">
-            <div class="theme-claire">THEME CLAIRE</div>
-        </div>
-        <div class="compte">
-            <span class="material-symbols-outlined">account_circle</span>
-            <a href="compte.html" class="mon-compte">MON COMPTE</a>
-        </div>
-    </div>
+
 
     <div class="container">
         <h1 class="title">GESTION PROFILS</h1>
@@ -96,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="button_update">
                             <button type="submit">Mettre à jour</button>
                         </div>
-                        <a href="historique.php?idUser=<?php echo $user['idUser']; ?>">
+                        <a class="historique" href="historique.php?idUser=<?php echo $user['idUser']; ?>">
                             <button type="button">Voir l'historique</button>
                         </a>
                     </form>
