@@ -1,6 +1,21 @@
 <?php
 $title = "Accueil";
 ob_start();
+
+// Connexion à la base de données
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+// Requête pour récupérer les actualités
+$query = "SELECT idActualite, titreActualite, urlPhotoActualite FROM ACTUALITE ORDER BY dateActualite DESC LIMIT 4";
+$stmt = $pdo->query($query);
+$actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <link rel="stylesheet" href="css/accueil.css"/>
@@ -24,63 +39,33 @@ ob_start();
 
 
 <div class="box2accueil" onclick="actu.php">
-        <a href="actu.php" class="titre-link">
-            <div class="titre">ACTUALITÉ</div>
-        </a>
-        <div class="group1">
-            <div class="bureauetu">Nouveau Bureau Des Étudiants !</div>
-            <!--Debut du caroussel-->
-            <div class="wrapper">
-                <div class="conterner">
-                <input type="radio" name="slide" id="c1" checked />
-                <label for="c1" class="card">
-                    <img class="image" src="images/volleyaccueil.jpg" alt="photo de volley">
+    <a href="actu.php" class="titre-link">
+        <div class="titre">ACTUALITÉ</div>
+    </a>
+    <div class="group1">
+    <div class="bureauetu">Nouveau Bureau Des Étudiants !</div>
+    <!--Début du carrousel-->
+    <div class="wrapper">
+        <div class="conterner">
+            <?php 
+            $actualitesLimite = array_slice($actualites, 0, 4); // Limite à 4 éléments
+            foreach ($actualitesLimite as $index => $actu): ?>
+                <input type="radio" name="slide" id="c<?= $index + 1 ?>" <?= $index === 0 ? 'checked' : '' ?> />
+                <label for="c<?= $index + 1 ?>" class="card">
+                    <img class="image" src="uploads/actualites/<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
                     <div class="row">
-                    <div class="icon">1</div>
-                    <div class="description">
-                        <h4>Volley</h4>
-                    </div>
+                        <div class="icon"><?= $index + 1 ?></div>
+                        <div class="description">
+                            <h4><?= htmlspecialchars($actu['titreActualite']) ?></h4>
+                        </div>
                     </div>
                 </label>
-                <input type="radio" name="slide" id="c2" checked />
-                <label for="c2" class="card">
-                    <img class="image" src="images/noelaccueil.png" alt="photo de noël">
-                    <div class="row">
-                        
-                    <div class="icon">2</div>
-                    <div class="description">
-                        <h4>NOËL</h4>
-                    </div>
-                    </div>
-                
-                </label>
-                <input type="radio" name="slide" id="c3" checked />
-                <label for="c3" class="card">
-                    <img class="image" src="images/jeuaccueil.png" alt="photo de jeux">
-                    <div class="row">
-                    <div class="icon">3</div>
-                    <div class="description">
-                        <h4>JEUX</h4>
-                    </div>
-                    </div>
-                </label>
-                <input type="radio" name="slide" id="c4" checked />
-                <label for="c4" class="card">
-                    <img class="image" src="images/musiqueaccueil.png" alt="photo d'une fanfare">
-                    <div class="row">
-                    <div class="icon">4</div>
-                    <div class="description">
-                        <h4>VICTOIRE</h4>
-                    </div>
-                    </div>
-                </label>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
-        </div>
-        
+</div>
     </div>
+</div>
     
     <div class="box3accueil">
         <div class="titregrade">
