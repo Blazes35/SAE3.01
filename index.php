@@ -45,7 +45,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/BasketController.php';
             break;
         case 'Event' :
-            include "./event.php";
+            include "./Controllers/EventController.php";
             break;
         case 'DetailProduct' :
             include "./Controllers/DetailProductController.php";
