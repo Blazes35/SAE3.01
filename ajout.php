@@ -93,10 +93,14 @@ session_start();
                 break;
             case 'produit':
                 fields['desc-field'] = true;
-                fields['picture-field'] = true; // Montrer l'image
+                fields['picture-field'] = true; 
                 fields['price-field'] = true;
                 fields['qt-field'] = true;
+                fields['promo-field'] = true;
+                fields['conditionCode-field'] = true;
                 break;
+            case 'galerie' : 
+                fields['picture-field'] = true;
             default:
                 break;
         }

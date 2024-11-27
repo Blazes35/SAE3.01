@@ -18,40 +18,40 @@ if (isset($_GET['id'])) {
             </div>
         </div>
 
-         <div class='main-image'>
-         <img id='main-image' src='" . htmlspecialchars($uploadDir . $product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />
-         </div>
+        <div class='main-image'>
+        <img id='main-image' src='" . htmlspecialchars($uploadDir . $product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />
+        </div>
 
-         <div class='product-details'>
-         <h1 class='product-title'>" . htmlspecialchars($product['nomProd']) . "</h1>
-         <p class='description'>" . htmlspecialchars($product['descProd']) . "</p>
-         <p class='price'>" . htmlspecialchars($product['prixProd']) . " €</p>";
+        <div class='product-details'>
+        <h1 class='product-title'>" . htmlspecialchars($product['nomProd']) . "</h1>
+        <p class='description'>" . htmlspecialchars($product['descProd']) . "</p>
+        <p class='price'>" . htmlspecialchars($product['prixProd']) . " €</p>";
 
         if ($product['typeProd'] === 'vetement') {
             $afficheProduit.= "<p class='size-title'>Sélectionner la taille</p>
-             <div class='sizes'>
-             <button class='size'>XS</button>
-             <button class='size'>M</button>
-             <button class='size'>L</button>
-             <button class='size'>XL</button>
-             </div>";
+            <div class='sizes'>
+            <button class='size'>XS</button>
+            <button class='size'>M</button>
+            <button class='size'>L</button>
+            <button class='size'>XL</button>
+            </div>";
         }
 
         $afficheProduit.= "<div class='buttons'>
-         <a href='/?page=Basket&idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>
-         <button class='add-to-cart'>Ajouter au panier</button>
-         </a>
-         </div>
-         <div class='favorites-settings'>
-         <button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
+        <a href='/?page=Basket&idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>
+        <button class='add-to-cart'>Ajouter au panier</button>
+        </a>
+        </div>
+        <div class='favorites-settings'>
+        <button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
         if ($userRole > "3") {
             $afficheProduit.= "<button class='settings'>
-             <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>
-             <span class='material-symbols-outlined'>settings</span>
+            <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>
+            <span class='material-symbols-outlined'>settings</span>
             <p id='probleme'>Parametrer</p>
-             </a>
-             </button>";
+            </a>
+            </button>";
         }
 
         $afficheProduit.= "</div>
