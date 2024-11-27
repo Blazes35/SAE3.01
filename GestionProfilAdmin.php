@@ -1,9 +1,15 @@
 <?php
+session_name('BDE');
+session_set_cookie_params(86400 * 30, "/");
+session_start();
 $info_person = "
     SELECT UTILISATEUR.idUser, UTILISATEUR.nomUser, POSSEDER.idRole 
     FROM UTILISATEUR
     INNER JOIN POSSEDER ON UTILISATEUR.idUser = POSSEDER.idUser
 ";
+require_once 'Models/DBModel.php';
+$model = new DBModel();
+$connect = $model->getDB();
 $launch = $connect->prepare($info_person);
 $launch->execute();
 $users = $launch->fetchAll(PDO::FETCH_ASSOC);
@@ -90,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="button_update">
                             <button type="submit">Mettre à jour</button>
                         </div>
+                        <a href="historique.php">
+                            <button type="historique">Voir l'historique</button>
+                        </a>
                     </form>
                 </div>
             </div>
