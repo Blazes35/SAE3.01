@@ -5,16 +5,6 @@ session_start();
 $_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
-
-function renderLayoutAdmin($viewFile, $title, $data = []){
-        ob_start();
-        extract($data);
-        include $viewFile;
-        $content = ob_get_clean();
-    include './Views/LayoutAdmin.php';
-}
-
-
 // routage
 if (!$_SESSION['adminPanel']){
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
@@ -44,13 +34,16 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/ActuController.php';
             break;
         case 'Shop' :
-            include './boutique.php';
+            include './Controllers/ShopController.php';
             break;
         case 'Basket' :
             include './Controllers/BasketController.php';
             break;
         case 'Event' :
             include "./event.php";
+            break;
+        case 'DetailProduct' :
+            include "./Controllers/DetailProductController.php";
             break;
         case 'News' : 
             include "./actu.php";

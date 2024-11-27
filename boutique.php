@@ -7,7 +7,7 @@
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </head>
-    <link rel="stylesheet" href="../css/boutique.css" />
+    
     <!-- <link rel="stylesheet" href="styleguide.css" /> -->
     <link rel="stylesheet" href="../header.css" />
 </head>
@@ -82,7 +82,7 @@
             echo "<div class='article'>";            
             echo "<h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>";
             echo "<img src='uploads/vetements/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";         
-            echo "<a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>";
+            echo "<a href='/detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>";
             echo "<div>";
             echo "<p class='couleur'>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>";
             echo "<p class='description'>Description : " . htmlspecialchars($clothe['descProd']) . "</p>";
