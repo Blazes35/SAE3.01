@@ -175,8 +175,8 @@
     </div>
 
     <div id="contenuActu-field" hidden>
-        <label for="contenuActu">Contenu</label>
-        <input type="text" name="contenuActu" id="contenuActu">
+        <label for="descActualite">Description</label>
+        <input type="text" name="descActualite" id="descActualite">
     </div>
 
     <div id="dateDebut-field" hidden>
@@ -200,6 +200,8 @@
 
 
     <?php
+    $idUser = $_SESSION['id'];
+
     try {
         $connection = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '', [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -229,11 +231,10 @@
         }
 
 function addArticle($connection, $data, $file) {
-    $imageName = null; // Initialisez avec null
-    
-    // Vérifiez si une image est nécessaire pour le type d'article
+    $idUser = $_SESSION['id'];
+    $imageName = null; 
     if (!in_array($data['article'], ['code'])) { 
-        $imageName = uploadImage($file, $data['article']); // Chargez l'image uniquement si nécessaire
+        $imageName = uploadImage($file, $data['article']); 
     }
 
     if ($data['article'] === 'produit') {
@@ -260,8 +261,8 @@ function addArticle($connection, $data, $file) {
             ':lieu'     => $data['lieu'],
             ':img'      => $imageName,
             ':date'     => $data['date'],
-            ':minRole'  => $data['minRole'] ?? null,
-            ':minGrade' => $data['minGrade'] ?? null
+            ':minRole'  => $data['minRole'],
+            ':minGrade' => $data['minGrade']
         ]);
     } elseif ($data['article'] === 'vetement') {
         $queryProd = "INSERT INTO PRODUIT (nomProd, descProd, prixProd, qtProd, imgProd, typeProd) 
@@ -283,43 +284,37 @@ function addArticle($connection, $data, $file) {
             ':idProd' => $idProd,
             ':color'  => $data['color']
         ]);
-    } elseif ($data['article'] === 'actu') {
-        $query = "INSERT INTO ACTUALITE (titreActualite, descActualite, urlPhotoActualite, dateActualite, idUser) 
-                  VALUES (:title, :contenuActu, :img, :date, :idUser)";
+    } elseif($data['article'] === 'actu') {
+        $query = "INSERT INTO ACTUALITE (titreActualite, descActualite, dateActualite, urlPhotoActualite, idUser)  
+                  VALUES (:title, :descActualite, :dateActualite, :img, :idUser)";
         $stmt = $connection->prepare($query);
         $stmt->execute([
-            ':title'      => $data['title'],
-            ':contenuActu' => $data['contenuActu'],
-            ':img'        => $imageName,
-            ':date'       => $data['date'],
-            ':idUser'     => 2
+            ':title'          => $data['title'],
+            ':descActualite'  => $data['descActualite'],
+            ':dateActualite'  => $data['date'],
+            ':img'            => $imageName,
+            ':idUser'         => $idUser
         ]);
     } elseif ($data['article'] === 'code') {
-        // Vérifiez que tous les champs requis sont définis et valides
-        
-    
-        // Préparation de la requête SQL
         $query = "INSERT INTO CODEPROMO (nomCode, dateDebut, dateFin, pourcentCode, conditionCode) 
                   VALUES (:title, :dateDebut, :dateFin, :pourcentCode, :conditionCode)";
         $stmt = $connection->prepare($query);
     
-        // Exécution de la requête avec les valeurs sécurisées
         $stmt->execute([
             ':title'        => $data['title'],
             ':dateDebut'    => $data['dateDebut'],
             ':dateFin'      => $data['dateFin'],
             ':pourcentCode'    => $data['pourcentCode'],
-            ':conditionCode'=> $data['conditionCode'] ?? null // Peut être null si non obligatoire
+            ':conditionCode'=> $data['conditionCode'] ?? null 
         ]);
     }
     
 }       
         function deleteArticle($connection, $type, $title) {
             try {
-                // Déterminer la table en fonction du type d'article
                 switch ($type) {
                     case 'produit':
-                    case 'vetement': // Les vêtements sont aussi dans la table PRODUIT
+                    case 'vetement': 
                         $query = "DELETE FROM PRODUIT WHERE nomProd = :title";
                         break;
         
@@ -342,8 +337,6 @@ function addArticle($connection, $data, $file) {
                     default:
                         throw new Exception("Type d'article non reconnu.");
                 }
-        
-                // Préparer et exécuter la requête
                 $stmt = $connection->prepare($query);
                 $stmt->execute([':title' => $title]);
         
@@ -374,5 +367,15 @@ function addArticle($connection, $data, $file) {
         echo "Erreur : " . $e->getMessage();
     }
     ?>
+
+<script>
+            var userRole = <?php echo json_encode($userRole); ?>;
+            var userName = <?php echo json_encode($userName); ?>;
+            var userId = <?php echo json_encode($idUser); ?>;
+
+            console.log("Role de l'utilisateur : " + userRole);
+            console.log("Nom de l'utilisateur : " + userName);
+            console.log("Id de l'utilisateur : " + userId);
+s        </script>
 </body>
 </html>
