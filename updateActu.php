@@ -63,6 +63,8 @@
 
             if ($stmt->execute()) {
                 $message = "Actualité mise à jour avec succès !";
+                $_SESSION['adminPanel'] = 0;
+                header('Location: /?page=News');
             } else {
                 $message = "Erreur lors de la mise à jour : " . implode(", ", $stmt->errorInfo());
             }
@@ -74,9 +76,8 @@
             $stmt->bindParam(':idActualite', $idActualite, PDO::PARAM_INT);
 
             if ($stmt->execute()) {
-                $message = "Actualité supprimée avec succès !";
-                echo "<p>$message</p>";
-                exit;
+                $_SESSION['adminPanel'] = 0;
+                header('Location: /?page=News');
             } else {
                 $message = "Erreur lors de la suppression : " . implode(", ", $stmt->errorInfo());
             }
@@ -84,8 +85,8 @@
     }
 
     // Récupération des données actuelles de l'actualité
-    if (isset($_GET['id'])) {
-        $idActualite = intval($_GET['id']);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
+        $idActualite = intval($_POST['idActualite']);
         $selectQuery = "SELECT * FROM actualite WHERE idActualite = :id";
         $stmt = $connect->prepare($selectQuery);
         $stmt->bindParam(':id', $idActualite, PDO::PARAM_INT);
@@ -128,7 +129,7 @@
                 <input type="file" id="img" name="img" accept="image/*" />
                 <p>Image actuelle : <strong><?php echo htmlspecialchars($actu['urlPhotoActualite']); ?></strong></p>
                 <img src="uploads/actualites/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
-                     alt="Image actuelle" style="max-width: 200px; height: auto;" />
+                    alt="Image actuelle" style="max-width: 200px; height: auto;" />
             </div>
             <br>
             <button type="submit">Mettre à jour</button>
