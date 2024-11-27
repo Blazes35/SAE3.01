@@ -7,15 +7,7 @@ session_start();
 // Connexion PDO à la base de données
 $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
 
-// Récupération des informations de session
-$userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0;  // Conversion en entier
-$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
-
-if ($userRole !== 3) { 
-    header("/Views/Error404.php"); 
-    exit();
-}
 
 // Récupération des données utilisateurs
 $info_person = "
@@ -109,6 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="button_update">
                             <button type="submit">Mettre à jour</button>
                         </div>
+                        <a href="historique.php">
+                            <button type="historique">Voir l'historique</button>
+                        </a>
                     </form>
                 </div>
             </div>
