@@ -65,5 +65,5 @@ if (isset($_GET['id'])) {
     $afficheProduit.= "<p>Paramètre invalide.</p>";
     }
 
-include 'Views/DetailProduct.php''
+include 'Views/DetailProduct.php'
 ?>
