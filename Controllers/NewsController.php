@@ -11,14 +11,14 @@ foreach($actus as $actu){
 <div class="container">
     <div class="actu-card">
         <div class="actu-card-in">
-            <!-- Section Image -->
+
             <div class="actu-img">
                 <img src="uploads/actualites/' . htmlspecialchars($actu['urlPhotoActualite']) . '" 
                     alt="' . htmlspecialchars($actu['titreActualite']) . '" />
             </div>
-        </div> <!-- Fin de la section image -->
+        </div> 
 
-        <div class="actu-card-in"> <!-- Nouvelle section pour les détails -->
+        <div class="actu-card-in"> 
             <div class="detail">
                 <p class="titre">' . htmlspecialchars($actu['titreActualite']) . '</p>
                 <p class="contenu">' . htmlspecialchars($actu['descActualite']) . '</p>
@@ -26,7 +26,7 @@ foreach($actus as $actu){
 
                 <button><a href="detailActualite.php?id=' . urlencode($actu["idActualite"]) . '" class="info">Voir plus</a></button>';
 
-                $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0; // Conversion en entier
+                $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0; 
                 $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
                 if ($userRole < 4) { 
