@@ -3,7 +3,7 @@ $title = 'Panier';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="panier.css" />
+<link rel="stylesheet" href="../css/basket.css" />
 
         </div>
     </div>  
