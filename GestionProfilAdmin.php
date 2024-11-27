@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="button_update">
                             <button type="submit">Mettre à jour</button>
                         </div>
-                        <a href="historique.php">
-                            <button type="historique">Voir l'historique</button>
+                        <a href="historique.php?idUser=<?php echo $user['idUser']; ?>">
+                            <button type="button">Voir l'historique</button>
                         </a>
                     </form>
                 </div>
