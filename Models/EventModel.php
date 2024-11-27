@@ -1,3 +1,4 @@
+
 <?php
 require_once 'DBModel.php';
 class EventModel extends DBModel {
