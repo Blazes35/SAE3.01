@@ -11,7 +11,7 @@ class BasketModel extends DBModel {
     public function getBasket() {
         $userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : NULL;
         $sql = "SELECT idCommande, quantiteCommande, etatCommande, PRODUIT.idProd, nomProd, typeProd, prixProd, imgProd,
-        CODEPROMO.idCode, nomCode, dateFin, pourcentCode, condtitionCode
+        CODEPROMO.idCode, nomCode, dateFin, pourcentCode, conditionCode
         FROM COMMANDE JOIN utilisateur
         ON COMMANDE.idUser = utilisateur.idUser
         JOIN PRODUIT ON COMMANDE.idProd = PRODUIT.idPROD

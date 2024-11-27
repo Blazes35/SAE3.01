@@ -9,9 +9,6 @@ ob_start();
     <?php
     $connect = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
     
-
-
-       
     $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
     $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
@@ -33,7 +30,7 @@ ob_start();
             <div class="actu-card-in">
                 <div class="actu-img">
                     <img src="uploads/actualites/<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" 
-                         alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" />
+                        alt="<?php echo htmlspecialchars($actu['titreActualite']); ?>" />
                 </div>
                 <div class="detail">
                     <p class="titre"><?php echo htmlspecialchars($actu['titreActualite']); ?></p>

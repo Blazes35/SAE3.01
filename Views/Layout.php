@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?php echo $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/layout.css">
         <!-- Lien pour importer les Material Icons -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -13,7 +13,7 @@
     <header>
         <div class="overlap-group">
             <a href="">
-            <img class="logo" src="../images/logo.png" />
+            <img class="logo" src="images/logo.png" />
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
             

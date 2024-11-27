@@ -3,7 +3,7 @@ $title = 'Changement Mot De Passe';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="/css/updatepwd.css"/>
+<link rel="stylesheet" href="css/updatepwd.css"/>
 
         </div>
     </div>

@@ -1,7 +1,4 @@
 <?php
-require_once 'Models/mainModel.php';
-$model = new MainModel();
-
 $chemin_dossier = "feuille_calcul/";
 
 //Ajouter un fichier
@@ -48,6 +45,5 @@ if(file_exists($fichier_csv)){
         fclose($handle);
     }
 }
-
 require 'Views/Treasury.php';
 ?>

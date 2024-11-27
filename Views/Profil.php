@@ -3,7 +3,7 @@ $title = 'Profil';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="../css/profil.css"/>
+<link rel="stylesheet" href="css/profil.css"/>
         </div>
     </div>
 </div>

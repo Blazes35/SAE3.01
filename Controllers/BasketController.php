@@ -3,6 +3,7 @@ require_once 'Models/BasketModel.php';
 $model = new BasketModel();
 $commandes = $model->getBasket();
 $commandeAff = '';
+$pourcentage='';
 $total = 0;
 
 if($commandes){
@@ -37,6 +38,12 @@ if($commandes){
                 </div>
             </div>';
     }
+}
+
+if (isset($commande['idCode'])){
+    $pourcentage.='<div classe="pourcent">
+        <p> Réduction' . $commande['pourcentCode']. '<p>
+    </div>';
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
