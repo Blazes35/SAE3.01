@@ -16,11 +16,15 @@
             <img class="logo" src="images/logo.png" />
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
-            <?php if ($role < 4) { $_SESSION['adminPanel'] = 1; echo '<a href="">
-                <span class="material-symbols-outlined">admin_panel_settings</span>
-                <p>Administrer</p>   
-            </a>';} 
-            ?>
+            <?php if ($role < 4) { echo'                
+                <form id="myForm" method="POST" action="">
+                    <input type="hidden" name="adminPanel" value="1">
+                    <a class="Administrer" href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
+                        <span class="material-symbols-outlined">admin_panel_settings</span>
+                        <p>Administrer</p>
+                    </a>
+                </form>
+            ';} ?>
         </div>
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
