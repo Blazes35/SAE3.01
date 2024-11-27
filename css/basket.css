@@ -1,11 +1,7 @@
-/*A supprimer*/
-body{
-    background-color: black;
-    color: white;
-    font-family: k2d, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@3000;400;500;600;700&display=swap');
 
 .commandes{
+    color: white;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -14,7 +10,6 @@ body{
 
 .commandes .titrepanier{
     font-size: 63px;
-    font-family:k2d, sans-serif ;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -64,7 +59,6 @@ body{
     font-weight: bold;
     cursor: pointer;
     transition:  background-color 0.3s ease, transform 0.2s ease;
-    font-family: k2d, sans-serif;
 }
 .commandes .commande .supprimer button:hover {
     background-color: #8E51D8;
