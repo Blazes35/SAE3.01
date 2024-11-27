@@ -58,7 +58,7 @@
         echo "<div class='article'>";            
         echo "<h3 class='titre-article'>" . htmlspecialchars($product['nomProd']) . "</h3>";
         echo "<img src='uploads/produits/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />";
-        echo "<a href='detailArticle.php?id=" . urlencode($product['idProd']) . "' class='info'>";
+        echo "<a href='?page=DetailProduct&id=" . urlencode($product['idProd']) . "' class='info'>";
         echo "<div>";
         echo "<p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>";
         echo "<p class='quantite'>Quantité disponible : " . htmlspecialchars($product['qtProd']) . "</p>";

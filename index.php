@@ -71,6 +71,7 @@ switch ($page) {
     case 'Inscription' :
         $role < 4 ? include "./inscription.php" : include './Views/Error404.php';
         break;
+    
     default:
         include './Views/Error404.php';
         break;
