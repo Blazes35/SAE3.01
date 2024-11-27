@@ -34,8 +34,8 @@ if (!$_SESSION['adminPanel']){
         case 'Galerie':
             include './Controllers/GalerieController.php';
             break;
-        case 'Actu':
-            include './Controllers/ActuController.php';
+        case 'News':
+            include './Controllers/NewsController.php';
             break;
         case 'Shop' :
             include './Controllers/ShopController.php';
@@ -44,7 +44,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/BasketController.php';
             break;
         case 'Event' :
-            include "./event.php";
+            include "./Controllers/EventController.php";
             break;
         case 'DetailProduct' :
             include "./Controllers/DetailProductController.php";
