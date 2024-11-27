@@ -5,6 +5,11 @@ session_start();
 $_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adminPanel'])) {
+    $_SESSION['adminPanel'] = $_POST['adminPanel'];
+}
+
 // routage
 if (!$_SESSION['adminPanel']){
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
