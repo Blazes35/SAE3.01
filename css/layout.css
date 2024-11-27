@@ -50,11 +50,10 @@ header {
   margin-left: 10px;
 }
 
-header span.material-symbols-outlined {
+span.material-symbols-outlined {
   font-size: 2.5rem;
   color: white;
   margin-left: auto;
-
 }
 
 .mon-compte {
