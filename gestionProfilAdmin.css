@@ -257,6 +257,22 @@ label {
     background-color: #5433c9;
 }
 
+.historique button{
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: #6c38f7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease; 
+}
+
+.historique button:hover {
+    background-color: #5433c9;
+}
+
 /* Styles pour le bouton Mettre à jour */
 .button_update button {
     padding: 10px 20px;
