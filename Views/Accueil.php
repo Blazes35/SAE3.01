@@ -50,7 +50,7 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php foreach ($actualites as $index => $actu): ?>
                     <input type="radio" name="slide" id="c<?= $index + 1 ?>" <?= $index === 0 ? 'checked' : '' ?> />
                     <label for="c<?= $index + 1 ?>" class="card">
-                        <img class="image" src="<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
+                        <img class="image" src="uploads/actualites/<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
                         <div class="row">
                             <div class="icon"><?= $index + 1 ?></div>
                             <div class="description">
