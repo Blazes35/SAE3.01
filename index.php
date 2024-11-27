@@ -2,21 +2,11 @@
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
-$_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
+$_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? 0 : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
-
-function renderLayoutAdmin($viewFile, $title, $data = []){
-        ob_start();
-        extract($data);
-        include $viewFile;
-        $content = ob_get_clean();
-    include './Views/LayoutAdmin.php';
-}
-
-
 // routage
-if ($_SESSION['adminPanel']){
+if (!$_SESSION['adminPanel']){
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
     switch ($page) {
         case 'Accueil':
@@ -44,7 +34,7 @@ if ($_SESSION['adminPanel']){
             include './Controllers/ActuController.php';
             break;
         case 'Shop' :
-            include './boutique.php';
+            include './Controllers/ShopControllers.php';
             break;
         case 'Basket' :
             include './Controllers/BasketController.php';
