@@ -2,7 +2,7 @@
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
-$_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? 0 : 0;
+$_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
 // routage
@@ -41,6 +41,9 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'Event' :
             include "./event.php";
+            break;
+        case 'DetailProduct' :
+            include "./Controllers/DetailProductController.php";
             break;
         case 'News' : 
             include "./actu.php";

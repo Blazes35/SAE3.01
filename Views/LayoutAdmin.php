@@ -12,10 +12,22 @@
     <div class="logo-theme">
         <img class="logo" src="images/logo-sans-fond.png" />
         <div class="theme-claire">THEME CLAIRE</div>
+        
     </div>
 <div class="compte">
-    <span class="material-symbols-outlined">account_circle</span>
-    <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
+    <?php if ($role < 4) { $_SESSION['adminPanel'] = 1; echo '
+        <a class="mon-compte" href="">
+            <span class="material-symbols-outlined">shield_person</span>
+            <p>Uitlisateur</p>   
+        </a>';} 
+    ?>
+
+   
+    <a href="compte.html" class="mon-compte" style="cursor: pointer;">
+        <span class="material-symbols-outlined">account_circle</span>
+        <p>MON COMPTE</p>
+    </a>
+
 </div>
 <div class="overlap-group">
             <div class="titre-de-page">
