@@ -1,0 +1,95 @@
+/* Réinitialise les marges et paddings par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles de base pour le corps et le HTML */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Couleur d'arrière-plan */
+    color: white;
+}
+
+/* Conteneur principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Centre le contenu horizontalement */
+}
+
+/* Titre principal */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center; /* Centre le texte horizontalement */
+    margin: 20px auto; /* Centre le conteneur et ajoute une marge en bas */
+    border-bottom: 4px solid #8E51D0;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Sous-titres */
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Styles pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: separate; /* Utilisez 'separate' pour permettre l'espacement entre les cellules */
+    border-spacing: 10px; /* Ajoute un écart entre les colonnes */
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+th {
+    background-color: #444;
+    color: white;
+}
+
+
+
+tr:hover {
+    background-color: #0f0f0f;
+}
+
+/* Styles pour les boutons */
+button {
+    padding: 10px 20px;
+    background-color: #6c38f7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5433c9;
+}
+
+/* Styles pour les sélecteurs */
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+}
