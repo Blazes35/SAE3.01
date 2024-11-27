@@ -104,7 +104,10 @@ a.calendrier:visited {
     padding-top: 10px;
     padding-left: 50px;
     padding-right: 50px;
-    
+  }
+
+  .overlap-group-4accueil .decouvrer-nous span{
+    color: black;
   }
 
 
