@@ -17,9 +17,9 @@ if(!empty($products)){
         <p class='quantite'>Quantité disponible : " . htmlspecialchars($product['qtProd']) . "</p>
         <p class='voir-maintenant'>Voir maintenant</p>
         </div>
-         <div class='div-prix'><p class='prix'>" . htmlspecialchars($product['prixProd']) . " €</p></div>
-         <div class='div-arrow'><span class='material-symbols-outlined'>east</span></div>
-         </a>
+        <div class='div-prix'><p class='prix'>" . htmlspecialchars($product['prixProd']) . " €</p></div>
+        <div class='div-arrow'><span class='material-symbols-outlined'>east</span></div>
+        </a>
     
          </div>"; // Fermeture de la div article
     }
@@ -30,7 +30,7 @@ if(!empty($products)){
 
 if (!empty($clothes)) {
     foreach($clothes as $clothe) {
-         $clotheAff.="<div class='article'>           
+        $clotheAff.="<div class='article'>           
         <h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>
         <img src='uploads/vetements/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />        
         <a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>
@@ -41,9 +41,9 @@ if (!empty($clothes)) {
         <p class='voir-maintenant'>Voir maintenant</p>
         </div>
         
-         <div class='div-prix'><p class='prix'>" . htmlspecialchars($clothe['prixProd']) . " €</p></div>
-         <div class='div-arrow'><span class='material-symbols-outlined'>east</span></div>
-         </a>
+        <div class='div-prix'><p class='prix'>" . htmlspecialchars($clothe['prixProd']) . " €</p></div>
+        <div class='div-arrow'><span class='material-symbols-outlined'>east</span></div>
+        </a>
         
          </div>"; // Fermeture de la div article
     }
