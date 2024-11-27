@@ -21,7 +21,7 @@ ob_start();
         }
         ?>
         </ul>
-        <form method="post" enctype="multipart/form-data">
+        <form id="upload" method="post" enctype="multipart/form-data">
             <div class="import">
                 <label for="fichier_csv"> Sélectionner csv</label>
                 <input type="file" id="fichier_csv" name = "fichier_csv" accept=".csv" required/>
