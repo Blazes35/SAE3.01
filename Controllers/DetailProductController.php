@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
         <div class='favorites-settings'>
         <button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
 
-        if ($userRole > "3") {
+        if ($userRole  < 4) {
             $afficheProduit.= "<button class='settings'>
             <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>
             <span class='material-symbols-outlined'>settings</span>

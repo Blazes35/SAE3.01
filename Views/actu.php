@@ -13,9 +13,8 @@ ob_start();
     $launch->execute();
     $actus = $launch->fetchAll(PDO::FETCH_ASSOC);
 
-    <div class='titre'><h2>Actualité</h2></div>";
-
     ?>
+    <div class='titre'><h2>Actualité</h2></div>
 
     <?php 
     foreach($actus as $actu):
