@@ -86,6 +86,12 @@ if (!$_SESSION['adminPanel']){
         case 'UpdateProduit' :
             include "./updateProduit.php";
             break;
+        case 'UpdateEvent' :
+            include "./updateEvent.php";
+            break;
+        case 'UpdateNews' :
+            include "./updateActu.php";
+            break;
         default:
             include './Views/Error404.php';
             break;
