@@ -67,8 +67,7 @@
                 UPDATE produit 
                 SET nomProd = :nomProd, descProd = :descProd, prixProd = :prixProd, 
                     qtProd = :qtProd, imgProd = :imgProd
-                WHERE idProd = :idProd
-            ";
+                WHERE idProd = :idProd";
             $stmt = $connect->prepare($updateQuery);
             $stmt->bindParam(':nomProd', $nomProd, PDO::PARAM_STR);
             $stmt->bindParam(':descProd', $descProd, PDO::PARAM_STR);
@@ -79,6 +78,8 @@
 
             if ($stmt->execute()) {
                 $message = "Produit mis à jour avec succès !";
+                $_SESSION['adminPanel']=0;
+                header("Location: /?page=Shop");
             } else {
                 $message = "Erreur lors de la mise à jour du produit.";
             }
@@ -100,8 +101,8 @@
     }
 
     // Affichage du formulaire avec les données actuelles du produit
-    if (isset($_GET['id'])) {
-        $idProd = intval($_GET['id']);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateProduit'])) {
+        $idProd = intval($_POST['idProd']);
         $selectQuery = "SELECT * FROM produit WHERE idProd = :id";
         $stmt = $connect->prepare($selectQuery);
         $stmt->bindParam(':id', $idProd, PDO::PARAM_INT);
@@ -119,8 +120,6 @@
 <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="idProd" value="<?php echo htmlspecialchars($product['idProd']); ?>" />
     <input type="hidden" name="currentImg" value="<?php echo htmlspecialchars($product['imgProd']); ?>" />
-    <input type="hidden" name="action" value="update" />
-
     <div>
         <label for="titre">Nom du produit</label>
         <input type="text" id="titre" name="titre" value="<?php echo htmlspecialchars($product['nomProd']); ?>" required />
@@ -148,15 +147,14 @@
         <img src="uploads/produits/<?php echo htmlspecialchars($product['imgProd']); ?>" alt="Image actuelle" style="max-width: 200px; height: auto;" />
     </div>
     <br>
-    <button type="submit">Mettre à jour</button>
+    <button type="submit" name="action" value="update" >Mettre à jour</button>
 </form>
 
 <br>
 
 <form method="POST" action="">
     <input type="hidden" name="idProd" value="<?php echo htmlspecialchars($product['idProd']); ?>" />
-    <input type="hidden" name="action" value="delete" />
-    <button type="submit" style="background-color: red; color: white;">Supprimer le produit</button>
+    <button type="submit" name="action" value="delete" style="background-color: red; color: white;">Supprimer le produit</button>
 </form>
 </div>
 <?php

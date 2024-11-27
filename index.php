@@ -5,7 +5,6 @@ session_start();
 $_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adminPanel'])) {
     $_SESSION['adminPanel'] = $_POST['adminPanel'];
 }
@@ -83,6 +82,9 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'Historique' :
             include "./Controllers/HistoriqueController.php";
+            break;
+        case 'UpdateProduit' :
+            include "./updateProduit.php";
             break;
         default:
             include './Views/Error404.php';
