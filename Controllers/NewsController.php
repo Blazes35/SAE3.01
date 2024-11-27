@@ -29,14 +29,16 @@ foreach($actus as $actu){
                 $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0; 
                 $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
 
-                if ($userRole < 4) { 
-                    $actuAff .= '
-                    <button class="settings">
-                        <a href="updateActu.php?id=' . urlencode($actu['idActualite']) . '">
-                            <span class="material-symbols-outlined">settings</span>
-                            <p id="probleme">Paramétrer</p>
-                        </a>
-                    </button>';
+                if ($userRole < 4) {
+                    $actuAff .="
+                    <form action='?page=UpdateNews' method='post'>
+                        <input type='hidden' name='adminPanel' value='1'>
+                        <input type='hidden' name='idActualite' value=" . $actu['idActualite'] . " />
+                        <button type='submit' name='update' class='settings'>
+                                <span class='material-symbols-outlined'>settings</span>
+                                <p id='probleme'>Parametrer</p>
+                        </button>
+                    </form>";
                 }
 
             $actuAff .= '
