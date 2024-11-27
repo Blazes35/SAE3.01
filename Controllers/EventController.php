@@ -1,6 +1,4 @@
 <?php 
-
-
 require_once 'Models/EventModel.php';
 $model = new EventModel();
 $events = $model->getAllEvents();
