@@ -1,5 +1,5 @@
 <?php
-
+//Model de Basket.php
 require_once 'DBModel.php';
 
 class BasketModel extends DBModel {

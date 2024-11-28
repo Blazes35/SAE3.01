@@ -1,24 +1,46 @@
 <?php
-require_once 'Models/DetailEventModel.php';
+    require_once 'Models/DetailEventModel.php';
 
-session_name('BDE');
-session_set_cookie_params(86400 * 30, "/");
-session_start();
+    $model = new DetailEventModel();
+    $event = $model->getEventById($_POST['idEvent']);
 
-$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
 
-$idEvent = isset($_GET['id']) ? intval($_GET['id']) : null;
-if (!$idEvent) {
-    die("Erreur : ID d'événement manquant ou invalide.");
-}
+    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
 
-$model = new DetailEventModel();
-$event = $model->getEventById($idEvent);
+    $idEvent = isset($_POST['id']) ? intval($_POST['id']) : null;
 
-if (!$event) {
-    die("Erreur : Événement introuvable.");
-}
 
-require 'Views/DetailEvent.php';
-?>
+    $detailAffiche = '';
+
+    $detailAffiche.='<div class="image-gallery">
+            <div class="first-img">
+                <img src="' .htmlspecialchars('uploads/evenements/' . $event['imgEvent']) .'" alt="'. htmlspecialchars($event['titreEvent']).'">
+            </div>
+        </div>
+        <div class="event-details">
+            <h1 class="event-title">'. htmlspecialchars($event['titreEvent']).'</h1>
+            <p class="description">'.htmlspecialchars($event['descEvent']).'</p>
+            <p class="capacite">Capacité : '. htmlspecialchars($event['capaEvent']).'</p>
+            <p class="lieu">Lieu : '. htmlspecialchars($event['lieuEvent']).'</p>
+            <p class="date">Date : '. htmlspecialchars($event['dateEvent']).'</p>
+            <p class="price">'. htmlspecialchars($event['prixEvent']).' €</p>
+        </div>
+        <div class="boutons">';
+        if ($userRole < 4) {
+            $detailAffiche .= '
+                <form method="POST" action="?page=UpdateEvent.php" style="display:inline;">
+                    <input type="hidden" name="id" value="' . htmlspecialchars($event['idEvent']) . '" />
+                    <button type="submit" class="param">Paramétrer</button>
+                </form>';
+        }
+        $detailAffiche .= 
+            '<form method="POST" action="?page=Inscription" style="display:inline;">
+                <input type="hidden" name="idEvent" value="' . htmlspecialchars($event['idEvent']) . '" />
+                <button type="submit" class="inscrire">S\'inscrire</button>
+            </form>        
+    </div>';
+
+
+        require 'Views/DetailEvent.php';
+?>  
