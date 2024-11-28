@@ -49,31 +49,22 @@ if (isset($commande['idCode'])){
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $connection = $model->getDB();
     if (isset($_POST['supprimer'])){
         if(isset($_POST['idCommande'])){
             $idCommande = $_POST['idCommande'];
-            //A changer pour les sessions
-            $sqlDelete = "DELETE FROM COMMANDE WHERE idCommande = :idCommande AND idUser = (SELECT idUser FROM utilisateur WHERE adrMailUser = :email)";
-            $smtDelete = $connection->prepare($sqlDelete);
-            $smtDelete->bindParam(':idCommande', $idCommande, PDO::PARAM_INT);
-            $smtDelete->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-
-            if($smtDelete->execute()){
-                header("Location: ?page=Basket");
+            $delete = $model->deleteBasket($idCommande);
+            if($delete === true){
+                header("Location: /?page=Basket");
                 exit();
             }
         }
     }
 
     if(isset($_POST['payer'])){
-            $sqlUpdate = "UPDATE COMMANDE SET etatCommande=1 WHERE idUser =  (SELECT idUser FROM utilisateur WHERE adrMailUser = :email) and etatCommande = 0" ;
-            $smtUpdate = $connection->prepare($sqlUpdate);
-            $smtUpdate->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-            if($smtUpdate->execute()){
-                header("Location: ?page=Accueil");
-                exit();
-            }
+        if($model->updateBasket()){
+            header("Location: /?page=Accueil");
+            exit();
+        }
     }
 }
 

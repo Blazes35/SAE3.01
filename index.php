@@ -55,6 +55,9 @@ if (!$_SESSION['adminPanel']){
         case 'DetailEvent' :
             include "./Controllers/DetailEventController.php";
             break;
+        case 'Inscription' :
+            include "./Controllers/InscriptionController.php" ;
+            break;
         default:
             include './Views/Error404.php';
             break;
@@ -76,9 +79,6 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'Profile' :
             include "./GestionProfilAdmin.php";
-            break;
-        case 'Inscription' :
-            $role < 4 ? include "./Controllers/InscriptionController.php" : include './Views/Error404.php';
             break;
         case 'GestionProfilAdmin' :
             include "./Controllers/GestionProfilAdminController.php";

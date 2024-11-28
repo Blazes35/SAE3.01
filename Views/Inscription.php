@@ -1,22 +1,18 @@
-
+<?php 
+    $title = 'DetailEvent';
+    ob_start();
+?>
     <link rel="stylesheet" href="../css/inscription.css">
 
 
     <div class="container">
         <h1>Inscription à l'événement</h1>
         <p><?php echo $message; ?></p>
+        <span id="check" class="material-symbols-outlined">check</span>
     </div>
 
-<script>
-    // Récupération des données de session envoyées depuis PHP
-    var userRole = <?php echo json_encode($userRole); ?>;
-    var userName = <?php echo json_encode($userName); ?>;
+<?php
+    $content = ob_get_clean();
+    include 'Layout.php';
+?>
 
-    // Affichage des informations dans la console
-    console.log("Role de l'utilisateur : " + userRole);
-    console.log("Nom de l'utilisateur : " + userName);
-</script>
-
-
-</body>
-</html>
