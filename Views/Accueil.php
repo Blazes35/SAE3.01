@@ -84,7 +84,9 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li>1 BON D'ACHAT DE 10€ SUR L'ENTIÈRETÉ DE LA BOUTIQUE</li>
                 </ul>
                 </div>
-                <div class="prix">13€</div>
+                <form method="POST" action="" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="10" class="prix-button">10€</button>
+                </form>
             </div>
             <div class="or">
                 <img class="imageor" src="images/lingot_d_or1.png" alt="grade or">
@@ -97,7 +99,9 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li>SOIRÉES PRIVÉES DU BDE</li>
                 </ul>
                 </div>
-                <div class="prix">10€</div>
+                <form method="POST" action="" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="10" class="prix-button">10€</button>
+                </form>
             </div>
             <div class="fer">
                 <img class="imagefer" src="images/lingot_de_fer1.png" alt="grade fer">
@@ -109,7 +113,9 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <li>ACCÈS AU BÉNÉFICE DU PARRAINAGE(BONUS D'EXP)</li>
                     </ul>
                 </div>
-                <div class="prix">5€</div>
+                <form method="POST" action="" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="10" class="prix-button">10€</button>
+                </form>
 
             </div>
         </div>
