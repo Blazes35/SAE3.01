@@ -1,12 +1,15 @@
 <?php
 $title = 'Connection';
 ob_start();
+require_once 'Models/DBModel.php';
+$model = new DBModel();
+$connection = $model->getDB();
 ?>
 <?php
 
 
-if (isset($_GET['idUser'])) {
-    $idUser = intval($_GET['idUser']);
+if (isset($_POST['idUser'])) {
+    $idUser = intval($_POST['idUser']);
 
     // Récupérer l'historique des événements de l'utilisateur
     $queryEvents = "SELECT * FROM RESERVATION INNER JOIN EVENEMENT ON RESERVATION.idEvent = EVENEMENT.idEvent WHERE idUser = :idUser";    $stmtEvents = $connection->prepare($queryEvents);

@@ -31,7 +31,7 @@ foreach($actus as $actu){
 
                 if ($userRole < 4) {
                     $actuAff .="
-                    <form action='?page=UpdateNews2' method='post'>
+                    <form action='?page=UpdateNews' method='post'>
                         <input type='hidden' name='adminPanel' value='1'>
                         <input type='hidden' name='idActualite' value=" . $actu['idActualite'] . " />
                         <button type='submit' name='update' class='settings'>

@@ -90,12 +90,12 @@ if (!$_SESSION['adminPanel']){
             include "./Controllers/UpdateProductController.php";
             break;
         case 'UpdateEvent' :
+            include "UpdateEvent.php";
+            break;
+        case 'UpdateEvent2' :
             include "./Controllers/UpdateEventController.php";
             break;
         case 'UpdateNews' :
-            include "./updateActu.php";
-            break;
-        case 'UpdateNews2' :
             include "./Controllers/UpdateNewsController.php";
             break;
         default:
