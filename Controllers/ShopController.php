@@ -33,7 +33,7 @@ if (!empty($clothes)) {
         $clotheAff.="<div class='article'>           
         <h3 class='titre-article'>" . htmlspecialchars($clothe['nomProd']) . "</h3>
         <img src='uploads/vetements/" . htmlspecialchars($clothe['imgProd']) . "' alt='" . htmlspecialchars($clothe['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />        
-        <a href='detailArticle.php?id=" . urlencode($clothe['idProd']) . "' class='info'>
+        <a href='DetailProduct?id=" . urlencode($clothe['idProd']) . "' class='info'>
         <div>
         <p class='couleur'>Couleur : " . htmlspecialchars($clothe['couleurVetement']) . "</p>
         <p class='description'>Description : " . htmlspecialchars($clothe['descProd']) . "</p>
