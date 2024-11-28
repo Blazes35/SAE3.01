@@ -74,8 +74,8 @@
                     echo "<p class='price'>" . htmlspecialchars($event['prixEvent']) . " €</p>";
                     echo "</div>";
                 echo "<div class='boutons'>";
-                if($userRole === "3"){
-                    echo "<a href='updateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
+                if($userRole < 4){
+                    echo "<a href='UpdateEvent?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
                 }
                 echo "<a href='inscription.php?idEvent=" . urlencode($event['idEvent']) . "'><button class='inscrire'>S'inscrire</button></a>";
                 echo "</div>";
