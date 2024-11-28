@@ -27,9 +27,13 @@
             <p class="price">'. htmlspecialchars($event['prixEvent']).' €</p>
         </div>
         <div class="boutons">';
-             if ($userRole < 4){
-                $detailAffiche.='<a href="updateEvent.php?id='. urlencode($event['idEvent']).'"><button class="param">Paramétrer</button></a>';
-             }
+        if ($userRole < 4) {
+            $detailAffiche .= '
+                <form method="POST" action="?page=UpdateEvent.php" style="display:inline;">
+                    <input type="hidden" name="id" value="' . htmlspecialchars($event['idEvent']) . '" />
+                    <button type="submit" class="param">Paramétrer</button>
+                </form>';
+        }
                $detailAffiche.='<a href="inscription.php?idEvent='. urlencode($event['idEvent']).'"><button class="inscrire">S\'inscrire</button></a>
         </div>';
 

@@ -1,4 +1,6 @@
 <?php
+
+//Controller de Bsket.php
 require_once 'Models/BasketModel.php';
 $model = new BasketModel();
 $commandes = $model->getBasket();
