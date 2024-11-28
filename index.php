@@ -84,10 +84,10 @@ if (!$_SESSION['adminPanel']){
             include "./Controllers/HistoriqueController.php";
             break;
         case 'UpdateProduct' :
-            include "./UpdateProductController.php";
+            include "./Controllers/UpdateProductController.php";
             break;
         case 'UpdateEvent' :
-            include "./UpdateEventController.php";
+            include "./Controllers/UpdateEventController.php";
             break;
         case 'UpdateNews' :
             include "./updateActu.php";
