@@ -2,7 +2,7 @@
 $title = "Update News";
 ob_start();
 ?>
-    <link rel="stylesheet" href="./css/updateProduct.css" />
+<link rel="stylesheet" href="css/updateProduct.css" />
 <div class="container">
     <h1>Modifier ou Supprimer une Actualité</h1>
     <p><?php echo $message; ?></p>
