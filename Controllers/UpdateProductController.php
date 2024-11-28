@@ -1,10 +1,15 @@
-<?php 
-require_once 'Models/UpdateProductModel.php';
+<?php
+require_once 'Models/UpdateProductModel.php'; // Assurez-vous que vous avez la bonne classe modèle
+
 $model = new UpdateProductMode();
 $message = '';
-$uptAff='';
+$uptAff = '';
 
-    // Traitement de la mise à jour
+// Vérifiez que l'ID est passé dans l'URL
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $idProd = intval($_GET['id']);  // Convertissez l'ID en entier pour éviter les injections SQL
+
+    // Si un formulaire de mise à jour est soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         if ($_POST['action'] === 'update' && isset($_POST['idProd'])) {
             $idProd = intval($_POST['idProd']);
@@ -14,80 +19,81 @@ $uptAff='';
             $qtProd = intval($_POST['qt']);
             $imgProd = $_POST['currentImg']; // Valeur par défaut
 
-            // Vérification et gestion de l'upload d'image
+            // Gestion de l'upload d'image
             if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = 'uploads/produits/';
                 $fileName = basename($_FILES['img']['name']);
                 $uploadFile = $uploadDir . $fileName;
 
-                // Déplacement du fichier
-                if (move_uploaded_file($_FILES['img']['tmp_name'], $uploadFile)) {
-                    $imgProd = $fileName; // On enregistre uniquement le nom de fichier
+                // Validation du type d'image
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (in_array($_FILES['img']['type'], $allowedTypes)) {
+                    if (move_uploaded_file($_FILES['img']['tmp_name'], $uploadFile)) {
+                        $imgProd = $fileName; // Enregistrez le nom du fichier
+                    } else {
+                        $message = "Erreur lors de l'upload de l'image.";
+                    }
                 } else {
-                    $message = "Erreur lors de l'upload de l'image.";
+                    $message = "Seuls les fichiers image sont autorisés.";
                 }
             }
-            updateProduct($idProd, $nomProd, $descProd, $prixProd, $qtProd, $imgProd);
 
-        } elseif ($_POST['action'] === 'delete' && isset($_POST['idProd'])) {
-            deleteProduct(intval($_POST['idProd']));
+            // Appel de la méthode pour mettre à jour le produit
+            $message = $model->updateProduct($idProd, $nomProd, $descProd, $prixProd, $qtProd, $imgProd);
         }
     }
 
-    // Affichage du formulaire avec les données actuelles du produit
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateProduit'])) {
+    // Récupération des données du produit avec l'ID
+    $product = $model->getProduct($idProd);
 
-        $product = getProduct($_POST['idProd']);
+    if ($product) {
+        // Si le produit existe, affichage du formulaire pour modification
+        $uptAff .= '<p>' . htmlspecialchars($message) . '</p>
+        <form method="POST" action="" enctype="multipart/form-data">
+            <input type="hidden" name="idProd" value="' . htmlspecialchars($product['idProd']) . '" />
+            <input type="hidden" name="currentImg" value="' . htmlspecialchars($product['imgProd']) . '" />
+            <div>
+                <label for="titre">Nom du produit</label>
+                <input type="text" id="titre" name="titre" value="' . htmlspecialchars($product['nomProd']) . '" required />
+            </div>
+            <br>
+            <div>
+                <label for="desc">Description</label>
+                <input type="text" id="desc" name="desc" value="' . htmlspecialchars($product['descProd']) . '" />
+            </div>
+            <br>
+            <div>
+                <label for="price">Prix</label>
+                <input type="number" step="0.01" id="price" name="price" value="' . htmlspecialchars($product['prixProd']) . '" required />
+            </div>
+            <br>
+            <div>
+                <label for="qt">Quantité</label>
+                <input type="number" id="qt" name="qt" value="' . htmlspecialchars($product['qtProd']) . '" required />
+            </div>
+            <br>
+            <div>
+                <label for="img">Image</label>
+                <input type="file" id="img" name="img" accept="image/*" />
+                <p>Image actuelle : <strong>' . htmlspecialchars($product['imgProd']) . '</strong></p>
+                <img src="uploads/produits/' . htmlspecialchars($product['imgProd']) . '" alt="Image actuelle" style="max-width: 200px; height: auto;" />
+            </div>
+            <br>
+            <button type="submit" name="action" value="update">Mettre à jour</button>
+        </form>
 
-        if ($product) {
-
-$uptAff.= '<p>'. $message .'</p>
-
-<form method="POST" action="" enctype="multipart/form-data">
-    <input type="hidden" name="idProd" value="'. htmlspecialchars($product['idProd']).'" />
-    <input type="hidden" name="currentImg" value="'. htmlspecialchars($product['imgProd']).'" />
-    <div>
-        <label for="titre">Nom du produit</label>
-        <input type="text" id="titre" name="titre" value="'. htmlspecialchars($product['nomProd']).'" required />
-    </div>
-    <br>
-    <div>
-        <label for="desc">Description</label>
-        <input type="text" id="desc" name="desc" value="'. htmlspecialchars($product['descProd']).'" />
-    </div>
-    <br>
-    <div>
-        <label for="price">Prix</label>
-        <input type="number" step="0.01" id="price" name="price" value="'. htmlspecialchars($product['prixProd']).'" required />
-    </div>
-    <br>
-    <div>
-        <label for="qt">Quantité</label>
-        <input type="number" id="qt" name="qt" value="'. htmlspecialchars($product['qtProd']).'" required />
-    </div>
-    <br>
-    <div>
-        <label for="img">Image</label>
-        <input type="file" id="img" name="img" accept="image/*" />
-        <p>Image actuelle : <strong>.' htmlspecialchars($product['imgProd']).'</strong></p>
-        <img src="uploads/produits/'. htmlspecialchars($product['imgProd']).'" alt="Image actuelle" style="max-width: 200px; height: auto;" />
-    </div>
-    <br>
-    <button type="submit" name="action" value="update" >Mettre à jour</button>
-</form>
-
-<br>
-
-<form method="POST" action="">
-    <input type="hidden" name="idProd" value="'. htmlspecialchars($product['idProd']).'" />
-    <button type="submit" name="action" value="delete" style="background-color: red; color: white;">Supprimer le produit</button>
-</form>';
-        } else {
-            $uptAff.="<p>Produit introuvable.</p>";
-        }
+        <br>
+        <form method="POST" action="">
+            <input type="hidden" name="idProd" value="' . htmlspecialchars($product['idProd']) . '" />
+            <button type="submit" name="action" value="delete" style="background-color: red; color: white;">Supprimer le produit</button>
+        </form>';
     } else {
-        $uptAff.="<p>Aucun ID fourni.</p>";
+        $uptAff .= "<p>Produit introuvable.</p>";
     }
+} else {
+    // Si l'ID n'est pas passé dans l'URL
+    $uptAff .= "<p>Aucun ID fourni dans l'URL.</p>";
+}
 
 include 'Views/UpdateProduct.php';
 ?>
