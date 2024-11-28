@@ -25,7 +25,7 @@
             </a>
         </div>
         <div class="card">
-            <a href="GestionProfilAdmin.php" class="card-link">
+            <a href="/?page=GestionProfilAdmin" class="card-link">
                 <div class="card-content">
                     <h2>Gestion Profils</h2>
                     <span class="material-symbols-outlined">group</span>
