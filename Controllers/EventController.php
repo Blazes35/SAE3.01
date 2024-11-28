@@ -1,5 +1,3 @@
-
-
 <?php 
 require_once 'Models/EventModel.php';
 $model = new EventModel();
@@ -18,7 +16,7 @@ foreach ($events as $event){
                         <p class="capacite">Capacité : ' . htmlspecialchars($event['capaEvent']) .'</p>
                         <p class="lieu">Lieu : '. htmlspecialchars($event['lieuEvent']) .'</p>
                         <p class="date">Date : ' .htmlspecialchars($event['dateEvent']).' </p>
-                        <a href="detailEvent.php?id=' . urlencode($event['idEvent']).'">
+                        <a href="?page=DetailEvent&id=' . urlencode($event['idEvent']).'">
                         <p class="voir-maintenant">Voir Maintenant</p>
                         </a>            
                     </div>
