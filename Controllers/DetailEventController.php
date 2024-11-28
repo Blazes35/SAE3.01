@@ -40,10 +40,10 @@ $detailAffiche .= '<div class="image-gallery">
 
     if ($userRole < 4) {
         $detailAffiche .= "
-            <form action='/?page=UpdateEvent' method='post' >
+            <form action='/?page=UpdateEvent2' method='post' >
             <input type='hidden' name='adminPanel' value='1'>
-            <input type='hidden' name='id' value='" . $event['idEvent'] . "' />
-                <button type='submit' class='param'>Paramétrer</button>
+            <input type='hidden' name='idEvent' value='" . $event['idEvent'] . "' />
+                <button type='submit' name='update' class='param'>Paramétrer</button>
             </form>";
     }
 $detailAffiche .= '<a href="inscription.php?idEvent=' . urlencode($event['idEvent']) . '"><button class="inscrire">S\'inscrire</button></a>

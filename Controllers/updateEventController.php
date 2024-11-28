@@ -1,62 +1,37 @@
 <?php
 require_once 'Models/UpdateEventModel.php';
-
-// Créer une instance du modèle
 $model = new UpdateEventModel();
-$message = '';
-$event = null;
+$connect = $model->getDB();
 
-// $formHtml = '';
-
-// Si une action est en POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Mise à jour de l'événement
-    if (isset($_POST['updateEvent'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    if ($_POST['action'] === 'update') {
+        echo "<p>update</p>";
         $idEvent = intval($_POST['idEvent']);
-        $nomEvent = $_POST['titre'] ?? 'null';
-        $descEvent = $_POST['desc'] ?? 'null';
-        $prixEvent = isset($_POST['price']) ? floatval($_POST['price']) : 'null';
-        $capaEvent = isset($_POST['capacite']) ? intval($_POST['capacite']) : 'null';
-        $minRole = isset($_POST['minRole']) ? intval($_POST['minRole']) : 'null';
-        $minGrade = isset($_POST['minGrade']) ? intval($_POST['minGrade']) : 'null';
-        $imgEvent = $_POST['currentImg'] ?? 'null';
-
-        // Gestion de l'upload d'image
-        if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'uploads/evenements/';
-            $fileName = basename($_FILES['img']['name']);
-            $uploadFile = $uploadDir . $fileName;
-
-            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (in_array($_FILES['img']['type'], $allowedTypes)) {
-                if (move_uploaded_file($_FILES['img']['tmp_name'], $uploadFile)) {
-                    $imgEvent = $fileName;
-                } else {
-                    $message = "Erreur lors de l'upload de l'image.";
-                }
-            } else {
-                $message = "Seuls les fichiers image sont autorisés.";
-            }
-        }
-
-        // Mise à jour de l'événement
-        if ($nomEvent !== null && $descEvent !== null && $prixEvent !== null && $capaEvent !== null && $minRole !== null && $minGrade !== null) {
-            $message = $model->updateEvent($idEvent, $nomEvent, $descEvent, $prixEvent, $capaEvent, $imgEvent, $minRole, $minGrade);
-        } else {
-            $message = "Tous les champs obligatoires ne sont pas remplis.";
-        }
-    }
-
-    // Suppression de l'événement
-    if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['idEvent'])) {
+        $nomEvent = $_POST['titre'];
+        $descEvent = $_POST['desc'];
+        $minRole = intval($_POST['minRole']);
+        $minGrade = intval($_POST['minGrade']);
+        $prixEvent = floatval($_POST['price']);
+        $capaEvent = intval($_POST['capacite']);
+        $imgEvent = $_POST['currentImg'];
+        $model->updateEvent($idEvent, $nomEvent, $descEvent, $minRole, $minGrade, $prixEvent, $capaEvent, $imgEvent);
+        $_SESSION['adminPanel'] = 0;
+        header('Location: /?page=Event');
+    }elseif ($_POST['action'] ===  'delete') {
+        // Suppression de l'événement
         $idEvent = intval($_POST['idEvent']);
-        $message = $model->deleteEvent($idEvent);
+        $result = $model->deleteEvent($idEvent);
+        if ($result) {
+            $_SESSION['adminPanel'] = 0;
+            header('Location: /?page=Event');
+        }else{
+            echo "<script>alert('Erreur lors de la suppression l'évènement est lié à des inscriptions')</script>";
+        }
     }
 }
 
-// Chargement des données de l'événement
-if (isset($_POST['id'])) {
-    $idEvent = intval($_POST['id']);
+if (isset($_POST['update'])) {
+    $idEvent = intval($_POST['idEvent']);
     $event = $model->getEvent($idEvent);
 }
 
