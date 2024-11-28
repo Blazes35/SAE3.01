@@ -2,7 +2,7 @@
 $title = 'Profil';
 ob_start();
 ?>
-<link rel="stylesheet" href="css/inscription.css"/>
+<link rel="stylesheet" href="css/signup.css"/>
         </div>
     </div>
 </div>
