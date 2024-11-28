@@ -1,46 +1,53 @@
 <?php
-    require_once 'Models/DetailEventModel.php';
+require_once 'Models/DetailEventModel.php';
 
-    $model = new DetailEventModel();
-    $event = $model->getEventById($_POST['idEvent']);
+$model = new DetailEventModel();
 
+// Récupérer l'ID de l'événement
+$idEvent = isset($_POST['idEvent']) ? intval($_POST['idEvent']) : null;
 
-    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
+if (!$idEvent) {
+    die("Aucun événement trouvé ou aucun ID fourni.");
+}
 
-    $idEvent = isset($_POST['id']) ? intval($_POST['id']) : null;
+// Charger les détails de l'événement
+$event = $model->getEventById($idEvent);
 
+if (!$event) {
+    die("Événement introuvable dans la base de données.");
+}
 
-    $detailAffiche = '';
+// Récupérer les informations de l'utilisateur
+$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
 
-    $detailAffiche.='<div class="image-gallery">
-            <div class="first-img">
-                <img src="' .htmlspecialchars('uploads/evenements/' . $event['imgEvent']) .'" alt="'. htmlspecialchars($event['titreEvent']).'">
-            </div>
+// Affichage des détails de l'événement
+$detailAffiche = '';
+$detailAffiche .= '<div class="image-gallery">
+        <div class="first-img">
+            <img src="' . htmlspecialchars('uploads/evenements/' . $event['imgEvent']) . '" alt="' . htmlspecialchars($event['titreEvent']) . '">
         </div>
-        <div class="event-details">
-            <h1 class="event-title">'. htmlspecialchars($event['titreEvent']).'</h1>
-            <p class="description">'.htmlspecialchars($event['descEvent']).'</p>
-            <p class="capacite">Capacité : '. htmlspecialchars($event['capaEvent']).'</p>
-            <p class="lieu">Lieu : '. htmlspecialchars($event['lieuEvent']).'</p>
-            <p class="date">Date : '. htmlspecialchars($event['dateEvent']).'</p>
-            <p class="price">'. htmlspecialchars($event['prixEvent']).' €</p>
-        </div>
-        <div class="boutons">';
-        if ($userRole < 4) {
-            $detailAffiche .= '
-                <form method="POST" action="?page=UpdateEvent.php" style="display:inline;">
-                    <input type="hidden" name="id" value="' . htmlspecialchars($event['idEvent']) . '" />
-                    <button type="submit" class="param">Paramétrer</button>
-                </form>';
-        }
-        $detailAffiche .= 
-            '<form method="POST" action="?page=Inscription" style="display:inline;">
-                <input type="hidden" name="idEvent" value="' . htmlspecialchars($event['idEvent']) . '" />
-                <button type="submit" class="inscrire">S\'inscrire</button>
-            </form>        
+    </div>
+    <div class="event-details">
+        <h1 class="event-title">' . htmlspecialchars($event['titreEvent']) . '</h1>
+        <p class="description">' . htmlspecialchars($event['descEvent']) . '</p>
+        <p class="capacite">Capacité : ' . htmlspecialchars($event['capaEvent']) . '</p>
+        <p class="lieu">Lieu : ' . htmlspecialchars($event['lieuEvent']) . '</p>
+        <p class="date">Date : ' . htmlspecialchars($event['dateEvent']) . '</p>
+        <p class="price">' . htmlspecialchars($event['prixEvent']) . ' €</p>
+    </div>
+    <div class="boutons">';
+
+    if ($userRole < 4) {
+        $detailAffiche .= "
+            <form action='/?page=UpdateEvent' method='post' >
+            <input type='hidden' name='adminPanel' value='1'>
+            <input type='hidden' name='id' value='" . $event['idEvent'] . "' />
+                <button type='submit' class='param'>Paramétrer</button>
+            </form>";
+    }
+$detailAffiche .= '<a href="inscription.php?idEvent=' . urlencode($event['idEvent']) . '"><button class="inscrire">S\'inscrire</button></a>
     </div>';
 
-
-        require 'Views/DetailEvent.php';
-?>  
+require 'Views/DetailEvent.php';
+?>

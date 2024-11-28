@@ -1,66 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
-
-body {
-    font-family: 'K2D', sans-serif;
-    background-color: #000;
-    color: #fff;
-}
-
-.overlap-group-3 {
-    font-family: k2d, sans-serif;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    padding-top: 15px;
-    margin-left: 1000px;
-    width: 45%;
-    justify-content: space-between;
-  }
-
-
-a.presentation {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.presentation:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.evenement {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.evenement.visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.calendrier {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.calendrier:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.galerie {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.galerie:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.boutique {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.boutique:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
 
 
 /* Conteneur principal */
@@ -160,4 +97,24 @@ a {
 
 a:hover {
   color: #6c38f7; /* Change la couleur du texte au survol */
+}
+
+/* Styles pour le formulaire contenant le bouton "Voir Maintenant" */
+form .voir-maintenant{
+  margin-top: 5px;
+  padding: 10px 10px;
+  background-color: #6c38f7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+form .voir-maintenant:hover {
+  background-color: #8E51D0;
 }

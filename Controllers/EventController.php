@@ -12,7 +12,7 @@ foreach ($events as $event){
     alt="' . htmlspecialchars($event['titreEvent']) . '" />
                     </div>
                     <div class="detail">
-                        <p class="description"> '.htmlspecialchars($event['descEvent']) .'</p>
+                        <p class="description">Description :  '.htmlspecialchars($event['descEvent']) .'</p>
                         <p class="capacite">Capacité : ' . htmlspecialchars($event['capaEvent']) .'</p>
                         <p class="lieu">Lieu : '. htmlspecialchars($event['lieuEvent']) .'</p>
                         <p class="date">Date : ' .htmlspecialchars($event['dateEvent']).' </p>
@@ -20,7 +20,6 @@ foreach ($events as $event){
                             <input type="hidden" name="idEvent" value="' . htmlspecialchars($event['idEvent']) . '">
                             <button type="submit" class="voir-maintenant">Voir Maintenant</button>
                         </form>      
-                        <p class="voir-maintenant">Voir Maintenant</p>
                         </a>            
                     </div>
                 </div> ';
