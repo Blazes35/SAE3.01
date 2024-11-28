@@ -40,7 +40,7 @@ $detailAffiche .= '<div class="image-gallery">
 
     if ($userRole < 4) {
         $detailAffiche .= "
-            <form action='/?page=UpdateEvent2' method='post' >
+            <form action='/?page=UpdateEvent' method='post' >
             <input type='hidden' name='adminPanel' value='1'>
             <input type='hidden' name='idEvent' value='" . $event['idEvent'] . "' />
                 <button type='submit' name='update' class='param'>Paramétrer</button>

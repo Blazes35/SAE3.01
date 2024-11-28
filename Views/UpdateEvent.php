@@ -2,13 +2,8 @@
 $title = 'Mise à jour de l evenement';
 ob_start();
 ?>
-
-<link rel="stylesheet" href="css/updateEvent.css"/>
-
-
+<link rel="stylesheet" href="css/updateProduct.css"/>
 <h1>Modifier ou supprimer un événement</h1>
-
-<!-- Formulaire de mise à jour -->
 <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="idEvent" value="<?php echo htmlspecialchars($event['idEvent']); ?>" />
     <input type="hidden" name="currentImg" value="<?php echo htmlspecialchars($event['imgEvent']); ?>" />
@@ -51,7 +46,7 @@ ob_start();
         <img src="uploads/evenements/<?php echo htmlspecialchars($event['imgEvent']); ?>" alt="Image actuelle" style="max-width: 200px; height: auto;" />
     </div>
     <br>
-    <button type="submit" name="update">Mettre à jour</button>
+    <button type="submit">Mettre à jour</button>
 </form>
 <br>
 <form method="POST" action="">
@@ -59,9 +54,6 @@ ob_start();
     <input type="hidden" name="action" value="delete" />
     <button type="submit" style="background-color: red; color: white;">Supprimer l'événement</button>
 </form>
-
-
-
 <?php
 $content = ob_get_clean();
 include 'LayoutAdmin.php';

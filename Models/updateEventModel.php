@@ -58,12 +58,8 @@ class updateEventModel extends DBModel {
     public function deleteEvent($id){
         $deleteQuery = "DELETE FROM evenement WHERE idEvent = :idEvent";
         $stmt = self::$db->prepare($deleteQuery);
-        $stmt->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
-        try {
-            return $stmt->execute();
-        }catch (PDOException $e) {
-            return false;
-        }
+        $stmt->bindParam(':idEvent', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 }
 ?>
