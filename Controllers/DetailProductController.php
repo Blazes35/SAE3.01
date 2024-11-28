@@ -41,21 +41,17 @@ if (isset($_GET['id'])) {
         <a href='/?page=Basket&idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>
         <button class='add-to-cart'>Ajouter au panier</button>
         </a>
-        </div>
-        <div class='favorites-settings'>
-        <button class='add-to-favorites'>Ajouter aux favoris ♡</button>";
+        </div>";
 
         if ($userRole  < 4) {
             
             $afficheProduit.= "
-            <form action='?page=UpdateProduit' method='post'>
+            <form action='?page=UpdateProduct' method='post'>
                 <input type='hidden' name='adminPanel' value='1'>
-                <input type='hidden' name='idProd' value=" . $product['idProd'] . " />
-                <button type='submit' name='updateProduit' class='settings'>
-                    <a href='updateProduit.php?id=" . urlencode($product['idProd']) . "'>
-                        <span class='material-symbols-outlined'>settings</span>
-                        <p id='probleme'>Parametrer</p>
-                    </a>
+                <input type='hidden' name='idProd' value=". $product['idProd'] ." />
+                <button type='submit' name='updateProduct' class='settings'>
+                <span class='material-symbols-outlined'>settings</span>
+                <p>Paramétrer</p>
                 </button>
             </form>";
         }
