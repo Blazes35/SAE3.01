@@ -75,7 +75,8 @@
                     echo "</div>";
                 echo "<div class='boutons'>";
                 if($userRole < 4){
-                    echo "<a href='UpdateEvent?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
+                    echo "<p>URL générée : <a href='Views/UpdateEvent.php?id=" . urlencode($event['idEvent']) . "'>Modifier l'événement</a></p>";
+                    echo "<a href='Views/UpdateEvent.php?id=".urlencode($event['idEvent']) . "'><button class='param'>Paramétrer</button></a>";
                 }
                 echo "<a href='inscription.php?idEvent=" . urlencode($event['idEvent']) . "'><button class='inscrire'>S'inscrire</button></a>";
                 echo "</div>";
