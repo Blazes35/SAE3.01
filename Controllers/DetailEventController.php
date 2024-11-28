@@ -34,8 +34,12 @@
                     <button type="submit" class="param">Paramétrer</button>
                 </form>';
         }
-               $detailAffiche.='<a href="inscription.php?idEvent='. urlencode($event['idEvent']).'"><button class="inscrire">S\'inscrire</button></a>
-        </div>';
+        $detailAffiche .= 
+            '<form method="POST" action="?page=Inscription" style="display:inline;">
+                <input type="hidden" name="idEvent" value="' . htmlspecialchars($event['idEvent']) . '" />
+                <button type="submit" class="inscrire">S\'inscrire</button>
+            </form>        
+    </div>';
 
 
         require 'Views/DetailEvent.php';

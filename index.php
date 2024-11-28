@@ -57,6 +57,7 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'Inscription' :
             include "./Controllers/InscriptionController.php" ;
+            break;
         default:
             include './Views/Error404.php';
             break;
