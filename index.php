@@ -52,6 +52,12 @@ if (!$_SESSION['adminPanel']){
         case 'News' : 
             include "./actu.php";
             break;
+        case 'DetailEvent' :
+            include "./Controllers/DetailEventController.php";
+            break;
+        case 'Inscription' :
+            include "./Controllers/InscriptionController.php" ;
+            break;
         default:
             include './Views/Error404.php';
             break;
@@ -74,20 +80,17 @@ if (!$_SESSION['adminPanel']){
         case 'Profile' :
             include "./GestionProfilAdmin.php";
             break;
-        case 'Inscription' :
-            $role < 4 ? include "./inscription.php" : include './Views/Error404.php';
-            break;
         case 'GestionProfilAdmin' :
             include "./Controllers/GestionProfilAdminController.php";
             break;
         case 'Historique' :
             include "./Controllers/HistoriqueController.php";
             break;
-        case 'UpdateProduit' :
-            include "./updateProduit.php";
+        case 'UpdateProduct' :
+            include "./Controllers/UpdateProductController.php";
             break;
         case 'UpdateEvent' :
-            include "./updateEvent.php";
+            include "./Controllers/UpdateEventController.php";
             break;
         case 'UpdateNews' :
             include "./updateActu.php";

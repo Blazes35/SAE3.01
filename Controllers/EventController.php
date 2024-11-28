@@ -1,5 +1,3 @@
-
-
 <?php 
 require_once 'Models/EventModel.php';
 $model = new EventModel();
@@ -18,7 +16,10 @@ foreach ($events as $event){
                         <p class="capacite">Capacité : ' . htmlspecialchars($event['capaEvent']) .'</p>
                         <p class="lieu">Lieu : '. htmlspecialchars($event['lieuEvent']) .'</p>
                         <p class="date">Date : ' .htmlspecialchars($event['dateEvent']).' </p>
-                        <a href="detailEvent.php?id=' . urlencode($event['idEvent']).'">
+                        <form action="/?page=DetailEvent" method="POST">
+                            <input type="hidden" name="idEvent" value="' . htmlspecialchars($event['idEvent']) . '">
+                            <button type="submit" class="voir-maintenant">Voir Maintenant</button>
+                        </form>      
                         <p class="voir-maintenant">Voir Maintenant</p>
                         </a>            
                     </div>

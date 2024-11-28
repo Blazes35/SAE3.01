@@ -1,5 +1,5 @@
 <?php
-
+//Model de Basket.php
 require_once 'DBModel.php';
 
 class BasketModel extends DBModel {
@@ -24,3 +24,4 @@ class BasketModel extends DBModel {
         return ($stmt->fetchAll());
     }
 }
+?>

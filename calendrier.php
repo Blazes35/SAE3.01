@@ -1,3 +1,9 @@
+<?php 
+session_name('BDE');
+session_set_cookie_params(86400 * 30, "/");
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -84,11 +90,13 @@
         return $icalarray;
     }
 
+    // Récupérer les cours depuis iCal
     $events = [];
     if (isset($urls[$userIdTPAgenda])) {
         $events = fetchEventsFromUrl($urls[$userIdTPAgenda]);
     }
 
+    // Ajouter les événements depuis la base de données
     try {
         $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -106,7 +114,7 @@
         echo "Erreur : " . $e->getMessage();
     }
 
-    //on lance un tri afin de pouvoir trier les événements par date
+    // Trier les événements par date
     usort($events, function ($a, $b) {
         return strtotime($a["DTSTART"]) - strtotime($b["DTSTART"]);
     });

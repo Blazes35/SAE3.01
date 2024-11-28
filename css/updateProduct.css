@@ -1,82 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap');
-
-.overlap-group-3 {
-    font-family: k2d, sans-serif;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    padding-top: 15px;
-    margin-left: 1000px;
-    width: 45%;
-    justify-content: space-between;
-  }
-
-
-a.presentation {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.presentation:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.evenement {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.evenement.visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.calendrier {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.calendrier:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.galerie {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.galerie:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.boutique {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.boutique:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-/* Réinitialise les marges et paddings par défaut */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Styles de base pour le corps et le HTML */
-body, html {
-    color: white;
-    font-family: 'K2D', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #000000; /* Couleur d'arrière-plan */
-}
-
 /* Conteneur principal */
 .container {
     font-family: 'K2D', sans-serif;
     margin-top: 20px;
-    width: 100%;
+    width: 80%;
     max-width: 60vw;
     margin: 0 auto;
     padding: 20px;
@@ -96,7 +22,7 @@ body, html {
 }
 
 /* Formulaire de mise à jour */
-form {
+.formulaire form {
     margin-top: 50px;
     background-color: #444;
     border-radius: 15px;
@@ -109,16 +35,16 @@ form {
 }
 
 
-form label {
+.formulaire label {
     font-size: 18px;
     margin-bottom: 10px;
     color: #ffffff;
 }
 
-form input[type="text"],
-form input[type="number"],
-form input[type="file"],
-form select {
+.formulaire form input[type="text"],
+.formulaire form input[type="number"],
+.formulaire form input[type="file"],
+.formulaire form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -129,7 +55,7 @@ form select {
     font-size: 16px;
 }
 
-form button {
+.formulaire form button {
     font-family: 'K2D', sans-serif;
     padding: 10px 20px;
     background-color: #6c38f7;
@@ -141,12 +67,12 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+.formulaire form button:hover {
     background-color: #5433c9;
 }
 
 /* Bouton de suppression */
-.form .delete-button {
+.formulaire .form .delete-button {
     padding: 10px 20px;
     background-color: #ff4d4d;
     color: #fff;
@@ -157,7 +83,7 @@ form button:hover {
     transition: background-color 0.3s ease;
 }
 
-form .delete-button:hover {
+.formulaire form .delete-button:hover {
     background-color: #ffffff;
     color: red;
 }

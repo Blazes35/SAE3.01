@@ -1,18 +1,23 @@
 <?php
-$title = 'Mise à jour Produit';
+$title = 'Mise à jour du produit';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="../css/updateProduct.css" />
-
+<link rel="stylesheet" href="css/updateProduct.css" />
         </div>
-    </div>  
+    </div>
 </div>
-<div class="container">
-<h1>Modifier ou supprimer un produit</h1>
-<?php echo $uptAff;?>
-</div>
+
+<div class="product-update">
+        <h1>Mise à jour du produit</h1>
+        
+        <div class="form-container">
+            <!-- Ici, nous insérons le formulaire PHP généré par le contrôleur -->
+            <?php echo $formHtml; ?>
+        </div>
+    </div>
+
 <?php
 $content = ob_get_clean();
-include 'Layout.php';
-?> 
+include 'LayoutAdmin.php';
+?>
