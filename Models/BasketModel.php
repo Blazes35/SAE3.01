@@ -24,3 +24,4 @@ class BasketModel extends DBModel {
         return ($stmt->fetchAll());
     }
 }
+?>
