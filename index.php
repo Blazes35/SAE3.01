@@ -52,6 +52,9 @@ if (!$_SESSION['adminPanel']){
         case 'News' : 
             include "./actu.php";
             break;
+        case 'CalendrierUser':
+            include 'Controllers/CalendrierUserController.php';
+            break;
         case 'DetailEvent' :
             include "./Controllers/DetailEventController.php";
             break;
