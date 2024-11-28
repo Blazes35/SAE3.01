@@ -9,7 +9,7 @@ ob_start();
 </div>
 
 <div class="product-update">
-        <h1>Mise à jour du produit</h1>
+        <h1 class="titre">Mise à jour du produit</h1>
         
         <div class="form-container">
             <!-- Ici, nous insérons le formulaire PHP généré par le contrôleur -->

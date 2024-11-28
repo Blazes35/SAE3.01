@@ -1,8 +1,7 @@
 /* Conteneur principal */
-.container {
-    font-family: 'K2D', sans-serif;
-    margin-top: 20px;
+.form-container {
     width: 80%;
+    font-family: 'K2D', sans-serif;
     max-width: 60vw;
     margin: 0 auto;
     padding: 20px;
@@ -11,23 +10,23 @@
 
 /* Titre principal */
 .titre {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 4px solid #8E51D0;
-    display: inline-block;
-    padding-bottom: 10px;
+  margin-left: 22vw;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom: 4px solid #8E51D0;
+  display: inline-block;
+  padding-bottom: 1px;
 }
 
 /* Formulaire de mise à jour */
 .formulaire form {
-    margin-top: 50px;
+    margin-top: 5px;
     background-color: #444;
     border-radius: 15px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
