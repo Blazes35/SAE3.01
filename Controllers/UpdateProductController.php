@@ -1,6 +1,6 @@
 <?php 
 require_once 'Models/UpdateProductModel.php';
-$model = new UpdateProductMode();
+$model = new UpdateProductModel();
 $message = '';
 $uptAff='';
 
