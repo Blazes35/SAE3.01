@@ -8,7 +8,7 @@ ob_start();
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js"></script>
 
-<link rel="stylesheet" href="../css/CalendrierUser.css">
+<link rel="stylesheet" href="css/CalendrierUser.css">
             </div>
         </div>
     </div>

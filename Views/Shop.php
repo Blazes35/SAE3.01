@@ -3,7 +3,7 @@ $title = 'Boutique';
 ob_start();
 ?>
 
-<link rel="stylesheet" href="../css/shop.css" />
+<link rel="stylesheet" href="css/shop.css" />
 
         </div>
     </div>  

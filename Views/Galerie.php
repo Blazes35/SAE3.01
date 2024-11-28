@@ -2,7 +2,7 @@
     $title = 'Galerie';
     ob_start();
 ?>
-    <link rel="stylesheet" href="../css/galerie.css" />
+    <link rel="stylesheet" href="css/galerie.css" />
 
             </div>
         </div>

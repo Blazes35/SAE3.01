@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
 ?>
 
 
-    <link rel="stylesheet" href="../css/historique.css">
+    <link rel="stylesheet" href="css/historique.css">
 
     <div class="container">
         <h1>Historique de l'utilisateur</h1>

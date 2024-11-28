@@ -5,7 +5,7 @@ ob_start();
 
 
 
-    <link rel="stylesheet" href="../css/gestionProfilAdmin.css">
+    <link rel="stylesheet" href="css/gestionProfilAdmin.css">
 
     <div class="container">
         <h1 class="title">GESTION PROFILS</h1>

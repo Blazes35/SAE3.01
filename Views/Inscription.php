@@ -2,7 +2,7 @@
     $title = 'DetailEvent';
     ob_start();
 ?>
-    <link rel="stylesheet" href="../css/inscription.css">
+    <link rel="stylesheet" href="css/inscription.css">
 
 
     <div class="container">

@@ -2,7 +2,7 @@
     $title = 'DetailEvent';
     ob_start();
 ?>
- <link rel="stylesheet" href="../css/detailEvent.css">
+ <link rel="stylesheet" href="css/detailEvent.css">
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
     ob_start();
 ?>
 
-<link rel="stylesheet" href="../css/dashboard.css"/>
+<link rel="stylesheet" href="css/dashboard.css"/>
 
 <div class="main-content">
     <h1 class="title">TABLEAU DE BORD</h1>

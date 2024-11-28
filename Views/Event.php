@@ -3,7 +3,7 @@
 $title = 'Evenement';
 ob_start();
 ?>
-<link rel="stylesheet" href="./css/event.css" />
+<link rel="stylesheet" href="css/event.css" />
 
 </div>
 </div>
