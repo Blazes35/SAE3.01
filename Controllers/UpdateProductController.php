@@ -1,7 +1,6 @@
-<?php
-require_once 'Models/UpdateProductModel.php'; // Assurez-vous que vous avez la bonne classe modèle
-
-$model = new UpdateProductMode();
+<?php 
+require_once 'Models/UpdateProductModel.php';
+$model = new UpdateProductModel();
 $message = '';
 $uptAff = '';
 
