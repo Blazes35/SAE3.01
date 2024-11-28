@@ -8,9 +8,10 @@ class DetailEventModel extends DBModel {
     }
 
     public function getEventById($idEvent) {
-        $query = self::$db->prepare("SELECT * FROM EVENEMENT WHERE idEvent = :id");
-        $query->execute(['id' => $idEvent]);
-        return $query->fetch(PDO::FETCH_ASSOC);
+        $stmt = self::$db->prepare("SELECT * FROM EVENEMENT WHERE idEvent = :id");
+        $stmt -> bindParam(':id', $idEvent, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>
