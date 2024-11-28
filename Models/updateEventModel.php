@@ -4,22 +4,21 @@ require_once 'DBModel.php';
 // EventModel.php
 class updateEventModel extends DBModel {
 
-    public function __construct($db) {
+    public function __construct() {
         parent::__construct();
     }
 
     // Récupérer un événement par son ID
-    public function getEventById($idEvent) {
-        $stmt = self::$db->prepare("SELECT * FROM evenement WHERE idEvent = :idEvent");
+    public function getEvent($idEvent) {
+        $stmt = self::$db->prepare('SELECT * FROM EVENEMENT WHERE idEvent = :idEvent');
         $stmt->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
-    // Mettre à jour un événement
     public function updateEvent($idEvent, $titreEvent, $descEvent, $prixEvent, $capaEvent, $imgEvent,
     $minRoleEvent, $minGradeEvent) {
-        $stmt = self::$db->prepare("
+        $stmt = self::$db->prepare('
             UPDATE evenement 
             SET titreEvent = :titreEvent, 
                 descEvent = :descEvent, 
@@ -29,7 +28,7 @@ class updateEventModel extends DBModel {
                 minRoleEvent = :minRole, 
                 minGradeEvent = :minGrade
             WHERE idEvent = :idEvent
-        ");
+        ');
 
         $stmt->bindParam(':titreEvent', $data['titre']);
         $stmt->bindParam(':descEvent', $data['desc']);
@@ -43,7 +42,6 @@ class updateEventModel extends DBModel {
         return $stmt->execute();
     }
 
-    // Supprimer un événement
     public function deleteEvent($idEvent) {
         $stmt = self::$db->prepare("DELETE FROM evenement WHERE idEvent = :idEvent");
         $stmt->bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
