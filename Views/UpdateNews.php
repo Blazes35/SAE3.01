@@ -2,19 +2,14 @@
 $title = "Update News";
 ob_start();
 ?>
-<link rel="stylesheet" href="css/updateProduit.css" />
-
-
+    <link rel="stylesheet" href="./css/updateProduct.css" />
 <div class="container">
     <h1>Modifier ou Supprimer une Actualité</h1>
     <p><?php echo $message; ?></p>
-
-    <!-- Formulaire de mise à jour -->
     <form method="POST" action="" enctype="multipart/form-data">
         <input type="hidden" name="idActualite" value="<?php echo htmlspecialchars($actu['idActualite']); ?>" />
         <input type="hidden" name="currentImg" value="<?php echo htmlspecialchars($actu['urlPhotoActualite']); ?>" />
         <input type="hidden" name="action" value="update" />
-
         <div>
             <label for="titreActualite">Titre de l'actualité</label>
             <input type="text" id="titreActualite" name="titreActualite" 
@@ -43,9 +38,7 @@ ob_start();
         <br>
         <button type="submit">Mettre à jour</button>
     </form>
-
     <br>
-
     <!-- Formulaire de suppression -->
     <form method="POST" action="">
         <input type="hidden" name="idActualite" value="<?php echo htmlspecialchars($actu['idActualite']); ?>" />
@@ -53,7 +46,6 @@ ob_start();
         <button type="submit" style="background-color: red; color: white;">Supprimer l'actualité</button>
     </form>
 </div>
-
 <?php
 $content = ob_get_clean();
 include 'LayoutAdmin.php';
