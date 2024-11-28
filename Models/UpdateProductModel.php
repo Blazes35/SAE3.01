@@ -2,7 +2,7 @@
 
 require_once 'DBModel.php';
 
-class UpdateProductMode extends DBModel {
+class UpdateProductModel extends DBModel {
 
     public function __construct() {
         parent::__construct();
