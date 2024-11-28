@@ -75,7 +75,13 @@ if (!$_SESSION['adminPanel']){
             include "./GestionProfilAdmin.php";
             break;
         case 'Inscription' :
-            $role < 4 ? include "./inscription.php" : include './Views/Error404.php';
+            $role < 4 ? include "./Controllers/InscriptionController.php" : include './Views/Error404.php';
+            break;
+        case 'Event' :
+            include "./Controllers/EventController.php";
+            break;
+        case 'DetailEvent' :
+            include "./Controllers/DetailEventController.php";
             break;
         case 'GestionProfilAdmin' :
             include "./Controllers/GestionProfilAdminController.php";
