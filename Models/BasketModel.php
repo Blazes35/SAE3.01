@@ -34,7 +34,7 @@ class BasketModel extends DBModel {
     }
 
     public function updateBasket(){
-        $sqlUpdate = "UPDATE COMMANDE SET etatCommande=1 WHERE idUser =  :id and etatCommande = 0" ;
+        $sqlUpdate = "UPDATE COMMANDE SET etatCommande=2 WHERE idUser =  :id and etatCommande = 1" ;
         $smtUpdate = self::$db->prepare($sqlUpdate);
         $smtUpdate->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
         $smtUpdate->execute();

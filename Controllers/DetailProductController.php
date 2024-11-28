@@ -37,11 +37,18 @@ if (isset($_GET['id'])) {
             </div>";
         }
 
-        $afficheProduit.= "<div class='buttons'>
-        <a href='/?page=Basket&idProd=" . urlencode($idProd) . "&name=" . urlencode($product['nomProd']) . "&price=" . urlencode($product['prixProd']) . "'>
-        <button class='add-to-cart'>Ajouter au panier</button>
-        </a>
-        </div>";
+
+        $afficheProduit.= '<div class="buttons">
+        <form method="POST" action="/?page=DetailProduct">
+        <input type="hidden" name="idProd" value="'. htmlspecialchars($idProd). '">
+        <input type="hidden" name="name" value="'.htmlspecialchars($product['nomProd']) .'">
+        <input type="hidden" name="price" value="'. htmlspecialchars($product['prixProd']) .'">
+        <label for="quantity">Quantité :</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" required>
+        <button type="submit" class="add-to-cart">Ajouter au panier</button>
+        </form>
+        </div>';
+
 
         if ($userRole  < 4) {
             
@@ -57,15 +64,24 @@ if (isset($_GET['id'])) {
         }
 
         $afficheProduit.= "</div>
-
-        <p class='add-element'>+ Ajouter un élément</p>
         </div>";
-    } else {
-        $afficheProduit.= "<p>Produit introuvable.</p>";
     }
-} else {
-    $afficheProduit.= "<p>Paramètre invalide.</p>";
-    }
+}
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['idProd']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])) {
+            $idProd = $_POST['idProd'];      // Récupère l'ID du produit
+            $name = $_POST['name'];          // Récupère le nom du produit
+            $price = $_POST['price'];        // Récupère le prix du produit
+            $quantity = $_POST['quantity'];  // Récupère la quantité du produit
+            $currentDateTime = date('Y-m-d H:i:s'); // Récupère la date et l'heure actuelles
+    
+            // Vous pouvez maintenant appeler la fonction addBasket pour ajouter l'article au panier
+            $model->addBasket($idProd, $quantity, $currentDateTime);
 
+            header('Location: /?page=Basket');  // Remplacez par l'URL de votre page panier
+            exit();
+        }
+
+    }
 include 'Views/DetailProduct.php'
 ?>
