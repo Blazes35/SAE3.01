@@ -12,6 +12,8 @@ ob_start();
             </div>
         </div>
     </div>
+    <div class="container">
+        <h1 class="title">Calendrier</h1>
     <div id="calendar"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -40,6 +42,7 @@ ob_start();
             calendar.render();
         });
     </script>
+    </div>
 
     <script>
         var userRole = <?php echo json_encode($userRole); ?>;
