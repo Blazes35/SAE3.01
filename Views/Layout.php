@@ -60,10 +60,7 @@
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">BOUTIQUE</button>
                     </form>
                 </div>
-            
-
     <?php echo $content ?>
-
 <footer>
         <div class="bandeau1">
             <img id="logoF" src="images/logo.png" />
