@@ -33,7 +33,7 @@ if($commandes){
             $total = $total + $commande['quantiteCommande'] * $commande['prixProd'];
         
             $commandeAff.=    '<div class="supprimer">
-                    <form method="POST" action="/~inf2pj02/?page=Basket">
+                    <form method="POST" action="/?page=Basket">
                         <input type="hidden" name="idCommande" value="' . $commande['idCommande'] . '">
                         <button type="submit" name="supprimer">Supprimer</button>
                     </form>
@@ -41,14 +41,16 @@ if($commandes){
             </div>';
     }
 }
-
+echo var_dump($_SESSION['grade']);
 if ($_SESSION['grade'] === 3){
     $pourcentage.='<div classe="pourcent">
-        <p> Réduction' . -10% avec votre grade diamant. '<p>
+        <p> Réduction -10% avec votre grade diamant<p>
     </div>';
-    $total.= $toal
+    $reduction = $total * 0.10;
+    $total -= $reduction;
 
 }
+
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_POST['supprimer'])){

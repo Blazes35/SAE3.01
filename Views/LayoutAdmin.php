@@ -10,11 +10,10 @@
 <body>
 <div class="menu">
     <div class="logo-theme">
-        <img class="logo" src="images/logo-sans-fond.png" />
-        <div class="theme-claire">THEME CLAIRE</div>    
+    <div class="theme-claire">THEME CLAIRE</div>    
     </div>
     <div class="compte">
-        <form id="myForm" method="POST" action="/~inf2pj02/">
+        <form id="myForm" method="POST" action="/">
             <input type="hidden" name="adminPanel" value="0">
             <a class="Administrer" href="" onclick="document.getElementById('myForm').submit(); return false; ">
                 <span class="material-symbols-outlined">admin_panel_settings</span>
