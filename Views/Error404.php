@@ -2,8 +2,6 @@
 $title = 'Page non trouvée';
 ob_start();
 ?>
-
-
 <link rel="stylesheet" href="css/error404.css"> <!-- Assurez-vous d'avoir un fichier CSS pour le style -->
         </div>
     </div>

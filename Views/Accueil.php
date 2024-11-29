@@ -1,23 +1,7 @@
 <?php
 $title = "Accueil";
 ob_start();
-
-// Connexion à la base de données
-try {
-    $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
-
-// Requête pour récupérer les actualités
-$query = "SELECT idActualite, titreActualite, urlPhotoActualite FROM ACTUALITE ORDER BY dateActualite DESC LIMIT 4";
-$stmt = $pdo->query($query);
-$actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
-
 <link rel="stylesheet" href="css/accueil.css"/>
 <div class = boxaccueil>
 <div class="top">
@@ -35,9 +19,6 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     </div>
 </div>
-    
-
-
 <div class="box2accueil" onclick="actu.php">
     <a href="actu.php" class="titre-link">
         <div class="titre">ACTUALITÉ</div>
@@ -165,11 +146,10 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="box-5">
     <div class="rejoins-nous">REJOINS-NOUS</div>
+        <form action="/?page=SignUp" method="post">
         <button class="button-inscription">INSCRIPTION</button>
+        </form>
     </div>
-
-
-
 <?php
 $content = ob_get_clean();
 include 'Layout.php';

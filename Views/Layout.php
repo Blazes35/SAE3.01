@@ -85,19 +85,5 @@
             <p>Site web réaliser par coco dev</p>
         </div>
     </footer>
-    <script>
-            // Récupération des données de session envoyées depuis PHP
-            var userRole = <?php echo json_encode($userRole); ?>;
-            var userName = <?php echo json_encode($userName); ?>;
-            var userTp = <?php echo json_encode($TP); ?>;
-
-            // Affichage des informations dans la console
-            console.log("Role de l'utilisateur : " + userRole);
-            console.log("Nom de l'utilisateur : " + userName);
-            console.log("Tp de l'utilisateur : " + TP);
-            
-
-            // Tu peux également afficher d'autres informations sur la session si besoin
-        </script>
 </body>
 </html>

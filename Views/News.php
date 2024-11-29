@@ -6,16 +6,9 @@ ob_start();
             </div>
         </div>
     </div>
-
-    
-    
     <div class='titre'><h2>Actualité</h2></div>
     <?php echo $actuAff ?>
-    
-
     </div>
-
-    
 <?php
 $content = ob_get_clean();
 include 'Layout.php';
