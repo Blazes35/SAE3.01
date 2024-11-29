@@ -41,14 +41,13 @@ if($commandes){
             </div>';
     }
 }
+if ($_SESSION['grade'] === 3){
+    $pourcentage.='<div classe="pourcent">
+        <p> Réduction' . -10% avec votre grade diamant. '<p>
+     </div>';
+    $total.= $toal
 
-// if ($_SESSION['grade'] === 3){
-//     $pourcentage.='<div classe="pourcent">
-//         <p> Réduction' . -10% avec votre grade diamant. '<p>
-//     </div>';
-//     $total.= $toal
-
-// }
+}
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_POST['supprimer'])){

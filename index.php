@@ -62,7 +62,7 @@ if (!$_SESSION['adminPanel']){
             include "./Controllers/InscriptionController.php" ;
             break;
         case 'HaveGuard':
-            include "./Controllers/HaveGuardController.php";
+            include "./Controllers/HaveGradeController.php";
             break;
         default:
             include './Views/Error404.php';
