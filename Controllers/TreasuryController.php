@@ -45,5 +45,17 @@ if(file_exists($fichier_csv)){
         fclose($handle);
     }
 }
+
+
+$affichCsv = '';
+foreach ($annees as $annee) {
+    $file_name = "vente".$annee.".csv";
+    $url = $chemin_dossier . "\\vente" . $annee . ".csv";
+    $affichCsv .= "<li>
+        <span class='material-symbols-outlined'>file_save</span>
+        <a href=\"$url\" target=\"_blank\">Vente de $annee</a>
+        <a href=\"?page=Treasury&supprimer=$file_name\" class=\"supprimer\">Supprimer</a>
+    </li>";
+}
 require 'Views/Treasury.php';
 ?>

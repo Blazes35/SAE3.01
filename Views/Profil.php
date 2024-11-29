@@ -75,25 +75,7 @@ ob_start();
         </div>
         <div class="afficheevent">
         <?php
-        foreach($events as $event){
-            echo '<div class="imgnom">';
-            echo '  <div class="imgevent">';
-            echo '      <img src="uploads/evenements/' . $event["imgEvent"] . '" />';
-            echo '  </div>'; // Fermeture de <div class="imgevent">
-
-            echo '  <div class="nomEvent">';
-            echo '      ' . $event['titreEvent'];
-            echo '  </div>'; // Fermeture de <div class="nomEvent">
-
-            echo '  <div class="supprimer">';
-            echo '      <form method="POST" action="/?page=Profil">';
-            echo '          <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">';
-            echo '          <button type="submit" name="supprimer">Supprimer</button>';
-            echo '      </form>';
-            echo '  </div>'; // Fermeture de <div class="supprimer">
-
-            echo '</div>';
-        }
+            echo $eventAff;
         ?>
         </div>
     </div>

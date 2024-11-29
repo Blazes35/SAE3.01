@@ -37,7 +37,6 @@ ob_start();
     </div>
     <div class="ligne-3"></div>
     <div class="texte-02">02</div>
-
 </div>
 <div class="box-4">
     <div class="texte-03">03</div>

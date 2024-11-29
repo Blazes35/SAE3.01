@@ -10,15 +10,7 @@ ob_start();
         <ul>
         <?php
         // Pour chaque année trouvée, créez un lien
-        foreach ($annees as $annee) {
-            $file_name = "vente".$annee.".csv";
-            $url = $chemin_dossier . "\\vente" . $annee . ".csv";
-            echo "<li>
-            <span class='material-symbols-outlined'>file_save</span>
-            <a href=\"$url\" target=\"_blank\">Vente de $annee</a>
-            <a href=\"?page=Treasury&supprimer=$file_name\" class=\"supprimer\">Supprimer</a>
-            </li>";
-        }
+            echo $affichCsv;
         ?>
         </ul>
         <form id="upload" method="post" enctype="multipart/form-data">

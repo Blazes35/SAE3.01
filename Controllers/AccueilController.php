@@ -1,17 +1,6 @@
 <?php
-//require_once 'Models/AccueilModel.php';
-
-//$model = new AcceuilModel();
-// $role = $_SESSION['role'];
-// $grade = $_SESSION['grade'];
-
-
-
-
-
-
-
-
+require_once 'Models/AccueilModel.php';
+$model = new AccueilModel();
+$actualites = $model->getAccueil();
 require 'Views/Accueil.php';
-
 ?>

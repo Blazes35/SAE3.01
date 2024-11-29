@@ -16,21 +16,18 @@ ob_start();
                     </label>
                     <input type="text" id="nom" name="nom" placeholder="NOM" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required>
                 </div>
-
                 <div class="input-group">
                     <label for="prenom">
                         <span class="material-symbols-outlined">person</span>
                     </label>
                     <input type="text" id="prenom" name="prenom" placeholder="PRÉNOM" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required>
                 </div>
-
                 <div class="input-group">
                     <label for="mail">
                         <span class="material-symbols-outlined">mail</span>
                     </label>
                     <input type="email" id="mail" name="mail" placeholder="EMAIL" value="<?php echo isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : ''; ?>" required>
                 </div>
-
                 <div class="select-group">
                     <label for="classe">
                         <span class="material-symbols-outlined">school</span>
@@ -63,7 +60,6 @@ ob_start();
                     </label>
                     <input type="password" id="password2" name="password2" placeholder="CONFIRMATION MOT DE PASSE" required>
                 </div>
-
                 <div class="envoyer">
                     <button type="submit" name="SignUp" name>S'INSCRIRE</button>
                 </div>

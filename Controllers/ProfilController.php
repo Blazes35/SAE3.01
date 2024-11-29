@@ -5,10 +5,8 @@ $connection=$model->getDB();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
-
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
-
     if ($controller->login($email, $password)) {
         header("Location: ?page=Presentation");
         exit();
@@ -19,15 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
 
 
 
- $sqlevent = "SELECT EVENEMENT.idEvent, titreEvent, imgEvent FROM EVENEMENT JOIN RESERVATION 
- ON EVENEMENT.idEvent = RESERVATION.idEvent JOIN UTILISATEUR ON 
- UTILISATEUR.idUser = RESERVATION.idUser WHERE adrMailUser=:email";
- $stmtEvent = $connection->prepare($sqlevent);
- $stmtEvent->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
- $stmtEvent->execute();
-
- $events = $stmtEvent->fetchAll();
-
+$sqlevent = "SELECT EVENEMENT.idEvent, titreEvent, imgEvent FROM EVENEMENT JOIN RESERVATION 
+ON EVENEMENT.idEvent = RESERVATION.idEvent JOIN UTILISATEUR ON 
+UTILISATEUR.idUser = RESERVATION.idUser WHERE adrMailUser=:email";
+$stmtEvent = $connection->prepare($sqlevent);
+$stmtEvent->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+$stmtEvent->execute();
+$events = $stmtEvent->fetchAll();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_POST['validate'])){
         $nom = isset($_POST['nom']) ? $_POST['nom'] : $_SESSION['nom'];
@@ -67,7 +63,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
     }
 }
-
-
+$eventAff ='';
+foreach($events as $event){
+    $eventAff .= '
+    <div class="imgnom">
+        <div class="imgevent">
+            <img src="uploads/evenements/' . $event["imgEvent"] . '" />
+        </div>>
+        <div class="nomEvent">'.
+            '      ' . $event['titreEvent'].'
+        </div>
+        <div class="supprimer">
+            <form method="POST" action="/?page=Profil">
+                <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">
+                <button type="submit" name="supprimer">Supprimer</button>
+            </form>
+        </div>
+    </div>';
+}
 require 'Views/Profil.php';
 ?>
