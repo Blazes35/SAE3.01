@@ -483,8 +483,8 @@ CREATE PROCEDURE login(
     IN mail VARCHAR(250),
     IN mdp VARCHAR(257))
 BEGIN
-    IF EXISTS (SELECT * FROM utilisateur WHERE adrMailUser = mail AND mdpUser = mdp) THEN
-        SELECT idUser, nomUser, prenomUser, adrMailUser, idTPAgenda, ppUser, idGrade, idRole FROM utilisateur NATURAL JOIN POSSEDER WHERE adrMailUser = mail;
+    IF EXISTS (SELECT * FROM UTILISATEUR WHERE adrMailUser = mail AND mdpUser = mdp) THEN
+        SELECT idUser, nomUser, prenomUser, adrMailUser, idTPAgenda, ppUser, idGrade, idRole FROM UTILISATEUR NATURAL JOIN POSSEDER WHERE adrMailUser = mail;
     ELSE
         SELECT True as Failed;
     END IF;
@@ -502,8 +502,8 @@ CREATE PROCEDURE changePwd(
     IN mdp VARCHAR(250),
 	IN newMdp VARCHAR(257))
 BEGIN
-    IF EXISTS (SELECT * FROM utilisateur WHERE adrMailUser = mail AND mdpUser = mdp) THEN
-        UPDATE utilisateur set mdpUser=newMdp WHERE adrMailUser=mail AND mdpUser=mdp;
+    IF EXISTS (SELECT * FROM UTILISATEUR WHERE adrMailUser = mail AND mdpUser = mdp) THEN
+        UPDATE UTILISATEUR set mdpUser=newMdp WHERE adrMailUser=mail AND mdpUser=mdp;
         SELECT 1 AS changePwdSuccess;
     ELSE
         SELECT 0 AS changePwdSuccess;
@@ -522,9 +522,9 @@ CREATE PROCEDURE createUser (
     IN p_mdpUser VARCHAR(255))
 BEGIN
 
-    IF NOT EXISTS (SELECT idUser FROM utilisateur WHERE adrMailUser=p_adrMailUser) THEN
-        INSERT INTO utilisateur (nomUser, prenomUser, adrMailUser, ppUser, mdpUser, idTPAgenda, idGrade) VALUES (p_nomUser, p_prenomUser, p_adrMailUser, 'default.jpg', p_mdpUser, p_idTPAgenda, NULL);
-        INSERT INTO POSSEDER (idUser, idRole, dateAjout) VALUES ((SELECT idUser FROM utilisateur WHERE adrMailUser=p_adrMailUser), 5, CURDATE());
+    IF NOT EXISTS (SELECT idUser FROM UTILISATEUR WHERE adrMailUser=p_adrMailUser) THEN
+        INSERT INTO UTILISATEUR (nomUser, prenomUser, adrMailUser, ppUser, mdpUser, idTPAgenda, idGrade) VALUES (p_nomUser, p_prenomUser, p_adrMailUser, 'default.jpg', p_mdpUser, p_idTPAgenda, NULL);
+        INSERT INTO POSSEDER (idUser, idRole, dateAjout) VALUES ((SELECT idUser FROM UTILISATEUR WHERE adrMailUser=p_adrMailUser), 5, CURDATE());
         SELECT 1 AS insert_successfull;
     ELSE
         SELECT 0 AS insert_successfull;

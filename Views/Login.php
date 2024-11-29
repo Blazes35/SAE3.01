@@ -12,7 +12,7 @@ ob_start();
 <div class="connexion">
     <div class="titreconnexion">CONNEXION</div>
     <div class="formulaire">
-        <form action="?page=Login" method="post">
+        <form action="/~inf2pj02/?page=Login" method="post">
             <div class="input-group">
                 <label for="email">
                     <span class="material-symbols-outlined">person</span>

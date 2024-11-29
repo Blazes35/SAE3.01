@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
 
 
         $afficheProduit.= '<div class="buttons">
-        <form method="POST" action="/?page=DetailProduct">
+        <form method="POST" action="/~inf2pj02/?page=DetailProduct">
         <input type="hidden" name="idProd" value="'. htmlspecialchars($idProd). '">
         <input type="hidden" name="name" value="'.htmlspecialchars($product['nomProd']) .'">
         <input type="hidden" name="price" value="'. htmlspecialchars($product['prixProd']) .'">
