@@ -47,8 +47,8 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="/~inf2pj02/?page=CalendrierUser">
-                        <input type="hidden" name="TP" value="<?php echo htmlspecialchars($userTp); ?>">
+                    <form method="POST" action="/?page=CalendrierUser">
+                        <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
                     </form>
                     <form method="GET" action="">
@@ -92,12 +92,12 @@
             // Récupération des données de session envoyées depuis PHP
             var userRole = <?php echo json_encode($userRole); ?>;
             var userName = <?php echo json_encode($userName); ?>;
-            var userTp = <?php echo json_encode($userTp); ?>;
+            var userTp = <?php echo json_encode($TP); ?>;
 
             // Affichage des informations dans la console
             console.log("Role de l'utilisateur : " + userRole);
             console.log("Nom de l'utilisateur : " + userName);
-            console.log("Tp de l'utilisateur : " + userTp);
+            console.log("Tp de l'utilisateur : " + TP);
             
 
             // Tu peux également afficher d'autres informations sur la session si besoin
