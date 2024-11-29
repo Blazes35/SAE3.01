@@ -72,8 +72,8 @@
 }
 
 .fc-daygrid-day-frame {
-    width: 100%; /* Laisse la largeur des cellules s'adapter */
-    padding: 10px; /* Augmente l'espace interne pour plus de confort visuel */
+    width: 100%; 
+    padding: 10px; 
 }
 
 .fc-daygrid-day.fc-day-today {
