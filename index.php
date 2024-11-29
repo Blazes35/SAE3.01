@@ -50,7 +50,7 @@ if (!$_SESSION['adminPanel']){
             include "./Controllers/DetailProductController.php";
             break;
         case 'News' : 
-            include "./actu.php";
+            include "./Controllers/NewsController.php";
             break;
         case 'CalendrierUser':
             include 'Controllers/CalendrierUserController.php';
@@ -60,6 +60,9 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'Inscription' :
             include "./Controllers/InscriptionController.php" ;
+            break;
+        case 'HaveGuard':
+            include "./Controllers/HaveGuardController.php";
             break;
         default:
             include './Views/Error404.php';

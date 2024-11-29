@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="overlap-group">
-            <a href="/~inf2pj02/">
+            <a href="/">
             <img class="logo" src="images/logo.png" />
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
