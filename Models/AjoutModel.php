@@ -4,7 +4,7 @@ class AjoutModel extends DBModel{
     public function __construct(){
         parent::__construct();
     }
-          
+
     public function uploadImage($file, $type) {
         $uploadDir = match ($type) {
             'produit' => 'uploads/produits/',

@@ -28,15 +28,6 @@ ob_start();
         <a href="https://docs.google.com/spreadsheets/d/1FngDpYU9gaINMVpy378ttvsUlhEGoRikUBvL3_8XPLI/edit?usp=sharing">Modifier</a>
     </div>
 </div>
-<script>
-    // Récupération des données de session envoyées depuis PHP
-    var userRole = <?php echo json_encode($userRole); ?>;
-    var userName = <?php echo json_encode($userName); ?>;
-
-    // Affichage des informations dans la console
-    console.log("Role de l'utilisateur : " + userRole);
-    console.log("Nom de l'utilisateur : " + userName);
-</script>
 <?php 
 $content = ob_get_clean();
 include 'LayoutAdmin.php';

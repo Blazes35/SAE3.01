@@ -7,7 +7,6 @@ ob_start();
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js"></script>
-
 <link rel="stylesheet" href="css/CalendrierUser.css">
             </div>
         </div>
@@ -18,7 +17,6 @@ ob_start();
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridWeek',
                 events: [
@@ -28,7 +26,6 @@ ob_start();
                             $eventTime = date('H:i', strtotime($event['DTSTART']));
                             $eventTitle = addslashes($event['SUMMARY']);
                             $eventDescription = addslashes($event['DESCRIPTION']);
-
                             echo "{ 
                                 title: '$eventTitle', 
                                 start: '$eventdate $eventTime', 
@@ -38,7 +35,6 @@ ob_start();
                     ?>
                 ]
             });
-
             calendar.render();
         });
     </script>
