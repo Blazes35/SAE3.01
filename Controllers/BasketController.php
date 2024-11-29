@@ -41,14 +41,16 @@ if($commandes){
             </div>';
     }
 }
-
+echo var_dump($_SESSION['grade']);
 if ($_SESSION['grade'] === 3){
     $pourcentage.='<div classe="pourcent">
-        <p> Réduction' . -10% avec votre grade diamant. '<p>
+        <p> Réduction -10% avec votre grade diamant<p>
     </div>';
-    $total.= $toal
+    $reduction = $total * 0.10;
+    $total -= $reduction;
 
 }
+
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_POST['supprimer'])){

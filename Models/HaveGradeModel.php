@@ -1,12 +1,12 @@
 <?php
 require_once 'DBModel.php';
 
-class HaveGuardModel extends DBModel{
+class HaveGradeModel extends DBModel{
     public function __construct(){
         parent::__construct();
     }
 
-    public function updateGuard(int $grade){
+    public function updateGrade(int $grade){
         $sqlUpdate="UPDATE UTILISATEUR SET idGrade =:grade WHERE idUser=:id;";
         $stmt = self::$db->prepare($sqlUpdate);
         $stmt->bindParam(':grade',$grade,PDO::PARAM_INT);
@@ -15,7 +15,7 @@ class HaveGuardModel extends DBModel{
         return true;
     }
 
-    public function getNameGuard(int $grade){
+    public function getNameGrade(int $grade){
         $sqlSelect="SELECT nomGrade FROM GRADE WHERE idGrade=:grade;";
         $stmtSelect = self::$db->prepare($sqlSelect);
         $stmtSelect->bindParam(':grade',$grade,PDO::PARAM_INT);
