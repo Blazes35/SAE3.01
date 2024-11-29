@@ -72,16 +72,16 @@ if (!$_SESSION['adminPanel']){
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Dashboard';
     switch ($page) {
         case 'Dashboard':
-            $role < 4 ? include './Controllers/DashboardController.php' : include './Views/Error404.php';
+            include './Controllers/DashboardController.php';
             break;
         case 'Treasury':
-            $role < 4 ? include './Controllers/TreasuryController.php' : include './Views/Error404.php';
+            include './Controllers/TreasuryController.php';
             break;
         case 'Add' : 
-            $role < 4 ? include "./Controllers/AjoutController.php" : include './Views/Error404.php';
+            include "./Controllers/AjoutController.php";
             break;
         case 'Calendar' :
-            $role < 4 ? include "./calendrier.php" : include './Views/Error404.php';
+            include "./calendrier.php";
             break;
         case 'Profile' :
             include "./GestionProfilAdmin.php";
