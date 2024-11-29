@@ -84,8 +84,8 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li>1 BON D'ACHAT DE 10€ SUR L'ENTIÈRETÉ DE LA BOUTIQUE</li>
                 </ul>
                 </div>
-                <form method="POST" action="" class="price-button-form">
-                    <button type="submit" name="priceSelected" value="15" class="prix-button">15€</button>
+                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="3" class="prix-button">15€</button>
                 </form>
             </div>
             <div class="or">
@@ -99,8 +99,8 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li>SOIRÉES PRIVÉES DU BDE</li>
                 </ul>
                 </div>
-                <form method="POST" action="" class="price-button-form">
-                    <button type="submit" name="priceSelected" value="10" class="prix-button">10€</button>
+                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="2" class="prix-button">10€</button>
                 </form>
                 </div>
             <div class="fer">
@@ -113,8 +113,8 @@ $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <li>ACCÈS AU BÉNÉFICE DU PARRAINAGE(BONUS D'EXP)</li>
                     </ul>
                 </div>
-                <form method="POST" action="" class="price-button-form">
-                    <button type="submit" name="priceSelected" value="5" class="prix-button">5€</button>
+                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                    <button type="submit" name="priceSelected" value="1" class="prix-button">5€</button>
                 </form>
             </div>
         </div>
