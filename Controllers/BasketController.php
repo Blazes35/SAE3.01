@@ -41,15 +41,33 @@ if($commandes){
             </div>';
     }
 }
-echo var_dump($_SESSION['grade']);
-if ($_SESSION['grade'] === 3){
-    $pourcentage.='<div classe="pourcent">
-        <p> Réduction -10% avec votre grade diamant<p>
-    </div>';
-    $reduction = $total * 0.10;
-    $total -= $reduction;
+
+$codes=$model->getCodePromo();
+if($codes){
+    foreach ($codes as $code) {
+        $dateFin = new DateTime($code['dateFin']);
+        $dateActuelle = new DateTime(); // Date actuelle
+        
+        // Si la date de fin est dans le futur ou aujourd'hui
+        if ($dateFin >= $dateActuelle) {
+            $pourcentage.='<div class="codepromo">
+                <p>Réduction -' . $code['pourcentCode'] .'% avec la code ' . $code['nomCode'].'<p>
+            </div>';
+            $total = $total * (1-($code['pourcentCode']/100));
+        }
+    }
 
 }
+
+if ($_SESSION['grade'] === 3){
+    $pourcentage.='<div classe="pourcentdiamant">
+        <p> Réduction -10% avec votre grade diamant<p>
+    </div>';
+    $total = $total * 0.90;
+
+}
+
+
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
