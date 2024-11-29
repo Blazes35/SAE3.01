@@ -42,10 +42,12 @@ if($commandes){
     }
 }
 
-if (isset($commande['idCode'])){
+if ($_SESSION['grade'] === 3){
     $pourcentage.='<div classe="pourcent">
-        <p> Réduction' . $commande['pourcentCode']. '<p>
+        <p> Réduction' . -10% avec votre grade diamant. '<p>
     </div>';
+    $total.= $toal
+
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
