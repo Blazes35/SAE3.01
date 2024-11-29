@@ -19,7 +19,7 @@
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
             <?php if ($role < 4) { echo'                
-                <form id="myForm" method="POST" action="/~inf2pj02/">
+                <form id="myForm" method="POST" action="/">
                     <input type="hidden" name="adminPanel" value="1">
                     <a class="Administrer" href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
                         <span class="material-symbols-outlined">admin_panel_settings</span>
