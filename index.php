@@ -75,7 +75,7 @@ if (!$_SESSION['adminPanel']){
             $role < 4 ? include './Controllers/TreasuryController.php' : include './Views/Error404.php';
             break;
         case 'Add' : 
-            $role < 4 ? include "./ajout.php" : include './Views/Error404.php';
+            $role < 4 ? include "./Controllers/AjoutController.php" : include './Views/Error404.php';
             break;
         case 'Calendar' :
             $role < 4 ? include "./calendrier.php" : include './Views/Error404.php';
