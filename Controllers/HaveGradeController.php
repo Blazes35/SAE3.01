@@ -24,7 +24,7 @@ if (isset($_POST['priceSelected'])) {
             $gradeAff .= '<div class="updategrade">
                 <p>Votre grade ' . $nomgrade['nomGrade'] . ' a été acheté avec succès</p>
             </div>';
-            $_SESSION['grade']=$grade;
+            $_SESSION['grade']= intval ($grade);
         } else {
             // En cas d'échec de la mise à jour
             $gradeAff .= '<div class="updategrade">
