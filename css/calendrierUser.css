@@ -3,7 +3,7 @@
     width: 80%; /* Prend toute la place restante à droite de la page */
     max-width: 100%; /* Assure que le conteneur prend toute la largeur disponible */
     text-align: center;
-    margin-left: auto; /* Centre le conteneur horizontalement */
+    margin-left: 10vw; /* Centre le conteneur horizontalement */
     padding: 20px; /* Ajoute du padding pour l'espacement */
     display: flex;
     flex-direction: column;
@@ -12,12 +12,12 @@
 }
 
 .title {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
-    border-bottom: 2px solid #6c38f7;
     display: inline-block;
     padding-bottom: 10px;
+    text-transform: uppercase;
 }
 
 #calendar {
@@ -26,11 +26,11 @@
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 1100px; /* Augmente la largeur maximale */
-    height: 90vh; /* Augmente la hauteur */
+    max-width: 1100px;
+    height: 70vh;
     color: #fff;
     display: flex;
-    flex-direction: column; /* Assure que tout est bien aligné verticalement */
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -72,8 +72,8 @@
 }
 
 .fc-daygrid-day-frame {
-    width: 100%; /* Laisse la largeur des cellules s'adapter */
-    padding: 10px; /* Augmente l'espace interne pour plus de confort visuel */
+    width: 100%; 
+    padding: 10px; 
 }
 
 .fc-daygrid-day.fc-day-today {
