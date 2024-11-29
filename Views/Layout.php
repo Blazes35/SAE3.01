@@ -14,12 +14,12 @@
 <body>
     <header>
         <div class="overlap-group">
-            <a href="/~inf2pj02/">
+            <a href="/">
             <img class="logo" src="images/logo.png" />
             </a>
             <div class="theme-claire">THEME CLAIRE</div>
             <?php if ($role < 4) { echo'                
-                <form id="myForm" method="POST" action="/~inf2pj02/">
+                <form id="myForm" method="POST" action="/">
                     <input type="hidden" name="adminPanel" value="1">
                     <a class="Administrer" href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
                         <span class="material-symbols-outlined">admin_panel_settings</span>
@@ -47,7 +47,7 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="/~inf2pj02/?page=CalendrierUser">
+                    <form method="POST" action="/?page=CalendrierUser">
                         <input type="hidden" name="TP" value="<?php echo htmlspecialchars($userTp); ?>">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
                     </form>

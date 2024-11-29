@@ -43,7 +43,7 @@ ob_start();
         </div>
     </div>
 </div>
-    <form action="/~inf2pj02/?page=Profil" method="post">
+    <form action="/?page=Profil" method="post">
     <div class="input-group">
         <label for="changeNom">
             Nom
@@ -86,7 +86,7 @@ ob_start();
             echo '  </div>'; // Fermeture de <div class="nomEvent">
 
             echo '  <div class="supprimer">';
-            echo '      <form method="POST" action="/~inf2pj02/?page=Profil">';
+            echo '      <form method="POST" action="/?page=Profil">';
             echo '          <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">';
             echo '          <button type="submit" name="supprimer">Supprimer</button>';
             echo '      </form>';
