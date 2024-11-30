@@ -2,83 +2,9 @@
 $title ='Ajouter un article';
 ob_start();
 ?>
-link:kd
-<script>
-    function toggleFields() {
-        // Initialisez tous les champs à false (masqué par défaut)
-        const fields = {
-            'desc-field': false,
-            'price-field': false,
-            'promo-field': false, 
-            'qt-field': false, 
-            'color-field': false, 
-            'capacite-field': false, 
-            'minRole-field': false, 
-            'minGrade-field': false, 
-            'lieu-field': false, 
-            'date-field': false, 
-            'contenuActu-field': false,
-            'dateDebut-field': false,
-            'dateFin-field': false,
-            'conditionCode-field': false,
-            'picture-field': false
-        };
-
-        // Obtenez le type d'article sélectionné
-        const articleType = document.getElementById('article-select').value;
-
-        // Configurez les champs en fonction du type d'article
-        switch (articleType) {
-            case 'vetement':
-                fields['desc-field'] = true;
-                fields['picture-field'] = true; // Montrer l'image
-                fields['color-field'] = true;
-                fields['price-field'] = true;
-                fields['qt-field'] = true;
-                break;
-            case 'evenement':
-                fields['desc-field'] = true;
-                fields['picture-field'] = true; // Montrer l'image
-                fields['capacite-field'] = true;
-                fields['minRole-field'] = true;
-                fields['minGrade-field'] = true;
-                fields['lieu-field'] = true;
-                fields['date-field'] = true;
-                break;
-            case 'actu':
-                fields['desc-field'] = false; // Masquer le champ description
-                fields['picture-field'] = true; // Montrer l'image
-                fields['contenuActu-field'] = true;
-                fields['date-field'] = true;
-                break;
-            case 'code':
-                fields['promo-field'] = true;
-                fields['dateDebut-field'] = true;
-                fields['dateFin-field'] = true;
-                fields['conditionCode-field'] = true;
-                break;
-            case 'produit':
-                fields['desc-field'] = true;
-                fields['picture-field'] = true; 
-                fields['price-field'] = true;
-                fields['qt-field'] = true;
-                fields['promo-field'] = true;
-                fields['conditionCode-field'] = true;
-                break;
-            case 'galerie' : 
-                fields['picture-field'] = true;
-            default:
-                break;
-        }
-
-        // Appliquez les propriétés "hidden" à chaque champ
-        for (const id in fields) {
-            document.getElementById(id).hidden = !fields[id];
-        }
-    }
-</script>
-
-<form method="post" action="ajout.php" enctype="multipart/form-data">
+<script src="JS/Add.js"></script>
+<link rel="stylesheet" href="css/ajout.css" />
+<form class="addForm" method="post" action="/?page=Add" enctype="multipart/form-data">
     <label for="choice">Choisir le type d'article :</label>
     <select name="article" id="article-select" onchange="toggleFields()">
         <option value="">--Choisir un type d'article--</option>
@@ -95,7 +21,7 @@ link:kd
         <input type="text" name="color" id="color">
     </div>
 
-    <label for="title">Titre</label>
+    <label for="title2">Titre</label>
     <input type="text" name="title" id="title" required>
 
     <div id="desc-field">
