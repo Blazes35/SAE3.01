@@ -78,7 +78,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/TreasuryController.php';
             break;
         case 'Add' : 
-            include "./Controllers/AjoutController.php";
+            include "./Controllers/AddController.php";
             break;
         case 'Calendar' :
             include "./calendrier.php";
