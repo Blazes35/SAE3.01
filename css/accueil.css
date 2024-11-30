@@ -356,7 +356,36 @@ a.calendrier:visited {
     box-shadow: rgba(56, 56, 56, 1) 5px 5px, rgba(56, 56, 56, 13) 10px 10px, rgba(56, 56, 56, 1) 15px 15px;
   }
 
+  .price-button-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+} 
 
+.prix-button {
+  padding: 10px 20px;
+  background-color: #8E51D0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.prix-button:hover {
+  background-color: #7c43b9;
+  transform: scale(1.05);
+}
+
+.prix-button:active {
+  background-color: #8E51D0;
+  transform: scale(0.95);
+}
 
   
 
