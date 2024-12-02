@@ -104,3 +104,10 @@
     transform: scale(1.05); /* Légère mise en avant au survol */
 }
 
+.reduction{
+    text-align: left;
+    float: left;
+    width: 100%;
+    margin-left: 80vw;
+}
+

@@ -51,7 +51,7 @@ if($codes){
         // Si la date de fin est dans le futur ou aujourd'hui
         if ($dateFin >= $dateActuelle) {
             $pourcentage.='<div class="codepromo">
-                <p>Réduction -' . $code['pourcentCode'] .'% avec la code ' . $code['nomCode'].'<p>
+                <p class="reduction">Réduction -' . $code['pourcentCode'] .'% avec la code ' . $code['nomCode'].'<p>
             </div>';
             $total = $total * (1-($code['pourcentCode']/100));
         }
@@ -61,7 +61,7 @@ if($codes){
 
 if ($_SESSION['grade'] === 3){
     $pourcentage.='<div classe="pourcentdiamant">
-        <p> Réduction -10% avec votre grade diamant<p>
+        <p class="reduction"> Réduction -10% avec votre grade diamant<p>
     </div>';
     $total = $total * 0.90;
 
