@@ -17,7 +17,6 @@
             <a href="/">
             <img class="logo" src="images/logo.png" />
             </a>
-            <div class="theme-claire">THEME CLAIRE</div>
             <?php if ($role < 4) { echo'                
                 <form id="myForm" method="POST" action="/">
                     <input type="hidden" name="adminPanel" value="1">
