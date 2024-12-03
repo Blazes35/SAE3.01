@@ -10,7 +10,6 @@
 <body>
 <div class="menu">
     <div class="logo-theme">
-    <div class="theme-claire">THEME CLAIRE</div>    
     </div>
     <div class="compte">
         <form id="myForm" method="POST" action="/">
