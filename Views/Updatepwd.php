@@ -11,7 +11,7 @@ ob_start();
 <div class="changement">
     <div class="titrechangement">CHANGER VOTRE MOT DE PASSE</div>
     <div class="formulaire">
-        <form action="/?page=UpdatePwd" method="post">
+        <form action="/~inf2pj02/?page=UpdatePwd" method="post">
             <div class="input-group">
                 <label for="oldPassword ">
                     <span class="material-symbols-outlined">lock</span>

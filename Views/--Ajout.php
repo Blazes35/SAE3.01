@@ -25,7 +25,7 @@ ob_start();
 
     <div class="ajouter-article">
         <h2>Ajouter un nouvel article</h2>
-        <form method="POST" action="/Controllers/AjoutController.php" enctype="multipart/form-data">
+        <form method="POST" action="/~inf2pj02/Controllers/AjoutController.php" enctype="multipart/form-data">
             <input type="hidden" name="action" value="add">
             <div class="form-group">
                 <label for="type">Type d'article :</label>

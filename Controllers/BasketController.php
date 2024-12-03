@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $idCommande = $_POST['idCommande'];
             $delete = $model->deleteBasket($idCommande);
             if($delete === true){
-                header("Location: /?page=Basket");
+                header("Location: /~inf2pj02/?page=Basket");
                 exit();
             }
         }
@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(isset($_POST['payer'])){
         if($model->updateBasket()){
-            header("Location: /?page=Accueil");
+            header("Location: /~inf2pj02/?page=Accueil");
             exit();
         }
     }

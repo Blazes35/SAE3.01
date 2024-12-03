@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idUser'], $_POST['idR
 
         // Vérifiez si les en-têtes ont déjà été envoyés
         if (!headers_sent()) {
-            header("Location: ?page=GestionProfilAdmin");
+            header("Location: /~inf2pj02/?page=GestionProfilAdmin");
             exit();
         } else {
             echo "Erreur : Les en-têtes ont déjà été envoyés.";
@@ -51,7 +51,7 @@ foreach ($users as $user):
             </div>
         </div>
         <div class="profile-actions">
-            <form action="/?page=GestionProfilAdmin" method="POST">
+            <form action="/~inf2pj02/?page=GestionProfilAdmin" method="POST">
                 <div class="action">
                     <label for="role-'. $user['idUser'].'">ROLE :</label>
                     <select id="role-'. $user['idUser'].'" name="idRole" class="dropdown">';
@@ -65,7 +65,7 @@ foreach ($users as $user):
                     <button type="submit">Mettre à jour</button>
                 </div>
             </form>
-            <form action="/?page=Historique" method="POST">
+            <form action="/~inf2pj02/?page=Historique" method="POST">
                 <input type="hidden" name="idUser" value="'. $user['idUser'] .'">
                 <button type="submit" class="historique">Voir Historique</button>
             </form>

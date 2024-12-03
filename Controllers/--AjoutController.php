@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['article'])) {
                     <p>Prix : ' . htmlspecialchars($article['prix'] ?? 'N/A') . '€</p>
                 </div>
                 <div class="actions">
-                    <form method="POST" action="/Controllers/AjoutController.php">
+                    <form method="POST" action="/~inf2pj02/Controllers/AjoutController.php">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="type" value="' . htmlspecialchars($type) . '">
                         <input type="hidden" name="titre" value="' . htmlspecialchars($article['titre']) . '">

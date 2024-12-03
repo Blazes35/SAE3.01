@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
     if ($controller->login($email, $password)) {
-        header("Location: ?page=Presentation");
+        header("Location: /~inf2pj02/?page=Presentation");
         exit();
     }else{
         echo "<script>alert(\"Identifiants incorrects\")</script>";
@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $smtDelete->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
 
             if($smtDelete->execute()){
-                header("Location: ?page=Profil");
+                header("Location: /~inf2pj02/?page=Profil");
                 exit();
             }
         }
@@ -74,7 +74,7 @@ foreach($events as $event){
             '      ' . $event['titreEvent'].'
         </div>
         <div class="supprimer">
-            <form method="POST" action="/?page=Profil">
+            <form method="POST" action="/~inf2pj02/?page=Profil">
                 <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">
                 <button type="submit" name="supprimer">Supprimer</button>
             </form>

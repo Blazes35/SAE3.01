@@ -10,7 +10,7 @@
         $password2 = htmlspecialchars($_POST['password2']);
         if ($password === $password2) {
             $model->createUser($nom, $prenom, $classe, $mail, $password);
-            header("Location: ?page=Login");
+            header("Location: /~inf2pj02/?page=Login");
             exit();
         }else {
             echo "<script>alert(\"Les mots de passe ne correspondent pas\");</script>";

@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="card">
-            <a href="/?page=GestionProfilAdmin" class="card-link">
+            <a href="/~inf2pj02/?page=GestionProfilAdmin" class="card-link">
                 <div class="card-content">
                     <h2>Gestion Profils</h2>
                     <span class="material-symbols-outlined">group</span>

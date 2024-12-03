@@ -8,7 +8,7 @@
         $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
         if($newPassword === $confirmPassword){
             if($model->changePwd($email, hash('sha256', $oldpassword), hash('sha256', $newPassword))){
-                header("Location: ?page=Presentation");
+                header("Location: /~inf2pj02/?page=Presentation");
                 exit();            
             }else{
                 echo "<script>alert(\"Ancien mot de passe incorrect\")</script>";

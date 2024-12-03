@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
     $password = htmlspecialchars($_POST['password']);
 
     if ($model->login($email, $password)) {
-        header("Location: /");
+        header("Location: /~inf2pj02/");
         exit();
     }else{
         echo "<script>alert(\"Identifiants incorrects\")</script>";

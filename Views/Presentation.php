@@ -50,7 +50,9 @@ ob_start();
 
 <div class="box-5">
     <div class="rejoins-nous">REJOINS-NOUS</div>
-        <button class="button-inscription">INSCRIPTION</button>
+    <form action="/~inf2pj02/?page=SignUp" method="post">
+        <button type="submit" class="button-inscription">INSCRIPTION</button>
+    </form>
 </div>
 
 

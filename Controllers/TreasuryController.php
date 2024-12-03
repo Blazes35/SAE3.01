@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fichier_csv'])){
     if(pathinfo($uploaded_path, PATHINFO_EXTENSION)==='csv'){
         move_uploaded_file($uploaded_file['tmp_name'], $uploaded_path);
     }
-    header("Location: ?page=Treasury");
+    header("Location: /~inf2pj02/?page=Treasury");
     exit();
 }
 
@@ -20,7 +20,7 @@ if(isset($_GET['supprimer'])){
     if(file_exists($fichier_a_suprimer)){
         unlink($fichier_a_suprimer);
     }
-    header("Location: ?page=Treasury");
+    header("Location: /~inf2pj02/?page=Treasury");
     exit();
 }
 
