@@ -17,9 +17,9 @@
             <img class="logo" src="images/logo.png" />
             </a>
             <?php if ($role < 4) { echo'                
-                <form id="myForm" method="POST" action="/">
+                <form id="myForm" method="POST" action="/~inf2pj02/">
                     <input type="hidden" name="adminPanel" value="1">
-                    <a class="Administrer" href="/~inf2pj02/?page=Admin" onclick="document.getElementById(\'myForm\').submit(); return false;">
+                    <a class="Administrer" onclick="document.getElementById(\'myForm\').submit(); return false;">
                         <span class="material-symbols-outlined">admin_panel_settings</span>
                         <p>Administrer</p>
                     </a>
