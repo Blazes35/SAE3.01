@@ -46,7 +46,7 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="/?page=CalendrierUser">
+                    <form method="POST" action="~inf2pj02//?page=CalendrierUser">
                         <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
                     </form>
