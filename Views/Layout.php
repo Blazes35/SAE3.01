@@ -29,7 +29,8 @@
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
             <a href="/~inf2pj02/?page=Profil"><div class="mon-compte">MON COMPTE</div></a> 
-            <span id="test" class="material-symbols-outlined">shopping_cart</span>
+            <a href="/~inf2pj02/?page=Basket"><div class="basket"><span id="test" class="material-symbols-outlined">shopping_cart</span></div></a>
+            
         </div>
     </header>
 
