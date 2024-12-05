@@ -29,8 +29,7 @@
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
             <a href="/~inf2pj02/?page=Profil"><div class="mon-compte">MON COMPTE</div></a> 
-            <a href="/~inf2pj02/?page=Shop">
-            <span id="test" class="material-symbols-outlined">shopping_cart</span></a>
+            <span id="test" class="material-symbols-outlined">shopping_cart</span>
         </div>
     </header>
 
@@ -46,7 +45,7 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="~inf2pj02//?page=CalendrierUser">
+                    <form method="POST" action="/?page=CalendrierUser">
                         <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
                     </form>
