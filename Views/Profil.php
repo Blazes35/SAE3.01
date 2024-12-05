@@ -43,7 +43,7 @@ ob_start();
         </div>
     </div>
 </div>
-    <form action="/?page=Profil" method="post">
+    <form action="?page=Profil" method="post">
     <div class="input-group">
         <label for="changeNom">
             Nom
