@@ -83,9 +83,6 @@ if (!$_SESSION['adminPanel']){
         case 'Calendar' :
             include "./calendrier.php";
             break;
-        case 'Profile' :
-            include "./GestionProfilAdmin.php";
-            break;
         case 'GestionProfilAdmin' :
             include "./Controllers/GestionProfilAdminController.php";
             break;
