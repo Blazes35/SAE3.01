@@ -42,7 +42,7 @@ ob_start();
     <?php echo 'Total: ' . number_format($total, 2) . ' €'; ?>
 </div>
     <div class="payer">
-        <form method="POST" action="/?page=Basket">
+        <form method="POST" action="?page=Basket">
             <button type="submit" name="payer" >Payer votre commande</button>
         </form>
     </div>

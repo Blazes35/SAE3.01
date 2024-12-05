@@ -12,7 +12,7 @@ ob_start();
 <div class="grade">
     <?php echo $gradeAff;?>
     <div class="bouton">
-    <form action="/" method="get">
+    <form action="?page=" method="get">
         <button type="submit">Retourner à l'accueil</button>
     </form>
     </div>

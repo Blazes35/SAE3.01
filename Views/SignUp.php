@@ -9,7 +9,7 @@ ob_start();
 <div class="inscription">
     <div class="titreinscription">INSCRIPTION</div>
         <div class="formulaire">
-            <form action="/?page=SignUp" method="post">
+            <form action="?page=SignUp" method="post">
                 <div class="input-group">
                     <label for="nom">
                         <span class="material-symbols-outlined">person</span>
