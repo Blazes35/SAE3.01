@@ -33,7 +33,7 @@ if($commandes){
             $total = $total + $commande['quantiteCommande'] * $commande['prixProd'];
         
             $commandeAff.=    '<div class="supprimer">
-                    <form method="POST" action="/?page=Basket">
+                    <form method="POST" action="?page=Basket">
                         <input type="hidden" name="idCommande" value="' . $commande['idCommande'] . '">
                         <button type="submit" name="supprimer">Supprimer</button>
                     </form>
