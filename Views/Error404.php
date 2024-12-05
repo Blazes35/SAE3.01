@@ -9,7 +9,7 @@ ob_start();
 <div class="error-container">
     <h1>404</h1>
     <p>Oups! La page que vous recherchez n'existe pas.</p>
-    <a href="index.php?page=Accueil">Retour à l'accueil</a>
+    <a href="?page=">Retour à l'accueil</a>
 </div>
 <?php
 $content = ob_get_clean();

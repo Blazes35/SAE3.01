@@ -25,7 +25,7 @@ ob_start();
                 </label>
                 <input type="password" id="password" name="password" placeholder="MOT DE PASSE" required>
             </div>
-            <a class="mdpoubli" href="motpassoublie.html">Mot de passe oublié ?</a>
+            <a class="mdpoubli" href="?page=UpdatePwd">Mot de passe oublié ?</a>
             <div class="envoyer">
                 <button type="submit" name="connect">SE CONNECTER</button>
             </div>
