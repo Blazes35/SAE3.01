@@ -46,7 +46,7 @@ foreach ($users as $user):
                 <h2 class="username">'. htmlspecialchars($user['nomUser']) .'</h2>
                 <p class="role" id="role-'. $user['idUser'].'">
                     <span class="status-dot"></span> 
-                     '. $roles[$user['idRole']].' 
+                    '. $roles[$user['idRole']].' 
                 </p>
             </div>
         </div>

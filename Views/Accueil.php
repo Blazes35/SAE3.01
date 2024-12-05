@@ -9,7 +9,7 @@ ob_start();
                     <div>ADIIL</div>
                     <div class="ligneaccueil"></div>
                     <div class="bde-informatique-lavalaccueil">BDE INFORMATIQUE<br> DE LAVAL</div>
-                    <button class="decouvrer-nous" onclick="window.location.href='presentation.html';">
+                    <button class="decouvrer-nous" onclick="window.location.href='?page=Presentation';">
                         <span>DÉCOUVRE NOUS !</span>
                         <div class="border decouvrer-nous"></div>
                     </button>
@@ -65,7 +65,7 @@ ob_start();
                     <li>1 BON D'ACHAT DE 10€ SUR L'ENTIÈRETÉ DE LA BOUTIQUE</li>
                 </ul>
                 </div>
-                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                <form method="POST" action="?page=HaveGuard" class="price-button-form">
                     <button type="submit" name="priceSelected" value="3" class="prix-button">15€</button>
                 </form>
             </div>
@@ -80,7 +80,7 @@ ob_start();
                     <li>SOIRÉES PRIVÉES DU BDE</li>
                 </ul>
                 </div>
-                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                <form method="POST" action="?page=HaveGuard" class="price-button-form">
                     <button type="submit" name="priceSelected" value="2" class="prix-button">10€</button>
                 </form>
                 </div>
@@ -94,7 +94,7 @@ ob_start();
                         <li>ACCÈS AU BÉNÉFICE DU PARRAINAGE(BONUS D'EXP)</li>
                     </ul>
                 </div>
-                <form method="POST" action="/?page=HaveGuard" class="price-button-form">
+                <form method="POST" action="?page=HaveGuard" class="price-button-form">
                     <button type="submit" name="priceSelected" value="1" class="prix-button">5€</button>
                 </form>
             </div>
@@ -146,7 +146,7 @@ ob_start();
     </div>
     <div class="box-5">
     <div class="rejoins-nous">REJOINS-NOUS</div>
-        <form action="/?page=SignUp" method="post">
+        <form action="?page=SignUp" method="post">
         <button class="button-inscription">INSCRIPTION</button>
         </form>
     </div>
