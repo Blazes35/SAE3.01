@@ -51,7 +51,7 @@ foreach ($users as $user):
             </div>
         </div>
         <div class="profile-actions">
-            <form action="/?page=GestionProfilAdmin" method="POST">
+            <form action="?page=GestionProfilAdmin" method="POST">
                 <div class="action">
                     <label for="role-'. $user['idUser'].'">ROLE :</label>
                     <select id="role-'. $user['idUser'].'" name="idRole" class="dropdown">';
