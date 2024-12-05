@@ -4,7 +4,7 @@ ob_start();
 ?>
 <script src="JS/Add.js"></script>
 <link rel="stylesheet" href="css/ajout.css" />
-<form class="addForm" method="post" action="/?page=Add" enctype="multipart/form-data">
+<form class="addForm" method="post" action="?page=Add" enctype="multipart/form-data">
     <label for="choice">Choisir le type d'article :</label>
     <select name="article" id="article-select" onchange="toggleFields()">
         <option value="">--Choisir un type d'article--</option>

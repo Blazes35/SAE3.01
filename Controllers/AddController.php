@@ -6,9 +6,10 @@ $model = new AddModel();
 
 $idUser = $_SESSION['id'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
+    $action = $_POST['action'] ?? null; 
     $type = $_POST['article'] ?? '';
     $title = $_POST['title'] ?? '';
+
     if ($action === 'add') {
         $model->addArticle($_POST, $_FILES['picture']);
     } elseif ($action === 'delete') {
@@ -19,4 +20,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
 require 'Views/Add.php';

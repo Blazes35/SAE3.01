@@ -25,7 +25,6 @@ if (isset($_POST['idUser'])) {
     echo "ID utilisateur non fourni.";
     exit;
 }
-// Mettre à jour l'état de la commande
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
     $idCommande = intval($_POST['idCommande']);
     $newEtat = intval($_POST['newEtat']);
@@ -39,8 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
     exit;
 }
 ?>
-
-
     <link rel="stylesheet" href="css/historique.css">
 
     <div class="container">

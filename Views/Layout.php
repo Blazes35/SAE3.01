@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/layout.css">
-        <!-- Lien pour importer les Material Icons -->
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -20,7 +19,7 @@
             <?php if ($role < 4) { echo'                
                 <form id="myForm" method="POST" action="/">
                     <input type="hidden" name="adminPanel" value="1">
-                    <a class="Administrer" href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
+                    <a class="Administrer" href="/~inf2pj02/?page=Admin" onclick="document.getElementById(\'myForm\').submit(); return false;">
                         <span class="material-symbols-outlined">admin_panel_settings</span>
                         <p>Administrer</p>
                     </a>
@@ -29,7 +28,7 @@
         </div>
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
-            <div class="mon-compte">MON COMPTE</div>
+            <a href="/~inf2pj02/?page=Profil"><div class="mon-compte">MON COMPTE</div></a> 
             <span id="test" class="material-symbols-outlined">shopping_cart</span>
         </div>
     </header>
@@ -67,7 +66,7 @@
                 <p class="Contact">CONTACT</p>
             </div>
             <div>
-                <p class="Mention-legal">MENTION LEGAL</p>
+                 <p class="Mention-legal">MENTION LEGAL</p>
             </div>
             <div>
                 <p class="FAQ">FAQ</p>

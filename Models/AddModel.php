@@ -6,20 +6,16 @@ class AddModel extends DBModel{
         parent::__construct();
     }
     function uploadImage($file, $type) {
-        $uploadDir = match ($type) {
-            'produit' => 'uploads/produits/',
-            'galerie' => 'uploads/galerie/',
-            'evenement' => 'uploads/evenements/',
-            'actu' => 'uploads/actualites/',
-            'vetement' => 'uploads/vetements/',
-            default => throw new Exception('Type non valide'),
-        };
+        $uploadDir = '/home/inf2pj02/public_html/uploads/' . $type . '/';
         if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
         $fileName = basename($file['name']);
         $targetFilePath = $uploadDir . $fileName;
+    
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
         if (in_array(strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION)), $validTypes)) {
-            if (move_uploaded_file($file['tmp_name'], $targetFilePath)) return $fileName;
+            if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+                return $fileName;
+            }
             throw new Exception('Erreur : Téléchargement impossible.');
         }
         throw new Exception('Erreur : Format non valide.');
