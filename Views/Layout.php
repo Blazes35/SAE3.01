@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="overlap-group">
-            <a href="/">
+            <a href="?page=">
             <img class="logo" src="images/logo.png" />
             </a>
             <?php if ($role < 4) { echo'                

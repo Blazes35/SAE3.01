@@ -19,7 +19,7 @@
                 <h4>ADMINISTRER</h4>
             </a>
         </form>
-        <a href="compte.html" class="mon-compte" style="cursor: pointer;">
+        <a href="?page=Profil" class="mon-compte" style="cursor: pointer;">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="text-container">
                 <p>MON COMPTE</p>
