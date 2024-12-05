@@ -74,14 +74,11 @@ if (isset($_GET['id'])) {
             $price = $_POST['price'];        // Récupère le prix du produit
             $quantity = $_POST['quantity'];  // Récupère la quantité du produit
             $currentDateTime = date('Y-m-d H:i:s'); // Récupère la date et l'heure actuelles
-    
             // Vous pouvez maintenant appeler la fonction addBasket pour ajouter l'article au panier
             $model->addBasket($idProd, $quantity, $currentDateTime);
-
-            header('Location: /?page=Basket');  // Remplacez par l'URL de votre page panier
+            header('Location: ?page=Basket');  // Remplacez par l'URL de votre page panier
             exit();
         }
-
     }
 include 'Views/DetailProduct.php'
 ?>
