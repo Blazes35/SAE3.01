@@ -33,7 +33,7 @@ if($commandes){
             $total = $total + $commande['quantiteCommande'] * $commande['prixProd'];
         
             $commandeAff.=    '<div class="supprimer">
-                    <form method="POST" action="/?page=Basket">
+                    <form method="POST" action="?page=Basket">
                         <input type="hidden" name="idCommande" value="' . $commande['idCommande'] . '">
                         <button type="submit" name="supprimer">Supprimer</button>
                     </form>
@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $idCommande = $_POST['idCommande'];
             $delete = $model->deleteBasket($idCommande);
             if($delete === true){
-                header("Location: /?page=Basket");
+                header("Location: ?page=Basket");
                 exit();
             }
         }
@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(isset($_POST['payer'])){
         if($model->updateBasket()){
-            header("Location: /?page=Accueil");
+            header("Location: ?page=Accueil");
             exit();
         }
     }

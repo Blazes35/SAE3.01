@@ -46,12 +46,12 @@ foreach ($users as $user):
                 <h2 class="username">'. htmlspecialchars($user['nomUser']) .'</h2>
                 <p class="role" id="role-'. $user['idUser'].'">
                     <span class="status-dot"></span> 
-                     '. $roles[$user['idRole']].' 
+                    '. $roles[$user['idRole']].' 
                 </p>
             </div>
         </div>
         <div class="profile-actions">
-            <form action="/?page=GestionProfilAdmin" method="POST">
+            <form action="?page=GestionProfilAdmin" method="POST">
                 <div class="action">
                     <label for="role-'. $user['idUser'].'">ROLE :</label>
                     <select id="role-'. $user['idUser'].'" name="idRole" class="dropdown">';

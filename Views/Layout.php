@@ -13,13 +13,13 @@
 <body>
     <header>
         <div class="overlap-group">
-            <a href="/">
+            <a href="?page=">
             <img class="logo" src="images/logo.png" />
             </a>
             <?php if ($role < 4) { echo'                
-                <form id="myForm" method="POST" action="/">
+                <form id="myForm" method="POST" action="/~inf2pj02/">
                     <input type="hidden" name="adminPanel" value="1">
-                    <a class="Administrer" href="/~inf2pj02/?page=Admin" onclick="document.getElementById(\'myForm\').submit(); return false;">
+                    <a class="Administrer" onclick="document.getElementById(\'myForm\').submit(); return false;">
                         <span class="material-symbols-outlined">admin_panel_settings</span>
                         <p>Administrer</p>
                     </a>
@@ -29,7 +29,8 @@
         <div class="overlap-group-2">
             <span class="material-symbols-outlined">account_circle</span>
             <a href="/~inf2pj02/?page=Profil"><div class="mon-compte">MON COMPTE</div></a> 
-            <span id="test" class="material-symbols-outlined">shopping_cart</span>
+            <a href="/~inf2pj02/?page=Basket"><div class="basket"><span id="test" class="material-symbols-outlined">shopping_cart</span></div></a>
+            
         </div>
     </header>
 
@@ -45,7 +46,8 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="/?page=CalendrierUser">
+                    <form method="POST" action="?page=CalendrierUser">
+                        <input type="hidden" name="page" value="CalendrierUser">
                         <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
                     </form>
@@ -66,7 +68,7 @@
                 <p class="Contact">CONTACT</p>
             </div>
             <div>
-                 <p class="Mention-legal">MENTION LEGAL</p>
+                <p class="Mention-legal">MENTION LEGAL</p>
             </div>
             <div>
                 <p class="FAQ">FAQ</p>

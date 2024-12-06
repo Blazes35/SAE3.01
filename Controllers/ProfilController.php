@@ -74,7 +74,7 @@ foreach($events as $event){
             '      ' . $event['titreEvent'].'
         </div>
         <div class="supprimer">
-            <form method="POST" action="/?page=Profil">
+            <form method="POST" action="?page=Profil">
                 <input type="hidden" name="idEvent" value="' . $event['idEvent'] . '">
                 <button type="submit" name="supprimer">Supprimer</button>
             </form>
