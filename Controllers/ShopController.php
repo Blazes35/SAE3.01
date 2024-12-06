@@ -10,7 +10,7 @@ if(!empty($products)){
     foreach($products as $product){
         $productAff.= "<div class='article'>        
         <h3 class='titre-article'>" . htmlspecialchars($product['nomProd']) . "</h3>
-        <img src='uploads/produits/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />
+        <img src='/home/~inf2pj02/uploads/produit/" . htmlspecialchars($product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' style='width: 360px; height: 485px; background-image: url(\"./images/vector.png\");' />
         <a href='?page=DetailProduct&id=" . urlencode($product['idProd']) . "' class='info'>
         <div>
         <p class='description'>Description : " . htmlspecialchars($product['descProd']) . "</p>
