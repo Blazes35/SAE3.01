@@ -25,7 +25,7 @@ $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
 $detailAffiche = '';
 $detailAffiche .= '<div class="image-gallery">
         <div class="first-img">
-            <img src="' . htmlspecialchars('uploads/evenements/' . $event['imgEvent']) . '" alt="' . htmlspecialchars($event['titreEvent']) . '">
+            <img src="' . htmlspecialchars('uploads/evenement/' . $event['imgEvent']) . '" alt="' . htmlspecialchars($event['titreEvent']) . '">
         </div>
     </div>
     <div class="event-details">
@@ -46,7 +46,7 @@ $detailAffiche .= '<div class="image-gallery">
                 <button type='submit' name='update' class='param'>Paramétrer</button>
             </form>";
     }
-$detailAffiche .= '<a href="inscription.php?idEvent=' . urlencode($event['idEvent']) . '"><button class="inscrire">S\'inscrire</button></a>
+$detailAffiche .= '<a href="Inscription?idEvent=' . urlencode($event['idEvent']) . '"><button class="inscrire">S\'inscrire</button></a>
     </div>';
 
 require 'Views/DetailEvent.php';

@@ -8,7 +8,7 @@ foreach ($events as $event){
                 $eventAff.='<div class="event-card">
                     <h2 class="titre">'. htmlspecialchars($event['titreEvent']).'</h2>
                     <div class="event-img"> 
-                        <img src="uploads/evenements/' . htmlspecialchars($event['imgEvent']) . '" 
+                        <img src="uploads/evenement/' . htmlspecialchars($event['imgEvent']) . '" 
     alt="' . htmlspecialchars($event['titreEvent']) . '" />
                     </div>
                     <div class="detail">

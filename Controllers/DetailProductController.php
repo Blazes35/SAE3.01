@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $product = $model->getProduct($idProd);
     if($product){
         $uploadDir = 'uploads/';
-        $uploadDir .= ($product['typeProd'] === 'vetement') ? 'vetements/' : 'produits/';
+        $uploadDir .= ($product['typeProd'] === 'vetement') ? 'vetements/' : 'produit/';
 
         $afficheProduit.= "<div class='image-gallery'>
             <div class='first-img'>
