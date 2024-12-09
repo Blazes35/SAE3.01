@@ -19,9 +19,10 @@ if (!$event) {
 }
 
 // Récupérer les informations de l'utilisateur
-$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
-
+if (isset($_SESSION['id'])) {
+    $userRole =  $_SESSION['role'];
+    $userName = $_SESSION['nom'];
+}
 // Affichage des détails de l'événement
 $detailAffiche = '';
 $detailAffiche .= '<div class="image-gallery">
@@ -44,7 +45,7 @@ $detailAffiche .= '<div class="image-gallery">
             <button class="inscrire" type="submit" name="idEvent" value='.$event['idEvent'].'>S\'inscrire</button>
     </form>';
 
-    if ($userRole < 4) {
+    if (isset($userRole) ? $userRole < 4 : false    ) {
         $detailAffiche .= "
             <form action='?page=detailEvent' method='post' >
             <input type='hidden' name='adminPanel' value='1'>

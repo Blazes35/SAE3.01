@@ -20,7 +20,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/PresentationController.php';
             break;
         case 'Profil':
-            include './Controllers/ProfilController.php';
+            isset($_SESSION['id']) ? include './Controllers/ProfilController.php' : include './Controllers/LoginController.php';
             break;
         case 'Login':
             include './Controllers/LoginController.php';
@@ -29,7 +29,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/SignUpController.php';
             break;
         case 'UpdatePwd':
-            include './Controllers/UpdatePwdController.php';
+            isset($_SESSION['id']) ? include './Controllers/UpdatePwdController.php' : include './Controllers/LoginController.php';
             break;
         case 'Galerie':
             include './Controllers/GalerieController.php';
@@ -41,7 +41,7 @@ if (!$_SESSION['adminPanel']){
             include './Controllers/ShopController.php';
             break;
         case 'Basket' :
-            include './Controllers/BasketController.php';
+            isset($_SESSION['id']) ? include './Controllers/BasketController.php' : include './Controllers/LoginController.php';
             break;
         case 'Event' :
             include "./Controllers/EventController.php";
