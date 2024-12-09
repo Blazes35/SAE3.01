@@ -7,7 +7,8 @@ $model = new DetailEventModel();
 $idEvent = isset($_POST['idEvent']) ? intval($_POST['idEvent']) : null;
 
 if (!$idEvent) {
-    die("Aucun événement trouvé ou aucun ID fourni.");
+    echo var_dump($_POST);
+    // die("Aucun événement trouvé ou aucun ID fourni."$_POST);
 }
 
 // Charger les détails de l'événement
@@ -37,17 +38,26 @@ $detailAffiche .= '<div class="image-gallery">
         <p class="price">' . htmlspecialchars($event['prixEvent']) . ' €</p>
     </div>
     <div class="boutons">';
+    $detailAffiche .= '
+    <form action="?page=DetailEvent" method="POST">
+            <input name="inscription" type="hidden" value="1">
+            <button class="inscrire" type="submit" name="idEvent" value='.$event['idEvent'].'>S\'inscrire</button>
+    </form>';
 
     if ($userRole < 4) {
         $detailAffiche .= "
-            <form action='?page=UpdateEvent' method='post' >
+            <form action='?page=detailEvent' method='post' >
             <input type='hidden' name='adminPanel' value='1'>
             <input type='hidden' name='idEvent' value='" . $event['idEvent'] . "' />
                 <button type='submit' name='update' class='param'>Paramétrer</button>
             </form>";
     }
-$detailAffiche .= '<a href="Inscription?idEvent=' . urlencode($event['idEvent']) . '"><button class="inscrire">S\'inscrire</button></a>
-    </div>';
+    $detailAffiche .= '</div>';
+
+if (isset($_POST['inscription'])) {
+    $model->inscription($idEvent, $_SESSION['id']);
+    $detailAffiche .= '<p class="inscription">Inscription réussie !</p>';
+}
 
 require 'Views/DetailEvent.php';
 ?>

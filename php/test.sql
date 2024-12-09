@@ -426,7 +426,7 @@ BEGIN
 DECLARE nbReservation INT;
 DECLARE capacite INT;
 
-SELECT COUNT(*) INTO nbReservation FROM RESERVATION WHERE RESERVATIOn.idEvent = NEW.idEvent;
+SELECT COUNT(*) INTO nbReservation FROM RESERVATION WHERE RESERVATION.idEvent = NEW.idEvent;
 
 SELECT capaEvent INTO capacite FROM EVENEMENT WHERE evenement.idEvent= NEW.idEvent;
 

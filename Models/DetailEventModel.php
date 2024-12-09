@@ -13,5 +13,19 @@ class DetailEventModel extends DBModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function inscription($idEvent, $idUser) {
+        $smt = self::$db->prepare("SELECT * FROM RESERVATION WHERE idEvent = :idEvent AND idUser = :idUser");
+        $smt -> bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
+        $smt -> bindParam(':idUser', $idUser, PDO::PARAM_STR);
+        $smt->execute();
+        if ($smt->fetch(PDO::FETCH_ASSOC)) {
+            return;
+        }
+        $stmt = self::$db->prepare("INSERT INTO RESERVATION (idEvent, idUser) VALUES (:idEvent, :idUser)");
+        $stmt -> bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
+        $stmt -> bindParam(':idUser', $idUser, PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }
 ?>
