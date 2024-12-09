@@ -56,8 +56,13 @@ $detailAffiche .= '<div class="image-gallery">
     $detailAffiche .= '</div>';
 
 if (isset($_POST['inscription'])) {
-    $model->inscription($idEvent, $_SESSION['id']);
-    $detailAffiche .= '<p class="inscription">Inscription réussie !</p>';
+    if (isset($userRole)){
+        $model->inscription($idEvent, $_SESSION['id']);
+        $detailAffiche .= '<p class="inscription">Inscription réussie !</p>';
+    }else {
+        header('Location: ?page=Login');
+        exit();
+    }
 }
 
 require 'Views/DetailEvent.php';

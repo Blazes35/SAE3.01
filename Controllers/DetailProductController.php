@@ -2,9 +2,10 @@
 require_once 'Models/DetailProductModel.php';
 $model  = new DetailProductModel();
 $afficheProduit ='';
-$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-        $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
-
+if (isset($_SESSION['id'])) {
+    $userRole =  $_SESSION['role'];
+    $userName = $_SESSION['nom'];
+}
 if (isset($_GET['id'])) {
     $idProd = intval($_GET['id']);
     $product = $model->getProduct($idProd);
@@ -50,7 +51,7 @@ if (isset($_GET['id'])) {
         </div>';
 
 
-        if ($userRole  < 4) {
+        if (isset($userRole) ? $userRole  < 4 : false) {
             
             $afficheProduit.= "
             <form action='?page=UpdateProduct' method='post'>
@@ -67,7 +68,8 @@ if (isset($_GET['id'])) {
         </div>";
     }
 }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($userRole)){
         if (isset($_POST['idProd']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])) {
             $idProd = $_POST['idProd'];      // Récupère l'ID du produit
             $name = $_POST['name'];          // Récupère le nom du produit
@@ -79,6 +81,10 @@ if (isset($_GET['id'])) {
             header('Location: ?page=Basket');  // Remplacez par l'URL de votre page panier
             exit();
         }
+    }else{
+        header('Location: ?page=Login');
+        exit();
     }
+}
 include 'Views/DetailProduct.php'
 ?>
