@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="card">
-            <a href="calendrier.php" class="card-link">
+            <a href="?page=Calendar" class="card-link">
                 <div class="card-content">
                     <h2>Calendrier</h2>
                     <span class="material-symbols-outlined">calendar_today</span>
@@ -39,7 +39,7 @@
             </a>
         </div>
         <div class="card">
-            <a href="parametres.html" class="card-link">
+            <a href="" class="card-link">
                 <div class="card-content">
                     <h2>Paramètres</h2>
                     <span class="material-symbols-outlined">settings</span>

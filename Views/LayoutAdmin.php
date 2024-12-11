@@ -19,12 +19,16 @@
                 <h4>ADMINISTRER</h4>
             </a>
         </form>
-        <a href="?page=Profil" class="mon-compte" style="cursor: pointer;">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="text-container">
-                <p>MON COMPTE</p>
-            </div>
-        </a>
+        <form id="myForm2" method="POST" action="/~inf2pj02/?page=Profil">
+            <input type="hidden" name="adminPanel" value="0">
+            <a href="" class="mon-compte" style="cursor: pointer;" onclick="document.getElementById('myForm2').submit(); return false;">
+                <span class="material-symbols-outlined">account_circle</span>
+                <div class="text-container">
+                    <p>MON COMPTE</p>
+                </div>
+            </a>
+            </form>
+        
     </div>
     <div class="overlap-group">
         <div class="titre-de-page">
@@ -33,7 +37,7 @@
                 <a href="/~inf2pj02/?page=Calendar" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
                 <a href="/~inf2pj02/?page=GestionProfilAdmin" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
                 <a href="/~inf2pj02/?page=Treasury" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
-                <a href="/~inf2pj02/parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
+                <a href="" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
                 <a href="/~inf2pj02/?page=Add" class="editer" style="cursor: pointer;">EDITER CONTENU</a>
             </div>
         </div>
