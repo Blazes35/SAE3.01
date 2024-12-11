@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $imgActualite = $_POST['currentImg']; // Valeur par défaut
         $model->updateNews($idActualite, $titreActualite, $descActualite, $dateActualite, $imgActualite);
         $_SESSION['adminPanel'] = 0;
-        header('Location: /?page=News');
+        header('Location: ?page=News');
     } elseif ($_POST['action'] === 'delete' && isset($_POST['idActualite'])) {
         // Suppression de l'actualité
         $idActualite = intval($_POST['idActualite']);
         $model->deleteNews($idActualite);
         $_SESSION['adminPanel'] = 0;
-        header('Location: /?page=News');
+        header('Location: ?page=News');
     }
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
