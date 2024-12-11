@@ -24,17 +24,26 @@ session_start();
         </div>
         <div class="compte">
             <span class="material-symbols-outlined">account_circle</span>
-            <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
+            <form id="myForm" method="POST" action="/~inf2pj02/">
+            <input type="hidden" name="adminPanel" value="0">
+                <a class="Administrer" href="" onclick="document.getElementById('myForm').submit(); return false; ">
+                    <span class="material-symbols-outlined">admin_panel_settings</span>
+                    <h4>ADMINISTRER</h4>
+                </a>
+            </form>
+            <form action="" method="post">
+                <a href="compte.html" class="mon-compte" style="cursor: pointer;">MON COMPTE</a>
+            </form>
         </div>
         <div class="overlap-group">
             <div class="titre-de-page">
                 <div class="overlap-group-3">
-                    <a href="TableauBord.html" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
-                    <a href="calendrier.php" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
-                    <a href="GestionProfilAdmin.php" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
-                    <a href="tresorie.php" class="tresorie" style="cursor: pointer;">TRÉSORERIE</a>
-                    <a href="parametres.html" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
-                    <a href="boutique_hugo.php" class="editer" style="cursor: pointer;">ÉDITER CONTENU</a>
+                    <a href="/~inf2pj02/" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
+                    <a href="" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
+                    <a href="/~inf2pj02/?page=GestionProfilAdmin" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
+                    <a href="/~inf2pj02/?page=Treasury" class="tresorie" style="cursor: pointer;">TRÉSORERIE</a>
+                    <a href="" class="parametres" style="cursor: pointer;">PARAMÈTRES</a>
+                    <a href="/~inf2pj02/?page=Add" class="editer" style="cursor: pointer;">ÉDITER CONTENU</a>
                 </div>
             </div>
         </div>
@@ -98,7 +107,9 @@ session_start();
 
     // Ajouter les événements depuis la base de données
     try {
-        $pdo = new PDO('mysql:host=localhost;dbname=inf2pj_02', 'root', '');
+        require_once 'Models/DBModel.php';
+        $model = new DBModel();
+        $pdo = $model->getDB();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $pdo->query("SELECT titreEvent, descEvent, dateEvent, lieuEvent FROM EVENEMENT");

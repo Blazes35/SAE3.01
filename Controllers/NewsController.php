@@ -22,9 +22,7 @@ foreach($actus as $actu){
             <div class="detail">
                 <p class="titre">' . htmlspecialchars($actu['titreActualite']) . '</p>
                 <p class="contenu">' . htmlspecialchars($actu['descActualite']) . '</p>
-                <p class="date">' . htmlspecialchars($actu['dateActualite']) . '</p>
-
-                <button><a href="detailActualite.php?id=' . urlencode($actu["idActualite"]) . '" class="info">Voir plus</a></button>';
+                <p class="date">' . htmlspecialchars($actu['dateActualite']) . '</p>';
 
                 $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0; 
                 $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 

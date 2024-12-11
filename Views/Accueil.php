@@ -20,7 +20,7 @@ ob_start();
     </div>
 </div>
 <div class="box2accueil" onclick="actu.php">
-    <a href="actu.php" class="titre-link">
+    <a href="?page=News" class="titre-link">
         <div class="titre">ACTUALITÉ</div>
     </a>
     <div class="group1">

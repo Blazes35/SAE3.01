@@ -29,7 +29,7 @@
     <div class="overlap-group">
         <div class="titre-de-page">
             <div class="overlap-group-3">
-                <a href="/~inf2pj02/?page=Dashboard" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
+                <a href="/~inf2pj02?page=Dashboard" class="tableau" style="cursor: pointer;">TABLEAU DE BORD</a>
                 <a href="/~inf2pj02/?page=Calendar" class="calendrier" style="cursor: pointer;">CALENDRIER</a>
                 <a href="/~inf2pj02/?page=GestionProfilAdmin" class="profils" style="cursor: pointer;">GESTION PROFILS</a>
                 <a href="/~inf2pj02/?page=Treasury" class="tresorie" style="cursor: pointer;">TRÉSORIE</a>
