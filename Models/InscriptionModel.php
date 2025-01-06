@@ -1,4 +1,6 @@
-<?php
+   <?php
+
+//InscriptionModel.php
 require_once 'DBModel.php';
 
 class InscriptionModel extends DBModel {
@@ -19,9 +21,32 @@ class InscriptionModel extends DBModel {
         return $query->rowCount() > 0;
     }
 
-    public function addReservation($idEvent, $idUser) {
-        $stmt = self::$db->prepare("INSERT INTO RESERVATION (idEvent, idUser) VALUES (:idEvent, :idUser)");
-        $stmt->execute(['idEvent' => $idEvent, 'idUser' => $idUser]);
+    public function reserveEvent($idEvent, $idUser) {
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare("SELECT capaEvent FROM EVENEMENT WHERE idEvent = :idEvent FOR UPDATE");
+            $stmt->execute(['idEvent' => $idEvent]);
+            $event = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$event || $event['capaEvent'] <= 0) {
+                $this->db->rollBack();
+                return ["success" => false, "message" => "Plus de place disponible pour cet événement."];
+            }
+
+            $stmt = $this->db->prepare("INSERT INTO RESERVATION (idEvent, idUser) VALUES (:idEvent, :idUser)");
+            $stmt->execute(['idEvent' => $idEvent, 'idUser' => $idUser]);
+
+            $stmt = $this->db->prepare("UPDATE EVENEMENT SET capaEvent = capaEvent - 1 WHERE idEvent = :idEvent");
+            $stmt->execute(['idEvent' => $idEvent]);
+
+            $this->db->commit();
+            return ["success" => true, "message" => "Réservation réussie."];
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            return ["success" => false, "message" => "Erreur lors de la réservation : " . $e->getMessage()];
+        }
     }
 }
+
 ?>

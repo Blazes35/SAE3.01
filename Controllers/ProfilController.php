@@ -1,17 +1,23 @@
-<?php
+    <?php
 require_once 'Models/DBModel.php';
 $model = new DBModel();
 $connection=$model->getDB();
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connect'])) {
-    $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
-    if ($controller->login($email, $password)) {
-        header("Location: ?page=Presentation");
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if (isset($_POST['connect'])) {
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        if ($controller->login($email, $password)) {
+            header("Location: ?page=Presentation");
+            exit();
+        }else{
+            echo "<script>alert(\"Identifiants incorrects\")</script>";
+        }
+    }else if (isset($_POST['Disconnect'])) {
+        session_destroy();
+        header("Location: ?page=Accueil");
         exit();
-    }else{
-        echo "<script>alert(\"Identifiants incorrects\")</script>";
     }
 }
 
@@ -37,13 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $stmt = $connection->prepare($sql);
 
     
-            
-        if ($stmt->execute()) {
-                
-                echo "Profil mis à jour avec succès !";
-        } else {
-                echo "Erreur lors de la mise à jour : " . $stmt->error;
-        }
+        $stmt->execute();
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
             $_SESSION['email'] = $mail;
@@ -68,7 +68,7 @@ foreach($events as $event){
     $eventAff .= '
     <div class="imgnom">
         <div class="imgevent">
-            <img src="uploads/evenements/' . $event["imgEvent"] . '" />
+            <img src="uploads/evenement/' . $event["imgEvent"] . '" />
         </div>>
         <div class="nomEvent">'.
             '      ' . $event['titreEvent'].'

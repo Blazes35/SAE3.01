@@ -10,10 +10,7 @@ ob_start();
 <div class='article-container'>
     <?php echo $productAff;?>
     </div><br>
-    <div class='titre'><h2>Nos Vêtements</h2></div>
-    <div class='article-container'>
-    <?php echo $clotheAff;?>
-    </div>
+    
 <?php
 $content = ob_get_clean();
 include 'Layout.php';

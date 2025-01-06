@@ -11,7 +11,6 @@ ob_start();
         <option value="produit">Produit</option>
         <option value="galerie">Galerie</option>
         <option value="evenement">Evenement</option>
-        <option value="vetement">Vetement</option>
         <option value="actu">Actualité</option>
         <option value="code">Code Promotionnel</option>
     </select>
@@ -36,22 +35,22 @@ ob_start();
 
     <div id="price-field" hidden>
         <label for="price">Prix</label>
-        <input type="text" name="price" id="price">
+        <input type="number" name="price" id="price" value="1" min="1">
     </div>
 
     <div id="promo-field" hidden>
         <label for="pourcentCode">Pourcentage de réduction</label>
-        <input type="number" step="0.01" name="pourcentCode" id="pourcentCode">
+        <input type="number" step="0.01" name="pourcentCode" id="pourcentCode" value="1" min="1">
     </div>
 
     <div id="qt-field" hidden>
         <label for="qt">Quantité</label>
-        <input type="text" name="qt" id="qt">
+        <input type="number" name="qt" id="qt" value="1" min="1">
     </div>
 
     <div id="capacite-field" hidden>
         <label for="capacite">Capacité</label>
-        <input type="number" name="capacite" id="capacite">
+        <input type="number" name="capacite" id="capacite" value="1" min="1">
     </div>
 
     <div id="minRole-field" hidden>
@@ -95,7 +94,6 @@ ob_start();
     </div>
 
     <button type="submit" name="action" value="add">Ajouter</button>
-    <button type="submit" name="action" value="delete">Supprimer</button>
 </form>
 
 <?php

@@ -46,11 +46,18 @@
                         <input type="hidden" name="page" value="Event">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">ÉVENEMENTS</button>
                     </form>
-                    <form method="POST" action="?page=CalendrierUser">
-                        <input type="hidden" name="page" value="CalendrierUser">
-                        <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
-                        <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
-                    </form>
+                    <?php if ($role <5): ?>
+                        <form method="POST" action="?page=CalendrierUser">
+                            <input type="hidden" name="page" value="CalendrierUser">
+                            <input type="hidden" name="TP" value="<?php echo htmlspecialchars($TP); ?>">
+                            <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
+                        </form>
+                    <?php else: ?>
+                        <form method="GET" action="?page=Login">
+                            <input type="hidden" name="page" value="Login">
+                            <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">CALENDRIER</button>
+                        </form>
+                    <?php endif; ?>
                     <form method="GET" action="">
                         <input type="hidden" name="page" value="Galerie">
                         <button type="submit" class="calendrier" style="cursor: pointer; background: none; border: none; color: inherit; text-decoration: none;">GALERIE</button>

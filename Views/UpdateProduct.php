@@ -12,7 +12,6 @@ ob_start();
         <h1 class="titre">Mise à jour du produit</h1>
         
         <div class="form-container">
-            <!-- Ici, nous insérons le formulaire PHP généré par le contrôleur -->
             <?php echo $formHtml; ?>
         </div>
     </div>

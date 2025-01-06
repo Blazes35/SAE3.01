@@ -4,6 +4,10 @@ $model = new HaveGradeModel();
 
 $gradeAff='';
 
+if(!isset($_SESSION['id'])){
+    header('Location: ?page=Login');
+    exit;
+}
 
 if (isset($_POST['priceSelected'])) {
     $grade = $_POST['priceSelected'];

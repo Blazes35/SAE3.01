@@ -18,9 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $qtProd = isset($_POST['qt']) ? intval($_POST['qt']) : null;
         $imgProd = $_POST['currentImg'] ?? null;
 
-        // Gestion de l'upload d'image
         if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = '../uploads/produits/';
+            $uploadDir = 'uploads/produit/';
             $fileName = basename($_FILES['img']['name']);
             $uploadFile = $uploadDir . $fileName;
 
@@ -51,13 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Chargement des données du produit
 if (isset($_POST['idProd'])) {
     $idProd = intval($_POST['idProd']);
     $product = $model->getProduct($idProd);
 }
 
-// Génération du formulaire HTML si le produit existe
 if ($product) {
     $formHtml = '<div class="formulaire">
     <form method="POST" action="" enctype="multipart/form-data">
@@ -87,7 +84,7 @@ if ($product) {
             <label for="img">Image</label>
             <input type="file" id="img" name="img" accept="image/*" />
             <p>Image actuelle : <strong>' . htmlspecialchars($product['imgProd']) . '</strong></p>
-            <img src="../uploads/produits/' . htmlspecialchars($product['imgProd']) . '" alt="Image actuelle" style="max-width: 200px; height: auto;" />
+            <img src="uploads/produit/' . htmlspecialchars($product['imgProd']) . '" alt="Image actuelle" style="max-width: 200px; height: auto;" />
         </div>
         <br>
         <button type="submit" name="updateProduct">Mettre à jour</button>

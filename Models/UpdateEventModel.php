@@ -9,7 +9,7 @@ class updateEventModel extends DBModel {
     }
 
     public function getEvent($id) {
-        $selectQuery = "SELECT * FROM evenement WHERE idEvent = :idEvent";
+        $selectQuery = "SELECT * FROM EVENEMENT WHERE idEvent = :idEvent";
         $stmt = self::$db->prepare($selectQuery);
         $stmt->bindParam(':idEvent', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -27,7 +27,7 @@ class updateEventModel extends DBModel {
         }
         // Mise à jour de l'événement
         $updateQuery = "
-            UPDATE evenement 
+            UPDATE EVENEMENT 
             SET titreEvent = :titreEvent, descEvent = :descEvent, prixEvent = :prixEvent, 
                 capaEvent = :capaEvent, imgEvent = :imgEvent, minRoleEvent = :minRole, 
                 minGradeEvent = :minGrade
@@ -45,7 +45,7 @@ class updateEventModel extends DBModel {
     }
 
     public function updateImage(){
-        $uploadDir = 'uploads/evenements/';
+        $uploadDir = 'uploads/evenement/';
         $fileName = basename($_FILES['img']['name']);
         $uploadFile = $uploadDir . $fileName;
         if (move_uploaded_file($_FILES['img']['tmp_name'], $uploadFile)) {
@@ -56,7 +56,7 @@ class updateEventModel extends DBModel {
     }
 
     public function deleteEvent($id){
-        $deleteQuery = "DELETE FROM evenement WHERE idEvent = :idEvent";
+        $deleteQuery = "DELETE FROM EVENEMENT WHERE idEvent = :idEvent";
         $stmt = self::$db->prepare($deleteQuery);
         $stmt->bindParam(':idEvent', $id, PDO::PARAM_INT);
         return $stmt->execute();

@@ -144,7 +144,24 @@ a.calendrier:visited {
     
 
   .titre{
-    padding-left: 100px;
+    padding-left: 50px;
+  }
+
+  .voir-plus{
+    margin-left: 30vw;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #8E51D0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    font-size: 35px;
+    text-decoration: none;
   }
 
   .group1{
@@ -156,6 +173,8 @@ a.calendrier:visited {
   }
 
   .bureauetu{
+    margin-top: 15px;
+    padding-left: 50px;
     font-size: 30px;
   }
 
@@ -288,7 +307,7 @@ a.calendrier:visited {
   .box3accueil{
     font-family: k2d, sans-serif;
     color: #ffffff;
-    margin-top:500px ;
+    margin-top:50px ;
     margin-left: 100px;
   }
 

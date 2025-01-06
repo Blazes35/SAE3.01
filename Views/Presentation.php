@@ -48,13 +48,17 @@ ob_start();
 </div>
 </div>
 
-<div class="box-5">
-    <div class="rejoins-nous">REJOINS-NOUS</div>
-        <button class="button-inscription">INSCRIPTION</button>
+<div class="box-6">
+<p class="presentation-6">Les conditions d'adhésions au BDE</p>
+    <p class="p6">Afin de rejoindre notre association étudiante, vous devez posséder une adresse mail, être dans un groupe TP parmis <br>
+    ceux qui composent le BUT Informatique. Ainsi vous pourrez participer à des événements, acheter des produits, consulter les <br>
+    actualités. Mais aussi nous proposons 3 grades qui apportent chacun des avantages.</p>
 </div>
 
-
 <?php
+if(!isset($_SESSION['id'])){
+    echo $rejoinsNous ;
+}
 $content = ob_get_clean();
 include 'Layout.php';
 ?>

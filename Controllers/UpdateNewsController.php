@@ -13,12 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $titreActualite = $_POST['titreActualite'];
         $descActualite = $_POST['descActualite'];
         $dateActualite = $_POST['dateActualite'];
-        $imgActualite = $_POST['currentImg']; // Valeur par défaut
+        $imgActualite = $_POST['currentImg']; 
         $model->updateNews($idActualite, $titreActualite, $descActualite, $dateActualite, $imgActualite);
         $_SESSION['adminPanel'] = 0;
         header('Location: ?page=News');
     } elseif ($_POST['action'] === 'delete' && isset($_POST['idActualite'])) {
-        // Suppression de l'actualité
         $idActualite = intval($_POST['idActualite']);
         $model->deleteNews($idActualite);
         $_SESSION['adminPanel'] = 0;

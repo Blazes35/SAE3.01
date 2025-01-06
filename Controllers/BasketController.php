@@ -3,6 +3,10 @@
 //Controller de Bsket.php
 require_once 'Models/BasketModel.php';
 $model = new BasketModel();
+if(!isset($_SESSION['id'])){
+    header('Location: ?page=Login');
+    exit;
+}
 $commandes = $model->getBasket();
 $commandeAff = '';
 $pourcentage='';
@@ -13,7 +17,7 @@ if($commandes){
         $commandeAff.= '<div class="commande">
                 <div class="image">';
             if(!empty($commande['imgProd'])){
-                $commandeAff.='<img src="uploads/produits/' . $commande['imgProd'] . '" alt="' . $commande['nomProd'] . '" />';
+                $commandeAff.='<img src="uploads/produit/' . $commande['imgProd'] . '" alt="' . $commande['nomProd'] . '" />';
             }else{
                 $commandeAff.= '<img src="/images/avatar.png" alt="default image"/>';
             }
@@ -46,12 +50,11 @@ $codes=$model->getCodePromo();
 if($codes){
     foreach ($codes as $code) {
         $dateFin = new DateTime($code['dateFin']);
-        $dateActuelle = new DateTime(); // Date actuelle
+        $dateActuelle = new DateTime();
         
-        // Si la date de fin est dans le futur ou aujourd'hui
         if ($dateFin >= $dateActuelle) {
             $pourcentage.='<div class="codepromo">
-                <p class="reduction">Réduction -' . $code['pourcentCode'] .'% avec la code ' . $code['nomCode'].'<p>
+                <p class="reduction">Réduction -' . $code['pourcentCode'] .'% avec le code ' . $code['nomCode'].'<p>
             </div>';
             $total = $total * (1-($code['pourcentCode']/100));
         }

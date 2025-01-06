@@ -14,16 +14,16 @@
   
   .box .rectangle {
     position: relative;
-    height: 1000px; /* Augmentation de la hauteur */
+    height: 1000px;
     width: 100%;
     top: 0;
     left: 0;
   
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.5) 10%,  /* Début du dégradé plus prononcé */
-      rgba(0, 0, 0, 0.8) 90%,   /* Ajustement de l'opacité au milieu */
-      rgba(0, 0, 0, 1) 100%      /* Fin plus prononcée */
+      rgba(0, 0, 0, 0.5) 10%, 
+      rgba(0, 0, 0, 0.8) 90%,   
+      rgba(0, 0, 0, 1) 100%      
     );
   }
 
@@ -223,4 +223,31 @@
 .box-5 .button-inscription:active {
     background-color: #555;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.box-6 {
+  margin-left: 250px;
+  width: 1200px;
+  margin-top: 100px;
+  height: auto;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.box-6 .presentation-6 {
+  font-family: 'K2D', sans-serif;
+  font-size: 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #8E51D0;
+}
+
+.box-6 .p6 {
+  font-family: 'K2D', sans-serif;
+  font-size: 20px;
+  margin: 0 30px 30px 30px;
+  line-height: 1.6;
 }

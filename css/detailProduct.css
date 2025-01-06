@@ -6,64 +6,6 @@ body {
     color: #fff;
 }
 
-.overlap-group-3 {
-    font-family: k2d, sans-serif;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    padding-top: 15px;
-    margin-left: 1000px;
-    width: 45%;
-    justify-content: space-between;
-  }
-
-
-a.presentation {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.presentation:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.evenement {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.evenement.visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.calendrier {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.calendrier:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-a.galerie {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.galerie:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-a.boutique {
-  color: inherit; /* Utilise la couleur héritée */
-  text-decoration: none; /* Supprime le soulignement */
-}
-
-a.boutique:visited {
-  color: inherit; /* Utilise la couleur héritée pour les liens visités */
-}
-
-
-
 .product-container {
     margin: 200px 420px ;
     display: flex;
@@ -169,7 +111,7 @@ a.boutique:visited {
 }
 
 
-.add-to-cart, .promo-code {
+.add-to-basket, .promo-code {
     background-color: #fff;
     color: #000;
     border: none;
@@ -180,7 +122,7 @@ a.boutique:visited {
     transition: background-color 0.3s;
 }
 
-.add-to-cart:hover {
+.add-to-basket:hover {
     background-color: #8E51D0;
     color: #fff;
 }

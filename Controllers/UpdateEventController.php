@@ -16,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $imgEvent = $_POST['currentImg'];
         $model->updateEvent($idEvent, $nomEvent, $descEvent, $minRole, $minGrade, $prixEvent, $capaEvent, $imgEvent);
         $_SESSION['adminPanel'] = 0;
-        header('Location: /?page=Event');
+        header('Location: ?page=Event');
     }elseif ($_POST['action'] ===  'delete') {
         // Suppression de l'événement
         $idEvent = intval($_POST['idEvent']);
         $result = $model->deleteEvent($idEvent);
         if ($result) {
             $_SESSION['adminPanel'] = 0;
-            header('Location: /?page=Event');
+            header('Location: ?page=Event');
         }else{
             echo "<script>alert('Erreur lors de la suppression l'évènement est lié à des inscriptions')</script>";
         }
@@ -36,6 +36,5 @@ if (isset($_POST['update'])) {
 }
 
 
-// Inclure la vue
 include 'Views/UpdateEvent.php';
 ?>

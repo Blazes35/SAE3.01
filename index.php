@@ -2,15 +2,51 @@
 session_name('BDE');
 session_set_cookie_params(86400 * 30, "/");
 session_start();
+
 $_SESSION['adminPanel'] = isset($_SESSION['adminPanel']) ? $_SESSION['adminPanel'] : 0;
 $role =  isset($_SESSION['role']) ? $_SESSION['role'] : 5;
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adminPanel'])) {
     $_SESSION['adminPanel'] = $_POST['adminPanel'];
 }
 
 // routage
-if (!$_SESSION['adminPanel']){
+if ($_SESSION['adminPanel'] and $role <= 3){
+    $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Dashboard';
+    switch ($page) {
+        case 'Dashboard':
+            include './Controllers/DashboardController.php';
+            break;
+        case 'Treasury':
+            include './Controllers/TreasuryController.php';
+            break;
+        case 'Add' : 
+            include "./Controllers/AddController.php";
+            break;
+        case 'Calendar' :
+            include "./calendrier.php";
+            break;
+        case 'GestionProfilAdmin' :
+            include "./Controllers/GestionProfilAdminController.php";
+            break;
+        case 'Historique' :
+            include "./Controllers/HistoriqueController.php";
+            break;
+        case 'UpdateProduct' :
+            include "./Controllers/UpdateProductController.php";
+            break;
+        case 'UpdateEvent' :
+            include "./Controllers/UpdateEventController.php";
+            break;
+        case 'UpdateNews' :
+            include "./Controllers/UpdateNewsController.php";
+            break;
+        default:
+            include './Views/Error404.php';
+            break;
+    }
+}else {
     $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Accueil';
     switch ($page) {
         case 'Accueil':
@@ -63,40 +99,6 @@ if (!$_SESSION['adminPanel']){
             break;
         case 'HaveGuard':
             include "./Controllers/HaveGradeController.php";
-            break;
-        default:
-            include './Views/Error404.php';
-            break;
-    }
-}else{
-    $page = $_POST['page'] ?? isset($_GET['page']) && $_GET['page'] != '' ? $_GET['page'] : 'Dashboard';
-    switch ($page) {
-        case 'Dashboard':
-            include './Controllers/DashboardController.php';
-            break;
-        case 'Treasury':
-            include './Controllers/TreasuryController.php';
-            break;
-        case 'Add' : 
-            include "./Controllers/AddController.php";
-            break;
-        case 'Calendar' :
-            include "./calendrier.php";
-            break;
-        case 'GestionProfilAdmin' :
-            include "./Controllers/GestionProfilAdminController.php";
-            break;
-        case 'Historique' :
-            include "./Controllers/HistoriqueController.php";
-            break;
-        case 'UpdateProduct' :
-            include "./Controllers/UpdateProductController.php";
-            break;
-        case 'UpdateEvent' :
-            include "./Controllers/UpdateEventController.php";
-            break;
-        case 'UpdateNews' :
-            include "./Controllers/UpdateNewsController.php";
             break;
         default:
             include './Views/Error404.php';

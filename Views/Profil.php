@@ -64,8 +64,11 @@ ob_start();
         </label>
         <input type="email" id="mail" name="mail" value="<?php echo $_SESSION['email']?>">
     </div>
-
     <div class="envoyer">
+        <form action="?page=Profil" method="post">
+            <button type="submit" name="Disconnect">DECONNEXION</button>
+        </form>
+
         <button type="submit" name="validate">MODIFIER</button>
     </div>
     </form>

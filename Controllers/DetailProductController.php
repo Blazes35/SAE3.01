@@ -1,19 +1,21 @@
 <?php
 require_once 'Models/DetailProductModel.php';
 $model  = new DetailProductModel();
-$afficheProduit ='';
+$afficheProduit = '';
+
 if (isset($_SESSION['id'])) {
-    $userRole =  $_SESSION['role'];
+    $userRole = $_SESSION['role'];
     $userName = $_SESSION['nom'];
 }
+
 if (isset($_GET['id'])) {
     $idProd = intval($_GET['id']);
     $product = $model->getProduct($idProd);
-    if($product){
+    if ($product) {
         $uploadDir = 'uploads/';
         $uploadDir .= ($product['typeProd'] === 'vetement') ? 'vetements/' : 'produit/';
 
-        $afficheProduit.= "<div class='image-gallery'>
+        $afficheProduit .= "<div class='image-gallery'>
             <div class='first-img'>
                 <img src='" . htmlspecialchars($uploadDir . $product['imgProd']) . "' alt='" . htmlspecialchars($product['nomProd']) . "' />
             </div>
@@ -29,7 +31,7 @@ if (isset($_GET['id'])) {
         <p class='price'>" . htmlspecialchars($product['prixProd']) . " €</p>";
 
         if ($product['typeProd'] === 'vetement') {
-            $afficheProduit.= "<p class='size-title'>Sélectionner la taille</p>
+            $afficheProduit .= "<p class='size-title'>Sélectionner la taille</p>
             <div class='sizes'>
             <button class='size'>XS</button>
             <button class='size'>M</button>
@@ -38,53 +40,44 @@ if (isset($_GET['id'])) {
             </div>";
         }
 
+        $afficheProduit .= "<p class='stock'>Stock : " . htmlspecialchars($product['qtProd']) . "</p>";
 
-        $afficheProduit.= '<div class="buttons">
-        <form method="POST" action="?page=DetailProduct">
-        <input type="hidden" name="idProd" value="'. htmlspecialchars($idProd). '">
-        <input type="hidden" name="name" value="'.htmlspecialchars($product['nomProd']) .'">
-        <input type="hidden" name="price" value="'. htmlspecialchars($product['prixProd']) .'">
-        <label for="quantity">Quantité :</label>
-        <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" required>
-        <button type="submit" class="add-to-cart">Ajouter au panier</button>
-        </form>
-        </div>';
+        if (isset($_POST['addBasket']) && $_POST['addBasket'] == 1) {
+            if(!isset($_SESSION['id'])){
+                header('Location: ?page=Login');
+                exit;
+            }
+            $quantity = intval($_POST['quantity']);
+            $date = date('Y-m-d');
+            $message = $model->addBasket($idProd, $quantity, $date);
+            header('Location: ?page=Basket'); // Redirection vers la page du panier
+            exit(); //test
+        } else {
+            $afficheProduit .= '
+            <form action="?page=DetailProduct&id=' . $idProd . '" method="POST">
+                <input name="addBasket" type="hidden" value="1">
+                <input name="quantity" type="number" min="1" max="' . $product['qtProd'] . '" value="1" id="quantity">
+                <button class="add-to-basket" type="submit">Ajouter au panier</button>
+            </form>';
+        }
 
-
-        if (isset($userRole) ? $userRole  < 4 : false) {
-            
-            $afficheProduit.= "
+        if (isset($userRole) ? $userRole < 4 : false) {
+            $afficheProduit .= "
             <form action='?page=UpdateProduct' method='post'>
                 <input type='hidden' name='adminPanel' value='1'>
-                <input type='hidden' name='idProd' value=". $product['idProd'] ." />
-                <button type='submit' name='updateProduct' class='settings'>
-                <span class='material-symbols-outlined'>settings</span>
-                <p>Paramétrer</p>
+                <input type='hidden' name='idProd' value='" . $product['idProd'] . "' />
+                <button type='submit' name='update' class='settings'>
+                    <span class='material-symbols-outlined'>settings</span>
+                    <p id='probleme'>Paramétrer</p>
                 </button>
             </form>";
         }
 
-        $afficheProduit.= "</div>
-        </div>";
+        $afficheProduit .= '</div>';
+    } else {
+        $afficheProduit .= '<p>Produit introuvable.</p>';
     }
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($userRole)){
-        if (isset($_POST['idProd']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])) {
-            $idProd = $_POST['idProd'];      // Récupère l'ID du produit
-            $name = $_POST['name'];          // Récupère le nom du produit
-            $price = $_POST['price'];        // Récupère le prix du produit
-            $quantity = $_POST['quantity'];  // Récupère la quantité du produit
-            $currentDateTime = date('Y-m-d H:i:s'); // Récupère la date et l'heure actuelles
-            // Vous pouvez maintenant appeler la fonction addBasket pour ajouter l'article au panier
-            $model->addBasket($idProd, $quantity, $currentDateTime);
-            header('Location: ?page=Basket');  // Remplacez par l'URL de votre page panier
-            exit();
-        }
-    }else{
-        header('Location: ?page=Login');
-        exit();
-    }
-}
-include 'Views/DetailProduct.php'
+
+require 'Views/DetailProduct.php';
 ?>

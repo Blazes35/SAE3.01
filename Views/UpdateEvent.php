@@ -2,8 +2,9 @@
 $title = 'Mise à jour de l evenement';
 ob_start();
 ?>
-<link rel="stylesheet" href="css/updateProduct.css"/>
-<h1>Modifier ou supprimer un événement</h1>
+<link rel="stylesheet" href="css/updateEvent.css"/>
+<div class="formulaire">
+<h1 class="titre">Modifier ou supprimer un événement</h1>
 <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="idEvent" value="<?php echo htmlspecialchars($event['idEvent']); ?>" />
     <input type="hidden" name="currentImg" value="<?php echo htmlspecialchars($event['imgEvent']); ?>" />
@@ -43,17 +44,17 @@ ob_start();
         <label for="img">Image</label>
         <input type="file" id="img" name="img" accept="image/*" />
         <p>Image actuelle : <strong><?php echo htmlspecialchars($event['imgEvent']); ?></strong></p>
-        <img src="uploads/evenements/<?php echo htmlspecialchars($event['imgEvent']); ?>" alt="Image actuelle" style="max-width: 200px; height: auto;" />
+        <img src="uploads/evenement/<?php echo htmlspecialchars($event['imgEvent']); ?>" alt="Image actuelle" style="max-width: 200px; height: auto;" />
     </div>
     <br>
     <button type="submit">Mettre à jour</button>
 </form>
-<br>
 <form method="POST" action="">
     <input type="hidden" name="idEvent" value="<?php echo htmlspecialchars($event['idEvent']); ?>" />
     <input type="hidden" name="action" value="delete" />
     <button type="submit" style="background-color: red; color: white;">Supprimer l'événement</button>
 </form>
+</div>
 <?php
 $content = ob_get_clean();
 include 'LayoutAdmin.php';

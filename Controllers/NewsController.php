@@ -2,18 +2,27 @@
 require_once 'Models/NewsModel.php';
 $model = new NewsModel();
 $actus =$model->getNews();
-$actuAff='';
+$actuAff = '';
 
+if (isset($_SESSION['id'])) {
+    $userRole = $_SESSION['role'];
+    $userName = $_SESSION['nom'];
+}
 
+// Echo JavaScript to log the $_SESSION variable
+echo '<script>
+    console.log(' . json_encode($_SESSION) . ');
+    console.log("2");
+</script>';
 
-foreach($actus as $actu){
+foreach ($actus as $actu) {
     $actuAff .= '
 <div class="container">
     <div class="actu-card">
         <div class="actu-card-in">
 
             <div class="actu-img">
-                <img src="uploads/actualites/' . htmlspecialchars($actu['urlPhotoActualite']) . '" 
+                <img src="uploads/actu/' . htmlspecialchars($actu['urlPhotoActualite']) . '" 
                     alt="' . htmlspecialchars($actu['titreActualite']) . '" />
             </div>
         </div> 
@@ -23,12 +32,9 @@ foreach($actus as $actu){
                 <p class="titre">' . htmlspecialchars($actu['titreActualite']) . '</p>
                 <p class="contenu">' . htmlspecialchars($actu['descActualite']) . '</p>
                 <p class="date">' . htmlspecialchars($actu['dateActualite']) . '</p>';
-
-                $userRole = isset($_SESSION['role']) ? (int)$_SESSION['role'] : 0; 
-                $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité'; 
-
-                if ($userRole < 4) {
-                    $actuAff .="
+                
+                if ( isset($userRole) and $userRole <=3) {
+                    $actuAff .= "
                     <form action='?page=UpdateNews' method='post'>
                         <input type='hidden' name='adminPanel' value='1'>
                         <input type='hidden' name='idActualite' value=" . $actu['idActualite'] . " />
@@ -39,12 +45,8 @@ foreach($actus as $actu){
                     </form>";
                 }
 
-            $actuAff .= '
-            </div>
-        </div> 
-    </div>
-</div>';
-        }
+    $actuAff .= '</div></div></div></div>';
+}
     
 
 include 'Views/News.php'; 

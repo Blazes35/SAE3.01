@@ -20,11 +20,9 @@ ob_start();
     </div>
 </div>
 <div class="box2accueil" onclick="actu.php">
-    <a href="?page=News" class="titre-link">
-        <div class="titre">ACTUALITÉ</div>
-    </a>
-    <div class="group1">
+    <div class="titre">ACTUALITÉ</div>
     <div class="bureauetu">Nouveau Bureau Des Étudiants !</div>
+    <div class="group1">
     <!--Début du carrousel-->
     <div class="wrapper">
         <div class="conterner">
@@ -33,7 +31,7 @@ ob_start();
             foreach ($actualitesLimite as $index => $actu): ?>
                 <input type="radio" name="slide" id="c<?= $index + 1 ?>" <?= $index === 0 ? 'checked' : '' ?> />
                 <label for="c<?= $index + 1 ?>" class="card">
-                    <img class="image" src="uploads/actualites/<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
+                    <img class="image" src="uploads/actu/<?= htmlspecialchars($actu['urlPhotoActualite']) ?>" alt="<?= htmlspecialchars($actu['titreActualite']) ?>">
                     <div class="row">
                         <div class="icon"><?= $index + 1 ?></div>
                         <div class="description">
@@ -44,7 +42,11 @@ ob_start();
             <?php endforeach; ?>
         </div>
     </div>
+
 </div>
+<a href="?page=News" class="titre-link">
+        <div class="voir-plus">Voir plus</div>
+</a>
     </div>
 </div>
     
@@ -100,57 +102,12 @@ ob_start();
             </div>
         </div>
     </div>
-    <div class="box4accueil">
-        <div class="classement">
-            <div class="titreclassement">CLASSEMENT</div>
-            <div class="podium">
-                <div class="premier">
-                    <div class="num">
-                        1
-                    </div>
-                    <div class="pseudo">
-                        PSEUDO1
-                    </div>
-                </div>
-                <div class="deuxieme">
-                    <div class="num">
-                        2
-                    </div>
-                    <div class="pseudo">
-                        PSEUDO2
-                    </div>
-                </div>
-                <div class="troisieme">
-                    <div class="num">
-                        1
-                    </div>
-                    <div class="pseudo">
-                        PSEUDO2
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="box5accueil">
-        <div class="eventtitrevenir">ÉVÉNEMENT À VENIR</div>
-        <div class="eventvenir">
-            <div class="eventtext">
-                <div class="titreevent">KARTING</div>
-                <div class="description">VENEZ VIVRE l'ÉXPÉRIENCE D'UN PILOTE SUR LE CIRCUIT DE BEAUSOLEIL À LAVAL </div>
-                <a  class="inscription" href="evenement.html">INSCRIS TOI</a>
-            </div>
-            <div class="image">
-                <img class="imagekart" src="images/karting1.png" alt="photo de karting">
-            </div>
-        </div>
-    </div>
-    <div class="box-5">
-    <div class="rejoins-nous">REJOINS-NOUS</div>
-        <form action="?page=SignUp" method="post">
-        <button class="button-inscription">INSCRIPTION</button>
-        </form>
-    </div>
+
 <?php
+if(!isset($_SESSION['id'])){
+    echo $rejoinsNous ;
+}
+
 $content = ob_get_clean();
 include 'Layout.php';
 ?>

@@ -165,3 +165,6 @@ footer .bandeau2{
   margin-left: 400px;
 }
 
+.Contact a {
+  text-decoration: none;
+}

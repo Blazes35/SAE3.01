@@ -1,46 +1,46 @@
 <?php
-    require_once 'Models/InscriptionModel.php';
+//InscriptionController.php
+    
+require_once 'Models/InscriptionModel.php';
 
-    $model = new InscriptionModel();
+$model = new InscriptionModel();
 
+$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+$userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
+$userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 
-    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-    $userName = isset($_SESSION['nom']) ? $_SESSION['nom'] : 'Invité';
-    $userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : null;
+if ($userEmail === null) {
+    die("Erreur : Impossible d'identifier l'utilisateur. Connectez-vous.");
+}
 
-    // Vérification que l'e-mail est défini
-    if ($userEmail === null) {
-        die("Erreur : Impossible d'identifier l'utilisateur. Connectez-vous.");
-    }
+$idEvent = isset($_POST['idEvent']) ? intval($_POST['idEvent']) : null;
+if (!$idEvent) {
+    die("Erreur : ID d'événement manquant ou invalide.");
+}
 
-    // Récupération de l'ID de l'événement
-    $idEvent = isset($_POST['idEvent']) ? intval($_POST['idEvent']) : null;
-    if (!$idEvent) {
-        die("Erreur : ID d'événement manquant ou invalide.");
-    }
+if ($userRole === 2 || $userRole === 3 || $userRole === 5) {
+    try {
+        $user = $model->getUserByEmail($userEmail);
 
-    if ($userRole === 2 || $userRole === 3 || $userRole === 5) {
-        try {
-            $user = $model->getUserByEmail($userEmail);
-
-            if (!$user) {
-                die("Erreur : Utilisateur non trouvé dans la base de données.");
-            }
-
-            $userId = $user['idUser'];
-
-            if ($model->checkReservation($idEvent, $userId)) {
-                $message = "Vous avez déjà réservé cet événement.";
-            } else {
-                $model->addReservation($idEvent, $userId);
-                $message = "Réservation effectuée avec succès pour l'utilisateur : " . htmlspecialchars($userName) . ".";
-            }
-        } catch (PDOException $e) {
-            $message = "Erreur lors de la réservation : " . $e->getMessage();
+        if (!$user) {
+            die("Erreur : Utilisateur non trouvé dans la base de données.");
         }
-    } else {
-        $message = "Vous n'avez pas les droits pour effectuer une réservation.";
-    }
 
-    require 'Views/Inscription.php';
+        $userId = $user['idUser'];
+
+        if ($model->checkReservation($idEvent, $userId)) {
+            $message = "Vous avez déjà réservé cet événement.";
+        } else {
+            $result = $model->reserveEvent($idEvent, $userId);
+            $message = $result['message'];
+        }
+    } catch (Exception $e) {
+        $message = "Erreur lors de la réservation : " . $e->getMessage();
+    }
+} else {
+    $message = "Vous n'avez pas les droits pour effectuer une réservation.";
+}
+
+require 'Views/Inscription.php';
+
 ?>

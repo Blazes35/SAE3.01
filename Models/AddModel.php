@@ -1,6 +1,4 @@
 <?php
-
-//AddModel.php
 require_once 'Models/DBModel.php';
 
 class AddModel extends DBModel{
@@ -73,11 +71,11 @@ class AddModel extends DBModel{
                 break;
             case 'vetement':
                 $idProd = self::$db->lastInsertId();
-                $queryVet = "INSERT INTO VETEMENT (idProd, couleurVetement) VALUES (:idProd, :color)";
+                $queryVet = "INSERT INTO VETEMENT (idProd, couleurVetement, tailleVetement) VALUES (:idProd, 'none', 'S')";
                 $stmtVet = self::$db->prepare($queryVet);
                 $stmtVet->execute([
-                    ':idProd' => $idProd,
-                    ':color'  => $data['color']
+                    ':idProd' => $idProd
+                    
                 ]);
                 break;
             case 'actu':

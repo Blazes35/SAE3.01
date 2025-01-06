@@ -22,9 +22,23 @@ class DetailEventModel extends DBModel {
         if ($smt->fetch(PDO::FETCH_ASSOC)) {
             return;
         }
+
+        $event = $this->getEventById($idEvent);
+        if ($event['capaEvent'] <= 0) {
+            return;
+        }
+
         $stmt = self::$db->prepare("INSERT INTO RESERVATION (idEvent, idUser) VALUES (:idEvent, :idUser)");
         $stmt -> bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
         $stmt -> bindParam(':idUser', $idUser, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $this->decrementPlace($idEvent);
+    }
+
+    public function decrementPlace($idEvent) {
+        $stmt = self::$db->prepare("UPDATE EVENEMENT SET capaEvent = capaEvent - 1 WHERE idEvent = :idEvent AND capaEvent > 0");
+        $stmt -> bindParam(':idEvent', $idEvent, PDO::PARAM_INT);
         $stmt->execute();
     }
 }

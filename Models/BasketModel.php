@@ -29,6 +29,10 @@ class BasketModel extends DBModel {
     }
 
     public function deleteBasket(int $idCommande){
+        $sqlRestoreQt = "UPDATE PRODUIT SET qtProd = qtProd + (SELECT quantiteCommande FROM COMMANDE WHERE idCommande = :idCommande) WHERE idProd = (SELECT idProd FROM COMMANDE WHERE idCommande = :idCommande)";
+        $smtRestoreQt = self::$db->prepare($sqlRestoreQt);
+        $smtRestoreQt->bindParam(':idCommande', $idCommande, PDO::PARAM_INT);
+        $smtRestoreQt->execute();
         $sqlDelete = "DELETE FROM COMMANDE WHERE idCommande = :idCommande AND idUser = :id";
         $smtDelete = self::$db->prepare($sqlDelete);
         $smtDelete->bindParam(':idCommande', $idCommande, PDO::PARAM_INT);

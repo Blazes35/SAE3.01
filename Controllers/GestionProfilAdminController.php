@@ -65,7 +65,7 @@ foreach ($users as $user):
                     <button type="submit">Mettre à jour</button>
                 </div>
             </form>
-            <form action="/?page=Historique" method="POST">
+            <form action="?page=Historique" method="POST">
                 <input type="hidden" name="idUser" value="'. $user['idUser'] .'">
                 <button type="submit" class="historique">Voir Historique</button>
             </form>

@@ -8,22 +8,19 @@ $idEvent = isset($_POST['idEvent']) ? intval($_POST['idEvent']) : null;
 
 if (!$idEvent) {
     echo var_dump($_POST);
-    // die("Aucun événement trouvé ou aucun ID fourni."$_POST);
 }
 
-// Charger les détails de l'événement
 $event = $model->getEventById($idEvent);
 
 if (!$event) {
     die("Événement introuvable dans la base de données.");
 }
 
-// Récupérer les informations de l'utilisateur
 if (isset($_SESSION['id'])) {
     $userRole =  $_SESSION['role'];
     $userName = $_SESSION['nom'];
 }
-// Affichage des détails de l'événement
+
 $detailAffiche = '';
 $detailAffiche .= '<div class="image-gallery">
         <div class="first-img">
@@ -39,31 +36,42 @@ $detailAffiche .= '<div class="image-gallery">
         <p class="price">' . htmlspecialchars($event['prixEvent']) . ' €</p>
     </div>
     <div class="boutons">';
+
+if (isset($_POST['inscription']) && $_POST['inscription'] == 1) {
+    $idEvent = intval($_POST['idEvent']);
+    if(!isset($_SESSION['id'])){
+        header("Location: ?page=Login");
+        exit();
+    }
+    $userId = $_SESSION['id'];
+    
+    $event = $model->getEventById($idEvent);
+    if ($event['capaEvent'] > 0) {
+        $model->inscription($idEvent, $userId);
+        $message = "Réservation effectuée avec succès.";
+    } else {
+        $message = "Plus de place disponible.";
+    }
+    $detailAffiche .= '<p>' . htmlspecialchars($message) . '</p>';
+}else {
     $detailAffiche .= '
     <form action="?page=DetailEvent" method="POST">
             <input name="inscription" type="hidden" value="1">
             <button class="inscrire" type="submit" name="idEvent" value='.$event['idEvent'].'>S\'inscrire</button>
     </form>';
-
-    if (isset($userRole) ? $userRole < 4 : false    ) {
-        $detailAffiche .= "
-            <form action='?page=detailEvent' method='post' >
-            <input type='hidden' name='adminPanel' value='1'>
-            <input type='hidden' name='idEvent' value='" . $event['idEvent'] . "' />
-                <button type='submit' name='update' class='param'>Paramétrer</button>
-            </form>";
-    }
-    $detailAffiche .= '</div>';
-
-if (isset($_POST['inscription'])) {
-    if (isset($userRole)){
-        $model->inscription($idEvent, $_SESSION['id']);
-        $detailAffiche .= '<p class="inscription">Inscription réussie !</p>';
-    }else {
-        header('Location: ?page=Login');
-        exit();
-    }
 }
+
+if (isset($userRole) ? $userRole < 4 : false) {
+    $detailAffiche .= "
+        <form action='?page=UpdateEvent' method='post' >
+        <input type='hidden' name='adminPanel' value='1'>
+        <input type='hidden' name='idEvent' value='" . $event['idEvent'] . "' />
+            <button type='submit' name='update' class='param'>Paramétrer</button>
+        </form>";
+}
+
+$detailAffiche .= '</div>';
+
 
 require 'Views/DetailEvent.php';
 ?>

@@ -11,12 +11,10 @@ $connection = $model->getDB();
 if (isset($_POST['idUser'])) {
     $idUser = intval($_POST['idUser']);
 
-    // Récupérer l'historique des événements de l'utilisateur
     $queryEvents = "SELECT * FROM RESERVATION INNER JOIN EVENEMENT ON RESERVATION.idEvent = EVENEMENT.idEvent WHERE idUser = :idUser";    $stmtEvents = $connection->prepare($queryEvents);
     $stmtEvents->execute([':idUser' => $idUser]);
     $events = $stmtEvents->fetchAll(PDO::FETCH_ASSOC);
 
-    // Récupérer l'historique des commandes de l'utilisateur
     $queryOrders = "SELECT * FROM COMMANDE WHERE idUser = :idUser";
     $stmtOrders = $connection->prepare($queryOrders);
     $stmtOrders->execute([':idUser' => $idUser]);
@@ -33,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateOrder'])) {
     $stmtUpdate = $connection->prepare($updateQuery);
     $stmtUpdate->execute([':newEtat' => $newEtat, ':idCommande' => $idCommande]);
 
-    // Rafraîchir la page pour afficher les modifications
     header("Location: historique.php?idUser=$idUser");
     exit;
 }

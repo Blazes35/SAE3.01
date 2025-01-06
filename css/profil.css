@@ -141,6 +141,8 @@ form {
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap: 20px; /* Ajustez la valeur selon vos besoins */
+
 }
 .envoyer button {
     width: auto;
