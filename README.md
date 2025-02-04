@@ -12,10 +12,7 @@ Ce projet d'étude a pour objectif de développer un site web pour L'ADIIL, une 
 - [Description](#description)
 - [Fonctionnalités](#fonctionnalités)
 - [Technologies utilisées](#technologies-utilisées)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
 - [Contributeurs](#contributeurs)
-- [Licence](#licence)
 
 ## Description
 
@@ -39,3 +36,9 @@ L'objectif est de répondre aux besoins spécifiques de l'association en combina
 - **CSS** – Mise en forme et design.
 - **JavaScript** – Interactivité et dynamisme.
 - **PHP** – Logique serveur et gestion des données.
+
+## Contributeurs
+- [Loris ADAM](https://github.com/Blazes35)
+- [Aymeric Cherbonnier](https://github.com/AyScorp)
+- [Mathilde Moreau](https://github.com/mathilde2801)
+- [Hugo Bizeul](https://github.com/Hugo123456712)
