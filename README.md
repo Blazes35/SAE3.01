@@ -38,6 +38,7 @@ L'objectif est de répondre aux besoins spécifiques de l'association en combina
 - **PHP** – Logique serveur et gestion des données.
 
 ## Contributeurs
+
 - [Loris ADAM](https://github.com/Blazes35)
 - [Aymeric Cherbonnier](https://github.com/AyScorp)
 - [Mathilde Moreau](https://github.com/mathilde2801)
